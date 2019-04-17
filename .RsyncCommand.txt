@@ -1,0 +1,1 @@
+sudo rsync -aAXv --delete --dry-run --exclude=/dev/* --exclude=/proc/* --exclude=/sys/* --exclude=/tmp/* --exclude=/run/* --exclude=/mnt/* --exclude=/media/* --exclude="swapfile" --exclude="lost+found" --exclude=".cache" --exclude="Downloads" --exclude="/.snapshots/" / /run/media/jakob/08dc594d-698e-4e7d-b2fb-1bfb3c66bd04/
