@@ -1,7 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -128,3 +124,10 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export NVM_DIR="/home/jakob/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
+alias cd="cs"
+alias h="cd ~"
+
+# Change directory and ls
+function cs () {
+	builtin cd "$@" && ls
+}
