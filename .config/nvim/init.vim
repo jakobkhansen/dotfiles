@@ -32,7 +32,9 @@ set shiftwidth=4
 set softtabstop=4
 
 "Lines"
-set number
+set relativenumber
+nnoremap <A-k> :m-2<CR>==
+nnoremap <A-j> :m+<CR>==
 
 "Splits"
 set splitbelow
@@ -56,6 +58,7 @@ colorscheme codedark
 
 "Java"
 let java_highlight_functions = 1
+imap sout<Tab> System.out.println("");<Left><Left><Left> 
 
 "Nerdtree"
 map <Bslash> :NERDTreeToggle<CR>
@@ -76,3 +79,4 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
