@@ -4,10 +4,11 @@ call plug#begin()
 Plug 'jiangmiao/auto-pairs'
 
 "Visual"
-Plug 'tomasiser/vim-code-dark'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'anned20/vimsence'
+Plug 'arcticicestudio/nord-vim'
+Plug 'romainl/flattened'
 
 
 "Files"
@@ -31,8 +32,10 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-"Lines"
-set relativenumber
+"Lines and navigation"
+set number
+nnoremap <silent> <C-U> :-10<CR>
+nnoremap <silent> <C-D> :+10<CR>
 nnoremap <A-k> :m-2<CR>==
 nnoremap <A-j> :m+<CR>==
 
@@ -40,6 +43,7 @@ nnoremap <A-j> :m+<CR>==
 set splitbelow
 set splitright
 :command SplitTerminal 10sp | terminal
+:tnoremap <Esc> <C-\><C-n>
 
 "Arrows"
 noremap <Up> <NOP>
@@ -47,14 +51,13 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-"Terminal"
-:tnoremap <Esc> <C-\><C-n>
-
 "Colorscheme"
 set t_Co=256
 set background=dark
 set termguicolors
-colorscheme codedark
+set signcolumn=no
+colorscheme flattened_dark
+set fcs=eob:\ 
 
 "Java"
 let java_highlight_functions = 1
