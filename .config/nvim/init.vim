@@ -2,12 +2,12 @@ call plug#begin()
 
 "Syntax"
 Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdcommenter'
 
 "Visual"
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'anned20/vimsence'
-Plug 'arcticicestudio/nord-vim'
 Plug 'romainl/flattened'
 
 
@@ -34,10 +34,11 @@ set softtabstop=4
 
 "Lines and navigation"
 set number
-nnoremap <silent> <C-U> :-10<CR>
-nnoremap <silent> <C-D> :+10<CR>
+nnoremap <silent> <C-U> 10k
+nnoremap <silent> <C-D> 10j
 nnoremap <A-k> :m-2<CR>==
 nnoremap <A-j> :m+<CR>==
+noremap # :call NERDComment(0, "toggle")<CR>
 
 "Splits"
 set splitbelow
@@ -58,6 +59,7 @@ set termguicolors
 set signcolumn=no
 colorscheme flattened_dark
 set fcs=eob:\ 
+hi Normal guibg=NONE ctermbg=NONE
 
 "Java"
 let java_highlight_functions = 1
@@ -65,7 +67,6 @@ imap sout<Tab> System.out.println("");<Left><Left><Left>
 
 "Nerdtree"
 map <Bslash> :NERDTreeToggle<CR>
-autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.class$']
@@ -83,3 +84,4 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+let g:airline_powerline_fonts = 1
