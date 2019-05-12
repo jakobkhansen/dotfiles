@@ -122,6 +122,7 @@ export PS1="\[\033[38;5;231m\][\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h \W]\\$ \[$
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export NVM_DIR="/home/jakob/.nvm"
+export ANDROID_HOME=/home/jakob/Android/Sdk/
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
 alias cd="cs"

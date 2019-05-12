@@ -9,6 +9,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'anned20/vimsence'
 Plug 'romainl/flattened'
+Plug 'ayu-theme/ayu-vim'
 
 
 "Files"
@@ -22,7 +23,7 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 call plug#end() 
 
 filetype plugin indent on
-:set signcolumn=yes
+set signcolumn=yes
 autocmd FileType tagbar,nerdtree setlocal signcolumn=no
 
 "Tabs"
@@ -34,11 +35,15 @@ set softtabstop=4
 
 "Lines and navigation"
 set number
+set hidden
+set smartcase
 nnoremap <silent> <C-U> 10k
 nnoremap <silent> <C-D> 10j
 nnoremap <A-k> :m-2<CR>==
 nnoremap <A-j> :m+<CR>==
 noremap # :call NERDComment(0, "toggle")<CR>
+nnoremap  <silent>   <tab> :bn<CR> 
+nnoremap  <silent> <s-tab> :bp<CR>
 
 "Splits"
 set splitbelow
@@ -66,8 +71,6 @@ let java_highlight_functions = 1
 imap sout<Tab> System.out.println("");<Left><Left><Left> 
 
 "Nerdtree"
-map <Bslash> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.class$']
 
@@ -84,4 +87,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+"Airline"
+let g:airline_theme = "ayu_mirage"
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
