@@ -7,7 +7,7 @@ Plug 'scrooloose/nerdcommenter'
 "Visual"
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'anned20/vimsence'
+Plug 'ananagame/vimsence'
 Plug 'romainl/flattened'
 Plug 'ayu-theme/ayu-vim'
 
@@ -37,6 +37,12 @@ set softtabstop=4
 set number
 set hidden
 set smartcase
+set mouse=a
+map <ScrollWheelUp> <C-Y>
+map <ScrollWheelDown> <C-E>
+nmap <LeftMouse> <nop>
+imap <LeftMouse> <nop>
+vmap <LeftMouse> <nop>
 nnoremap <silent> <C-U> 10k
 nnoremap <silent> <C-D> 10j
 nnoremap <A-k> :m-2<CR>==
@@ -68,7 +74,8 @@ hi Normal guibg=NONE ctermbg=NONE
 
 "Java"
 let java_highlight_functions = 1
-imap sout<Tab> System.out.println("");<Left><Left><Left> 
+imap sout<Tab> System.out.println();<Left><Left>
+imap main<Tab> public static void main(String[] args) {}<Left><CR>
 
 "Nerdtree"
 map <C-n> :NERDTreeToggle<CR>
