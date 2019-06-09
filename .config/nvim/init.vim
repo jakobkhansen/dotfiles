@@ -54,8 +54,6 @@ nnoremap  <silent> <s-tab> :bp<CR>
 "Splits"
 set splitbelow
 set splitright
-:command SplitTerminal 10sp | terminal
-:tnoremap <Esc> <C-\><C-n>
 
 "Arrows"
 noremap <Up> <NOP>
@@ -74,12 +72,13 @@ hi Normal guibg=NONE ctermbg=NONE
 
 "Java"
 let java_highlight_functions = 1
-imap sout<Tab> System.out.println();<Left><Left>
-imap main<Tab> public static void main(String[] args) {}<Left><CR>
+autocmd FileType java imap <buffer> sout<Tab> System.out.println();<Left><Left>
+autocmd Filetype java imap <buffer> main<Tab> public static void main(String[] args) {}<Left><CR>
 
 "Nerdtree"
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.class$']
+let g:NERDTreeQuitOnOpen = 1
 
 "Coc.nvim"
 "Tab completion"

@@ -9,3 +9,6 @@ CursorShape=0
 Name=Profile1
 Parent=FALLBACK/
 TerminalCenter=false
+
+[Keyboard]
+KeyBindings=default
