@@ -114,7 +114,6 @@ fi
 
 alias uiologin="sshpass -p 'Jkhjkh123456789' ssh jakobkha@login.uio.no"
 alias uio="cd /home/jakob/Documents/UiOServer"
-alias runelite="java -jar /usr/share/runelite/RuneLite.jar;sleep 5;exit"
 alias server="/home/jakob/Documents/sshfsonboot.sh"
 
 export PS1="\[\033[38;5;231m\][\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h \W]\\$ \[$(tput sgr0)\]"

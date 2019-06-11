@@ -33,6 +33,13 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
+"Syntax"
+set nocompatible     
+syntax on
+filetype on
+filetype indent on
+filetype plugin on
+
 "Lines and navigation"
 set number
 set hidden
@@ -71,9 +78,12 @@ set fcs=eob:\
 hi Normal guibg=NONE ctermbg=NONE
 
 "Java"
-let java_highlight_functions = 1
+autocmd FileType java let java_highlight_functions = 1
 autocmd FileType java imap <buffer> sout<Tab> System.out.println();<Left><Left>
 autocmd Filetype java imap <buffer> main<Tab> public static void main(String[] args) {}<Left><CR>
+
+"Ruby"
+let g:ruby_host_prog = '/usr/lib64/ruby/gems/2.5.0/gems/neovim-0.8.0/exe/neovim-ruby-host'
 
 "Nerdtree"
 map <C-n> :NERDTreeToggle<CR>
