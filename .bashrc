@@ -114,7 +114,8 @@ fi
 
 alias uiologin="sshpass -p 'Jkhjkh123456789' ssh jakobkha@login.uio.no"
 alias uio="cd /home/jakob/Documents/UiOServer"
-alias server="/home/jakob/Documents/sshfsonboot.sh"
+alias server="/home/jakob/Scripts/sshfsonboot.sh"
+alias kattis="/home/jakob/Scripts/kattis.sh "$1
 
 export PS1="\[\033[38;5;231m\][\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h \W]\\$ \[$(tput sgr0)\]"
 
@@ -131,3 +132,8 @@ alias h="cd ~"
 function cs () {
 	builtin cd "$@" && ls
 }
+
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. /usr/share/powerline/bindings/bash/powerline.sh
