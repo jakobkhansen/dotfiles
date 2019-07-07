@@ -111,22 +111,26 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+export PS1="\[\033[38;5;231m\][\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h \W]\\$ \[$(tput sgr0)\]"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 alias uiologin="sshpass -p 'Jkhjkh123456789' ssh jakobkha@login.uio.no"
 alias uio="cd /home/jakob/Documents/UiOServer"
 alias server="/home/jakob/Scripts/sshfsonboot.sh"
 alias kattis="/home/jakob/Scripts/kattis.sh "$1
+alias torrentvideo="python3 /home/jakob/Documents/dev/PYFYCast/src/main.py"$1
+alias cd="cs"
+alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
+alias h="cd ~"
+alias tileleft="~/Scripts/tilinggaps.sh left"
+alias tileright="~/Scripts/tilinggaps.sh right"
+alias sshpi="ssh pi@raspberrypi.local"
 
-export PS1="\[\033[38;5;231m\][\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h \W]\\$ \[$(tput sgr0)\]"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export NVM_DIR="/home/jakob/.nvm"
 export ANDROID_HOME=/home/jakob/Android/Sdk/
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
-alias cd="cs"
-alias h="cd ~"
 
 # Change directory and ls
 function cs () {
