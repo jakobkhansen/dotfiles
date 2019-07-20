@@ -39,6 +39,7 @@ syntax on
 filetype on
 filetype indent on
 filetype plugin on
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 "Lines and navigation"
 set number
@@ -52,6 +53,8 @@ imap <LeftMouse> <nop>
 vmap <LeftMouse> <nop>
 nnoremap <silent> <C-U> 10k
 nnoremap <silent> <C-D> 10j
+vnoremap <silent> <C-U> 10k
+vnoremap <silent> <C-D> 10j
 nnoremap <A-k> :m-2<CR>==
 nnoremap <A-j> :m+<CR>==
 noremap # :call NERDComment(0, "toggle")<CR>
@@ -81,13 +84,14 @@ hi Normal guibg=NONE ctermbg=NONE
 autocmd FileType java let java_highlight_functions = 1
 autocmd FileType java imap <buffer> sout<Tab> System.out.println();<Left><Left>
 autocmd Filetype java imap <buffer> main<Tab> public static void main(String[] args) {}<Left><CR>
+map Jgs mawv/ <CR>"ty/ <CR>wvwh"ny/getters<CR>$a<CR><CR><Esc>xxapublic <Esc>"tpa<Esc>"npbiget<Esc>l~a() {<CR>return <Esc>"npa;}<Esc><CR><Esc>/setters<CR>$a<CR>public void <Esc>"npbiset<Esc>l~ea(<Esc>"tpa<Esc>"npa) {<CR>this.<Esc>"npa=<Esc>"npa;}<Esc>=<CR>`ak
 
 "Ruby"
 let g:ruby_host_prog = '/usr/lib64/ruby/gems/2.5.0/gems/neovim-0.8.0/exe/neovim-ruby-host'
 
 "Nerdtree"
 map <C-n> :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\.class$']
+let NERDTreeIgnore = ['\.class$', '__pycache__']
 let g:NERDTreeQuitOnOpen = 1
 
 "Coc.nvim"

@@ -126,6 +126,11 @@ alias h="cd ~"
 alias tileleft="~/Scripts/tilinggaps.sh left"
 alias tileright="~/Scripts/tilinggaps.sh right"
 alias sshpi="ssh pi@raspberrypi.local"
+alias music="~/Scripts/music.sh"
+alias music-ctrl="nc localhost 1250"
+alias editbashrc="nvim ~/.bashrc"
+alias editvim="nvim ~/.config/nvim/init.vim"
+alias hotkeys="sudo python3 ~/Scripts/hotkeys.py"
 
 
 export NVM_DIR="/home/jakob/.nvm"
@@ -144,3 +149,5 @@ POWERLINE_BASH_SELECT=1
 
 transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
     tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; echo ""; rm -f $tmpfile; }
+
+source "/home/jakob/.redcmd/scripts/autocomp_func.sh"	#__redcmd_autocomp_user_script
