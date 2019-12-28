@@ -46,6 +46,7 @@ set number
 set hidden
 set smartcase
 set mouse=a
+set tw=79
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 nmap <LeftMouse> <nop>
@@ -80,11 +81,16 @@ colorscheme flattened_dark
 set fcs=eob:\ 
 hi Normal guibg=NONE ctermbg=NONE
 
+"Global hotkeys"
+autocmd InsertLeave * write
+nmap <F1> :echo<CR>
+imap <F1> <C-o>:echo<CR>
+
 "Java"
 autocmd FileType java let java_highlight_functions = 1
 autocmd FileType java imap <buffer> sout<Tab> System.out.println();<Left><Left>
 autocmd Filetype java imap <buffer> main<Tab> public static void main(String[] args) {}<Left><CR>
-map Jgs mawv/ <CR>"ty/ <CR>wvwh"ny/getters<CR>$a<CR><CR><Esc>xxapublic <Esc>"tpa<Esc>"npbiget<Esc>l~a() {<CR>return <Esc>"npa;}<Esc><CR><Esc>/setters<CR>$a<CR>public void <Esc>"npbiset<Esc>l~ea(<Esc>"tpa<Esc>"npa) {<CR>this.<Esc>"npa=<Esc>"npa;}<Esc>=<CR>`ak
+autocmd Filetype java nnoremap <buffer> * :CocCommand java.action.organizeImports<CR>
 
 "Ruby"
 let g:ruby_host_prog = '/usr/lib64/ruby/gems/2.5.0/gems/neovim-0.8.0/exe/neovim-ruby-host'

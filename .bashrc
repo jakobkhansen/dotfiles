@@ -115,7 +115,7 @@ export PS1="\[\033[38;5;231m\][\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h \W]\\$ \[$
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-alias uiologin="sshpass -p 'Jkhjkh123456789' ssh jakobkha@login.uio.no"
+alias uiologin="ssh jakobkha@login.uio.no"
 alias uio="cd /home/jakob/Documents/UiOServer"
 alias server="/home/jakob/Scripts/sshfsonboot.sh"
 alias kattis="/home/jakob/Scripts/kattis.sh "$1
@@ -131,6 +131,8 @@ alias music-ctrl="nc localhost 1250"
 alias editbashrc="nvim ~/.bashrc"
 alias editvim="nvim ~/.config/nvim/init.vim"
 alias hotkeys="sudo python3 ~/Scripts/hotkeys.py"
+alias dagens="~/Scripts/Middag-IFI/middag.py"
+alias updaterunelite="~/Documents/dev/Personal/ArchUpdateRunelite/UpdateRuneLite.sh"
 
 
 export NVM_DIR="/home/jakob/.nvm"
