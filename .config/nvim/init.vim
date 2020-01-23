@@ -3,12 +3,14 @@ call plug#begin()
 "Syntax"
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
 
 "Visual"
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ananagame/vimsence'
 Plug 'romainl/flattened'
+Plug 'whatyouhide/vim-gotham'
 Plug 'ayu-theme/ayu-vim'
 
 
@@ -19,6 +21,8 @@ Plug 'ryanoasis/vim-devicons'
 "Languages / intellisense"
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'lervag/vimtex'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
 call plug#end() 
 
@@ -46,7 +50,7 @@ set number
 set hidden
 set smartcase
 set mouse=a
-set tw=79
+set tw=89
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 nmap <LeftMouse> <nop>
@@ -77,7 +81,7 @@ set t_Co=256
 set background=dark
 set termguicolors
 set signcolumn=no
-colorscheme flattened_dark
+colorscheme gotham
 set fcs=eob:\ 
 hi Normal guibg=NONE ctermbg=NONE
 
@@ -85,12 +89,17 @@ hi Normal guibg=NONE ctermbg=NONE
 autocmd InsertLeave * write
 nmap <F1> :echo<CR>
 imap <F1> <C-o>:echo<CR>
+nmap <F6> <Plug>(coc-rename)
+nmap <F5> <Plug>(coc-definition)
+nnoremap <buffer> * :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 
 "Java"
 autocmd FileType java let java_highlight_functions = 1
 autocmd FileType java imap <buffer> sout<Tab> System.out.println();<Left><Left>
 autocmd Filetype java imap <buffer> main<Tab> public static void main(String[] args) {}<Left><CR>
-autocmd Filetype java nnoremap <buffer> * :CocCommand java.action.organizeImports<CR>
+"autocmd Filetype java nnoremap <buffer> * :CocCommand java.action.organizeImports<CR>
+
+"Latex"
 
 "Ruby"
 let g:ruby_host_prog = '/usr/lib64/ruby/gems/2.5.0/gems/neovim-0.8.0/exe/neovim-ruby-host'

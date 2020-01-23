@@ -116,8 +116,7 @@ export PS1="\[\033[38;5;231m\][\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h \W]\\$ \[$
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 alias uiologin="ssh jakobkha@login.uio.no"
-alias uio="cd /home/jakob/Documents/UiOServer"
-alias server="/home/jakob/Scripts/sshfsonboot.sh"
+alias uio="/home/jakob/Scripts/uio.sh; cd /home/jakob/Documents/UiOServer"
 alias kattis="/home/jakob/Scripts/kattis.sh "$1
 alias torrentvideo="python3 /home/jakob/Documents/dev/PYFYCast/src/main.py"$1
 alias cd="cs"
@@ -133,6 +132,7 @@ alias editvim="nvim ~/.config/nvim/init.vim"
 alias hotkeys="sudo python3 ~/Scripts/hotkeys.py"
 alias dagens="~/Scripts/Middag-IFI/middag.py"
 alias updaterunelite="~/Documents/dev/Personal/ArchUpdateRunelite/UpdateRuneLite.sh"
+alias cc="/home/jakob/Scripts/cc.sh"
 
 
 export NVM_DIR="/home/jakob/.nvm"
