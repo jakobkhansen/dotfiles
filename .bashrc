@@ -118,21 +118,18 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 alias uiologin="ssh jakobkha@login.uio.no"
 alias uio="/home/jakob/Scripts/uio.sh; cd /home/jakob/Documents/UiOServer"
 alias kattis="/home/jakob/Scripts/kattis.sh "$1
-alias torrentvideo="python3 /home/jakob/Documents/dev/PYFYCast/src/main.py"$1
 alias cd="cs"
 alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
 alias h="cd ~"
-alias tileleft="~/Scripts/tilinggaps.sh left"
-alias tileright="~/Scripts/tilinggaps.sh right"
 alias sshpi="ssh pi@raspberrypi.local"
-alias music="~/Scripts/music.sh"
-alias music-ctrl="nc localhost 1250"
 alias editbashrc="nvim ~/.bashrc"
 alias editvim="nvim ~/.config/nvim/init.vim"
 alias hotkeys="sudo python3 ~/Scripts/hotkeys.py"
 alias dagens="~/Scripts/Middag-IFI/middag.py"
 alias updaterunelite="~/Documents/dev/Personal/ArchUpdateRunelite/UpdateRuneLite.sh"
 alias cc="/home/jakob/Scripts/cc.sh"
+alias open="echo -ne '\n' | xdg-open $1 > /dev/null 2>&1"
+alias latexinit="/home/jakob/Scripts/latextemplate.sh $1"
 
 
 export NVM_DIR="/home/jakob/.nvm"

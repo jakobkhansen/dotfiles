@@ -17,6 +17,7 @@ Plug 'ayu-theme/ayu-vim'
 "Files"
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
+Plug '907th/vim-auto-save'
 
 "Languages / intellisense"
 Plug 'sheerun/vim-polyglot'
@@ -44,27 +45,57 @@ filetype on
 filetype indent on
 filetype plugin on
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+set ignorecase
+
+augroup dynamic_smartcase
+    autocmd!
+    autocmd CmdLineEnter : set nosmartcase
+    autocmd CmdLineLeave : set smartcase
+augroup END
 
 "Lines and navigation"
 set number
 set hidden
-set smartcase
 set mouse=a
 set tw=89
+set foldmethod=indent
+set foldlevelstart=99
+set scrolloff=4
+
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
+
 nmap <LeftMouse> <nop>
 imap <LeftMouse> <nop>
 vmap <LeftMouse> <nop>
+
 nnoremap <silent> <C-U> 10k
 nnoremap <silent> <C-D> 10j
 vnoremap <silent> <C-U> 10k
 vnoremap <silent> <C-D> 10j
+
 nnoremap <A-k> :m-2<CR>==
 nnoremap <A-j> :m+<CR>==
+
 noremap # :call NERDComment(0, "toggle")<CR>
+
 nnoremap  <silent>   <tab> :bn<CR> 
 nnoremap  <silent> <s-tab> :bp<CR>
+
+set backspace=indent,eol,start
+
+"Autosave"
+let g:auto_save = 1
+"let g:auto_save_silent = 1
+let g:auto_save_events = ["InsertLeave", "TextChanged"]
+
+"Persistent undo
+let s:undoDir = "/tmp/.undodir_" . $USER
+if !isdirectory(s:undoDir)
+    call mkdir(s:undoDir, "", 0700)
+endif
+let &undodir=s:undoDir
+set undofile
 
 "Splits"
 set splitbelow
@@ -86,20 +117,15 @@ set fcs=eob:\
 hi Normal guibg=NONE ctermbg=NONE
 
 "Global hotkeys"
-autocmd InsertLeave * write
-nmap <F1> :echo<CR>
-imap <F1> <C-o>:echo<CR>
 nmap <F6> <Plug>(coc-rename)
 nmap <F5> <Plug>(coc-definition)
-nnoremap <buffer> * :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
+nnoremap <buffer> <F7> :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 
 "Java"
 autocmd FileType java let java_highlight_functions = 1
 autocmd FileType java imap <buffer> sout<Tab> System.out.println();<Left><Left>
 autocmd Filetype java imap <buffer> main<Tab> public static void main(String[] args) {}<Left><CR>
-"autocmd Filetype java nnoremap <buffer> * :CocCommand java.action.organizeImports<CR>
 
-"Latex"
 
 "Ruby"
 let g:ruby_host_prog = '/usr/lib64/ruby/gems/2.5.0/gems/neovim-0.8.0/exe/neovim-ruby-host'
