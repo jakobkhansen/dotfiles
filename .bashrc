@@ -130,6 +130,7 @@ alias updaterunelite="~/Documents/dev/Personal/ArchUpdateRunelite/UpdateRuneLite
 alias cc="/home/jakob/Scripts/cc.sh"
 alias open="echo -ne '\n' | xdg-open $1 > /dev/null 2>&1"
 alias latexinit="/home/jakob/Scripts/latextemplate.sh $1"
+alias emoji="tuimoji"
 
 
 export NVM_DIR="/home/jakob/.nvm"
