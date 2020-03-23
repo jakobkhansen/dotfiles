@@ -115,6 +115,7 @@ export PS1="\[\033[38;5;231m\][\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h \W]\\$ \[$
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# Custom alias list
 alias uiologin="ssh jakobkha@login.uio.no"
 alias uio="/home/jakob/Scripts/uio.sh; cd /home/jakob/Documents/UiOServer"
 alias kattis="/home/jakob/Scripts/kattis.sh "$1
@@ -131,6 +132,8 @@ alias cc="/home/jakob/Scripts/cc.sh"
 alias open="echo -ne '\n' | xdg-open $1 > /dev/null 2>&1"
 alias latexinit="/home/jakob/Scripts/latextemplate.sh $1"
 alias emoji="tuimoji"
+alias editi3="nvim /home/jakob/.config/i3/config"
+alias i3-restart="i3-msg restart"
 
 
 export NVM_DIR="/home/jakob/.nvm"
