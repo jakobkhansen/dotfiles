@@ -10,14 +10,14 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $terminal konsole
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 8
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -27,8 +27,10 @@ font pango:monospace 8
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Autostarts
+exec --no-startup-id "mate-power-manager"
 exec --no-startup-id "compton --config /home/jakob/.config/compton.conf"
 exec --no-startup-id "nitrogen --restore"
+exec --no-startup-id "polybar -r MainBar"
 
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -46,7 +48,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym Control+Mod1+Return exec konsole
+bindsym Control+Mod1+Return exec $terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -82,11 +84,6 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -181,21 +178,29 @@ bindsym $mod+r mode "resize"
 
  #Start i3bar to display a workspace bar (plus the system information i3status
  #finds out, if available)
-bar {
-        status_command i3status
-        position top
-        font pango:DejaVu Sans Mono, Icons 11
-}
+#bar {
+        #status_command /home/jakob/.config/i3status/activewindow.sh
+        #position top
+        #font pango:DejaVu Sans Mono, Icons 11
+#}
 
 # Custom additions
+
+# Windows
+focus_on_window_activation focus
 
 # Mouse
 focus_follows_mouse no
 
 # Gaps
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 3
 gaps outer 5
 gaps inner 10
+
+# Splitting
+bindsym $mod+h split h; exec --no-startup-id notify-send 'Tile horizontally' -t 1000 -i align-horizontal-left
+bindsym $mod+v split v; exec --no-startup-id notify-send 'Tile vertically' -t 1000 -i align-vertical-top
+bindsym $mod+q split toggle
 
 # Audio
 exec --no-startup-id "pasystray"
@@ -203,12 +208,23 @@ bindsym XF86AudioPlay exec "mpris-ctl pp"
 
 # Bluetooth
 exec --no-startup-id "blueman-applet"
-bindsym F10 exec "bluetoothctl connect 38:FB:14:E5:9A:B9"
+bindsym F11 exec "bluetoothctl connect 38:FB:14:E5:9A:B9"
+
+
+# Application window settings
+for_window [class="Pavucontrol"] floating enable
+for_window [class="net-runelite-launcher-Launcher"] floating enable
+for_window [class="Headset" title="Headset"] floating enable border none
+for_window [class="Headset" title="Headset - Player"] move container to workspace $wsTrash
+for_window [class="Nm-connection-editor"] floating enable
+for_window [class="nmtui"] fullscreen enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Blueman-manager"] resize set 572 248
+for_window [title=".*Emulator.*"] floating enable
 
 # Screenshots
-bindsym 
+# Entire desktop
+bindsym --release Print exec "scrot -s /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"
 
-
-
-# Floating windows
-for_window [instance="Volume Control"] floating enable
+# Selection screenshot
+bindsym $mod+Print exec "scrot /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"
