@@ -120,7 +120,7 @@ alias uiologin="ssh jakobkha@login.uio.no"
 alias uio="/home/jakob/Scripts/uio.sh; cd /home/jakob/Documents/UiOServer"
 alias kattis="/home/jakob/Scripts/kattis.sh "$1
 alias cd="cs"
-alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
+alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/jakob'
 alias h="cd ~"
 alias sshpi="ssh pi@raspberrypi.local"
 alias editbashrc="nvim ~/.bashrc"
@@ -134,6 +134,7 @@ alias latexinit="/home/jakob/Scripts/latextemplate.sh $1"
 alias emoji="tuimoji"
 alias editi3="nvim /home/jakob/.config/i3/config"
 alias i3-restart="i3-msg restart"
+alias c="clear"
 
 
 export NVM_DIR="/home/jakob/.nvm"
