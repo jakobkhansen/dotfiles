@@ -121,6 +121,9 @@ nmap <F6> <Plug>(coc-rename)
 nmap <F5> <Plug>(coc-definition)
 nnoremap <buffer> <F7> :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 
+"Python"
+let g:python_highlight_all = 0
+
 "Java"
 autocmd FileType java let java_highlight_functions = 1
 autocmd FileType java imap <buffer> sout<Tab> System.out.println();<Left><Left>

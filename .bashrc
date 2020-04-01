@@ -118,7 +118,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # Custom alias list
 alias uiologin="ssh jakobkha@login.uio.no"
 alias uio="/home/jakob/Scripts/uio.sh; cd /home/jakob/Documents/UiOServer"
-alias kattis="/home/jakob/Scripts/kattis.sh "$1
+alias kattispy="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_python.sh"$1
 alias cd="cs"
 alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/jakob'
 alias h="cd ~"

@@ -31,6 +31,7 @@ exec --no-startup-id "mate-power-manager"
 exec --no-startup-id "compton --config /home/jakob/.config/compton.conf"
 exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "polybar -r MainBar"
+exec --no-startup-id "redshift"
 
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -188,6 +189,13 @@ bindsym $mod+r mode "resize"
 
 # Windows
 focus_on_window_activation focus
+
+# Workspaces
+bindsym $mod+Mod1+Left workspace prev_on_output
+bindsym $mod+Mod1+Right workspace next_on_output
+
+bindsym $mod+Mod1+Shift+Left move container to workspace prev
+bindsym $mod+Mod1+Shift+Right move container to workspace next
 
 # Mouse
 focus_follows_mouse no
