@@ -9,15 +9,17 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ananagame/vimsence'
-Plug 'romainl/flattened'
+
+"Themes"
 Plug 'whatyouhide/vim-gotham'
 Plug 'ayu-theme/ayu-vim'
-
+Plug 'flrnd/plastic.vim'
 
 "Files"
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug '907th/vim-auto-save'
+Plug 'mhinz/vim-startify'
 
 "Languages / intellisense"
 Plug 'sheerun/vim-polyglot'
@@ -112,7 +114,11 @@ set t_Co=256
 set background=dark
 set termguicolors
 set signcolumn=no
+
 colorscheme gotham
+highlight CocWarningSign guifg=#195466
+highlight CocWarningSign guibg=#11151c
+
 set fcs=eob:\ 
 hi Normal guibg=NONE ctermbg=NONE
 

@@ -84,9 +84,9 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alF --block-size=M'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -118,24 +118,48 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # Custom alias list
 alias uiologin="ssh jakobkha@login.uio.no"
 alias uio="/home/jakob/Scripts/uio.sh; cd /home/jakob/Documents/UiOServer"
-alias kattispy="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_python.sh"$1
+alias dagens="/home/jakob/Documents/dev/Personal/MiddagIFI/middag.py"
+
 alias cd="cs"
-alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/jakob'
 alias h="cd ~"
+
+alias kattispy="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_python.sh"$1
+alias kattiskotlin="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_kotlin.sh"$1
+alias rkotlin="/home/jakob/Scripts/kotlinrun.sh"$1
+
+alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/jakob'
 alias sshpi="ssh pi@raspberrypi.local"
+
 alias editbashrc="nvim ~/.bashrc"
 alias editvim="nvim ~/.config/nvim/init.vim"
+alias editkitty="nvim ~/.config/kitty/kitty.conf"
+
 alias hotkeys="sudo python3 ~/Scripts/hotkeys.py"
-alias dagens="~/Scripts/Middag-IFI/middag.py"
 alias updaterunelite="~/Documents/dev/Personal/ArchUpdateRunelite/UpdateRuneLite.sh"
-alias cc="/home/jakob/Scripts/cc.sh"
+
 alias open="echo -ne '\n' | xdg-open $1 > /dev/null 2>&1"
+
+function openclose() {
+    xdg-open "$*" &
+    exit
+}
+
 alias latexinit="/home/jakob/Scripts/latextemplate.sh $1"
+
 alias emoji="tuimoji"
+
 alias editi3="nvim /home/jakob/.config/i3/config"
 alias i3-restart="i3-msg restart"
+
 alias c="clear"
 
+alias record="/home/jakob/Scripts/recordscreen.sh"
+
+alias wifirestart="sudo systemctl restart NetworkManager"
+
+alias sxiv="sxiv -a"
+
+alias cal="cal -y"
 
 export NVM_DIR="/home/jakob/.nvm"
 export ANDROID_HOME=/home/jakob/Android/Sdk/
@@ -145,6 +169,8 @@ export ANDROID_HOME=/home/jakob/Android/Sdk/
 function cs () {
 	builtin cd "$@" && ls
 }
+
+export EDITOR=nvim
 
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
