@@ -130,6 +130,8 @@ alias rkotlin="/home/jakob/Scripts/kotlinrun.sh"$1
 alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/jakob'
 alias sshpi="ssh pi@raspberrypi.local"
 
+alias orphans="yay -Rns $(yay -Qtdq)"
+
 alias editbashrc="nvim ~/.bashrc"
 alias editvim="nvim ~/.config/nvim/init.vim"
 alias editkitty="nvim ~/.config/kitty/kitty.conf"
