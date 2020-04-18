@@ -201,6 +201,7 @@ bindsym $mod+Mod1+Shift+h move container to workspace prev
 bindsym $mod+Mod1+Shift+l move container to workspace next
 
 bindsym $mod+n exec /home/jakob/Scripts/empty_workspace.sh
+bindsym $mod+Shift+n exec /home/jakob/Scripts/move_to_empty_workspace.sh
 # Mouse
 focus_follows_mouse no
 

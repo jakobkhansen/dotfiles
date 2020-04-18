@@ -59,7 +59,7 @@ augroup END
 set number
 set hidden
 set mouse=a
-set tw=89
+autocmd BufNewFile,BufRead *.txt set tw=89
 set foldmethod=indent
 set foldlevelstart=99
 set scrolloff=4
