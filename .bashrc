@@ -116,7 +116,7 @@ export PS1="\[\033[38;5;231m\][\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h \W]\\$ \[$
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Custom alias list
-alias uiologin="ssh jakobkha@login.uio.no"
+alias uiologin="ssh jakobkha@login.ifi.uio.no"
 alias uio="/home/jakob/Scripts/uio.sh; cd /home/jakob/Documents/UiOServer"
 alias dagens="/home/jakob/Documents/dev/Personal/MiddagIFI/middag.py"
 

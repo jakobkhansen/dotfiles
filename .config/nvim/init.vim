@@ -8,7 +8,7 @@ Plug 'tpope/vim-surround'
 "Visual"
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ananagame/vimsence'
+Plug 'hugolgst/vimsence'
 
 "Themes"
 Plug 'whatyouhide/vim-gotham'
@@ -59,7 +59,7 @@ augroup END
 set number
 set hidden
 set mouse=a
-autocmd BufNewFile,BufRead *.txt set tw=89
+autocmd BufNewFile,BufRead *.txt,*.tex set tw=89
 set foldmethod=indent
 set foldlevelstart=99
 set scrolloff=4
@@ -99,6 +99,11 @@ endif
 let &undodir=s:undoDir
 set undofile
 
+"Vimtex"
+au BufReadPost,BufNewFile *.tex :VimtexCompile
+"let g:vimtex_quickfix_open_on_warning = 0"
+let g:vimtex_quickfix_latexlog = {'default' : 0}
+
 "Splits"
 set splitbelow
 set splitright
@@ -126,6 +131,8 @@ hi Normal guibg=NONE ctermbg=NONE
 nmap <F6> <Plug>(coc-rename)
 nmap <F5> <Plug>(coc-definition)
 nnoremap <buffer> <F7> :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
+nmap <F25> :bufdo bd<CR>
+autocmd InsertLeave * execute 'normal! mo'
 
 "Python"
 let g:python_highlight_all = 0
