@@ -202,13 +202,16 @@ bindsym $mod+Mod1+Shift+l move container to workspace next
 
 bindsym $mod+n exec /home/jakob/Scripts/empty_workspace.sh
 bindsym $mod+Shift+n exec /home/jakob/Scripts/move_to_empty_workspace.sh
+
+bindsym $mod+Shift+t exec /home/jakob/Scripts/truncate_workspaces.py
+
 # Mouse
 focus_follows_mouse no
 
 # Gaps
-for_window [class=".*"] border pixel 3
 gaps outer 5
 gaps inner 10
+for_window [class="^.*"] border pixel 3
 
 # Splitting
 bindsym $mod+q split toggle
