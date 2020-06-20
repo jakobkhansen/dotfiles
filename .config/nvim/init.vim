@@ -20,11 +20,15 @@ Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug '907th/vim-auto-save'
 Plug 'mhinz/vim-startify'
+Plug 'junegunn/fzf.vim'
 
 "Languages / intellisense"
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'lervag/vimtex'
+
+"Random"
+Plug 'vim-scripts/uptime.vim'
 
 call plug#end() 
 
@@ -38,6 +42,9 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+autocmd Filetype dart setlocal tabstop=2
+autocmd Filetype dart setlocal shiftwidth=2
+autocmd Filetype dart setlocal softtabstop=2
 
 "Syntax"
 set nocompatible     
@@ -132,6 +139,13 @@ nmap <F5> <Plug>(coc-definition)
 nnoremap <buffer> <F7> :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 nmap <F25> :bufdo bd<CR>
 autocmd InsertLeave * execute 'normal! mo'
+nmap <silent> * <Plug>(coc-codeaction)
+autocmd CursorHold * if ! coc#util#has_float() | call CocActionAsync('doHover') | endif
+set updatetime=2000
+
+"Search"
+nmap <A-s> :Files<CR>
+
 
 "Python"
 let g:python_highlight_all = 0
@@ -140,6 +154,9 @@ let g:python_highlight_all = 0
 autocmd FileType java let java_highlight_functions = 1
 autocmd FileType java imap <buffer> sout<Tab> System.out.println();<Left><Left>
 autocmd Filetype java imap <buffer> main<Tab> public static void main(String[] args) {}<Left><CR>
+
+"Latex"
+autocmd FileType tex imap <buffer> bullet<Tab> \begin{itemize}<CR>\item <CR><Backspace><Backspace>\end{itemize}<Up>
 
 
 "Ruby"
@@ -157,6 +174,13 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+"Enter completion"
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
 
 function! s:check_back_space() abort
   let col = col('.') - 1

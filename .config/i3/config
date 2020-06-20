@@ -32,6 +32,7 @@ exec --no-startup-id "compton --config /home/jakob/.config/compton/compton.conf"
 exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "polybar -r MainBar"
 exec --no-startup-id redshift-gtk
+exec --no-startup-id "libinput-gestures-setup start"
 
 # Restart NetworkManager because it's shit
 #exec --no-startup-id "sleep 5 && sudo systemctl restart NetworkManager"
@@ -196,6 +197,7 @@ focus_on_window_activation focus
 # Workspaces
 bindsym $mod+Mod1+h workspace prev_on_output
 bindsym $mod+Mod1+l workspace next_on_output
+bindsym $mod+Tab workspace next_on_output
 
 bindsym $mod+Mod1+Shift+h move container to workspace prev
 bindsym $mod+Mod1+Shift+l move container to workspace next

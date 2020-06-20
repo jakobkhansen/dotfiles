@@ -125,10 +125,12 @@ alias h="cd ~"
 
 alias kattispy="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_python.sh"$1
 alias kattiskotlin="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_kotlin.sh"$1
+alias kattists="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_typescript.sh"$1
 alias rkotlin="/home/jakob/Scripts/kotlinrun.sh"$1
 
 alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/jakob'
 alias sshpi="ssh pi@raspberrypi.local"
+alias pushschool="cd /home/jakob/Documents/Skole; git add .; git commit -m 'Updates'; git push"
 
 alias orphans="yay -Rns \$(yay -Qtdq)"
 
@@ -162,6 +164,8 @@ alias wifirestart="sudo systemctl restart NetworkManager"
 alias sxiv="sxiv -a"
 
 alias cal="cal -y"
+
+alias cattc="python /home/jakob/Documents/dev/Personal/CattCommands/src/main.py"
 
 export NVM_DIR="/home/jakob/.nvm"
 export ANDROID_HOME=/home/jakob/Android/Sdk/
