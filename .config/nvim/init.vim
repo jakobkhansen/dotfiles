@@ -20,7 +20,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug '907th/vim-auto-save'
 Plug 'mhinz/vim-startify'
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
 
 "Languages / intellisense"
 Plug 'sheerun/vim-polyglot'
@@ -134,8 +134,6 @@ set fcs=eob:\
 hi Normal guibg=NONE ctermbg=NONE
 
 "Global hotkeys"
-nmap <F6> <Plug>(coc-rename)
-nmap <F5> <Plug>(coc-definition)
 nnoremap <buffer> <F7> :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 nmap <F25> :bufdo bd<CR>
 autocmd InsertLeave * execute 'normal! mo'
@@ -143,8 +141,16 @@ nmap <silent> * <Plug>(coc-codeaction)
 autocmd CursorHold * if ! coc#util#has_float() | call CocActionAsync('doHover') | endif
 set updatetime=2000
 
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gn <Plug>(coc-rename)
+
 "Search"
-nmap <A-s> :Files<CR>
+nmap <A-s> :GFiles<CR>
+nmap <A-s-s> :Files<CR>
+nmap <A-c> :Ag<CR>
 
 
 "Python"
