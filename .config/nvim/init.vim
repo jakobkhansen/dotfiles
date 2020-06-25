@@ -16,7 +16,6 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'flrnd/plastic.vim'
 
 "Files"
-Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug '907th/vim-auto-save'
 Plug 'mhinz/vim-startify'
@@ -34,7 +33,6 @@ call plug#end()
 
 filetype plugin indent on
 set signcolumn=yes
-autocmd FileType tagbar,nerdtree setlocal signcolumn=no
 
 "Tabs"
 set autoindent
@@ -152,6 +150,9 @@ nmap <A-s> :GFiles<CR>
 nmap <A-s-s> :Files<CR>
 nmap <A-c> :Ag<CR>
 
+"coc-explorer"
+:nmap <C-n> :CocCommand explorer<CR>
+
 
 "Python"
 let g:python_highlight_all = 0
@@ -168,10 +169,6 @@ autocmd FileType tex imap <buffer> bullet<Tab> \begin{itemize}<CR>\item <CR><Bac
 "Ruby"
 let g:ruby_host_prog = '/usr/lib64/ruby/gems/2.5.0/gems/neovim-0.8.0/exe/neovim-ruby-host'
 
-"Nerdtree"
-map <C-n> :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\.class$', '__pycache__']
-let g:NERDTreeQuitOnOpen = 1
 
 "Coc.nvim"
 "Tab completion"
