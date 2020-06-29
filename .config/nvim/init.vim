@@ -8,7 +8,6 @@ Plug 'tpope/vim-surround'
 "Visual"
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'hugolgst/vimsence'
 
 "Themes"
 Plug 'whatyouhide/vim-gotham'
@@ -159,8 +158,6 @@ let g:python_highlight_all = 0
 
 "Java"
 autocmd FileType java let java_highlight_functions = 1
-autocmd FileType java imap <buffer> sout<Tab> System.out.println();<Left><Left>
-autocmd Filetype java imap <buffer> main<Tab> public static void main(String[] args) {}<Left><CR>
 
 "Latex"
 autocmd FileType tex imap <buffer> bullet<Tab> \begin{itemize}<CR>\item <CR><Backspace><Backspace>\end{itemize}<Up>
