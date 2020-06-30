@@ -129,6 +129,7 @@ alias kattists="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_
 alias rkotlin="/home/jakob/Scripts/kotlinrun.sh"$1
 
 alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/jakob'
+alias updatedotfiles="dotfiles add -u && dotfiles commit -m 'Updates' && dotfiles push"
 alias sshpi="ssh pi@raspberrypi.local"
 alias pushschool="cd /home/jakob/Documents/Skole; git add .; git commit -m 'Updates'; git push"
 
