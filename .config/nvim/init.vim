@@ -74,6 +74,7 @@
     set foldmethod=indent
     set foldlevelstart=99
     set scrolloff=4
+    set nowrap
 
     "Tabs"
     set autoindent
@@ -139,6 +140,9 @@
 
     "Toggle comments"
     noremap # :call NERDComment(0, "toggle")<CR>
+
+    "Toggle folds with mouse"
+    :noremap <3-LeftMouse> za
 
     "Move between buffers"
     nnoremap  <silent> <tab> :bn<CR> 

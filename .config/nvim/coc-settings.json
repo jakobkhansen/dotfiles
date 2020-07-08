@@ -15,6 +15,7 @@
 
     "html.autoClosingTags":true,
 
+
     "languageserver": {
 
     "ccls": {
