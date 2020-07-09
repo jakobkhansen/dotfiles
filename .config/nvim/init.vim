@@ -17,10 +17,10 @@
 "Plugins"
     call plug#begin()
 
-    "Syntax"
-    "Plug 'jiangmiao/auto-pairs'"
+    "Syntax and text manipulation"
     Plug 'scrooloose/nerdcommenter'
     Plug 'tpope/vim-surround'
+    Plug 'jaxbot/selective-undo.vim'
 
     "Visual"
     Plug 'vim-airline/vim-airline'
@@ -28,8 +28,8 @@
 
     "Themes"
     Plug 'whatyouhide/vim-gotham'
+    Plug 'morhetz/gruvbox'
     Plug 'ayu-theme/ayu-vim'
-    Plug 'flrnd/plastic.vim'
 
     "Files"
     Plug 'ryanoasis/vim-devicons'

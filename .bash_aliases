@@ -25,6 +25,7 @@ alias pushschool="cd /home/jakob/Documents/Skole; git add .; git commit -m 'Upda
 alias orphans="yay -Rns \$(yay -Qtdq)"
 
 alias editbashrc="nvim ~/.bashrc"
+alias editaliases="nvim ~/.bash_aliases"
 alias editvim="nvim ~/.config/nvim/init.vim"
 alias editkitty="nvim ~/.config/kitty/kitty.conf"
 
@@ -52,14 +53,12 @@ alias cal="cal -y"
 
 alias cattc="python /home/jakob/Documents/dev/Personal/CattCommands/src/main.py"
 
-export NVM_DIR="/home/jakob/.nvm"
-export ANDROID_HOME=/home/jakob/Android/Sdk/
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+function presentation () {
+    zathura --mode "presentation" "$1"
+}
 
 # Change directory and ls
 function cs () {
 	builtin cd "$@" && ls
 }
-
-
-export EDITOR=nvim
