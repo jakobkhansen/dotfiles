@@ -215,9 +215,9 @@ for_window [class="^.*"] border pixel 3
 set $mode_gaps Toggle gaps: (1) on (2) off (3) off with no polybar
 bindsym $mod+g mode "$mode_gaps"
 mode "$mode_gaps" {
-    bindsym 1 mode "default", gaps inner all set 10, gaps outer all set 5 exec polybar-msg cmd show
-    bindsym 2 mode "default", gaps inner all set 1, gaps outer all set 1 exec polybar-msg cmd show
-    bindsym 3 mode "default", gaps inner all set 1, gaps outer all set 1 exec polybar-msg cmd hide
+    bindsym 1 [class="^.*"] mode "default", gaps inner all set 10, gaps outer all set 5, border pixel 3, exec polybar-msg cmd show
+    bindsym 2 [class="^.*"] mode "default", gaps inner all set 1, gaps outer all set 1, border pixel 1, exec polybar-msg cmd show
+    bindsym 3 [class="^.*"] mode "default", gaps inner all set 1, gaps outer all set 1, border pixel 1, exec polybar-msg cmd hide
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }

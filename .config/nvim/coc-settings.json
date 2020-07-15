@@ -13,9 +13,6 @@
     "explorer.icon.enableNerdfont":true,
     "explorer.previewAction.onHover":false,
 
-    "html.autoClosingTags":true,
-
-
     "languageserver": {
 
     "ccls": {
@@ -27,11 +24,6 @@
            "directory": "/tmp/ccls"
          }
        }
-    },
-
-    "kotlin": {
-        "command": "kotlin-language-server",
-        "filetypes": ["kotlin"]
     }
   }
 }

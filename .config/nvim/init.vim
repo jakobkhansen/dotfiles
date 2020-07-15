@@ -21,6 +21,8 @@
     Plug 'scrooloose/nerdcommenter'
     Plug 'tpope/vim-surround'
     Plug 'jaxbot/selective-undo.vim'
+    Plug 'chemzqm/vim-jsx-improve'
+    Plug 'alvan/vim-closetag'
 
     "Visual"
     Plug 'vim-airline/vim-airline'
@@ -104,6 +106,9 @@
     "Splits"
     set splitbelow
     set splitright
+
+    "Close tags"  
+    let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx"
 
 
 "File management, saving, undo, ..."

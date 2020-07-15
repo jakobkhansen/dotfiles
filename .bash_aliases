@@ -28,6 +28,7 @@ alias editbashrc="nvim ~/.bashrc"
 alias editaliases="nvim ~/.bash_aliases"
 alias editvim="nvim ~/.config/nvim/init.vim"
 alias editkitty="nvim ~/.config/kitty/kitty.conf"
+alias editranger="nvim ~/.config/ranger/rc.conf"
 
 alias hotkeys="sudo python3 ~/Scripts/hotkeys.py"
 alias updaterunelite="~/Documents/dev/Personal/ArchUpdateRunelite/UpdateRuneLite.sh"
@@ -52,10 +53,19 @@ alias sxiv="sxiv -a"
 alias cal="cal -y"
 
 alias cattc="python /home/jakob/Documents/dev/Personal/CattCommands/src/main.py"
+alias castlofi="catt cast https://www.youtube.com/watch?v=-5KAN9_CzSA"
 
 
 function presentation () {
     zathura --mode "presentation" "$1"
+}
+
+function castrandom () {
+    /home/jakob/Scripts/castrandom.py $@
+}
+
+function moviecommentary() {
+    /home/jakob/Scripts/CommentaryMovie.sh $@
 }
 
 # Change directory and ls
