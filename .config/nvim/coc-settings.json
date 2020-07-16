@@ -2,8 +2,7 @@
     "java.import.maven.enabled": true,
     "java.errors.incompleteClasspath.severity": "ignore",
     "java.completion.enabled":true,
-
-    "flutter.lsp.initialization.suggestFromUnimportedLibraries":true,
+    "java.jdt.ls.home":"/home/jakob/.langservers/Java",
     
     "javascript.showUnused":false,
     "typescript.showUnused":false,

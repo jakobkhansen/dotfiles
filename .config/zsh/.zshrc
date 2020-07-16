@@ -247,3 +247,10 @@ ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 bindkey '^[[Z'  forward-char                                    # Right key
+
+PROMPT_COMMAND='echo -ne "\033]0;$(basename ${PWD})\007"'
+function settitle() {
+    eval "$PROMPT_COMMAND"
+}
+
+precmd_functions+=(settitle)

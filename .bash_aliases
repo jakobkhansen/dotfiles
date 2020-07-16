@@ -1,5 +1,17 @@
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
 # some more ls aliases
-alias ll='ls -alF --block-size=M'
+alias ll='ls -a'
 alias la='ls -A'
 alias l='ls'
 
@@ -17,7 +29,7 @@ alias kattiskotlin="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_sh
 alias kattists="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_typescript.sh"$1
 alias rkotlin="/home/jakob/Scripts/kotlinrun.sh"$1
 
-alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/jakob'
+alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
 alias pushdotfiles="dotfiles add -u && dotfiles commit -m 'Updates' && dotfiles push"
 alias sshpi="ssh pi@raspberrypi.local"
 alias pushschool="cd /home/jakob/Documents/Skole; git add .; git commit -m 'Updates'; git push"
@@ -52,7 +64,7 @@ alias sxiv="sxiv -a"
 
 alias cal="cal -y"
 
-alias cattc="python /home/jakob/Documents/dev/Personal/CattCommands/src/main.py"
+alias cattc="python /home/jakob/Documents/dev/Personal/CattCommand/src/main.py"
 alias castlofi="catt cast https://www.youtube.com/watch?v=-5KAN9_CzSA"
 
 

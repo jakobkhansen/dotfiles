@@ -41,7 +41,7 @@
 
     "Languages / intellisense"
     Plug 'sheerun/vim-polyglot'
-    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'lervag/vimtex'
     let g:coc_global_extensions = [
                 \"coc-snippets",

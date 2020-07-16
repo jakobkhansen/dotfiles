@@ -26,17 +26,6 @@ font pango:DejaVu Sans Mono 8
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# Autostarts
-exec --no-startup-id "mate-power-manager"
-exec --no-startup-id "compton --config /home/jakob/.config/compton/compton.conf"
-exec --no-startup-id "nitrogen --restore"
-exec --no-startup-id "polybar -r MainBar"
-exec --no-startup-id redshift-gtk
-exec --no-startup-id "libinput-gestures-setup start"
-
-# Restart NetworkManager because it's shit
-#exec --no-startup-id "sleep 5 && sudo systemctl restart NetworkManager"
-
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -191,6 +180,15 @@ bindsym $mod+r mode "resize"
 
 # Custom additions
 
+# Autostarts
+exec --no-startup-id "compton --config /home/jakob/.config/compton/compton.conf"
+exec --no-startup-id "nitrogen --restore"
+exec --no-startup-id "polybar -r MainBar"
+exec --no-startup-id redshift-gtk
+exec --no-startup-id "libinput-gestures-setup start"
+exec --no-startup-id i3-battery-popup -n -L 15 -t 30s -s ~/.config/dunst/light.mp3
+exec --no-startup-id unclutter
+
 # Windows
 focus_on_window_activation focus
 
@@ -198,10 +196,10 @@ focus_on_window_activation focus
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 
-bindsym $mod+n exec /home/jakob/Scripts/empty_workspace.sh
-bindsym $mod+Shift+n exec /home/jakob/Scripts/move_to_empty_workspace.sh
+bindsym $mod+n exec --no-startup-id /home/jakob/Scripts/empty_workspace.sh
+bindsym $mod+Shift+n exec --no-startup-id /home/jakob/Scripts/move_to_empty_workspace.sh
 
-bindsym $mod+Shift+t exec /home/jakob/Scripts/truncate_workspaces.py
+bindsym $mod+Shift+t exec --no-startup-id /home/jakob/Scripts/truncate_workspaces.py
 
 # Mouse
 focus_follows_mouse no
@@ -210,7 +208,6 @@ focus_follows_mouse no
 gaps outer 5
 gaps inner 10
 for_window [class="^.*"] border pixel 3
-
 
 set $mode_gaps Toggle gaps: (1) on (2) off (3) off with no polybar
 bindsym $mod+g mode "$mode_gaps"
@@ -227,11 +224,11 @@ bindsym $mod+q split toggle
 
 # Audio
 exec --no-startup-id "pasystray"
-bindsym XF86AudioPlay exec "mpris-ctl pp"
+bindsym XF86AudioPlay exec --no-startup-id "mpris-ctl pp"
 
 # Bluetooth
 exec --no-startup-id "blueman-applet"
-bindsym F11 exec "bluetoothctl connect 38:FB:14:E5:9A:B9"
+bindsym F11 exec --no-startup-id "bluetoothctl connect 38:FB:14:E5:9A:B9"
 
 
 # Application window settings
@@ -252,4 +249,8 @@ for_window [class="Electron"] move position 1112 50
 bindsym --release Print exec "scrot -s /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"
 
 # Selection screenshot
-bindsym $mod+Print exec "scrot /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"
+bindsym $mod+Print exec --no-startup-id "scrot /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"
+
+# Brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 10%+
