@@ -126,6 +126,11 @@
 
 "Global hotkeys"
 
+    "Remaps"
+    nnoremap + $
+    nnoremap "" "+y
+    vnoremap "" "+y
+
     "Lines and navigation"
     map <ScrollWheelUp> <C-Y>
     map <ScrollWheelDown> <C-E>
@@ -142,6 +147,7 @@
     "Move lines"
     nnoremap <A-k> :m-2<CR>==
     nnoremap <A-j> :m+<CR>==
+
 
     "Toggle comments"
     noremap # :call NERDComment(0, "toggle")<CR>
@@ -170,7 +176,8 @@
     noremap <Right> <NOP>
 
     "Rename, implementation, definition..."
-    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gd :call <SID>show_documentation()<CR>
+    nmap <silent> gD <Plug>(coc-definition)
     nmap <silent> gy <Plug>(coc-type-definition)
     nmap <silent> gi <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
@@ -224,9 +231,14 @@
     "Enter indent on pair"
      inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-    "Show floating docs on hover for 2 seconds"
-    autocmd CursorHold * if ! coc#util#has_float() | call CocActionAsync('doHover') | endif
-    set updatetime=2000
+    function! s:show_documentation()
+        if (index(['vim','help'], &filetype) >= 0)
+            execute 'h '.expand('<cword>')
+        else
+            call CocAction('doHover')
+        endif
+    endfunction
+
 
 "Visuals, colorscheme, Airline"
 

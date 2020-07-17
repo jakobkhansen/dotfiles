@@ -1,8 +1,9 @@
 {
-    "java.import.maven.enabled": true,
+    "java.import.gradle.enabled": true,
     "java.errors.incompleteClasspath.severity": "ignore",
     "java.completion.enabled":true,
     "java.jdt.ls.home":"/home/jakob/.langservers/Java",
+    "java.signatureHelp.enabled":true,
     
     "javascript.showUnused":false,
     "typescript.showUnused":false,
