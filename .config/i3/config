@@ -42,7 +42,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym Control+Mod1+Return exec $terminal
+bindsym Control+Mod1+Return exec --no-startup-id $terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -141,7 +141,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -212,9 +212,9 @@ for_window [class="^.*"] border pixel 3
 set $mode_gaps Toggle gaps: (1) on (2) off (3) off with no polybar
 bindsym $mod+g mode "$mode_gaps"
 mode "$mode_gaps" {
-    bindsym 1 [class="^.*"] mode "default", gaps inner all set 10, gaps outer all set 5, border pixel 3, exec polybar-msg cmd show
-    bindsym 2 [class="^.*"] mode "default", gaps inner all set 1, gaps outer all set 1, border pixel 1, exec polybar-msg cmd show
-    bindsym 3 [class="^.*"] mode "default", gaps inner all set 1, gaps outer all set 1, border pixel 1, exec polybar-msg cmd hide
+    bindsym 1 [class="^.*"] mode "default", gaps inner all set 10, gaps outer all set 5, exec --no-startup-id polybar-msg cmd show
+    bindsym 2 [class="^.*"] mode "default", gaps inner all set 1, gaps outer all set 1, exec --no-startup-id polybar-msg cmd show
+    bindsym 3 [class="^.*"] mode "default", gaps inner all set 1, gaps outer all set 1, exec --no-startup-id polybar-msg cmd hide
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -246,7 +246,7 @@ for_window [class="Electron"] move position 1112 50
 
 # Screenshots
 # Entire desktop
-bindsym --release Print exec "scrot -s /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"
+bindsym --release Print exec --no-startup-id "scrot -s /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"
 
 # Selection screenshot
 bindsym $mod+Print exec --no-startup-id "scrot /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"

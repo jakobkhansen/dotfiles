@@ -1,5 +1,4 @@
 ## Options section
-setopt correct                                                  # Auto correct mistakes
 setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
 setopt nocaseglob                                               # Case insensitive globbing
 setopt rcexpandparam                                            # Array expension with parameters
@@ -10,6 +9,10 @@ setopt appendhistory                                            # Immediately ap
 setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
 setopt autocd                                                   # if only directory path is entered, cd there.
 
+export VISUAL=nvim;
+export EDITOR=nvim;
+
+# Completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
 zstyle ':completion:*' rehash true                              # automatically find new executables in path 
@@ -17,18 +20,16 @@ zstyle ':completion:*' rehash true                              # automatically 
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
+
+# History
 HISTFILE=~/.config/zsh/.zhistory
 HISTSIZE=1000
 SAVEHIST=500
-#export EDITOR=/usr/bin/nano
-#export VISUAL=/usr/bin/nano
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
 
 
-## Keybindings section
+# Keybindings section
 bindkey -e
-bindkey '^[[7~' beginning-of-line                               # Home key
-bindkey '^[[H' beginning-of-line                                # Home key
 if [[ "${terminfo[khome]}" != "" ]]; then
   bindkey "${terminfo[khome]}" beginning-of-line                # [Home] - Go to beginning of line
 fi
@@ -96,7 +97,6 @@ parse_git_state() {
   # Compose this value via multiple conditional appends.
   local GIT_STATE=""
   local NUM_AHEAD="$(git log --oneline @{u}.. 2> /dev/null | wc -l | tr -d ' ')"
-  #"
   if [ "$NUM_AHEAD" -gt 0 ]; then
     GIT_STATE=$GIT_STATE${GIT_PROMPT_AHEAD//NUM/$NUM_AHEAD}
   fi
@@ -121,7 +121,7 @@ parse_git_state() {
     echo "$GIT_PROMPT_PREFIX$GIT_STATE$GIT_PROMPT_SUFFIX"
   fi
 }
-
+#"
 git_prompt_string() {
   local git_where="$(parse_git_branch)"
   
@@ -214,6 +214,10 @@ my-backward-delete-word() {
 }
 zle -N my-backward-delete-word
 bindkey '^W' my-backward-delete-word
+disable r
+
+# Shift+tab
+bindkey '^[[Z'  forward-char
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -235,10 +239,18 @@ zle-line-init() {
 }
 zle -N zle-line-init
 
+# Aliases
 source ~/.bash_aliases
 
+
+# Powerline
+powerline-daemon -q
+#POWERLINE_BASH_CONTINUATION=1
+#POWERLINE_BASH_SELECT=1
+#. /usr/share/powerline/bindings/bash/powerline.sh
 . /usr/lib/python3.8/site-packages/powerline/bindings/zsh/powerline.zsh
 
+# Backspace fix
 bindkey "^?" backward-delete-char
 
 # Disable underline
@@ -246,11 +258,13 @@ bindkey "^?" backward-delete-char
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
-bindkey '^[[Z'  forward-char                                    # Right key
-
+# Set title of tab
 PROMPT_COMMAND='echo -ne "\033]0;$(basename ${PWD})\007"'
 function settitle() {
     eval "$PROMPT_COMMAND"
 }
 
 precmd_functions+=(settitle)
+
+# Python
+source virtualenvwrapper.sh

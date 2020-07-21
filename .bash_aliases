@@ -23,16 +23,17 @@ alias dagens="/home/jakob/Documents/dev/Personal/MiddagIFI/middag.py"
 alias cd="cs"
 alias h="cd ~"
 alias ranger='source ranger'
+alias r=ranger
 
 alias kattispy="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_python.sh"$1
 alias kattiskotlin="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_kotlin.sh"$1
 alias kattists="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_typescript.sh"$1
 alias rkotlin="/home/jakob/Scripts/kotlinrun.sh"$1
 
-alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.cfg/ --work-tree=/home/jakob'
+alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/jakob'
 alias pushdotfiles="dotfiles add -u && dotfiles commit -m 'Updates' && dotfiles push"
 alias sshpi="ssh pi@raspberrypi.local"
-alias pushschool="cd /home/jakob/Documents/Skole; git add .; git commit -m 'Updates'; git push"
+alias pushschool="cd /home/jakob/Documents/School; git add .; git commit -m 'Updates'; git push"
 
 alias orphans="yay -Rns \$(yay -Qtdq)"
 
