@@ -130,6 +130,7 @@
     nnoremap + $
     nnoremap "" "+y
     vnoremap "" "+y
+    map $ <Nop>
 
     "Lines and navigation"
     map <ScrollWheelUp> <C-Y>

@@ -81,6 +81,10 @@ function moviecommentary() {
     /home/jakob/Scripts/CommentaryMovie.sh $@
 }
 
+function search() {
+    sudo -E find $1 -name $2
+}
+
 # Change directory and ls
 function cs () {
 	builtin cd "$@" && ls
