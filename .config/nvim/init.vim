@@ -74,7 +74,7 @@
     set number
     set hidden
     set mouse=a
-    autocmd BufNewFile,BufRead *.txt,*.tex set tw=89
+    autocmd BufNewFile,BufRead *.txt,*.tex,*.md set tw=89
     set foldmethod=indent
     set foldlevelstart=99
     set scrolloff=4
@@ -218,10 +218,10 @@
 
     "Markdown"
     augroup markdown
-      autocmd!
       au FileType markdown command! Zathura :!zathura /tmp/%.pdf &
-      au BufNewFile,BufRead *.md silent! !pandoc % -t pdf -o /tmp/%.pdf; zathura /tmp/%.pdf &
-      au BufWritePost *.md silent! !pandoc % -t pdf -o /tmp/%.pdf &
+      au BufNewFile,BufRead *.md silent! !pandoc % -t pdf -o /tmp/%.pdf --pdf-engine=xelatex -V mainfont="Unifont"; zathura /tmp/%.pdf &
+      au BufWritePost *.md silent! !pandoc % -t pdf -o /tmp/%.pdf --pdf-engine=xelatex -V mainfont="Unifont" &
+      au BufNewFile,BufRead *.md set tw=89
     augroup END
 
 "Coc.nvim autocomplete"
@@ -276,3 +276,4 @@
     let g:airline_theme = "ayu_mirage"
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#fnamemod = ':t'
