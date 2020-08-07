@@ -33,11 +33,13 @@
     Plug 'morhetz/gruvbox'
     Plug 'ayu-theme/ayu-vim'
 
-    "Files"
+    "Files and Git"
     Plug 'ryanoasis/vim-devicons'
     Plug '907th/vim-auto-save'
     Plug 'mhinz/vim-startify'
     Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
+    Plug 'tpope/vim-fugitive'
+
 
     "Languages / intellisense"
     Plug 'sheerun/vim-polyglot'
@@ -109,6 +111,9 @@
 
     "Close tags"  
     let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx"
+
+    "Gradle Groovy syntax"
+    au BufNewFile,BufRead *.gradle setf groovy
 
 
 "File management, saving, undo, ..."
@@ -190,7 +195,10 @@
     nmap <A-c> :Ag<CR>
 
     "coc-explorer"
-    :nmap <C-n> :CocCommand explorer<CR>
+    nmap <C-n> :CocCommand explorer<CR>
+
+    "zathura"
+    "command! -nargs=0 Zathura :!zathura %
 
 "Language specific configurations and hotkeys"
 
@@ -207,6 +215,14 @@
 
     "Ruby"
     let g:ruby_host_prog = '/usr/lib64/ruby/gems/2.5.0/gems/neovim-0.8.0/exe/neovim-ruby-host'
+
+    "Markdown"
+    augroup markdown
+      autocmd!
+      au FileType markdown command! Zathura :!zathura /tmp/%.pdf &
+      au BufNewFile,BufRead *.md silent! !pandoc % -t pdf -o /tmp/%.pdf; zathura /tmp/%.pdf &
+      au BufWritePost *.md silent! !pandoc % -t pdf -o /tmp/%.pdf &
+    augroup END
 
 "Coc.nvim autocomplete"
 
@@ -239,6 +255,8 @@
             call CocAction('doHover')
         endif
     endfunction
+
+    set cmdheight=2
 
 
 "Visuals, colorscheme, Airline"

@@ -28,7 +28,7 @@ alias r=ranger
 alias kattispy="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_python.sh"$1
 alias kattiskotlin="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_kotlin.sh"$1
 alias kattists="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_typescript.sh"$1
-alias rkotlin="/home/jakob/Scripts/kotlinrun.sh"$1
+alias kotlinrun="/home/jakob/Scripts/kotlinrun.sh"$1
 
 alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/jakob'
 alias pushdotfiles="dotfiles add -u && dotfiles commit -m 'Updates' && dotfiles push"
@@ -42,6 +42,8 @@ alias editaliases="nvim ~/.bash_aliases"
 alias editvim="nvim ~/.config/nvim/init.vim"
 alias editkitty="nvim ~/.config/kitty/kitty.conf"
 alias editranger="nvim ~/.config/ranger/rc.conf"
+alias editzsh="nvim ~/.config/zsh/.zshrc"
+alias editpolybar="nvim ~/.config/polybar/config"
 
 alias hotkeys="sudo python3 ~/Scripts/hotkeys.py"
 alias updaterunelite="~/Documents/dev/Personal/ArchUpdateRunelite/UpdateRuneLite.sh"
@@ -68,6 +70,8 @@ alias cal="cal -y"
 alias cattc="python /home/jakob/Documents/dev/Personal/CattCommand/src/main.py"
 alias castlofi="catt cast https://www.youtube.com/watch?v=-5KAN9_CzSA"
 
+alias canvas="/home/jakob/Scripts/canvas.py"
+
 
 function presentation () {
     zathura --mode "presentation" "$1"
@@ -82,7 +86,17 @@ function moviecommentary() {
 }
 
 function search() {
-    sudo -E find $1 -name $2
+    sudo -E find $1 -iname "*$2*"
+}
+
+function javarun() {
+    javac $1 && java $(echo $1 | cut -d'.' -f1) && rm *.class
+}
+
+function gitpush() {
+    git add -u 
+    git commit -m $1
+    git push
 }
 
 # Change directory and ls
