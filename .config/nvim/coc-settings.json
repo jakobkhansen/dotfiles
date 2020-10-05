@@ -9,6 +9,8 @@
     "typescript.showUnused":false,
     "tslint.configFile": "/home/jakob/.config/.tslint.json",
 
+    "python.linting.pylintArgs":["--generate-members"],
+
     "explorer.quitOnOpen":true,
     "explorer.icon.enableNerdfont":true,
     "explorer.previewAction.onHover":false,

@@ -68,9 +68,13 @@ alias sxiv="sxiv -a"
 alias cal="cal -y"
 
 alias cattc="python /home/jakob/Documents/dev/Personal/CattCommand/src/main.py"
-alias castlofi="catt cast https://www.youtube.com/watch?v=-5KAN9_CzSA"
+alias castlofi="catt cast 'https://www.youtube.com/watch?v=-5KAN9_CzSA'"
 
 alias canvas="/home/jakob/Scripts/canvas.py"
+
+alias tlmgr="/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode"
+
+alias anaconda="export PATH=\"$HOME/.config/anaconda3/bin:\$PATH\""
 
 
 function presentation () {

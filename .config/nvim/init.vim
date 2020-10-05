@@ -77,7 +77,7 @@
     autocmd BufNewFile,BufRead *.txt,*.tex,*.md set tw=89
     set foldmethod=indent
     set foldlevelstart=99
-    set scrolloff=4
+    set scrolloff=10
     set nowrap
 
     "Tabs"
@@ -133,6 +133,7 @@
 
     "Remaps"
     nnoremap + $
+    vnoremap + $
     nnoremap "" "+y
     vnoremap "" "+y
     map $ <Nop>
@@ -164,6 +165,9 @@
     "Move between buffers"
     nnoremap  <silent> <tab> :bn<CR> 
     nnoremap  <silent> <s-tab> :bp<CR>
+
+    "Delete all other buffers"
+    nnoremap <F5> :%bd<bar>e#<bar>bd#<CR>
 
     "Backspace behavior"
     set backspace=indent,eol,start
@@ -197,9 +201,6 @@
     "coc-explorer"
     nmap <C-n> :CocCommand explorer<CR>
 
-    "zathura"
-    "command! -nargs=0 Zathura :!zathura %
-
 "Language specific configurations and hotkeys"
 
     "Python"
@@ -212,14 +213,26 @@
     au BufReadPost,BufNewFile *.tex :VimtexCompile
     let g:vimtex_quickfix_latexlog = {'default' : 0}
     autocmd FileType tex imap <buffer> bullet<Tab> \begin{itemize}<CR>\item <CR><Backspace><Backspace>\end{itemize}<Up>
+    let g:tex_flavor = "latex"
+    let g:vimtex_compiler_latexmk = { 
+        \ 'executable' : 'latexmk',
+        \ 'options' : [ 
+        \   '-pdflatex=lualatex',
+        \   '-lualatex',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
 
     "Ruby"
     let g:ruby_host_prog = '/usr/lib64/ruby/gems/2.5.0/gems/neovim-0.8.0/exe/neovim-ruby-host'
 
     "Markdown"
     augroup markdown
-      au FileType markdown command! Zathura :!zathura /tmp/%.pdf &
-      au BufNewFile,BufRead *.md silent! !pandoc % -t pdf -o /tmp/%.pdf --pdf-engine=xelatex -V mainfont="Unifont"; zathura /tmp/%.pdf &
+      au FileType markdown command! Preview :!zathura /tmp/%.pdf &
+      au FileType markdown command! SavePDF :!pandoc % -t pdf -o ./%.pdf --pdf-engine=xelatex -V mainfont="Unifont" &
+      au BufNewFile,BufRead *.md silent! !pandoc % -t pdf -o /tmp/%.pdf --pdf-engine=xelatex -V mainfont="Unifont" &
       au BufWritePost *.md silent! !pandoc % -t pdf -o /tmp/%.pdf --pdf-engine=xelatex -V mainfont="Unifont" &
       au BufNewFile,BufRead *.md set tw=89
     augroup END

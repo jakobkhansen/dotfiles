@@ -183,7 +183,7 @@ bindsym $mod+r mode "resize"
 # Autostarts
 exec --no-startup-id "compton --config /home/jakob/.config/compton/compton.conf"
 exec --no-startup-id "nitrogen --restore"
-exec --no-startup-id "polybar -r MainBar"
+exec --no-startup-id "/home/jakob/Scripts/startpolybar.sh"
 exec --no-startup-id redshift-gtk
 exec --no-startup-id "libinput-gestures-setup start"
 exec --no-startup-id i3-battery-popup -n -L 15 -t 30s -s ~/.config/dunst/light.mp3
@@ -226,7 +226,7 @@ bindsym $mod+q split toggle
 
 # Audio
 exec --no-startup-id "pasystray"
-bindsym XF86AudioPlay exec --no-startup-id "mpris-ctl pp"
+bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
 
 # Bluetooth
 exec --no-startup-id "blueman-applet"
