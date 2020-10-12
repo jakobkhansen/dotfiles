@@ -74,7 +74,28 @@
     set number
     set hidden
     set mouse=a
-    autocmd BufNewFile,BufRead *.txt,*.tex,*.md set tw=89
+
+    function ToggleWrap()
+      if &wrap
+        echo "Wrap OFF"
+        setlocal nowrap
+        set virtualedit=all
+        silent! nunmap <buffer> k
+        silent! nunmap <buffer> j
+      else
+        echo "Wrap ON"
+        setlocal wrap linebreak nolist
+        set virtualedit=
+        setlocal display+=lastline
+        noremap  <buffer> <silent> k   gk
+        noremap  <buffer> <silent> j gj
+        noremap  <buffer> <silent> <C-d> 10gj
+        noremap  <buffer> <silent> <C-u> 10gk
+      endif
+    endfunction
+
+    autocmd BufNewFile,BufRead *.txt,*.tex,*.md :call ToggleWrap()
+
     set foldmethod=indent
     set foldlevelstart=99
     set scrolloff=10
@@ -137,6 +158,8 @@
     nnoremap "" "+y
     vnoremap "" "+y
     map $ <Nop>
+    map <F1> <Esc>
+    imap <F1> <Esc>
 
     "Lines and navigation"
     map <ScrollWheelUp> <C-Y>
