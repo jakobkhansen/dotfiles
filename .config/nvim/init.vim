@@ -261,8 +261,11 @@
 
     "Markdown"
     let g:instant_markdown_autostart = 0
+    let g:instant_markdown_autoscroll = 1
+    let g:instant_markdown_allow_unsafe_content = 1
     augroup markdown
       au FileType markdown command! Preview :InstantMarkdownPreview
+      au FileType markdown command! PreviewStop :InstantMarkdownStop
       au FileType markdown command! PreviewPDF :!zathura /tmp/%.pdf &
       au FileType markdown command! SavePDF :!pandoc % -t pdf -o ./%.pdf --pdf-engine=xelatex -V mainfont="Unifont" &
       au BufNewFile,BufRead *.md silent! !pandoc % -t pdf -o /tmp/%.pdf --pdf-engine=xelatex -V mainfont="Unifont" &
