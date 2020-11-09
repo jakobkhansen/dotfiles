@@ -65,7 +65,7 @@ alias wifirestart="sudo systemctl restart NetworkManager"
 
 alias sxiv="sxiv -a"
 
-alias cal="cal -y"
+alias cal="cal -m -y"
 
 alias cattc="python /home/jakob/Documents/dev/Personal/CattCommand/src/main.py"
 alias castlofi="catt cast 'https://www.youtube.com/watch?v=-5KAN9_CzSA'"
@@ -76,6 +76,8 @@ alias tlmgr="/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode"
 
 alias anaconda="export PATH=\"$HOME/.config/anaconda3/bin:\$PATH\""
 
+alias drag="dragon-drag-and-drop"
+alias kattissubmit="/home/jakob/Scripts/submit.py"
 
 function presentation () {
     zathura --mode "presentation" "$1"

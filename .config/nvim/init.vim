@@ -17,6 +17,10 @@
 "Plugins"
     call plug#begin()
 
+    "Needed utils"
+    Plug 'marcweber/vim-addon-mw-utils'
+    Plug 'tomtom/tlib_vim'
+
     "Syntax and text manipulation"
     Plug 'scrooloose/nerdcommenter'
     Plug 'tpope/vim-surround'
@@ -27,6 +31,7 @@
     "Visual"
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'junegunn/goyo.vim'
 
     "Themes"
     Plug 'whatyouhide/vim-gotham'
@@ -44,6 +49,7 @@
     "Languages / intellisense"
     Plug 'sheerun/vim-polyglot'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'garbas/vim-snipmate'
     Plug 'lervag/vimtex'
     let g:coc_global_extensions = [
                 \"coc-snippets",
@@ -60,6 +66,9 @@
                 \"coc-css",
                 \"coc-pairs"
                 \]
+
+    "Notes"
+    Plug 'suan/vim-instant-markdown'
 
     "Random"
     Plug 'vim-scripts/uptime.vim'
@@ -234,8 +243,7 @@
 
     "Latex"
     au BufReadPost,BufNewFile *.tex :VimtexCompile
-    let g:vimtex_quickfix_latexlog = {'default' : 0}
-    autocmd FileType tex imap <buffer> bullet<Tab> \begin{itemize}<CR>\item <CR><Backspace><Backspace>\end{itemize}<Up>
+    "let g:vimtex_quickfix_latexlog = {'default' : 0}
     let g:tex_flavor = "latex"
     let g:vimtex_compiler_latexmk = { 
         \ 'executable' : 'latexmk',
@@ -252,8 +260,10 @@
     let g:ruby_host_prog = '/usr/lib64/ruby/gems/2.5.0/gems/neovim-0.8.0/exe/neovim-ruby-host'
 
     "Markdown"
+    let g:instant_markdown_autostart = 0
     augroup markdown
-      au FileType markdown command! Preview :!zathura /tmp/%.pdf &
+      au FileType markdown command! Preview :InstantMarkdownPreview
+      au FileType markdown command! PreviewPDF :!zathura /tmp/%.pdf &
       au FileType markdown command! SavePDF :!pandoc % -t pdf -o ./%.pdf --pdf-engine=xelatex -V mainfont="Unifont" &
       au BufNewFile,BufRead *.md silent! !pandoc % -t pdf -o /tmp/%.pdf --pdf-engine=xelatex -V mainfont="Unifont" &
       au BufWritePost *.md silent! !pandoc % -t pdf -o /tmp/%.pdf --pdf-engine=xelatex -V mainfont="Unifont" &

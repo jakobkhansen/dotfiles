@@ -196,7 +196,7 @@ format-connected-underline = #9f78e1
 label-connected = %{A1:cmst &:}%essid%%{A}
 
 format-disconnected = <label-disconnected>
-label-disconnected = %ifname% disconnected
+label-disconnected = %{A1:cmst &:}%ifname% disconnected%{A}
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
