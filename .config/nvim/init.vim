@@ -46,7 +46,7 @@
     Plug 'tpope/vim-fugitive'
 
 
-    "Languages / intellisense"
+    "Languages / intellisense, snippets"
     Plug 'sheerun/vim-polyglot'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'garbas/vim-snipmate'
@@ -271,7 +271,16 @@
       au BufNewFile,BufRead *.md silent! !pandoc % -t pdf -o /tmp/%.pdf --pdf-engine=xelatex -V mainfont="Unifont" &
       au BufWritePost *.md silent! !pandoc % -t pdf -o /tmp/%.pdf --pdf-engine=xelatex -V mainfont="Unifont" &
       au BufNewFile,BufRead *.md set tw=89
+      au FileType markdown command! -nargs=1 Img call MarkdownImage(<f-args>)
     augroup END
+
+    function MarkdownImage(filename)
+        silent !mkdir images > /dev/null 2>&1
+        let imageName = ("images/" . expand('%:r') . "_" . a:filename . ".png")
+        silent execute "!scrot -a $(slop -f '\\\%x,\\\%y,\\\%w,\\\%h') --line style=solid,color='white' " . imageName
+
+        silent execute "normal! i<center>![](" . imageName . ")</center>"
+    endfunction
 
 "Coc.nvim autocomplete"
 
@@ -282,20 +291,13 @@
           \ coc#refresh()
     inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-    "Enter completion"
-    if exists('*complete_info')
-      inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-    else
-      inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-    endif
-
     function! s:check_back_space() abort
       let col = col('.') - 1
       return !col || getline('.')[col - 1]  =~# '\s'
     endfunction
 
-    "Enter indent on pair"
-     inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    "Enter completion if selected and indent on pair"
+     inoremap <silent><expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ? coc#_select_confirm() : "<CR>" : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
     function! s:show_documentation()
         if (index(['vim','help'], &filetype) >= 0)
