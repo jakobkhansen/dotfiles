@@ -16,6 +16,8 @@
     "explorer.icon.enableNerdfont":true,
     "explorer.previewAction.onHover":false,
 
+    "snippets.priority":99,
+
     "languageserver": {
 
     "ccls": {

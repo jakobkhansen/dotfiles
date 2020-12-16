@@ -27,6 +27,7 @@
     Plug 'jaxbot/selective-undo.vim'
     Plug 'chemzqm/vim-jsx-improve'
     Plug 'alvan/vim-closetag'
+    Plug 'reedes/vim-pencil'
 
     "Visual"
     Plug 'vim-airline/vim-airline'
@@ -49,8 +50,8 @@
     "Languages / intellisense, snippets"
     Plug 'sheerun/vim-polyglot'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'garbas/vim-snipmate'
     Plug 'lervag/vimtex'
+    Plug 'garbas/vim-snipmate'
     let g:coc_global_extensions = [
                 \"coc-snippets",
                 \"coc-explorer",
@@ -84,26 +85,6 @@
     set hidden
     set mouse=a
 
-    function ToggleWrap()
-      if &wrap
-        echo "Wrap OFF"
-        setlocal nowrap
-        set virtualedit=all
-        silent! nunmap <buffer> k
-        silent! nunmap <buffer> j
-      else
-        echo "Wrap ON"
-        setlocal wrap linebreak nolist
-        set virtualedit=
-        setlocal display+=lastline
-        noremap  <buffer> <silent> k   gk
-        noremap  <buffer> <silent> j gj
-        noremap  <buffer> <silent> <C-d> 10gj
-        noremap  <buffer> <silent> <C-u> 10gk
-      endif
-    endfunction
-
-    autocmd BufNewFile,BufRead *.txt,*.tex,*.md :call ToggleWrap()
 
     set foldmethod=indent
     set foldlevelstart=99
@@ -235,6 +216,28 @@
 
 "Language specific configurations and hotkeys"
 
+    "Txt-files"
+    function ToggleWrap()
+      if &wrap
+        echo "Wrap OFF"
+        setlocal nowrap
+        set virtualedit=all
+        silent! nunmap <buffer> k
+        silent! nunmap <buffer> j
+      else
+        echo "Wrap ON"
+        setlocal wrap linebreak nolist
+        set virtualedit=
+        setlocal display+=lastline
+        noremap  <buffer> <silent> k   gk
+        noremap  <buffer> <silent> j gj
+        noremap  <buffer> <silent> <C-d> 10gj
+        noremap  <buffer> <silent> <C-u> 10gk
+      endif
+    endfunction
+
+    "autocmd BufNewFile,BufRead *.txt,*.tex,*.md :call ToggleWrap()
+
     "Python"
     let g:python_highlight_all = 0
 
@@ -259,19 +262,25 @@
     "Ruby"
     let g:ruby_host_prog = '/usr/lib64/ruby/gems/2.5.0/gems/neovim-0.8.0/exe/neovim-ruby-host'
 
-    "Markdown"
+    "Markdown and text"
+    let g:pencil#textwidth = 89
     let g:instant_markdown_autostart = 0
     let g:instant_markdown_autoscroll = 1
     let g:instant_markdown_allow_unsafe_content = 1
+    let g:instant_markdown_mathjax = 1
+
+    let g:vim_markdown_new_list_item_indent = 0
+
     augroup markdown
-      au FileType markdown command! Preview :InstantMarkdownPreview
+      au FileType markdown command! Preview call MarkdownPreview()
       au FileType markdown command! PreviewStop :InstantMarkdownStop
-      au FileType markdown command! PreviewPDF :!zathura /tmp/%.pdf &
-      au FileType markdown command! SavePDF :!pandoc % -t pdf -o ./%.pdf --pdf-engine=xelatex -V mainfont="Unifont" &
-      au BufNewFile,BufRead *.md silent! !pandoc % -t pdf -o /tmp/%.pdf --pdf-engine=xelatex -V mainfont="Unifont" &
-      au BufWritePost *.md silent! !pandoc % -t pdf -o /tmp/%.pdf --pdf-engine=xelatex -V mainfont="Unifont" &
-      au BufNewFile,BufRead *.md set tw=89
+      au FileType markdown command! PreviewPDF call CompileMarkdownPDF()
+      au FileType markdown call pencil#init({'wrap': 'hard', 'autoformat': 1})
       au FileType markdown command! -nargs=1 Img call MarkdownImage(<f-args>)
+    augroup END
+
+    augroup text
+      au FileType text call pencil#init({'wrap': 'hard', 'autoformat': 0})
     augroup END
 
     function MarkdownImage(filename)
@@ -280,6 +289,16 @@
         silent execute "!scrot -a $(slop -f '\\\%x,\\\%y,\\\%w,\\\%h') --line style=solid,color='white' " . imageName
 
         silent execute "normal! i<center>![](" . imageName . ")</center>"
+    endfunction
+
+    function MarkdownPreview()
+        silent! :InstantMarkdownStop
+        silent! :InstantMarkdownPreview
+    endfunction
+
+    function CompileMarkdownPDF()
+        silent! :!pandoc % -t pdf -o ./%.pdf --pdf-engine=xelatex -V mainfont="Unifont"
+        silent! :!zathura ./%.pdf &
     endfunction
 
 "Coc.nvim autocomplete"
@@ -308,6 +327,7 @@
     endfunction
 
     set cmdheight=2
+    set pumheight=15
 
 
 "Visuals, colorscheme, Airline"

@@ -24,6 +24,7 @@ alias cd="cs"
 alias h="cd ~"
 alias ranger='source ranger'
 alias r=ranger
+alias n=nvim
 
 alias kattispy="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_python.sh"$1
 alias kattiskotlin="/home/jakob/Documents/dev/Personal/KattisSolutions/kattis_shell_kotlin.sh"$1
@@ -108,4 +109,13 @@ function gitpush() {
 # Change directory and ls
 function cs () {
 	builtin cd "$@" && ls
+}
+
+function mdpreview() {
+    markdown=`cat $1`
+    instant-markdown-d --mathjax &
+    sleep 3
+    curl -X PUT --data "$markdown" http://localhost:8090/
+    echo $1
+    disown
 }
