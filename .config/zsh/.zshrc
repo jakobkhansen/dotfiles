@@ -120,7 +120,7 @@ source ~/.bash_aliases
 
 # Powerline
 powerline-daemon -q
-. /usr/lib/python3.8/site-packages/powerline/bindings/zsh/powerline.zsh
+. /usr/lib/python3.9/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # Backspace fix
 bindkey "^?" backward-delete-char
@@ -140,3 +140,16 @@ precmd_functions+=(settitle)
 
 # Python virtual env commands
 source virtualenvwrapper.sh
+
+__conda_setup="$('/home/jakob/.config/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/jakob/.config/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/jakob/.config/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/jakob/.config/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

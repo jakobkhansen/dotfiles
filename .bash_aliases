@@ -35,6 +35,13 @@ alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/
 alias pushdotfiles="dotfiles add -u && dotfiles commit -m 'Updates' && dotfiles push"
 alias sshpi="ssh pi@raspberrypi.local"
 alias pushschool="cd /home/jakob/Documents/School; git add .; git commit -m 'Updates'; git push"
+alias gitview="gh repo view --web"
+
+function gitpush() {
+    git add -u 
+    git commit -m $1
+    git push
+}
 
 alias orphans="yay -Rns \$(yay -Qtdq)"
 
@@ -100,11 +107,6 @@ function javarun() {
     javac $1 && java $(echo $1 | cut -d'.' -f1) && rm *.class
 }
 
-function gitpush() {
-    git add -u 
-    git commit -m $1
-    git push
-}
 
 # Change directory and ls
 function cs () {

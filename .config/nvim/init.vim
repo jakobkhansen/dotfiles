@@ -264,6 +264,7 @@
 
     "Markdown and text"
     let g:pencil#textwidth = 89
+    let g:pencil#conceallevel = 0
     let g:instant_markdown_autostart = 0
     let g:instant_markdown_autoscroll = 1
     let g:instant_markdown_allow_unsafe_content = 1
@@ -271,11 +272,13 @@
 
     let g:vim_markdown_new_list_item_indent = 0
 
+    nnoremap <silent> Q gqap
+
     augroup markdown
       au FileType markdown command! Preview call MarkdownPreview()
       au FileType markdown command! PreviewStop :InstantMarkdownStop
       au FileType markdown command! PreviewPDF call CompileMarkdownPDF()
-      au FileType markdown call pencil#init({'wrap': 'hard', 'autoformat': 1})
+      au FileType markdown call pencil#init({'wrap': 'hard', 'autoformat': 0})
       au FileType markdown command! -nargs=1 Img call MarkdownImage(<f-args>)
     augroup END
 
@@ -300,6 +303,9 @@
         silent! :!pandoc % -t pdf -o ./%.pdf --pdf-engine=xelatex -V mainfont="Unifont"
         silent! :!zathura ./%.pdf &
     endfunction
+
+    "Snipmate"
+    let g:snipMate = { 'snippet_version' : 1 }
 
 "Coc.nvim autocomplete"
 

@@ -256,5 +256,6 @@ bindsym --release Print exec --no-startup-id "scrot -a $(slop -f '%x,%y,%w,%h') 
 bindsym $mod+Print exec --no-startup-id "scrot -a $(slop -f '%x,%y,%w,%h') /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"
 
 # Brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 10%+
+bindsym XF86MonBrightnessDown exec --no-startup-id /home/jakob/Scripts/brightness.sh -
+bindsym XF86MonBrightnessUp exec --no-startup-id /home/jakob/Scripts/brightness.sh +
+
