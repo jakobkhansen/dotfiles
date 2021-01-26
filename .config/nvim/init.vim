@@ -60,7 +60,7 @@
                 \"coc-vimtex",
                 \"coc-tsserver",
                 \"coc-tslint-plugin",
-                \"coc-python",
+                \"coc-pyright",
                 \"coc-json",
                 \"coc-java",
                 \"coc-html",
@@ -283,7 +283,7 @@
     augroup END
 
     augroup text
-      au FileType text call pencil#init({'wrap': 'hard', 'autoformat': 0})
+      au FileType text call pencil#init({'wrap': 'soft', 'autoformat': 0})
     augroup END
 
     function MarkdownImage(filename)

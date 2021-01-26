@@ -259,3 +259,5 @@ bindsym $mod+Print exec --no-startup-id "scrot -a $(slop -f '%x,%y,%w,%h') /tmp/
 bindsym XF86MonBrightnessDown exec --no-startup-id /home/jakob/Scripts/brightness.sh -
 bindsym XF86MonBrightnessUp exec --no-startup-id /home/jakob/Scripts/brightness.sh +
 
+# Lock-screen
+bindsym $mod+shift+x exec betterlockscreen -l dim
