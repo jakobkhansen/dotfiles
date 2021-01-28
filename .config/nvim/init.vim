@@ -243,6 +243,8 @@
 
     "Java"
     autocmd FileType java let java_highlight_functions = 1
+    au FileType java command! JavaClean :CocCommand java.clean.workspace
+    
 
     "Latex"
     au BufReadPost,BufNewFile *.tex :VimtexCompile

@@ -27,10 +27,6 @@ font pango:DejaVu Sans Mono 8
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet 
-
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -184,7 +180,7 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id "compton --config /home/jakob/.config/compton/compton.conf"
 exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "polybar -r MainBar"
-exec --no-startup-id redshift-gtk
+exec --no-startup-id redshift
 exec --no-startup-id "libinput-gestures-setup start"
 exec --no-startup-id i3-battery-popup -n -L 15 -t 30s -s ~/.config/dunst/light.mp3
 exec --no-startup-id unclutter
@@ -258,8 +254,8 @@ bindsym --release Print exec --no-startup-id "scrot -a $(slop -f '%x,%y,%w,%h') 
 bindsym $mod+Print exec --no-startup-id "scrot -a $(slop -f '%x,%y,%w,%h') /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"
 
 # Brightness
-#bindsym XF86MonBrightnessDown exec --no-startup-id /home/jakob/Scripts/brightness.sh -
-#bindsym XF86MonBrightnessUp exec --no-startup-id /home/jakob/Scripts/brightness.sh +
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +10%
 
 # Lock-screen
 bindsym $mod+shift+x exec --no-startup-id betterlockscreen -l dim
