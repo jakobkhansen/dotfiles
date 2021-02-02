@@ -9,6 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+
 set $mod Mod4
 set $terminal kitty
 
@@ -209,12 +210,14 @@ for_window [class="^.*"] border pixel 3
 
 workspace_layout stacked
 
-set $mode_gaps Toggle gaps: (1) off (2) on (3) off with no polybar
+set $mode_gaps Toggle gaps: (1) off (2) on (3) off no polybar (4) big gaps (5) big gaps no polybar
 bindsym $mod+g mode "$mode_gaps"
 mode "$mode_gaps" {
     bindsym 1 [class="^.*"] mode "default", gaps inner all set 1, gaps outer all set 1, exec --no-startup-id polybar-msg cmd show
     bindsym 2 [class="^.*"] mode "default", gaps inner all set 10, gaps outer all set 5, exec --no-startup-id polybar-msg cmd show
     bindsym 3 [class="^.*"] mode "default", gaps inner all set 1, gaps outer all set 1, exec --no-startup-id polybar-msg cmd hide
+    bindsym 4 [class="^.*"] mode "default", gaps inner all set 20, gaps outer all set 10, exec --no-startup-id polybar-msg cmd show
+    bindsym 5 [class="^.*"] mode "default", gaps inner all set 20, gaps outer all set 10, exec --no-startup-id polybar-msg cmd hide
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -235,7 +238,7 @@ bindsym F11 exec --no-startup-id "bluetoothctl connect 38:FB:14:E5:9A:B9"
 for_window [class="Pavucontrol"] floating enable
 for_window [class="net-runelite-launcher-Launcher"] floating enable
 for_window [class="Headset" title="Headset"] floating enable border none
-for_window [class="Headset" title="Headset - Player"] move container to workspace $wsTrash
+for_window [class="Headset" title="Headset - Player"] move scratchpad
 for_window [class="Nm-connection-editor"] floating enable
 for_window [class="nmtui"] fullscreen enable
 for_window [class="Blueman-manager"] floating enable

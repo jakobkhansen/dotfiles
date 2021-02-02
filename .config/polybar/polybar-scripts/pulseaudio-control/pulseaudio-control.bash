@@ -7,7 +7,7 @@
 
 # Script configuration (more info in the README)
 OSD="no"  # On Screen Display message for KDE if enabled
-INC=2  # Increment when lowering/rising the volume
+INC=5  # Increment when lowering/rising the volume
 MAX_VOL=130  # Maximum volume
 AUTOSYNC="no"  # All programs have the same volume if enabled
 VOLUME_ICONS=( " " " " " " )  # Volume icons array, from lower volume to higher

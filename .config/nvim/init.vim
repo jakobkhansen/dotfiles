@@ -152,8 +152,6 @@
     imap <F1> <Esc>
 
     "Lines and navigation"
-    map <ScrollWheelUp> <C-Y>
-    map <ScrollWheelDown> <C-E>
 
     nmap <LeftMouse> <nop>
     imap <LeftMouse> <nop>
