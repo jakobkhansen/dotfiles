@@ -13,10 +13,13 @@ snippet h6 h4
 
 
 snippet initmathjax initmathjax
-	[![green-pi](https://img.shields.io/badge/Rendered%20with-Green%20Pi-00d571?style=flat-square)](https://github.com/nschloe/green-pi?activate)
+	[![green-pi](https://img.shields.io/badge/Rendered%20with-Green%20Pi-00d571?style=flat-square)](https://github.com/nschloe/green-pi?activate&inlineMath=$)
 
-snippet mathjax mathjax
-	\\\({$1}\\\)$2
+snippet math math
+	$$1$
+
+snippet frac frac
+	\frac{$1}{$2}
 
 snippet center center
 	<center>
@@ -24,6 +27,8 @@ snippet center center
 	$1
 
 	</center>
+
+
 
 snippet sub sub
 	$2<sub>$1</sub>$3
@@ -37,6 +42,8 @@ snippet \pi π
 	π
 snippet \epsilon ε
 	ε
+snippet \sigma σ
+	σ
 snippet \neq ≠
 	≠
 snippet \plusmin ±

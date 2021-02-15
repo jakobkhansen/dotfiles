@@ -70,6 +70,7 @@
 
     "Notes"
     Plug 'suan/vim-instant-markdown'
+    Plug 'dhruvasagar/vim-table-mode'
 
     "Random"
     Plug 'vim-scripts/uptime.vim'
@@ -130,7 +131,9 @@
 "File management, saving, undo, ..."
     "Autosave"
     let g:auto_save = 1
-    let g:auto_save_events = ["InsertLeave", "TextChanged"]
+    let g:auto_save_silent = 1
+    let g:auto_save_events = ["CursorHold"]
+    let updatetime = 100
 
     "Persistent undo
     let s:undoDir = "/tmp/.undodir_" . $USER
@@ -269,6 +272,7 @@
     let g:instant_markdown_autoscroll = 1
     let g:instant_markdown_allow_unsafe_content = 1
     let g:instant_markdown_mathjax = 1
+    let g:vim_markdown_math = 1
 
     let g:vim_markdown_new_list_item_indent = 0
 
@@ -280,6 +284,7 @@
       au FileType markdown command! PreviewPDF call CompileMarkdownPDF()
       au FileType markdown call pencil#init({'wrap': 'hard', 'autoformat': 0})
       au FileType markdown command! -nargs=1 Img call MarkdownImage(<f-args>)
+      au FileType markdown command! Table :TableModeToggle
     augroup END
 
     augroup text
@@ -334,6 +339,11 @@
 
     set cmdheight=2
     set pumheight=15
+
+    "Snippets"
+    let g:coc_snippet_next = '<c-k>'
+
+    let g:coc_snippet_prev = '<c-j>'
 
 
 "Visuals, colorscheme, Airline"
