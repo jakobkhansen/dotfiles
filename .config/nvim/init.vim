@@ -23,16 +23,11 @@
 
     "Syntax and text manipulation"
     Plug 'scrooloose/nerdcommenter'
-    Plug 'tpope/vim-surround'
-    Plug 'jaxbot/selective-undo.vim'
-    Plug 'chemzqm/vim-jsx-improve'
     Plug 'alvan/vim-closetag'
-    Plug 'reedes/vim-pencil'
 
     "Visual"
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'junegunn/goyo.vim'
 
     "Themes"
     Plug 'whatyouhide/vim-gotham'
@@ -40,7 +35,6 @@
     Plug 'ayu-theme/ayu-vim'
 
     "Files and Git"
-    Plug 'ryanoasis/vim-devicons'
     Plug '907th/vim-auto-save'
     Plug 'mhinz/vim-startify'
     Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
@@ -51,7 +45,8 @@
     Plug 'sheerun/vim-polyglot'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'lervag/vimtex'
-    Plug 'garbas/vim-snipmate'
+    Plug 'SirVer/ultisnips'
+    Plug 'chemzqm/vim-jsx-improve'
     let g:coc_global_extensions = [
                 \"coc-snippets",
                 \"coc-explorer",
@@ -71,6 +66,7 @@
     "Notes"
     Plug 'suan/vim-instant-markdown'
     Plug 'dhruvasagar/vim-table-mode'
+    Plug 'reedes/vim-pencil'
 
     "Random"
     Plug 'vim-scripts/uptime.vim'
@@ -111,6 +107,7 @@
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
     set ignorecase
 
+
     augroup dynamic_smartcase
         autocmd!
         autocmd CmdLineEnter : set nosmartcase
@@ -122,7 +119,7 @@
     set splitright
 
     "Close tags"  
-    let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx"
+    let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx,*.js,*.ts"
 
     "Gradle Groovy syntax"
     au BufNewFile,BufRead *.gradle setf groovy
@@ -133,7 +130,7 @@
     let g:auto_save = 1
     let g:auto_save_silent = 1
     let g:auto_save_events = ["CursorHold"]
-    let updatetime = 100
+    let updatetime = 200
 
     "Persistent undo
     let s:undoDir = "/tmp/.undodir_" . $USER
@@ -182,6 +179,7 @@
 
     "Delete all other buffers"
     nnoremap <F5> :%bd<bar>e#<bar>bd#<CR>
+    nnoremap <F6> :bufdo bwipeout<CR>
 
     "Backspace behavior"
     set backspace=indent,eol,start

@@ -20,7 +20,6 @@
     
     "javascript.showUnused":false,
     "typescript.showUnused":false,
-    "tslint.configFile": "/home/jakob/.config/.tslint.json",
 
     "python.linting.pylintArgs":["--generate-members"],
 
