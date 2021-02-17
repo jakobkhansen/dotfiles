@@ -11,13 +11,13 @@
     "3. File management, saving, undo, ..."
     "4. Global hotkeys"
     "5. Language specific configurations and hotkeys"
-    "6. Coc.nvim autocompletion config"
+    "6. Coc.nvim config"
     "7. Visuals, colorscheme, airline"
 
 "Plugins"
     call plug#begin()
 
-    "Needed utils"
+    "Needed utils for snipmate"
     Plug 'marcweber/vim-addon-mw-utils'
     Plug 'tomtom/tlib_vim'
 
@@ -43,10 +43,11 @@
 
     "Languages / intellisense, snippets"
     Plug 'sheerun/vim-polyglot'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'lervag/vimtex'
-    Plug 'SirVer/ultisnips'
+    Plug 'garbas/vim-snipmate'
     Plug 'chemzqm/vim-jsx-improve'
+
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     let g:coc_global_extensions = [
                 \"coc-snippets",
                 \"coc-explorer",
