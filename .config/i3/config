@@ -41,6 +41,9 @@ floating_modifier $mod
 # start a terminal
 bindsym Control+Mod1+Return exec --no-startup-id $terminal
 
+# One day ...
+bindsym Control+Mod1+BackSpace exec --no-startup-id emacs
+
 # kill focused window
 bindsym $mod+Shift+q kill
 

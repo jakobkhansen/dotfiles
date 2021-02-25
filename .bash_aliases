@@ -51,6 +51,7 @@ alias editkitty="nvim ~/.config/kitty/kitty.conf"
 alias editranger="nvim ~/.config/ranger/rc.conf"
 alias editzsh="nvim ~/.config/zsh/.zshrc"
 alias editpolybar="nvim ~/.config/polybar/config"
+alias doom="/home/jakob/.emacs.d/bin/doom"
 
 alias open="echo -ne '\n' | xdg-open $1 > /dev/null 2>&1"
 

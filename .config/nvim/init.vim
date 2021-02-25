@@ -11,9 +11,10 @@
     "3. File management, saving, undo, ..."
     "4. Global hotkeys"
     "5. Language specific configurations and hotkeys"
-    "6. Coc.nvim config"
+    "6. Plugin configuration"
     "7. Visuals, colorscheme, airline"
 
+let mapleader="\<Space>"
 "Plugins"
     call plug#begin()
 
@@ -33,16 +34,17 @@
     Plug 'whatyouhide/vim-gotham'
     Plug 'morhetz/gruvbox'
     Plug 'ayu-theme/ayu-vim'
+    Plug 'christianchiarulli/nvcode-color-schemes.vim'
 
     "Files and Git"
     Plug '907th/vim-auto-save'
-    Plug 'mhinz/vim-startify'
-    Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
-    Plug 'tpope/vim-fugitive'
 
 
     "Languages / intellisense, snippets"
     Plug 'sheerun/vim-polyglot'
+
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
     Plug 'lervag/vimtex'
     Plug 'garbas/vim-snipmate'
     Plug 'chemzqm/vim-jsx-improve'
@@ -64,15 +66,25 @@
                 \"coc-pairs"
                 \]
 
+    "Telescope"
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+
     "Notes"
     Plug 'suan/vim-instant-markdown'
     Plug 'dhruvasagar/vim-table-mode'
     Plug 'reedes/vim-pencil'
 
+
     "Random"
     Plug 'vim-scripts/uptime.vim'
 
     call plug#end() 
+
+
+
+    luafile ~/.config/nvim/lua/treesitter-config.lua
 
 "Syntax and highlighting"
     filetype plugin indent on
@@ -133,6 +145,7 @@
     let g:auto_save_events = ["CursorHold"]
     let updatetime = 200
 
+
     "Persistent undo
     let s:undoDir = "/tmp/.undodir_" . $USER
     if !isdirectory(s:undoDir)
@@ -141,7 +154,12 @@
     let &undodir=s:undoDir
     set undofile
 
+
+
+
+
 "Global hotkeys"
+
 
     "Remaps"
     nnoremap + $
@@ -158,6 +176,7 @@
     imap <LeftMouse> <nop>
     vmap <LeftMouse> <nop>
 
+
     nnoremap <silent> <C-U> 10k
     nnoremap <silent> <C-D> 10j
     vnoremap <silent> <C-U> 10k
@@ -166,6 +185,9 @@
     "Move lines"
     nnoremap <A-k> :m-2<CR>==
     nnoremap <A-j> :m+<CR>==
+
+    "Search"
+    nnoremap<Leader>no <CMD>nohlsearch<CR>
 
 
     "Toggle comments"
@@ -179,8 +201,6 @@
     nnoremap  <silent> <s-tab> :bp<CR>
 
     "Delete all other buffers"
-    nnoremap <F5> :%bd<bar>e#<bar>bd#<CR>
-    nnoremap <F6> :bufdo bwipeout<CR>
 
     "Backspace behavior"
     set backspace=indent,eol,start
@@ -190,6 +210,23 @@
 
     "Show codeaction on *"
     nmap <silent> * <Plug>(coc-codeaction)
+
+
+    "Telescope"
+    nnoremap <Leader>ff <CMD>Telescope find_files<CR>
+    nnoremap <Leader>fg <CMD>Telescope git_files<CR>
+    nnoremap <Leader>fc <CMD>Telescope live_grep<CR>
+    nnoremap <Leader>p <CMD>Telescope builtin<CR>
+    nnoremap <Leader>gc <CMD>Telescope git_commits<CR>
+    command! ManP :Telescope man_pages
+
+    "Random buffer convenience"
+    nnoremap <Leader>eb <CMD>enew<CR>
+    nnoremap <Leader>bd <CMD>bd<CR>
+    nnoremap <F5> :%bd<bar>e#<bar>bd#<CR>
+    nnoremap <F6> :bufdo bwipeout<CR>
+
+
 
 
     "Arrows"
@@ -206,15 +243,16 @@
     nmap <silent> gr <Plug>(coc-references)
     nmap <silent> gn <Plug>(coc-rename)
 
-    "Fzf Search"
-    nmap <A-s> :GFiles<CR>
-    nmap <A-s-s> :Files<CR>
-    nmap <A-c> :Ag<CR>
 
     "coc-explorer"
-    nmap <C-n> :CocCommand explorer<CR>
+    nmap <silent> <C-n> :CocCommand explorer<CR>
+
 
 "Language specific configurations and hotkeys"
+
+    "Pencil" 
+    let g:pencil#textwidth = 89
+    let g:pencil#conceallevel = 0
 
     "Txt-files"
     function ToggleWrap()
@@ -247,9 +285,15 @@
     
 
     "Latex"
+
+    augroup tex
+        autocmd FileType tex set textwidth=89
+    augroup END
+
     au BufReadPost,BufNewFile *.tex :VimtexCompile
     "let g:vimtex_quickfix_latexlog = {'default' : 0}
     let g:tex_flavor = "latex"
+    let g:vimtex_quickfix_open_on_warning = 0
     let g:vimtex_compiler_latexmk = { 
         \ 'executable' : 'latexmk',
         \ 'options' : [ 
@@ -261,17 +305,17 @@
         \ ],
         \}
 
+
     "Ruby"
     let g:ruby_host_prog = '/usr/lib64/ruby/gems/2.5.0/gems/neovim-0.8.0/exe/neovim-ruby-host'
 
     "Markdown and text"
-    let g:pencil#textwidth = 89
-    let g:pencil#conceallevel = 0
     let g:instant_markdown_autostart = 0
     let g:instant_markdown_autoscroll = 1
     let g:instant_markdown_allow_unsafe_content = 1
     let g:instant_markdown_mathjax = 1
     let g:vim_markdown_math = 1
+
 
     let g:vim_markdown_new_list_item_indent = 0
 
@@ -284,18 +328,21 @@
       au FileType markdown call pencil#init({'wrap': 'hard', 'autoformat': 0})
       au FileType markdown command! -nargs=1 Img call MarkdownImage(<f-args>)
       au FileType markdown command! Table :TableModeToggle
+      au FileType markdown set conceallevel=2
     augroup END
 
     augroup text
       au FileType text call pencil#init({'wrap': 'soft', 'autoformat': 0})
     augroup END
 
+
+
     function MarkdownImage(filename)
         silent !mkdir images > /dev/null 2>&1
         let imageName = ("images/" . expand('%:r') . "_" . a:filename . ".png")
         silent execute "!scrot -a $(slop -f '\\\%x,\\\%y,\\\%w,\\\%h') --line style=solid,color='white' " . imageName
 
-        silent execute "normal! i<center>![](" . imageName . ")</center>"
+        silent execute "normal! i<center>![Image](" . imageName . ")</center>"
     endfunction
 
     function MarkdownPreview()
@@ -311,48 +358,59 @@
     "Snipmate"
     let g:snipMate = { 'snippet_version' : 1 }
 
-"Coc.nvim autocomplete"
+"Plugin configuration, mainly coc.nvim"
 
-    "Tab completion"
-    inoremap <silent><expr> <TAB>
-          \ pumvisible() ? "\<C-n>" :
-          \ <SID>check_back_space() ? "\<TAB>" :
-          \ coc#refresh()
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    "Coc.nvim"
+        "Tab completion"
+        inoremap <silent><expr> <TAB>
+              \ pumvisible() ? "\<C-n>" :
+              \ <SID>check_back_space() ? "\<TAB>" :
+              \ coc#refresh()
+        inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-    function! s:check_back_space() abort
-      let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~# '\s'
-    endfunction
+        function! s:check_back_space() abort
+          let col = col('.') - 1
+          return !col || getline('.')[col - 1]  =~# '\s'
+        endfunction
 
-    "Enter completion if selected and indent on pair"
-     inoremap <silent><expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ? coc#_select_confirm() : "<CR>" : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+        "Enter completion if selected and indent on pair"
+         inoremap <silent><expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ? coc#_select_confirm() : "<CR>" : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-    function! s:show_documentation()
-        if (index(['vim','help'], &filetype) >= 0)
-            execute 'h '.expand('<cword>')
-        else
-            call CocAction('doHover')
-        endif
-    endfunction
+        function! s:show_documentation()
+            if (index(['vim','help'], &filetype) >= 0)
+                execute 'h '.expand('<cword>')
+            else
+                call CocAction('doHover')
+            endif
+        endfunction
 
-    set cmdheight=2
-    set pumheight=15
+        set cmdheight=2
+        set pumheight=15
 
-    "Snippets"
-    let g:coc_snippet_next = '<c-k>'
+        "Snippets"
+        let g:coc_snippet_next = '<c-k>'
 
-    let g:coc_snippet_prev = '<c-j>'
+        let g:coc_snippet_prev = '<c-j>'
+
+
+        "Telescope"
+lua << EOF
+    require('telescope').setup{
+        defaults = {
+            file_ignore_patterns = {"%.class", "%.pdf"}
+        }
+    }
+EOF
 
 
 "Visuals, colorscheme, Airline"
 
     "Colorscheme"
-    set t_Co=256
-    set background=dark
+    "set t_Co=256
+    "set background=dark
     set termguicolors
     set signcolumn=no
-    colorscheme gotham
+    colorscheme onedark
     highlight CocWarningSign guifg=#195466
     highlight CocWarningSign guibg=#11151c
     set fcs=eob:\ 
@@ -363,3 +421,5 @@
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#fnamemod = ':t'
+    hi clear Conceal
+
