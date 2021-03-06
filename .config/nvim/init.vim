@@ -22,9 +22,11 @@ let mapleader="\<Space>"
     Plug 'marcweber/vim-addon-mw-utils'
     Plug 'tomtom/tlib_vim'
 
-    "Syntax and text manipulation"
+    "Syntax, text manipulation and movement"
     Plug 'scrooloose/nerdcommenter'
     Plug 'alvan/vim-closetag'
+	Plug 'easymotion/vim-easymotion'
+    Plug 'psliwka/vim-smoothie'
 
     "Visual"
     Plug 'vim-airline/vim-airline'
@@ -32,19 +34,15 @@ let mapleader="\<Space>"
 
     "Themes"
     Plug 'whatyouhide/vim-gotham'
-    Plug 'morhetz/gruvbox'
-    Plug 'ayu-theme/ayu-vim'
     Plug 'christianchiarulli/nvcode-color-schemes.vim'
 
     "Files and Git"
     Plug '907th/vim-auto-save'
-
+    Plug 'tpope/vim-fugitive'
 
     "Languages / intellisense, snippets"
     Plug 'sheerun/vim-polyglot'
-
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
     Plug 'lervag/vimtex'
     Plug 'garbas/vim-snipmate'
     Plug 'chemzqm/vim-jsx-improve'
@@ -53,17 +51,16 @@ let mapleader="\<Space>"
     let g:coc_global_extensions = [
                 \"coc-snippets",
                 \"coc-explorer",
-                \"coc-marketplace",
-                \"coc-discord",
+								\"coc-discord",
                 \"coc-vimtex",
                 \"coc-tsserver",
-                \"coc-tslint-plugin",
                 \"coc-pyright",
                 \"coc-json",
                 \"coc-java",
                 \"coc-html",
                 \"coc-css",
-                \"coc-pairs"
+                \"coc-pairs",
+                \"coc-kotlin"
                 \]
 
     "Telescope"
@@ -73,12 +70,13 @@ let mapleader="\<Space>"
 
     "Notes"
     Plug 'suan/vim-instant-markdown'
-    Plug 'dhruvasagar/vim-table-mode'
     Plug 'reedes/vim-pencil'
 
 
     "Random"
     Plug 'vim-scripts/uptime.vim'
+    Plug 'wfxr/minimap.vim'
+		Plug 'liuchengxu/vim-which-key'
 
     call plug#end() 
 
@@ -103,13 +101,10 @@ let mapleader="\<Space>"
 
     "Tabs"
     set autoindent
-    set expandtab
-    set tabstop=4
+	set expandtab
+	set tabstop=4
     set shiftwidth=4
     set softtabstop=4
-    autocmd Filetype dart setlocal tabstop=2
-    autocmd Filetype dart setlocal shiftwidth=2
-    autocmd Filetype dart setlocal softtabstop=2
 
     "Syntax"
     set nocompatible     
@@ -131,6 +126,8 @@ let mapleader="\<Space>"
     set splitbelow
     set splitright
 
+
+
     "Close tags"  
     let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx,*.js,*.ts"
 
@@ -142,8 +139,8 @@ let mapleader="\<Space>"
     "Autosave"
     let g:auto_save = 1
     let g:auto_save_silent = 1
-    let g:auto_save_events = ["CursorHold"]
-    let updatetime = 200
+    let g:auto_save_events = ["CursorHold", "InsertLeave", "TextChanged"]
+    "let updatetime = 50
 
 
     "Persistent undo
@@ -160,6 +157,33 @@ let mapleader="\<Space>"
 
 "Global hotkeys"
 
+	"Leader maps"
+    noremap<Leader>no <CMD>nohlsearch<CR>
+
+    map <Leader>ff <CMD>Telescope find_files<CR>
+    map <Leader>fg <CMD>Telescope git_files<CR>
+    map <Leader>fc <CMD>Telescope live_grep<CR>
+    map <Leader>ft <CMD>Telescope builtin<CR>
+
+    map <Leader>gc <CMD>Telescope git_commits<CR>
+    map <Leader>gb <CMD>Telescope git_branches<CR>
+    map <Leader>gh <CMD>Git blame<CR>
+    map <Leader>gd <CMD>Git diff<CR>
+    map <Leader>gm <CMD>Git mergetool<CR>
+
+    map <Leader>be <CMD>enew<CR>
+    map <Leader>bd <CMD>bd<CR>
+    map <Leader>bD :bn <bar> :bd#<CR>
+
+    map <silent> <Leader>ls :call <SID>show_documentation()<CR>
+    map <silent> <Leader>ld <Plug>(coc-definition)
+    map <silent> <Leader>lt <Plug>(coc-type-definition)
+    map <silent> <Leader>li <Plug>(coc-implementation)
+    map <silent> <Leader>lr <Plug>(coc-references)
+    map <silent> <Leader>ln <Plug>(coc-rename)
+    map <silent> <Leader>la <Plug>(coc-codeaction)
+
+    map <silent> gd :call <SID>show_documentation()<CR>
 
     "Remaps"
     nnoremap + $
@@ -176,18 +200,16 @@ let mapleader="\<Space>"
     imap <LeftMouse> <nop>
     vmap <LeftMouse> <nop>
 
-
-    nnoremap <silent> <C-U> 10k
-    nnoremap <silent> <C-D> 10j
-    vnoremap <silent> <C-U> 10k
-    vnoremap <silent> <C-D> 10j
+    nmap <silent> K 10k
+    nmap <silent> J 10j
+    vmap <silent> K 10k
+    vmap <silent> J 10j
 
     "Move lines"
     nnoremap <A-k> :m-2<CR>==
     nnoremap <A-j> :m+<CR>==
 
     "Search"
-    nnoremap<Leader>no <CMD>nohlsearch<CR>
 
 
     "Toggle comments"
@@ -200,7 +222,12 @@ let mapleader="\<Space>"
     nnoremap  <silent> <tab> :bn<CR> 
     nnoremap  <silent> <s-tab> :bp<CR>
 
-    "Delete all other buffers"
+    "Move between splits"
+    noremap <C-h> <C-w>h
+    noremap <C-j> <C-w>j
+    noremap <C-k> <C-w>k
+    noremap <C-l> <C-w>l
+
 
     "Backspace behavior"
     set backspace=indent,eol,start
@@ -208,21 +235,12 @@ let mapleader="\<Space>"
     "No idea"
     autocmd InsertLeave * execute 'normal! mo'
 
-    "Show codeaction on *"
-    nmap <silent> * <Plug>(coc-codeaction)
 
 
     "Telescope"
-    nnoremap <Leader>ff <CMD>Telescope find_files<CR>
-    nnoremap <Leader>fg <CMD>Telescope git_files<CR>
-    nnoremap <Leader>fc <CMD>Telescope live_grep<CR>
-    nnoremap <Leader>p <CMD>Telescope builtin<CR>
-    nnoremap <Leader>gc <CMD>Telescope git_commits<CR>
     command! ManP :Telescope man_pages
 
     "Random buffer convenience"
-    nnoremap <Leader>eb <CMD>enew<CR>
-    nnoremap <Leader>bd <CMD>bd<CR>
     nnoremap <F5> :%bd<bar>e#<bar>bd#<CR>
     nnoremap <F6> :bufdo bwipeout<CR>
 
@@ -236,12 +254,6 @@ let mapleader="\<Space>"
     noremap <Right> <NOP>
 
     "Rename, implementation, definition..."
-    nmap <silent> gd :call <SID>show_documentation()<CR>
-    nmap <silent> gD <Plug>(coc-definition)
-    nmap <silent> gy <Plug>(coc-type-definition)
-    nmap <silent> gi <Plug>(coc-implementation)
-    nmap <silent> gr <Plug>(coc-references)
-    nmap <silent> gn <Plug>(coc-rename)
 
 
     "coc-explorer"
@@ -254,33 +266,10 @@ let mapleader="\<Space>"
     let g:pencil#textwidth = 89
     let g:pencil#conceallevel = 0
 
-    "Txt-files"
-    function ToggleWrap()
-      if &wrap
-        echo "Wrap OFF"
-        setlocal nowrap
-        set virtualedit=all
-        silent! nunmap <buffer> k
-        silent! nunmap <buffer> j
-      else
-        echo "Wrap ON"
-        setlocal wrap linebreak nolist
-        set virtualedit=
-        setlocal display+=lastline
-        noremap  <buffer> <silent> k   gk
-        noremap  <buffer> <silent> j gj
-        noremap  <buffer> <silent> <C-d> 10gj
-        noremap  <buffer> <silent> <C-u> 10gk
-      endif
-    endfunction
-
-    "autocmd BufNewFile,BufRead *.txt,*.tex,*.md :call ToggleWrap()
-
     "Python"
     let g:python_highlight_all = 0
 
     "Java"
-    autocmd FileType java let java_highlight_functions = 1
     au FileType java command! JavaClean :CocCommand java.clean.workspace
     
 
@@ -288,6 +277,7 @@ let mapleader="\<Space>"
 
     augroup tex
         autocmd FileType tex set textwidth=89
+				au FileType tex set conceallevel=2
     augroup END
 
     au BufReadPost,BufNewFile *.tex :VimtexCompile
@@ -306,9 +296,6 @@ let mapleader="\<Space>"
         \}
 
 
-    "Ruby"
-    let g:ruby_host_prog = '/usr/lib64/ruby/gems/2.5.0/gems/neovim-0.8.0/exe/neovim-ruby-host'
-
     "Markdown and text"
     let g:instant_markdown_autostart = 0
     let g:instant_markdown_autoscroll = 1
@@ -325,7 +312,7 @@ let mapleader="\<Space>"
       au FileType markdown command! Preview call MarkdownPreview()
       au FileType markdown command! PreviewStop :InstantMarkdownStop
       au FileType markdown command! PreviewPDF call CompileMarkdownPDF()
-      au FileType markdown call pencil#init({'wrap': 'hard', 'autoformat': 0})
+      au FileType markdown call pencil#init({'wrap': 'soft', 'autoformat': 0})
       au FileType markdown command! -nargs=1 Img call MarkdownImage(<f-args>)
       au FileType markdown command! Table :TableModeToggle
       au FileType markdown set conceallevel=2
@@ -337,6 +324,7 @@ let mapleader="\<Space>"
 
 
 
+		"So proud of this, instant image screenshot into markdown"
     function MarkdownImage(filename)
         silent !mkdir images > /dev/null 2>&1
         let imageName = ("images/" . expand('%:r') . "_" . a:filename . ".png")
@@ -355,10 +343,8 @@ let mapleader="\<Space>"
         silent! :!zathura ./%.pdf &
     endfunction
 
-    "Snipmate"
-    let g:snipMate = { 'snippet_version' : 1 }
 
-"Plugin configuration, mainly coc.nvim"
+"Plugin configuration"
 
     "Coc.nvim"
         "Tab completion"
@@ -392,15 +378,75 @@ let mapleader="\<Space>"
 
         let g:coc_snippet_prev = '<c-j>'
 
+				"Snipmate"
+				let g:snipMate = { 'snippet_version' : 1 }
+
+				"Easymotion"
+				nmap s <Plug>(easymotion-overwin-f2)
+				nmap S <Plug>(easymotion-overwin-f)
+				let g:EasyMotion_smartcase = 1
+
 
         "Telescope"
-lua << EOF
-    require('telescope').setup{
-        defaults = {
-            file_ignore_patterns = {"%.class", "%.pdf"}
-        }
-    }
-EOF
+				luafile /home/jakob/.config/nvim/lua/telescope-config.lua
+
+				"Treesitter"
+				luafile ~/.config/nvim/lua/treesitter-config.lua
+
+        "Minimap"
+        nnoremap <leader>mm :MinimapToggle<CR>
+        let g:minimap_width = 15
+
+        "Which-key"
+
+        nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+        let g:which_key_map = {}
+
+        let g:which_key_map.l = {
+        \ 'name' : '+lsp',
+        \ 's' : [':call <SID> show_documentation()', 'show-signature'],
+        \ 'd' : ['<Plug>(coc-definition)', 'goto-definition'],
+        \ 't' : ['<Plug>(coc-type-definition)', 'goto-type-defintion'],
+        \ 'i' : ['<Plug>(coc-implementation)', 'goto-implementation'],
+        \ 'r' : ['<Plug>(coc-references)', 'goto-references'],
+        \ 'n' : ['<Plug>(coc-rename)', 'rename-symbol'],
+        \ 'a' : ['<Plug>(coc-action)', 'code-action'],
+        \ }
+
+        let g:which_key_map.f = {
+        \ 'name' : '+find',
+        \ 'f' : ['<CMD>Telescope find_files', 'find-files'],
+        \ 'c' : ['<CMD> Telescope live_grep', 'find-code'],
+        \ 'g' : ['<CMD> Telescope git_files', 'find-git-files'],
+        \ 't' : ['<CMD> Telescope builtin', 'find-telescope-builtin'],
+        \}
+
+        let g:which_key_map.g = {
+        \ 'name' : '+git',
+        \ 'c' : ['<CMD> Telescope git_commits', 'git-commits'],
+        \ 'b' : ['<CMD> Telescope git_branches', 'git-branch'],
+        \ 'h' : ['Git blame', 'git-blame'],
+        \ 'd' : ['Git diff', 'git-diff'],
+        \ 'm' : ['Git mergetool', 'git-mergetool'],
+        \}
+
+        let g:which_key_map.b = {
+        \ 'name' : '+buffer' ,
+        \ 'd' : [':bd', 'close-file'],
+        \ 'D' : [':command! BW :bn|:bd#', 'delete-buffer'],
+        \ 'v' : [':vsplit', 'vertical-split'],
+        \ 'h' : [':split', 'horizontal-split'],
+        \ 'e' : [':enew', 'open-empty-buffer'],
+        \ }
+
+        let g:which_key_map.m = {'name' : 'which_key_ignore'}
+        let g:which_key_map.n = {'name' : 'which_key_ignore'}
+
+        call which_key#register('<Space>', "g:which_key_map")
+
+        "NerdCommenter"
+        let g:NERDCreateDefaultMappings = 0
 
 
 "Visuals, colorscheme, Airline"
@@ -411,13 +457,12 @@ EOF
     set termguicolors
     set signcolumn=no
     colorscheme onedark
-    highlight CocWarningSign guifg=#195466
-    highlight CocWarningSign guibg=#11151c
+    highlight CocWarningSign guifg=#4B5263
     set fcs=eob:\ 
     hi Normal guibg=NONE ctermbg=NONE
 
     "Airline"
-    let g:airline_theme = "ayu_mirage"
+    let g:airline_theme = "onedark"
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#fnamemod = ':t'

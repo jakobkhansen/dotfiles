@@ -42,7 +42,7 @@ floating_modifier $mod
 bindsym Control+Mod1+Return exec --no-startup-id $terminal
 
 # One day ...
-bindsym Control+Mod1+BackSpace exec --no-startup-id emacs
+bindsym Control+Mod1+BackSpace exec --no-startup-id $terminal nvim
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -227,6 +227,8 @@ bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
 # Bluetooth
 exec --no-startup-id "blueman-applet"
 bindsym F11 exec --no-startup-id "bluetoothctl connect 38:FB:14:E5:9A:B9"
+bindsym F12 exec --no-startup-id "playerctl play-pause"
+
 
 
 # Application window settings
