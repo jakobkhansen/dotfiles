@@ -51,7 +51,8 @@ let mapleader="\<Space>"
     let g:coc_global_extensions = [
                 \"coc-snippets",
                 \"coc-explorer",
-								\"coc-discord",
+				\"coc-discord",
+				\"coc-prettier",
                 \"coc-vimtex",
                 \"coc-tsserver",
                 \"coc-pyright",
@@ -154,13 +155,14 @@ let mapleader="\<Space>"
 	"Leader maps"
     noremap<Leader>no <CMD>nohlsearch<CR>
 
-    map <Leader>ff <CMD>Telescope find_files<CR>
-    map <Leader>fg <CMD>Telescope git_files<CR>
-    map <Leader>fc <CMD>Telescope live_grep<CR>
-    map <Leader>ft <CMD>Telescope builtin<CR>
+    map <Leader>ff <CMD>Telescope find_files prompt_prefix=🔍<CR>
+    map <Leader>fh <CMD>Telescope find_files find_command=rg,--hidden,--files prompt_prefix=🔍<CR>
+    map <Leader>fg <CMD>Telescope git_files prompt_prefix=🔍<CR>
+    map <Leader>fc <CMD>Telescope live_grep prompt_prefix=🔍<CR>
+    map <Leader>ft <CMD>Telescope builtin prompt_prefix=🔍<CR>
 
-    map <Leader>gc <CMD>Telescope git_commits<CR>
-    map <Leader>gb <CMD>Telescope git_branches<CR>
+    map <Leader>gc <CMD>Telescope git_commits prompt_prefix=🔍<CR>
+    map <Leader>gb <CMD>Telescope git_branches prompt_prefix=🔍<CR>
     map <Leader>gh <CMD>Git blame<CR>
     map <Leader>gd <CMD>Git diff<CR>
     map <Leader>gm <CMD>Git mergetool<CR>
@@ -180,7 +182,17 @@ let mapleader="\<Space>"
     vmap <silent> <Leader>lp <Plug>(coc-format-selected)
     nmap <silent> <Leader>lp <CMD>CocCommand prettier.formatFile<CR>
 
+    map <silent> <Leader>ht <CMD>Telescope help_tags prompt_prefix=🔍<CR>
+    map <silent> <Leader>hm <CMD>Telescope man_pages prompt_prefix=🔍<CR>
+
     map <silent> <Leader>cv <CMD>edit $MYVIMRC<CR>
+    map <silent> <Leader>cb <CMD>edit /home/jakob/.bashrc<CR>
+    map <silent> <Leader>cz <CMD>edit /home/jakob/.config/zsh/.zshrc<CR>
+    map <silent> <Leader>ci <CMD>edit /home/jakob/.config/i3/config<CR>
+    map <silent> <Leader>cr <CMD>edit /home/jakob/.config/ranger/rc.conf<CR>
+    map <silent> <Leader>ck <CMD>edit /home/jakob/.config/kitty/kitty.conf<CR>
+    map <silent> <Leader>cp <CMD>edit /home/jakob/.config/polybar/config<CR>
+    map <silent> <Leader>ca <CMD>edit /home/jakob/.bash_aliases<CR>
 
     "Remaps"
     nnoremap + $
@@ -213,7 +225,9 @@ let mapleader="\<Space>"
     :noremap <3-LeftMouse> za
 
     "Move between buffers"
-    nnoremap  <silent> <tab> :bn<CR> 
+
+    noremap <Tab> <nop>
+    nnoremap  <silent> <tab> :bn<CR>
     nnoremap  <silent> <s-tab> :bp<CR>
 
     "Move between splits"
@@ -232,7 +246,6 @@ let mapleader="\<Space>"
 
 
     "Telescope"
-    command! ManP :Telescope man_pages
 
     "Random buffer convenience"
     nnoremap <F5> :%bd<bar>e#<bar>bd#<CR>
@@ -342,7 +355,6 @@ let mapleader="\<Space>"
 
     "Snipmate"
     let g:snipMate = { 'snippet_version' : 1 }
-    unmap <Tab>
 
     "Coc.nvim"
         "Tab completion"
@@ -409,6 +421,7 @@ let mapleader="\<Space>"
     let g:which_key_map.f = {
     \ 'name' : '+find',
     \ 'f' : ['<CMD>Telescope find_files', 'find-files'],
+    \ 'h' : ['<CMD>Telescope find_files', 'find-hidden-files'],
     \ 'c' : ['<CMD> Telescope live_grep', 'find-code'],
     \ 'g' : ['<CMD> Telescope git_files', 'find-git-files'],
     \ 't' : ['<CMD> Telescope builtin', 'find-telescope-builtin'],
@@ -435,10 +448,25 @@ let mapleader="\<Space>"
     let g:which_key_map.c = {
     \ 'name': '+configs',
     \ 'v' : ['<CMD>edit $MYVIMRC', 'config-vimrc'],
+    \ 'b' : ['<CMD>edit /home/jakob/.bashrc', 'config-bashrc'],
+    \ 'a' : ['<CMD>edit /home/jakob/.bash_aliases', 'config-aliases'],
+    \ 'z' : ['<CMD>edit /home/jakob/.config/zsh/.zshrc', 'config-zsh'],
+    \ 'i' : ['<CMD>edit /home/jakob/.config/i3/config', 'config-i3'],
+    \ 'r' : ['<CMD>edit /home/jakob/.config/ranger/rc.conf', 'config-ranger'],
+    \ 'k' : ['<CMD>edit /home/jakob/.config/kitty/kitty.conf', 'config-kitty'],
+    \ 'p' : ['<CMD>edit /home/jakob/.config/polybar/config', 'config-polybar'],
+    \}
+
+
+    let g:which_key_map.h = {
+    \ 'name': '+help',
+    \ 't' : ['<CMD> Telescop help_tags', 'help-tags'],
+    \ 'm' : ['<CMD> Telescop man_pages', 'man-pages'],
     \}
 
     let g:which_key_map.m = {'name' : 'which_key_ignore'}
     let g:which_key_map.n = {'name' : 'which_key_ignore'}
+
 
     call which_key#register('<Space>', "g:which_key_map")
 

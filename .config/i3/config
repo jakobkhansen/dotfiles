@@ -72,13 +72,6 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
@@ -177,7 +170,6 @@ exec --no-startup-id "compton --config /home/jakob/.config/compton/compton.conf"
 exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "polybar -r MainBar"
 exec --no-startup-id redshift
-exec --no-startup-id "libinput-gestures-setup start"
 exec --no-startup-id i3-battery-popup -n -L 15 -t 30s -s ~/.config/dunst/light.mp3
 exec --no-startup-id unclutter
 exec --no-startup-id autocutsel -fork -selection CLIPBOARD
@@ -220,16 +212,10 @@ mode "$mode_gaps" {
 # Splitting
 bindsym $mod+q split toggle
 
-# Audio
-exec --no-startup-id "pasystray"
-bindsym XF86AudioPlay exec --no-startup-id "playerctl play-pause"
-
 # Bluetooth
 exec --no-startup-id "blueman-applet"
 bindsym F11 exec --no-startup-id "bluetoothctl connect 38:FB:14:E5:9A:B9"
 bindsym F12 exec --no-startup-id "playerctl play-pause"
-
-
 
 # Application window settings
 for_window [class="Pavucontrol"] floating enable
@@ -247,11 +233,11 @@ for_window [class="sun-awt-X11-XFramePeer"] floating enable
 
 
 # Screenshots
-# Entire desktop
+# Selection screenshot
 bindsym --release Print exec --no-startup-id "scrot -a $(slop -f '%x,%y,%w,%h') /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"
 
-# Selection screenshot
-bindsym $mod+Print exec --no-startup-id "scrot -a $(slop -f '%x,%y,%w,%h') /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"
+# Entire desktop
+bindsym $mod+Print exec --no-startup-id "scrot /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"
 
 # Brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-

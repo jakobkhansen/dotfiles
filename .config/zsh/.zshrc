@@ -138,8 +138,6 @@ function settitle() {
 
 precmd_functions+=(settitle)
 
-# Python virtual env commands
-source virtualenvwrapper.sh
 
 __conda_setup="$('/home/jakob/.config/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
