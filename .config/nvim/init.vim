@@ -74,15 +74,12 @@ let mapleader="\<Space>"
 
 
     "Random"
-    Plug 'vim-scripts/uptime.vim'
-    Plug 'wfxr/minimap.vim'
-		Plug 'liuchengxu/vim-which-key'
+	Plug 'liuchengxu/vim-which-key'
 
     call plug#end() 
 
 
 
-    luafile ~/.config/nvim/lua/treesitter-config.lua
 
 "Syntax and highlighting"
     filetype plugin indent on
@@ -152,9 +149,6 @@ let mapleader="\<Space>"
     set undofile
 
 
-
-
-
 "Global hotkeys"
 
 	"Leader maps"
@@ -182,8 +176,11 @@ let mapleader="\<Space>"
     map <silent> <Leader>lr <Plug>(coc-references)
     map <silent> <Leader>ln <Plug>(coc-rename)
     map <silent> <Leader>la <Plug>(coc-codeaction)
+    map <silent> <Leader>lf <C-w>gf
+    vmap <silent> <Leader>lp <Plug>(coc-format-selected)
+    nmap <silent> <Leader>lp <CMD>CocCommand prettier.formatFile<CR>
 
-    map <silent> gd :call <SID>show_documentation()<CR>
+    map <silent> <Leader>cv <CMD>edit $MYVIMRC<CR>
 
     "Remaps"
     nnoremap + $
@@ -208,9 +205,6 @@ let mapleader="\<Space>"
     "Move lines"
     nnoremap <A-k> :m-2<CR>==
     nnoremap <A-j> :m+<CR>==
-
-    "Search"
-
 
     "Toggle comments"
     noremap # :call NERDComment(0, "toggle")<CR>
@@ -346,6 +340,10 @@ let mapleader="\<Space>"
 
 "Plugin configuration"
 
+    "Snipmate"
+    let g:snipMate = { 'snippet_version' : 1 }
+    unmap <Tab>
+
     "Coc.nvim"
         "Tab completion"
         inoremap <silent><expr> <TAB>
@@ -373,87 +371,84 @@ let mapleader="\<Space>"
         set cmdheight=2
         set pumheight=15
 
-        "Snippets"
-        let g:coc_snippet_next = '<c-k>'
+    "Snippets"
+    let g:coc_snippet_next = '<c-k>'
 
-        let g:coc_snippet_prev = '<c-j>'
-
-				"Snipmate"
-				let g:snipMate = { 'snippet_version' : 1 }
-
-				"Easymotion"
-				nmap s <Plug>(easymotion-overwin-f2)
-				nmap S <Plug>(easymotion-overwin-f)
-				let g:EasyMotion_smartcase = 1
+    let g:coc_snippet_prev = '<c-j>'
 
 
-        "Telescope"
-				luafile /home/jakob/.config/nvim/lua/telescope-config.lua
+    "Easymotion"
+    nmap s <Plug>(easymotion-overwin-f2)
+    nmap S <Plug>(easymotion-overwin-f)
+    let g:EasyMotion_smartcase = 1
 
-				"Treesitter"
-				luafile ~/.config/nvim/lua/treesitter-config.lua
 
-        "Minimap"
-        nnoremap <leader>mm :MinimapToggle<CR>
-        let g:minimap_width = 15
+    "Telescope"
+    luafile /home/jakob/.config/nvim/lua/telescope-config.lua
 
-        "Which-key"
 
-        nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
-        let g:which_key_map = {}
+    "Which-key"
+    nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
-        let g:which_key_map.l = {
-        \ 'name' : '+lsp',
-        \ 's' : [':call <SID> show_documentation()', 'show-signature'],
-        \ 'd' : ['<Plug>(coc-definition)', 'goto-definition'],
-        \ 't' : ['<Plug>(coc-type-definition)', 'goto-type-defintion'],
-        \ 'i' : ['<Plug>(coc-implementation)', 'goto-implementation'],
-        \ 'r' : ['<Plug>(coc-references)', 'goto-references'],
-        \ 'n' : ['<Plug>(coc-rename)', 'rename-symbol'],
-        \ 'a' : ['<Plug>(coc-action)', 'code-action'],
-        \ }
+    let g:which_key_map = {}
 
-        let g:which_key_map.f = {
-        \ 'name' : '+find',
-        \ 'f' : ['<CMD>Telescope find_files', 'find-files'],
-        \ 'c' : ['<CMD> Telescope live_grep', 'find-code'],
-        \ 'g' : ['<CMD> Telescope git_files', 'find-git-files'],
-        \ 't' : ['<CMD> Telescope builtin', 'find-telescope-builtin'],
-        \}
+    let g:which_key_map.l = {
+    \ 'name' : '+lsp',
+    \ 's' : [':call <SID> show_documentation()', 'show-signature'],
+    \ 'd' : ['<Plug>(coc-definition)', 'goto-definition'],
+    \ 't' : ['<Plug>(coc-type-definition)', 'goto-type-defintion'],
+    \ 'i' : ['<Plug>(coc-implementation)', 'goto-implementation'],
+    \ 'r' : ['<Plug>(coc-references)', 'goto-references'],
+    \ 'n' : ['<Plug>(coc-rename)', 'rename-symbol'],
+    \ 'a' : ['<Plug>(coc-action)', 'code-action'],
+    \ 'f' : ['<C-w>gf', 'goto-file'],
+    \ 'p' : ['<Plug>(coc-format-selected)', 'prettier-format'],
+    \ }
 
-        let g:which_key_map.g = {
-        \ 'name' : '+git',
-        \ 'c' : ['<CMD> Telescope git_commits', 'git-commits'],
-        \ 'b' : ['<CMD> Telescope git_branches', 'git-branch'],
-        \ 'h' : ['Git blame', 'git-blame'],
-        \ 'd' : ['Git diff', 'git-diff'],
-        \ 'm' : ['Git mergetool', 'git-mergetool'],
-        \}
+    let g:which_key_map.f = {
+    \ 'name' : '+find',
+    \ 'f' : ['<CMD>Telescope find_files', 'find-files'],
+    \ 'c' : ['<CMD> Telescope live_grep', 'find-code'],
+    \ 'g' : ['<CMD> Telescope git_files', 'find-git-files'],
+    \ 't' : ['<CMD> Telescope builtin', 'find-telescope-builtin'],
+    \}
 
-        let g:which_key_map.b = {
-        \ 'name' : '+buffer' ,
-        \ 'd' : [':bd', 'close-file'],
-        \ 'D' : [':command! BW :bn|:bd#', 'delete-buffer'],
-        \ 'v' : [':vsplit', 'vertical-split'],
-        \ 'h' : [':split', 'horizontal-split'],
-        \ 'e' : [':enew', 'open-empty-buffer'],
-        \ }
+    let g:which_key_map.g = {
+    \ 'name' : '+git',
+    \ 'c' : ['<CMD> Telescope git_commits', 'git-commits'],
+    \ 'b' : ['<CMD> Telescope git_branches', 'git-branch'],
+    \ 'h' : ['Git blame', 'git-blame'],
+    \ 'd' : ['Git diff', 'git-diff'],
+    \ 'm' : ['Git mergetool', 'git-mergetool'],
+    \}
 
-        let g:which_key_map.m = {'name' : 'which_key_ignore'}
-        let g:which_key_map.n = {'name' : 'which_key_ignore'}
+    let g:which_key_map.b = {
+    \ 'name' : '+buffer' ,
+    \ 'd' : [':bd', 'close-file'],
+    \ 'D' : [':command! BW :bn|:bd#', 'delete-buffer'],
+    \ 'v' : [':vsplit', 'vertical-split'],
+    \ 'h' : [':split', 'horizontal-split'],
+    \ 'e' : [':enew', 'open-empty-buffer'],
+    \ }
 
-        call which_key#register('<Space>', "g:which_key_map")
+    let g:which_key_map.c = {
+    \ 'name': '+configs',
+    \ 'v' : ['<CMD>edit $MYVIMRC', 'config-vimrc'],
+    \}
 
-        "NerdCommenter"
-        let g:NERDCreateDefaultMappings = 0
+    let g:which_key_map.m = {'name' : 'which_key_ignore'}
+    let g:which_key_map.n = {'name' : 'which_key_ignore'}
+
+    call which_key#register('<Space>', "g:which_key_map")
+
+    "NerdCommenter"
+    let g:NERDCreateDefaultMappings = 0
 
 
 "Visuals, colorscheme, Airline"
 
     "Colorscheme"
-    "set t_Co=256
-    "set background=dark
     set termguicolors
     set signcolumn=no
     colorscheme onedark
@@ -467,4 +462,3 @@ let mapleader="\<Space>"
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#fnamemod = ':t'
     hi clear Conceal
-
