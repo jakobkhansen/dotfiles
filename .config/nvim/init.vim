@@ -8,13 +8,18 @@
 "Contents"
     "1. Plugins"
     "2. Syntax and highlighting"
+    "3. FileType tab configuration"
     "3. File management, saving, undo, ..."
-    "4. Global hotkeys"
-    "5. Language specific configurations and hotkeys"
-    "6. Plugin configuration"
-    "7. Visuals, colorscheme, airline"
+    "4. Leader maps and which-key config"
+    "5. Global hotkeys"
+    "6. Language specific configurations and hotkeys"
+    "7. Plugin configuration"
+    "8. Visuals, colorscheme, airline"
 
 let mapleader="\<Space>"
+let home=$HOME
+"let g:polyglot_disabled = ["autoindent"]
+
 "Plugins"
     call plug#begin()
 
@@ -46,6 +51,7 @@ let mapleader="\<Space>"
     Plug 'lervag/vimtex'
     Plug 'garbas/vim-snipmate'
     Plug 'chemzqm/vim-jsx-improve'
+    Plug 'tpope/vim-sleuth'
 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     let g:coc_global_extensions = [
@@ -76,6 +82,7 @@ let mapleader="\<Space>"
 
     "Random"
 	Plug 'liuchengxu/vim-which-key'
+    Plug 'mhinz/vim-startify'
 
     call plug#end() 
 
@@ -98,9 +105,10 @@ let mapleader="\<Space>"
     set nowrap
 
     "Tabs"
+    set smartindent
     set autoindent
-	set expandtab
-	set tabstop=4
+    set expandtab
+    set tabstop=4
     set shiftwidth=4
     set softtabstop=4
 
@@ -149,50 +157,130 @@ let mapleader="\<Space>"
     let &undodir=s:undoDir
     set undofile
 
+"Leader maps and which-key"
+noremap<Leader>no <CMD>nohlsearch<CR>
+
+map <Leader>ff <CMD>Telescope find_files prompt_prefix=🔍<CR>
+map <Leader>fh <CMD>Telescope find_files find_command=rg,--files,/home/jakob prompt_prefix=🔍<CR>
+map <Leader>fz <CMD>Telescope find_files find_command=rg,--hidden,--files prompt_prefix=🔍<CR>
+map <Leader>fg <CMD>Telescope git_files prompt_prefix=🔍<CR>
+map <Leader>fc <CMD>Telescope live_grep prompt_prefix=🔍<CR>
+map <Leader>ft <CMD>Telescope builtin prompt_prefix=🔍<CR>
+
+map <Leader>gc <CMD>Telescope git_commits prompt_prefix=🔍<CR>
+map <Leader>gb <CMD>Telescope git_branches prompt_prefix=🔍<CR>
+map <Leader>gh <CMD>Git blame<CR>
+map <Leader>gd <CMD>Git diff<CR>
+map <Leader>gm <CMD>Git mergetool<CR>
+
+map <Leader>be <CMD>enew<CR>
+map <Leader>bd <CMD>bd<CR>
+map <Leader>bD <CMD>bn <bar> :bd#<CR>
+map <Leader>bc <CMD>cd %:p:h<CR>
+
+map <silent> <Leader>ls <CMD>call <SID>show_documentation()<CR>
+map <silent> <Leader>ld <Plug>(coc-definition)
+map <silent> <Leader>lt <Plug>(coc-type-definition)
+map <silent> <Leader>li <Plug>(coc-implementation)
+map <silent> <Leader>lr <Plug>(coc-references)
+map <silent> <Leader>ln <Plug>(coc-rename)
+map <silent> <Leader>la <Plug>(coc-codeaction)
+map <silent> <Leader>lf <C-w>gf
+vmap <silent> <Leader>lp <Plug>(coc-format-selected)
+nmap <silent> <Leader>lp <CMD>CocCommand prettier.formatFile<CR>
+map <silent> <Leader>le <CMD>CocDiagnostics<CR>
+
+map <silent> <Leader>ht <CMD>Telescope help_tags prompt_prefix=🔍<CR>
+map <silent> <Leader>hm <CMD>Telescope man_pages prompt_prefix=🔍<CR>
+
+map <silent> <Leader>cv <CMD>edit $MYVIMRC<CR>
+map <silent> <Leader>cb <CMD>edit $HOME/.bashrc<CR>
+map <silent> <Leader>cz <CMD>edit $HOME/.config/zsh/.zshrc<CR>
+map <silent> <Leader>ci <CMD>edit $HOME/.config/i3/config<CR>
+map <silent> <Leader>cr <CMD>edit $HOME/.config/ranger/rc.conf<CR>
+map <silent> <Leader>ck <CMD>edit $HOME/.config/kitty/kitty.conf<CR>
+map <silent> <Leader>cp <CMD>edit $HOME/.config/polybar/config<CR>
+map <silent> <Leader>ca <CMD>edit $HOME/.bash_aliases<CR>
+map <silent> <Leader>cc <CMD>edit $HOME/.config/nvim/coc-settings.json<CR>
+map <silent> <Leader>cs <CMD>source $MYVIMRC<CR>
+
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+let g:which_key_map = {}
+
+let g:which_key_map.l = {
+\ 'name' : '+lsp',
+\ 's' : [':ShowSig', 'show-signature'],
+\ 'd' : ['<Plug>(coc-definition)', 'goto-definition'],
+\ 't' : ['<Plug>(coc-type-definition)', 'goto-type-defintion'],
+\ 'i' : ['<Plug>(coc-implementation)', 'goto-implementation'],
+\ 'r' : ['<Plug>(coc-references)', 'goto-references'],
+\ 'n' : ['<Plug>(coc-rename)', 'rename-symbol'],
+\ 'a' : ['<Plug>(coc-action)', 'code-action'],
+\ 'f' : ['<C-w>gf', 'goto-file'],
+\ 'p' : ['<Plug>(coc-format-selected)', 'prettier-format'],
+\ 'e' : [':CocDiagnostics', 'list-diagnostics'],
+\ }
+
+let g:which_key_map.f = {
+\ 'name' : '+find',
+\ 'f' : [':Telescope find_files', 'find-files'],
+\ 'h' : [':Telescope find_files', 'find-files-home'],
+\ 'z' : [':Telescope find_files', 'find-hidden-files'],
+\ 'c' : [':Telescope live_grep', 'find-code'],
+\ 'g' : [':Telescope git_files', 'find-git-files'],
+\ 't' : [':Telescope builtin', 'find-telescope-builtin'],
+\}
+
+let g:which_key_map.g = {
+\ 'name' : '+git',
+\ 'c' : [':Telescope git_commits', 'git-commits'],
+\ 'b' : [':Telescope git_branches', 'git-branch'],
+\ 'h' : [':Git blame', 'git-blame'],
+\ 'd' : [':Git diff', 'git-diff'],
+\ 'm' : [':Git mergetool', 'git-mergetool'],
+\}
+
+let g:which_key_map.b = {
+\ 'name' : '+buffer' ,
+\ 'd' : [':bd', 'close-file'],
+\ 'D' : [':bn|:bd#', 'delete-buffer'],
+\ 'v' : [':vsplit', 'vertical-split'],
+\ 'h' : [':split', 'horizontal-split'],
+\ 'e' : [':enew', 'open-empty-buffer'],
+\ 'c' : [':cd %:p:h', 'set-cwd'],
+\ }
+
+let g:which_key_map.c = {
+\ 'name': '+configs',
+\ 'v' : [':edit $MYVIMRC', 'config-vimrc'],
+\ 'b' : [':edit $HOME/.bashrc', 'config-bashrc'],
+\ 'a' : [':edit $HOME/.bash_aliases', 'config-aliases'],
+\ 'z' : [':edit $HOME/.config/zsh/.zshrc', 'config-zsh'],
+\ 'i' : [':edit $HOME/.config/i3/config', 'config-i3'],
+\ 'r' : [':edit $HOME/.config/ranger/rc.conf', 'config-ranger'],
+\ 'k' : [':edit $HOME/.config/kitty/kitty.conf', 'config-kitty'],
+\ 'p' : [':edit $HOME/.config/polybar/config', 'config-polybar'],
+\ 'c' : [':edit $HOME/.config/nvim/coc-settings.json', 'config-polybar'],
+\ 's' : [':source $MYVIMRC<CR>', 'config-reload-vim'],
+\}
+
+
+let g:which_key_map.h = {
+\ 'name': '+help',
+\ 't' : [':Telescope help_tags', 'help-tags'],
+\ 'm' : [':Telescope man_pages', 'man-pages'],
+\}
+
+let g:which_key_map.m = {'name' : 'which_key_ignore'}
+let g:which_key_map.n = {'name' : 'which_key_ignore'}
+
+
+call which_key#register('<Space>', "g:which_key_map")
 
 "Global hotkeys"
 
-	"Leader maps"
-    noremap<Leader>no <CMD>nohlsearch<CR>
 
-    map <Leader>ff <CMD>Telescope find_files prompt_prefix=🔍<CR>
-    map <Leader>fh <CMD>Telescope find_files find_command=rg,--hidden,--files prompt_prefix=🔍<CR>
-    map <Leader>fg <CMD>Telescope git_files prompt_prefix=🔍<CR>
-    map <Leader>fc <CMD>Telescope live_grep prompt_prefix=🔍<CR>
-    map <Leader>ft <CMD>Telescope builtin prompt_prefix=🔍<CR>
-
-    map <Leader>gc <CMD>Telescope git_commits prompt_prefix=🔍<CR>
-    map <Leader>gb <CMD>Telescope git_branches prompt_prefix=🔍<CR>
-    map <Leader>gh <CMD>Git blame<CR>
-    map <Leader>gd <CMD>Git diff<CR>
-    map <Leader>gm <CMD>Git mergetool<CR>
-
-    map <Leader>be <CMD>enew<CR>
-    map <Leader>bd <CMD>bd<CR>
-    map <Leader>bD :bn <bar> :bd#<CR>
-
-    map <silent> <Leader>ls :call <SID>show_documentation()<CR>
-    map <silent> <Leader>ld <Plug>(coc-definition)
-    map <silent> <Leader>lt <Plug>(coc-type-definition)
-    map <silent> <Leader>li <Plug>(coc-implementation)
-    map <silent> <Leader>lr <Plug>(coc-references)
-    map <silent> <Leader>ln <Plug>(coc-rename)
-    map <silent> <Leader>la <Plug>(coc-codeaction)
-    map <silent> <Leader>lf <C-w>gf
-    vmap <silent> <Leader>lp <Plug>(coc-format-selected)
-    nmap <silent> <Leader>lp <CMD>CocCommand prettier.formatFile<CR>
-
-    map <silent> <Leader>ht <CMD>Telescope help_tags prompt_prefix=🔍<CR>
-    map <silent> <Leader>hm <CMD>Telescope man_pages prompt_prefix=🔍<CR>
-
-    map <silent> <Leader>cv <CMD>edit $MYVIMRC<CR>
-    map <silent> <Leader>cb <CMD>edit /home/jakob/.bashrc<CR>
-    map <silent> <Leader>cz <CMD>edit /home/jakob/.config/zsh/.zshrc<CR>
-    map <silent> <Leader>ci <CMD>edit /home/jakob/.config/i3/config<CR>
-    map <silent> <Leader>cr <CMD>edit /home/jakob/.config/ranger/rc.conf<CR>
-    map <silent> <Leader>ck <CMD>edit /home/jakob/.config/kitty/kitty.conf<CR>
-    map <silent> <Leader>cp <CMD>edit /home/jakob/.config/polybar/config<CR>
-    map <silent> <Leader>ca <CMD>edit /home/jakob/.bash_aliases<CR>
 
     "Remaps"
     nnoremap + $
@@ -205,9 +293,9 @@ let mapleader="\<Space>"
 
     "Lines and navigation"
 
-    nmap <LeftMouse> <nop>
-    imap <LeftMouse> <nop>
-    vmap <LeftMouse> <nop>
+    nmap <LeftMouse> <Nop>
+    imap <LeftMouse> <Nop>
+    vmap <LeftMouse> <Nop>
 
     nmap <silent> K 10k
     nmap <silent> J 10j
@@ -226,7 +314,8 @@ let mapleader="\<Space>"
 
     "Move between buffers"
 
-    noremap <Tab> <nop>
+    noremap <Tab> <Nop>
+    inoremap <Tab> <Nop>
     nnoremap  <silent> <tab> :bn<CR>
     nnoremap  <silent> <s-tab> :bp<CR>
 
@@ -352,36 +441,43 @@ let mapleader="\<Space>"
 
 
 "Plugin configuration"
+    "Sleuth"
+    let g:sleuth_automatic = 1
 
     "Snipmate"
     let g:snipMate = { 'snippet_version' : 1 }
 
     "Coc.nvim"
-        "Tab completion"
-        inoremap <silent><expr> <TAB>
-              \ pumvisible() ? "\<C-n>" :
-              \ <SID>check_back_space() ? "\<TAB>" :
-              \ coc#refresh()
-        inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    "Tab completion"
+    inoremap <silent><expr> <TAB>
+          \ pumvisible() ? "\<C-n>" :
+          \ <SID>check_back_space() ? "\<TAB>" :
+          \ coc#refresh()
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-        function! s:check_back_space() abort
-          let col = col('.') - 1
-          return !col || getline('.')[col - 1]  =~# '\s'
-        endfunction
+    function! s:check_back_space() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
 
-        "Enter completion if selected and indent on pair"
-         inoremap <silent><expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ? coc#_select_confirm() : "<CR>" : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    "Enter completion if selected and indent on pair"
+    "inoremap <silent><expr> <cr> pumvisible() ? complete_info()["selected"] != "-1" ? coc#_select_confirm() : "<CR>" : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                          \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-        function! s:show_documentation()
-            if (index(['vim','help'], &filetype) >= 0)
-                execute 'h '.expand('<cword>')
-            else
-                call CocAction('doHover')
-            endif
-        endfunction
+    function! s:show_documentation()
+        if (index(['vim','help'], &filetype) >= 0)
+            execute 'h '.expand('<cword>')
+        else
+            call CocAction('doHover')
+        endif
+    endfunction
 
-        set cmdheight=2
-        set pumheight=15
+    "Needed for which-key to use show_documentation"
+    command! ShowSig :call s:show_documentation()
+
+    set cmdheight=2
+    set pumheight=15
 
     "Snippets"
     let g:coc_snippet_next = '<c-k>'
@@ -390,6 +486,8 @@ let mapleader="\<Space>"
 
 
     "Easymotion"
+    map s <plug>(easymotion-bd-f2)
+    map S <plug>(easymotion-bd-f2)
     nmap s <Plug>(easymotion-overwin-f2)
     nmap S <Plug>(easymotion-overwin-f)
     let g:EasyMotion_smartcase = 1
@@ -397,78 +495,6 @@ let mapleader="\<Space>"
 
     "Telescope"
     luafile /home/jakob/.config/nvim/lua/telescope-config.lua
-
-
-
-    "Which-key"
-    nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-
-    let g:which_key_map = {}
-
-    let g:which_key_map.l = {
-    \ 'name' : '+lsp',
-    \ 's' : [':call <SID> show_documentation()', 'show-signature'],
-    \ 'd' : ['<Plug>(coc-definition)', 'goto-definition'],
-    \ 't' : ['<Plug>(coc-type-definition)', 'goto-type-defintion'],
-    \ 'i' : ['<Plug>(coc-implementation)', 'goto-implementation'],
-    \ 'r' : ['<Plug>(coc-references)', 'goto-references'],
-    \ 'n' : ['<Plug>(coc-rename)', 'rename-symbol'],
-    \ 'a' : ['<Plug>(coc-action)', 'code-action'],
-    \ 'f' : ['<C-w>gf', 'goto-file'],
-    \ 'p' : ['<Plug>(coc-format-selected)', 'prettier-format'],
-    \ }
-
-    let g:which_key_map.f = {
-    \ 'name' : '+find',
-    \ 'f' : ['<CMD>Telescope find_files', 'find-files'],
-    \ 'h' : ['<CMD>Telescope find_files', 'find-hidden-files'],
-    \ 'c' : ['<CMD> Telescope live_grep', 'find-code'],
-    \ 'g' : ['<CMD> Telescope git_files', 'find-git-files'],
-    \ 't' : ['<CMD> Telescope builtin', 'find-telescope-builtin'],
-    \}
-
-    let g:which_key_map.g = {
-    \ 'name' : '+git',
-    \ 'c' : ['<CMD> Telescope git_commits', 'git-commits'],
-    \ 'b' : ['<CMD> Telescope git_branches', 'git-branch'],
-    \ 'h' : ['Git blame', 'git-blame'],
-    \ 'd' : ['Git diff', 'git-diff'],
-    \ 'm' : ['Git mergetool', 'git-mergetool'],
-    \}
-
-    let g:which_key_map.b = {
-    \ 'name' : '+buffer' ,
-    \ 'd' : [':bd', 'close-file'],
-    \ 'D' : [':command! BW :bn|:bd#', 'delete-buffer'],
-    \ 'v' : [':vsplit', 'vertical-split'],
-    \ 'h' : [':split', 'horizontal-split'],
-    \ 'e' : [':enew', 'open-empty-buffer'],
-    \ }
-
-    let g:which_key_map.c = {
-    \ 'name': '+configs',
-    \ 'v' : ['<CMD>edit $MYVIMRC', 'config-vimrc'],
-    \ 'b' : ['<CMD>edit /home/jakob/.bashrc', 'config-bashrc'],
-    \ 'a' : ['<CMD>edit /home/jakob/.bash_aliases', 'config-aliases'],
-    \ 'z' : ['<CMD>edit /home/jakob/.config/zsh/.zshrc', 'config-zsh'],
-    \ 'i' : ['<CMD>edit /home/jakob/.config/i3/config', 'config-i3'],
-    \ 'r' : ['<CMD>edit /home/jakob/.config/ranger/rc.conf', 'config-ranger'],
-    \ 'k' : ['<CMD>edit /home/jakob/.config/kitty/kitty.conf', 'config-kitty'],
-    \ 'p' : ['<CMD>edit /home/jakob/.config/polybar/config', 'config-polybar'],
-    \}
-
-
-    let g:which_key_map.h = {
-    \ 'name': '+help',
-    \ 't' : ['<CMD> Telescop help_tags', 'help-tags'],
-    \ 'm' : ['<CMD> Telescop man_pages', 'man-pages'],
-    \}
-
-    let g:which_key_map.m = {'name' : 'which_key_ignore'}
-    let g:which_key_map.n = {'name' : 'which_key_ignore'}
-
-
-    call which_key#register('<Space>', "g:which_key_map")
 
     "NerdCommenter"
     let g:NERDCreateDefaultMappings = 0
