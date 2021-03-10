@@ -32,6 +32,8 @@
   "java.completion.enabled": true,
   "java.signatureHelp.enabled": true,
   "java.home": "/usr/lib/jvm/java-11-openjdk",
+  "java.completion.maxResults": 20,
+  "java.format.enabled": true,
 
   "java.configuration.runtimes": [
     {
