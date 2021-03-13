@@ -21,70 +21,70 @@ let home=$HOME
 "let g:polyglot_disabled = ["autoindent"]
 
 "Plugins"
-    "call plug#begin()
+    call plug#begin()
 
     "Needed utils for snipmate"
-    "Plug 'marcweber/vim-addon-mw-utils'
-    "Plug 'tomtom/tlib_vim'
+    Plug 'marcweber/vim-addon-mw-utils'
+    Plug 'tomtom/tlib_vim'
 
-    ""Syntax, text manipulation and movement"
-    "Plug 'scrooloose/nerdcommenter'
-    "Plug 'alvan/vim-closetag'
-	"Plug 'easymotion/vim-easymotion'
-    "Plug 'psliwka/vim-smoothie'
+    "Syntax, text manipulation and movement"
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'alvan/vim-closetag'
+	Plug 'easymotion/vim-easymotion'
+    Plug 'psliwka/vim-smoothie'
 
-    ""Visual"
-    "Plug 'vim-airline/vim-airline'
-    "Plug 'vim-airline/vim-airline-themes'
+    "Visual"
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 
-    ""Themes"
-    "Plug 'whatyouhide/vim-gotham'
-    "Plug 'christianchiarulli/nvcode-color-schemes.vim'
+    "Themes"
+    Plug 'whatyouhide/vim-gotham'
+    Plug 'christianchiarulli/nvcode-color-schemes.vim'
 
-    ""Files and Git"
-    "Plug '907th/vim-auto-save'
-    "Plug 'tpope/vim-fugitive'
+    "Files and Git"
+    Plug '907th/vim-auto-save'
+    Plug 'tpope/vim-fugitive'
 
-    ""Languages / intellisense, snippets"
-    "Plug 'sheerun/vim-polyglot'
-    "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    "Plug 'lervag/vimtex'
-    "Plug 'garbas/vim-snipmate'
-    "Plug 'chemzqm/vim-jsx-improve'
-    "Plug 'tpope/vim-sleuth'
+    "Languages / intellisense, snippets"
+    Plug 'sheerun/vim-polyglot'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'lervag/vimtex'
+    Plug 'garbas/vim-snipmate'
+    Plug 'chemzqm/vim-jsx-improve'
+    Plug 'tpope/vim-sleuth'
 
-    ""Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    ""let g:coc_global_extensions = [
-                ""\"coc-snippets",
-                ""\"coc-explorer",
-				""\"coc-discord",
-				""\"coc-prettier",
-                ""\"coc-vimtex",
-                ""\"coc-tsserver",
-                ""\"coc-pyright",
-                ""\"coc-json",
-                ""\"coc-java",
-                ""\"coc-html",
-                ""\"coc-css",
-                ""\"coc-pairs",
-                ""\"coc-kotlin"
-                ""\]
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    let g:coc_global_extensions = [
+                \"coc-snippets",
+                \"coc-explorer",
+				\"coc-discord",
+				\"coc-prettier",
+                \"coc-vimtex",
+                \"coc-tsserver",
+                \"coc-pyright",
+                \"coc-json",
+                \"coc-java",
+                \"coc-html",
+                \"coc-css",
+                \"coc-pairs",
+                \"coc-kotlin"
+                \]
 
-    ""Telescope"
-    "Plug 'nvim-lua/popup.nvim'
-    "Plug 'nvim-lua/plenary.nvim'
-    "Plug 'nvim-telescope/telescope.nvim'
+    "Telescope"
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
 
-    ""Notes"
-    "Plug 'suan/vim-instant-markdown'
-    "Plug 'reedes/vim-pencil'
+    "Notes"
+    Plug 'suan/vim-instant-markdown'
+    Plug 'reedes/vim-pencil'
 
 
-    ""Random"
-	"Plug 'liuchengxu/vim-which-key'
-    "Plug 'mhinz/vim-startify'
+    "Random"
+	Plug 'liuchengxu/vim-which-key'
+    Plug 'mhinz/vim-startify'
 
-    "call plug#end() 
+    call plug#end() 
 
 
 

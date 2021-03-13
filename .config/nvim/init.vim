@@ -1,3 +1,19 @@
+"https://github.com/jakobkhansen"
+
+"Welcome to my personal vimrc, it is the accumulation of Vim usage and
+"configuration since early 2019 when I started using Vim." This configuration
+"is based around leader mapping, trying to create a Vim configuration you can
+"live inside. In March 2021 I switched away from Coc.nvim in favor of Neovim
+"builtin LSP. Some configuration is still todo for this to work smoothly.
+
+"Contents"
+    "1. Plugins"
+    "2. Vim Options"
+    "3. Leader maps and which-key config"
+    "4. Vim mappings"
+    "5. Visuals, colorscheme, Airline ..."
+    "6. Plugin configuration"
+
 let mapleader="\<Space>"
 let home=$HOME
 
@@ -83,16 +99,26 @@ let home=$HOME
     set scrolloff=10
     set number
 
-"Lua wrappers"
-command! LspDefinition lua vim.lsp.buf.definition()
-command! LspImplementation lua vim.lsp.buf.implementation()
-command! LspReferences lua vim.lsp.buf.references()
-command! LspRenameSaga lua require('lspsaga.rename').rename()
-command! LspCodeActionSaga Lspsaga code_action
-command! LspFormat lua vim.lsp.buf.formatting_sync(nil, 100)
-command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostics()
+    "Persistent undo"
+    let s:undoDir = "/tmp/.undodir_" . $USER
+    if !isdirectory(s:undoDir)
+        call mkdir(s:undoDir, "", 0700)
+    endif
+    let &undodir=s:undoDir
+    set undofile
+
 
 "Leader maps and which-key"
+
+    "Lua wrappers"
+    command! LspDefinition lua vim.lsp.buf.definition()
+    command! LspImplementation lua vim.lsp.buf.implementation()
+    command! LspReferences lua vim.lsp.buf.references()
+    command! LspRenameSaga lua require('lspsaga.rename').rename()
+    command! LspCodeActionSaga Lspsaga code_action
+    command! LspFormat lua vim.lsp.buf.formatting_sync(nil, 100)
+    command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostics()
+
     nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
     let g:which_key_map = {}
 
@@ -289,17 +315,8 @@ command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostic
     autocmd BufWinEnter,WinEnter term://* startinsert
 
 
-"File management"
-    "Persistent undo"
-    let s:undoDir = "/tmp/.undodir_" . $USER
-    if !isdirectory(s:undoDir)
-        call mkdir(s:undoDir, "", 0700)
-    endif
-    let &undodir=s:undoDir
-    set undofile
 
 "Visuals, colorscheme, Airline"
-
     "Colorscheme"
     set termguicolors
     set signcolumn=no
@@ -311,12 +328,12 @@ command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostic
     "Hide end of line symbol"
     set fcs=eob:\ 
 
-
     "Airline"
     let g:airline_theme = "onedark"
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#fnamemod = ':t'
+    "Show terminals in airline tabline"
     let g:airline#extensions#tabline#ignore_bufadd_pat = '!|defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
 
 
