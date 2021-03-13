@@ -9,6 +9,6 @@ snippets.snippets = {
 
     java = {
         main = U.match_indentation "public static void main(String[] args) {\n    $0\n}";
-        try_catch = U.match_indentation "try {\n    $0\n} catch (exception e) {\n    e.printstacktrace();\n}"
+        try_catch = U.match_indentation "try {\n    $0\n} catch (Exception e) {\n    e.printStackTrace();\n}"
     };
 }

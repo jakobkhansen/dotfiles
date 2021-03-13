@@ -1,13 +1,9 @@
-set number
-
 let mapleader="\<Space>"
 let home=$HOME
 
 "Plugins"
     call plug#begin()
         "Plugin dependencies"
-        Plug 'marcweber/vim-addon-mw-utils'
-        Plug 'tomtom/tlib_vim'
         Plug 'nvim-lua/popup.nvim'
         Plug 'nvim-lua/plenary.nvim'
         Plug 'RishabhRD/popfix'
@@ -55,6 +51,7 @@ let home=$HOME
         "Notes"
         Plug 'reedes/vim-pencil'
         Plug 'instant-markdown/vim-instant-markdown'
+        Plug 'lervag/vimtex'
 
     call plug#end()
 
@@ -64,7 +61,7 @@ let home=$HOME
     filetype plugin indent on
 
     "Disables autofilling comments and similar"
-    au FileType * set fo-=c fo-=r fo-=o
+    au FileType * setlocal fo-=c fo-=r fo-=o
 
 	"Indents"
     set smartindent
@@ -84,6 +81,7 @@ let home=$HOME
     set smartcase
     set mouse=a
     set scrolloff=10
+    set number
 
 "Lua wrappers"
 command! LspDefinition lua vim.lsp.buf.definition()
@@ -98,6 +96,8 @@ command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostic
     nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
     let g:which_key_map = {}
 
+    "Not categorized"
+    noremap<Leader>no <CMD>nohlsearch<CR>
 
     "Find x"
     map <Leader>ff <CMD>Telescope find_files prompt_prefix=🔍<CR>
@@ -117,6 +117,7 @@ command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostic
     \ 't' : [':Telescope builtin', 'find-telescope-builtin'],
     \}
 
+    "LSP"
     map <silent> <Leader>ls <CMD>Lspsaga hover_doc<CR>
     map <silent> <Leader>ld <CMD>LspDefinition<CR>
     map <silent> <Leader>li <CMD>LspImplementation<CR>
@@ -142,6 +143,12 @@ command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostic
     \ 'e' : [':LspLineDiagnostics', 'line-diagnostics'],
     \ }
 
+    "Terminal"
+    map <silent> <Leader>tt <CMD>split<bar>terminal<CR><CMD>resize15<CR>
+    map <silent> <Leader>tv <CMD>vsplit<bar>terminal<CR>
+    map <silent> <Leader>ta <CMD>tab terminal<CR>
+
+    "Buffers and cwd"
     map <Leader>be <CMD>enew<CR>
     map <Leader>bd <CMD>bd<CR>
     map <Leader>BD <CMD>bn <bar> :bd#<CR>
@@ -149,7 +156,6 @@ command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostic
     map <Leader>bv <CMD>vsplit<CR>
     map <Leader>bh <CMD>hsplit<CR>
 
-    "Buffer and cwd management"
     let g:which_key_map.b = {
     \ 'name' : '+buffer' ,
     \ 'd' : [':bd', 'close-file'],
@@ -204,6 +210,18 @@ command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostic
     \ 's' : [':source $MYVIMRC<CR>', 'config-reload-vim'],
     \}
 
+    "Help"
+    map <silent> <Leader>ht <CMD>Telescope help_tags prompt_prefix=🔍<CR>
+    map <silent> <Leader>hm <CMD>Telescope man_pages prompt_prefix=🔍<CR>
+
+    let g:which_key_map.h = {
+    \ 'name': '+help',
+    \ 't' : [':Telescope help_tags', 'help-tags'],
+    \ 'm' : [':Telescope man_pages', 'man-pages'],
+    \}
+
+    let g:which_key_map.n = {'name' : 'which_key_ignore'}
+
     call which_key#register('<Space>', "g:which_key_map")
 
 
@@ -225,6 +243,9 @@ command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostic
     vmap <silent> K 10k
     vmap <silent> J 10j
 
+    "Text manipulation"
+    nnoremap <silent> Q gqap
+
     "Move lines"
     nnoremap <A-k> :m-2<CR>==
     nnoremap <A-j> :m+<CR>==
@@ -239,6 +260,17 @@ command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostic
     noremap <C-j> <C-w>j
     noremap <C-k> <C-w>k
     noremap <C-l> <C-w>l
+
+
+    "Terminal"
+    tnoremap <silent> <Leader>bd <C-\><C-n><CMD>bd!<CR>
+    tnoremap <silent> <F1> <C-\><C-n>
+    tnoremap <C-h> <C-\><C-N><C-w>h
+    tnoremap <C-j> <C-\><C-N><C-w>j
+    tnoremap <C-k> <C-\><C-N><C-w>k
+    tnoremap <C-l> <C-\><C-N><C-w>l
+
+    au TermOpen * startinsert
 
 
 "File management"
@@ -309,12 +341,13 @@ command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostic
     "Lexima"
     let g:lexima_no_default_rules = v:true
     call lexima#set_default_rules()
-    inoremap <silent><expr> <CR> compe#confirm(lexima#expand('<LT>CR>', 'i'))
 
     "Nvim-compe"
     set completeopt=menuone,noselect
+    set pumheight=10
     inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <silent><expr> <CR> compe#confirm(lexima#expand('<LT>CR>', 'i'))
     
     let g:lexima_accept_pum_with_enter = 1
     luafile $HOME/.config/nvim/lua/nvim-compe-config.lua
@@ -326,3 +359,24 @@ command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostic
     luafile $HOME/.config/nvim/lua/nvim-snippets-config.lua
     luafile $HOME/.config/nvim/lua/snips.lua
 
+    "Latex"
+    augroup tex
+        autocmd FileType tex set textwidth=89
+				au FileType tex set conceallevel=2
+    augroup END
+
+    au BufReadPost,BufNewFile *.tex :VimtexCompile
+    let g:tex_flavor = "latex"
+    let g:vimtex_quickfix_open_on_warning = 0
+    let g:vimtex_compiler_latexmk = { 
+    \ 'executable' : 'latexmk',
+    \ 'options' : [ 
+    \   '-pdflatex=lualatex',
+    \   '-lualatex',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
+
+    hi clear Conceal
