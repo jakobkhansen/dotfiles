@@ -144,9 +144,16 @@ command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostic
     \ }
 
     "Terminal"
-    map <silent> <Leader>tt <CMD>split<bar>terminal<CR><CMD>resize15<CR>
+    map <silent> <Leader>tt <CMD>15split<bar>terminal<CR>
     map <silent> <Leader>tv <CMD>vsplit<bar>terminal<CR>
-    map <silent> <Leader>ta <CMD>tab terminal<CR>
+    map <silent> <Leader>ta <CMD>terminal<CR>
+
+    let g:which_key_map.t = {
+    \ 'name' : '+terminal',
+    \ 't' : [':15split|terminal', 'mini-terminal'],
+    \ 'v' : [':vsplit|terminal', 'vertical-terminal'],
+    \ 'a' : [':tab terminal', 'tab-terminal'],
+    \ }
 
     "Buffers and cwd"
     map <Leader>be <CMD>enew<CR>
@@ -265,12 +272,21 @@ command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostic
     "Terminal"
     tnoremap <silent> <Leader>bd <C-\><C-n><CMD>bd!<CR>
     tnoremap <silent> <F1> <C-\><C-n>
+
     tnoremap <C-h> <C-\><C-N><C-w>h
     tnoremap <C-j> <C-\><C-N><C-w>j
     tnoremap <C-k> <C-\><C-N><C-w>k
     tnoremap <C-l> <C-\><C-N><C-w>l
 
-    au TermOpen * startinsert
+    "Tab and shift tab in terminal mode, might be cumbersome if tab is used in terminal"
+    tnoremap <silent> <Leader><Tab> <C-\><C-N><CMD>bn<CR>
+    tnoremap <silent> <Leader><S-Tab> <C-\><C-N><CMD>bp<CR>
+
+    "Bypass warning when closing terminal
+    au TermOpen * noremap <Leader>bd <CMD>bd!<CR>
+    
+    "Always start in insert mode in terminal"
+    autocmd BufWinEnter,WinEnter term://* startinsert
 
 
 "File management"
@@ -301,6 +317,7 @@ command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostic
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#fnamemod = ':t'
+    let g:airline#extensions#tabline#ignore_bufadd_pat = '!|defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
 
 
 
