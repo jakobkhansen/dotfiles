@@ -41,8 +41,8 @@ floating_modifier $mod
 # start a terminal
 bindsym Control+Mod1+Return exec --no-startup-id $terminal
 
-# One day ...
-bindsym Control+Mod1+BackSpace exec --no-startup-id $terminal nvim
+# start a terminal with nvim, don't quit afterwards
+bindsym Control+Mod1+BackSpace exec --no-startup-id $terminal $HOME/Scripts/openvimhotkey.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill

@@ -24,7 +24,7 @@ GRADLE_HOME=$HOME/gradle /usr/lib/jvm/java-11-openjdk/bin/java \
   -Xmx2G \
   -jar $(echo "$JAR") \
   -configuration "${tmp_dir}" \
-  /usr/share/java/jdtls/repository
+  /usr/share/java/jdtls/repository \
   -data "${1:-$HOME/workspace}" \
   --add-modules=ALL-SYSTEM \
   --add-opens java.base/java.util=ALL-UNNAMED \

@@ -23,7 +23,7 @@ let home=$HOME
         Plug 'nvim-lua/popup.nvim'
         Plug 'nvim-lua/plenary.nvim'
         Plug 'RishabhRD/popfix'
-
+        Plug 'rbgrouleff/bclose.vim'
 
         "Text manipulation"
         Plug 'scrooloose/nerdcommenter'
@@ -59,7 +59,6 @@ let home=$HOME
         Plug 'RishabhRD/nvim-lsputils'
         Plug 'hrsh7th/nvim-compe'
         Plug 'mfussenegger/nvim-jdtls'
-        Plug 'glepnir/lspsaga.nvim'
 
         "Snippets"
         Plug 'norcalli/snippets.nvim'
@@ -68,6 +67,9 @@ let home=$HOME
         Plug 'reedes/vim-pencil'
         Plug 'instant-markdown/vim-instant-markdown'
         Plug 'lervag/vimtex'
+
+        "Random"
+        Plug 'hugolgst/vimsence'
 
     call plug#end()
 
@@ -95,9 +97,12 @@ let home=$HOME
     "Random options"
     set nowrap
     set smartcase
+    set ignorecase
     set mouse=a
     set scrolloff=10
     set number
+    set timeoutlen=600
+    set autochdir
 
     "Persistent undo"
     let s:undoDir = "/tmp/.undodir_" . $USER
@@ -114,10 +119,16 @@ let home=$HOME
     command! LspDefinition lua vim.lsp.buf.definition()
     command! LspImplementation lua vim.lsp.buf.implementation()
     command! LspReferences lua vim.lsp.buf.references()
-    command! LspRenameSaga lua require('lspsaga.rename').rename()
-    command! LspCodeActionSaga Lspsaga code_action
+    command! LspRename lua vim.lsp.buf.rename()
+    command! LspCodeAction lua vim.lsp.buf.code_action()
+    command! LspCodeActionJava lua require('jdtls').code_action()
+    command! LspCodeActionJavaVisual lua require('jdtls').code_action(true)
+
     command! LspFormat lua vim.lsp.buf.formatting_sync(nil, 100)
-    command! LspLineDiagnostics lua require'lspsaga.diagnostic'.show_line_diagnostics()
+    command! LspLineDiagnostics lua vim.lsp.diagnostic.show_line_diagnostics()
+    command! LspDiagnosticsNext lua vim.lsp.diagnostic.goto_next()
+    command! LspDiagnosticsPrev lua vim.lsp.diagnostic.goto_prev()
+    command! LspSignature lua vim.lsp.buf.signature_help()
 
     nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
     let g:which_key_map = {}
@@ -129,9 +140,13 @@ let home=$HOME
     map <Leader>ff <CMD>Telescope find_files prompt_prefix=🔍<CR>
     map <Leader>fh <CMD>Telescope find_files find_command=rg,--files,/home/jakob prompt_prefix=🔍<CR>
     map <Leader>fz <CMD>Telescope find_files find_command=rg,--hidden,--files prompt_prefix=🔍<CR>
+    map <Leader>fd <CMD>Telescope find_files find_command=fd,-t,d<CR>
     map <Leader>fg <CMD>Telescope git_files prompt_prefix=🔍<CR>
     map <Leader>fc <CMD>Telescope live_grep prompt_prefix=🔍<CR>
-    map <Leader>ft <CMD>Telescope builtin prompt_prefix=🔍<CR>
+    map <Leader>fb <CMD>Telescope builtin prompt_prefix=🔍<CR>
+    map <leader>ft <CMD>NvimTreeToggle<cr><bar><CMD>sleep 50m<CR><CMD>NvimTreeToggle<cr><bar><CMD>sleep 50m<CR><CMD>NvimTreeToggle<cr>
+    map <Leader>fr <CMD>Ranger<CR>
+    
 
     let g:which_key_map.f = {
     \ 'name' : '+find',
@@ -140,54 +155,70 @@ let home=$HOME
     \ 'z' : [':Telescope find_files', 'find-hidden-files'],
     \ 'c' : [':Telescope live_grep', 'find-code'],
     \ 'g' : [':Telescope git_files', 'find-git-files'],
-    \ 't' : [':Telescope builtin', 'find-telescope-builtin'],
+    \ 'b' : [':Telescope builtin', 'find-telescope-builtin'],
+    \ 't' : ['NvimTreeToggle', 'file-tree'],
+    \ 'r' : ['Ranger', 'file-ranger'],
     \}
 
     "LSP"
-    map <silent> <Leader>ls <CMD>Lspsaga hover_doc<CR>
+    map <silent> <Leader>lh <CMD>Lspsaga hover_doc<CR>
+    map <silent> <Leader>ls <CMD>LspSignature<CR>
     map <silent> <Leader>ld <CMD>LspDefinition<CR>
     map <silent> <Leader>li <CMD>LspImplementation<CR>
     map <silent> <Leader>lr <CMD>LspReferences<CR>
-    map <silent> <Leader>ln <CMD>LspRenameSaga<CR>
-    map <silent> <Leader>la <CMD>LspCodeActionSaga<CR>
-    au FileType java noremap <silent> <buffer> <Leader>la <CMD>lua require('jdtls').code_action()<CR>
+    map <silent> <Leader>ln <CMD>LspRename<CR>
+    nmap <silent> <Leader>la <CMD>LspCodeActionJava<CR>
+    vmap <silent> <Leader>la <CMD>LspCodeActionJavaVisual<CR>
     map <silent> <Leader>lf <C-w>gf
     nmap <silent> <Leader>lp <CMD>LspFormat<CR>
-    map <silent> <Leader>le <CMD>LspLineDiagnostics<CR>
+    map <silent> <Leader>led <CMD>Telescope lsp_document_diagnostics<CR>
+    map <silent> <Leader>lew <CMD>Telescope lsp_workspace_diagnostics<CR>
+    map <silent> <Leader>lel <CMD>LspLineDiagnostics<CR>
+    map <silent> <Leader>len <CMD>LspDiagnosticsNext<CR>
+    map <silent> <Leader>lep <CMD>LspDiagnosticsPrev<CR>
 
     let g:which_key_map.l = {
     \ 'name' : '+lsp',
-    \ 's' : [':Lspsaga hover_doc', 'show-documentation'],
+    \ 'h' : [':Lspsaga hover_doc', 'show-documentation'],
+    \ 's' : [':LspSignature', 'show-signature'],
     \ 'd' : [':LspDefinition', 'goto-definition'],
     \ 't' : [':LspDefinition', 'goto-type-defintion'],
     \ 'i' : [':LspImplementation', 'goto-implementation'],
     \ 'r' : [':LspReferences', 'goto-references'],
-    \ 'n' : [':LspRenameSaga', 'rename-symbol'],
-    \ 'a' : [':LspCodeActionSaga', 'code-action'],
+    \ 'n' : [':LspRename', 'rename-symbol'],
+    \ 'a' : [':LspCodeAction', 'code-action'],
     \ 'f' : ['<C-w>gf', 'goto-file'],
     \ 'p' : [':LspFormat', 'prettier-format'],
-    \ 'e' : [':LspLineDiagnostics', 'line-diagnostics'],
+    \ 'e' : {
+        \ 'name' : '+diagnostics',
+        \ 'l' : [':LspLineDiagnostics', 'line-diagnostics'],
+        \ 'd' : ['Telescope lsp_document_diagnostics', 'document-diagnostics'],
+        \ 'w' : ['Telescope lsp_workspace_diagnostics', 'workspace-diagnostics'],
+        \ 'n' : [':LspDiagnosticsNext', 'next-diagnostic'],
+        \ 'p' : [':LspDiagnosticsPrev', 'prev-diagnostic'],
+        \ },
     \ }
 
     "Terminal"
     map <silent> <Leader>tt <CMD>15split<bar>terminal<CR>
     map <silent> <Leader>tv <CMD>vsplit<bar>terminal<CR>
-    map <silent> <Leader>ta <CMD>terminal<CR>
+    map <silent> <Leader>tf <CMD>terminal<CR>
 
     let g:which_key_map.t = {
     \ 'name' : '+terminal',
     \ 't' : [':15split|terminal', 'mini-terminal'],
     \ 'v' : [':vsplit|terminal', 'vertical-terminal'],
-    \ 'a' : [':tab terminal', 'tab-terminal'],
+    \ 'f' : [':terminal', ' full-terminal'],
     \ }
 
     "Buffers and cwd"
     map <Leader>be <CMD>enew<CR>
-    map <Leader>bd <CMD>bd<CR>
-    map <Leader>BD <CMD>bn <bar> :bd#<CR>
+    map <Leader>bd <CMD>bd!<CR>
+    map <Leader>BD <CMD>bn <bar> :bd!#<CR>
     map <Leader>bc <CMD>cd %:p:h<CR>
+    tnoremap <Leader>bc pwd\|xclip -selection clipboard<CR><C-\><C-n>:cd <C-r>+<CR>i 
     map <Leader>bv <CMD>vsplit<CR>
-    map <Leader>bh <CMD>hsplit<CR>
+    map <Leader>bh <CMD>split<CR>
 
     let g:which_key_map.b = {
     \ 'name' : '+buffer' ,
@@ -199,13 +230,13 @@ let home=$HOME
     \ 'c' : [':cd %:p:h', 'set-cwd'],
     \ }
 
-
     "Git"
     map <Leader>gc <CMD>Telescope git_commits prompt_prefix=🔍<CR>
     map <Leader>gb <CMD>Telescope git_branches prompt_prefix=🔍<CR>
     map <Leader>gh <CMD>Git blame<CR>
     map <Leader>gd <CMD>Git diff<CR>
     map <Leader>gm <CMD>Git mergetool<CR>
+    map <Leader>gs <CMD>G<CR>
 
     let g:which_key_map.g = {
     \ 'name' : '+git',
@@ -214,46 +245,26 @@ let home=$HOME
     \ 'h' : [':Git blame', 'git-blame'],
     \ 'd' : [':Git diff', 'git-diff'],
     \ 'm' : [':Git mergetool', 'git-mergetool'],
-    \}
-
-    "Edit configuration files"
-    map <silent> <Leader>cv <CMD>edit $MYVIMRC<CR>
-    map <silent> <Leader>cb <CMD>edit $HOME/.bashrc<CR>
-    map <silent> <Leader>cz <CMD>edit $HOME/.config/zsh/.zshrc<CR>
-    map <silent> <Leader>ci <CMD>edit $HOME/.config/i3/config<CR>
-    map <silent> <Leader>cr <CMD>edit $HOME/.config/ranger/rc.conf<CR>
-    map <silent> <Leader>ck <CMD>edit $HOME/.config/kitty/kitty.conf<CR>
-    map <silent> <Leader>cp <CMD>edit $HOME/.config/polybar/config<CR>
-    map <silent> <Leader>ca <CMD>edit $HOME/.bash_aliases<CR>
-    map <silent> <Leader>cc <CMD>edit $HOME/.config/nvim/coc-settings.json<CR>
-    map <silent> <Leader>co <CMD>edit $HOME/.config/compton/compton.conf<CR>
-    map <silent> <Leader>cs <CMD>source $MYVIMRC<CR>
-
-    let g:which_key_map.c = {
-    \ 'name': '+configs',
-    \ 'v' : [':edit $MYVIMRC', 'config-vimrc'],
-    \ 'b' : [':edit $HOME/.bashrc', 'config-bashrc'],
-    \ 'a' : [':edit $HOME/.bash_aliases', 'config-aliases'],
-    \ 'z' : [':edit $HOME/.config/zsh/.zshrc', 'config-zsh'],
-    \ 'i' : [':edit $HOME/.config/i3/config', 'config-i3'],
-    \ 'r' : [':edit $HOME/.config/ranger/rc.conf', 'config-ranger'],
-    \ 'k' : [':edit $HOME/.config/kitty/kitty.conf', 'config-kitty'],
-    \ 'p' : [':edit $HOME/.config/polybar/config', 'config-polybar'],
-    \ 'c' : [':edit $HOME/.config/nvim/coc-settings.json', 'config-polybar'],
-    \ 's' : [':source $MYVIMRC<CR>', 'config-reload-vim'],
+    \ 's' : [':G', 'git-status'],
     \}
 
     "Help"
     map <silent> <Leader>ht <CMD>Telescope help_tags prompt_prefix=🔍<CR>
     map <silent> <Leader>hm <CMD>Telescope man_pages prompt_prefix=🔍<CR>
+    map <silent> <Leader>hw <CMD>execute "h " . expand("<cword>")<CR>
 
     let g:which_key_map.h = {
     \ 'name': '+help',
     \ 't' : [':Telescope help_tags', 'help-tags'],
     \ 'm' : [':Telescope man_pages', 'man-pages'],
+    \ 'w' : [':execute "h " . expand("<cword>")', 'help-cword'],
     \}
 
     let g:which_key_map.n = {'name' : 'which_key_ignore'}
+
+    let g:which_key_map.B = {'name' : 'which_key_ignore'}
+
+    let g:which_key_map.s = {'name' : 'which_key_ignore'}
 
     call which_key#register('<Space>', "g:which_key_map")
 
@@ -276,6 +287,9 @@ let home=$HOME
     vmap <silent> K 10k
     vmap <silent> J 10j
 
+    noremap <silent> ; ,
+    noremap <silent> , ;
+
     "Text manipulation"
     nnoremap <silent> Q gqap
 
@@ -294,26 +308,35 @@ let home=$HOME
     noremap <C-k> <C-w>k
     noremap <C-l> <C-w>l
 
+    noremap <C-M-h> <CMD>vertical resize-5<CR>
+    noremap <C-M-j> <CMD>resize-5<CR>
+    noremap <C-M-k> <CMD>resize+5<CR>
+    noremap <C-M-l> <CMD>vertical resize+5<CR>
+    noremap <C-M-r> <C-W>=
+
 
     "Terminal"
-    tnoremap <silent> <Leader>bd <C-\><C-n><CMD>bd!<CR>
-    tnoremap <silent> <F1> <C-\><C-n>
+    tnoremap <silent> <Esc> <C-\><C-n>
 
     tnoremap <C-h> <C-\><C-N><C-w>h
     tnoremap <C-j> <C-\><C-N><C-w>j
     tnoremap <C-k> <C-\><C-N><C-w>k
     tnoremap <C-l> <C-\><C-N><C-w>l
 
-    "Tab and shift tab in terminal mode, might be cumbersome if tab is used in terminal"
-    tnoremap <silent> <Leader><Tab> <C-\><C-N><CMD>bn<CR>
-    tnoremap <silent> <Leader><S-Tab> <C-\><C-N><CMD>bp<CR>
+    tnoremap <C-M-h> <C-\><C-N><CMD>vertical resize-5<CR>i
+    tnoremap <C-M-j> <C-\><C-N><CMD>resize-5<CR>i
+    tnoremap <C-M-k> <C-\><C-N><CMD>resize+5<CR>i
+    tnoremap <C-M-l> <C-\><C-N><CMD>vertical resize+5<CR>i
+    tnoremap <C-M-r> <C-\><C-N><C-W>=i
+
 
     "Bypass warning when closing terminal
     au TermOpen * noremap <Leader>bd <CMD>bd!<CR>
-    
-    "Always start in insert mode in terminal"
-    autocmd BufWinEnter,WinEnter term://* startinsert
 
+    au TermOpen * startinsert
+
+    "Commands"
+    command! Fp :echo expand('%:p')
 
 
 "Visuals, colorscheme, Airline"
@@ -340,10 +363,10 @@ let home=$HOME
 
 "Plugin configuration"
     "Easymotion"
-    map s <plug>(easymotion-bd-f2)
     map S <plug>(easymotion-bd-f2)
-    nmap s <Plug>(easymotion-overwin-f2)
-    nmap S <Plug>(easymotion-overwin-f)
+    map s <plug>(easymotion-bd-f2)
+    nmap S <Plug>(easymotion-overwin-f2)
+    nmap s <Plug>(easymotion-overwin-f)
     let g:EasyMotion_smartcase = 1
 
 
@@ -357,14 +380,20 @@ let home=$HOME
     let g:NERDCreateDefaultMappings = 0
 
     "Nvim-tree"
-    nnoremap <C-n> :NvimTreeToggle<CR>
     let g:nvim_tree_auto_close = 1
     let g:nvim_tree_ignore = [ '.class', '.pdf' ]
     let g:nvim_tree_quit_on_open = 1
+    let g:nvim_tree_hide_dotfiles = 1
     luafile $HOME/.config/nvim/lua/nvim-tree-config.lua
 
     "Telescope"
     luafile /home/jakob/.config/nvim/lua/telescope-config.lua
+    "Telescope (or LSP?) randomly fucks with number and signcolumn
+    au BufAdd,BufCreate,BufNew * set number
+    au BufAdd,BufCreate,BufNew * set signcolumn=no
+
+    "Ranger"
+    let g:ranger_map_keys = 0
 
     "LSP"
     luafile $HOME/.config/nvim/lua/lsp-servers.lua
@@ -393,7 +422,57 @@ let home=$HOME
     luafile $HOME/.config/nvim/lua/nvim-snippets-config.lua
     luafile $HOME/.config/nvim/lua/snips.lua
 
-    "Latex"
+    "Bclose"
+    let g:bclose_no_plugin_maps = v:true
+
+
+    "Startify"
+    map <Leader>ss <CMD>Startify<CR>
+    let g:startify_files_number = 5
+    function! s:configFiles()
+        let files = [
+            \ {'line': 'vim', 'path': '$MYVIMRC'},
+            \ {'line': 'bashrc', 'path': '$HOME/.bashrc'},
+            \ {'line': 'bash aliases', 'path': '$HOME/.bash_aliases'},
+            \ {'line': 'i3', 'path': '$HOME/.config/i3/config'},
+            \ {'line': 'ranger', 'path': '$HOME/.config/ranger/rc.conf'},
+            \ {'line': 'kitty', 'path': '$HOME/.config/kitty/kitty.conf'},
+            \ {'line': 'polybar', 'path': '$HOME/.config/polybar/config'},
+            \ {'line': 'compton', 'path': '$HOME/.config/compton/compton.conf'},
+        \ ]
+
+        return files
+    endfunction
+
+    function! s:oftenUsed()
+        let files = [
+            \ {'line': 'IN3050', 'cmd': 'cd $HOME/Documents/School/IN3050/'},
+            \ {'line': 'IN3030', 'cmd': 'cd $HOME/Documents/School/IN3030/'},
+            \ {'line': 'IN3020', 'cmd': 'cd $HOME/Documents/School/IN3020/'},
+            \ {'line': 'Retting', 'cmd': 'cd $HOME/Documents/Retting/'},
+        \]
+        return files
+    endfunction
+    
+    function! s:luaFiles()
+        let files = systemlist('ls $HOME/.config/nvim/lua')
+        return map(files, "{'line': v:val, 'path': '$HOME/.config/nvim/lua/'. v:val}")
+    endfunction
+
+    let g:startify_commands = [
+        \ ['Reload Vim', 'source $MYVIMRC']
+    \ ]
+
+
+    let g:startify_lists = [
+    \ { 'type': 'files', 'header': ['MRU'] },
+    \ { 'type': function('s:oftenUsed'), 'header': ['Often used'] },
+    \ { 'type': function('s:configFiles'), 'header': ['Config files'], 'indices': ['cv', 'cb', 'ca', 'ci', 'cr', 'ck', 'cp', 'co'] },
+    \ { 'type': 'commands', 'header': ['Commands'], 'indices': ['cs'] },
+    \ { 'type': function('s:luaFiles'), 'header': ['Lua files'] },
+    \ ]
+
+    "Vimtex"
     augroup tex
         autocmd FileType tex set textwidth=89
 				au FileType tex set conceallevel=2
@@ -413,4 +492,37 @@ let home=$HOME
     \ ],
     \}
 
+
+    "Markdown"
+    let g:instant_markdown_autostart = 0
+    let g:instant_markdown_autoscroll = 1
+    let g:instant_markdown_allow_unsafe_content = 1
+    let g:instant_markdown_mathjax = 1
+    let g:vim_markdown_math = 1
+
+
+    augroup markdown
+      au FileType markdown command! Preview call MarkdownPreview()
+      au FileType markdown command! PreviewStop :InstantMarkdownStop
+      au FileType markdown command! PreviewPDF call CompileMarkdownPDF()
+      au FileType markdown call pencil#init({'wrap': 'soft', 'autoformat': 0})
+      au FileType markdown command! -nargs=1 Img call MarkdownImage(<f-args>)
+      au FileType markdown set conceallevel=2
+    augroup END
+
+
+    function MarkdownImage(filename)
+        silent !mkdir images > /dev/null 2>&1
+        let imageName = ("images/" . expand('%:r') . "_" . a:filename . ".png")
+        silent execute "!scrot -a $(slop -f '\\\%x,\\\%y,\\\%w,\\\%h') --line style=solid,color='white' " . imageName
+
+        silent execute "normal! i<center>![Image](" . imageName . ")</center>"
+    endfunction
+
+    function MarkdownPreview()
+        silent! :InstantMarkdownStop
+        silent! :InstantMarkdownPreview
+    endfunction
+
+    "Markdown conceal colors is weird because of Polyglot I guess"
     hi clear Conceal

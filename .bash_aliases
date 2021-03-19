@@ -39,6 +39,7 @@ alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/
 alias pushdotfiles="dotfiles add -u && dotfiles commit -m 'Updates' && dotfiles push"
 alias pushschool="cd /home/jakob/Documents/School; git add .; git commit -m 'Updates'; git push"
 alias gitview="gh repo view --web"
+alias gitroot="cd \$(git rev-parse --show-toplevel)"
 
 function gitpush() {
     git add -u 
