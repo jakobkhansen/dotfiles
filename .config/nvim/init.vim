@@ -48,6 +48,7 @@ let home=$HOME
         Plug '907th/vim-auto-save'
         Plug 'tpope/vim-fugitive'
         Plug 'kyazdani42/nvim-tree.lua'
+        Plug 'erietz/vim-terminator'
 
         "Menus"
         Plug 'nvim-telescope/telescope.nvim'
@@ -120,15 +121,18 @@ let home=$HOME
     command! LspImplementation lua vim.lsp.buf.implementation()
     command! LspReferences lua vim.lsp.buf.references()
     command! LspRename lua vim.lsp.buf.rename()
+    command! LspSignature lua vim.lsp.buf.signature_help()
+    command! LspHover lua vim.lsp.buf.hover()
+
     command! LspCodeAction lua vim.lsp.buf.code_action()
     command! LspCodeActionJava lua require('jdtls').code_action()
     command! LspCodeActionJavaVisual lua require('jdtls').code_action(true)
 
     command! LspFormat lua vim.lsp.buf.formatting_sync(nil, 100)
+
     command! LspLineDiagnostics lua vim.lsp.diagnostic.show_line_diagnostics()
     command! LspDiagnosticsNext lua vim.lsp.diagnostic.goto_next()
     command! LspDiagnosticsPrev lua vim.lsp.diagnostic.goto_prev()
-    command! LspSignature lua vim.lsp.buf.signature_help()
 
     nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
     let g:which_key_map = {}
@@ -140,28 +144,22 @@ let home=$HOME
     map <Leader>ff <CMD>Telescope find_files prompt_prefix=🔍<CR>
     map <Leader>fh <CMD>Telescope find_files find_command=rg,--files,/home/jakob prompt_prefix=🔍<CR>
     map <Leader>fz <CMD>Telescope find_files find_command=rg,--hidden,--files prompt_prefix=🔍<CR>
-    map <Leader>fd <CMD>Telescope find_files find_command=fd,-t,d<CR>
     map <Leader>fg <CMD>Telescope git_files prompt_prefix=🔍<CR>
     map <Leader>fc <CMD>Telescope live_grep prompt_prefix=🔍<CR>
-    map <Leader>fb <CMD>Telescope builtin prompt_prefix=🔍<CR>
     map <leader>ft <CMD>NvimTreeToggle<cr><bar><CMD>sleep 50m<CR><CMD>NvimTreeToggle<cr><bar><CMD>sleep 50m<CR><CMD>NvimTreeToggle<cr>
-    map <Leader>fr <CMD>Ranger<CR>
     
-
     let g:which_key_map.f = {
     \ 'name' : '+find',
     \ 'f' : [':Telescope find_files', 'find-files'],
-    \ 'h' : [':Telescope find_files', 'find-files-home'],
-    \ 'z' : [':Telescope find_files', 'find-hidden-files'],
+    \ 'h' : [':Telescope find_files find_command=rg,--files,/home/jakob prompt_prefix=🔍', 'find-files-home'],
+    \ 'z' : [':Telescope find_files find_command=rg,--hidden,--files prompt_prefix=🔍', 'find-hidden-files'],
     \ 'c' : [':Telescope live_grep', 'find-code'],
     \ 'g' : [':Telescope git_files', 'find-git-files'],
-    \ 'b' : [':Telescope builtin', 'find-telescope-builtin'],
     \ 't' : ['NvimTreeToggle', 'file-tree'],
-    \ 'r' : ['Ranger', 'file-ranger'],
     \}
 
     "LSP"
-    map <silent> <Leader>lh <CMD>Lspsaga hover_doc<CR>
+    map <silent> <Leader>lh <CMD>LspHover<CR>
     map <silent> <Leader>ls <CMD>LspSignature<CR>
     map <silent> <Leader>ld <CMD>LspDefinition<CR>
     map <silent> <Leader>li <CMD>LspImplementation<CR>
@@ -176,13 +174,13 @@ let home=$HOME
     map <silent> <Leader>lel <CMD>LspLineDiagnostics<CR>
     map <silent> <Leader>len <CMD>LspDiagnosticsNext<CR>
     map <silent> <Leader>lep <CMD>LspDiagnosticsPrev<CR>
+    imap <silent> <A-Tab> <CMD>LspHover<CR>
 
     let g:which_key_map.l = {
     \ 'name' : '+lsp',
-    \ 'h' : [':Lspsaga hover_doc', 'show-documentation'],
+    \ 'h' : [':LspHover', 'show-hover'],
     \ 's' : [':LspSignature', 'show-signature'],
     \ 'd' : [':LspDefinition', 'goto-definition'],
-    \ 't' : [':LspDefinition', 'goto-type-defintion'],
     \ 'i' : [':LspImplementation', 'goto-implementation'],
     \ 'r' : [':LspReferences', 'goto-references'],
     \ 'n' : [':LspRename', 'rename-symbol'],
@@ -203,12 +201,15 @@ let home=$HOME
     map <silent> <Leader>tt <CMD>15split<bar>terminal<CR>
     map <silent> <Leader>tv <CMD>vsplit<bar>terminal<CR>
     map <silent> <Leader>tf <CMD>terminal<CR>
+    map <Leader>tr <CMD>TerminatorOpenTerminal<CR><CMD>TerminatorRunFileInTerminal<CR><Esc>
+
 
     let g:which_key_map.t = {
     \ 'name' : '+terminal',
     \ 't' : [':15split|terminal', 'mini-terminal'],
     \ 'v' : [':vsplit|terminal', 'vertical-terminal'],
     \ 'f' : [':terminal', ' full-terminal'],
+    \ 'r' : [':TerminatorOpenTerminal<bar>TerminatorRunFileInTerminal', 'terminal-run'],
     \ }
 
     "Buffers and cwd"
@@ -216,7 +217,6 @@ let home=$HOME
     map <Leader>bd <CMD>bd!<CR>
     map <Leader>BD <CMD>bn <bar> :bd!#<CR>
     map <Leader>bc <CMD>cd %:p:h<CR>
-    tnoremap <Leader>bc pwd\|xclip -selection clipboard<CR><C-\><C-n>:cd <C-r>+<CR>i 
     map <Leader>bv <CMD>vsplit<CR>
     map <Leader>bh <CMD>split<CR>
 
@@ -260,10 +260,13 @@ let home=$HOME
     \ 'w' : [':execute "h " . expand("<cword>")', 'help-cword'],
     \}
 
+    "<Leader>no does :noh
     let g:which_key_map.n = {'name' : 'which_key_ignore'}
 
+    "<Leader>BD does bd"
     let g:which_key_map.B = {'name' : 'which_key_ignore'}
 
+    "<Leader>ss opens Startify"
     let g:which_key_map.s = {'name' : 'which_key_ignore'}
 
     call which_key#register('<Space>', "g:which_key_map")
@@ -271,11 +274,8 @@ let home=$HOME
 
 "Vim Bindings"
     "Remaps"
-    nnoremap + $
-    vnoremap + $
-    nnoremap "" "+y
-    vnoremap "" "+y
-    map $ <Nop>
+    noremap + $
+    noremap "" "+y
     map <F1> <Esc>
     map <LeftMouse> <Nop>
     imap <LeftMouse> <Nop>
@@ -300,8 +300,8 @@ let home=$HOME
     "Buffers"
     nmap <Tab> <CMD>bn<CR>
     nmap <S-Tab> <CMD>bp<CR>
-    nnoremap <F5> :%bd<bar>e#<bar>bd#<CR>
-    nnoremap <F6> :bufdo bwipeout<CR>
+    nnoremap <F5> :%bd!<bar>e#<bar>bd!#<CR>
+    nnoremap <F6> :bufdo bwipeout!<CR>
         
     noremap <C-h> <C-w>h
     noremap <C-j> <C-w>j
@@ -313,6 +313,10 @@ let home=$HOME
     noremap <C-M-k> <CMD>resize+5<CR>
     noremap <C-M-l> <CMD>vertical resize+5<CR>
     noremap <C-M-r> <C-W>=
+
+    noremap zh 10zh
+    noremap zl 10zl
+
 
 
     "Terminal"
@@ -328,10 +332,6 @@ let home=$HOME
     tnoremap <C-M-k> <C-\><C-N><CMD>resize+5<CR>i
     tnoremap <C-M-l> <C-\><C-N><CMD>vertical resize+5<CR>i
     tnoremap <C-M-r> <C-\><C-N><C-W>=i
-
-
-    "Bypass warning when closing terminal
-    au TermOpen * noremap <Leader>bd <CMD>bd!<CR>
 
     au TermOpen * startinsert
 
@@ -360,7 +360,6 @@ let home=$HOME
     let g:airline#extensions#tabline#ignore_bufadd_pat = '!|defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
 
 
-
 "Plugin configuration"
     "Easymotion"
     map S <plug>(easymotion-bd-f2)
@@ -368,7 +367,6 @@ let home=$HOME
     nmap S <Plug>(easymotion-overwin-f2)
     nmap s <Plug>(easymotion-overwin-f)
     let g:EasyMotion_smartcase = 1
-
 
     "Auto-save"
     let g:auto_save = 1
@@ -402,7 +400,8 @@ let home=$HOME
     au FileType java lua start_jdt()
 
     "Lexima"
-    let g:lexima_no_default_rules = v:true
+    "Return is 
+    "let g:lexima_no_default_rules = v:true
     call lexima#set_default_rules()
 
     "Nvim-compe"
@@ -462,6 +461,10 @@ let home=$HOME
     let g:startify_commands = [
         \ ['Reload Vim', 'source $MYVIMRC']
     \ ]
+
+    "Terminator"
+    command! RunTerminal <CMD>TerminatorOpenTerminal<CR><CMD>TerminatorRunFileInTerminal<CR>
+    let g:terminator_clear_default_mappings = "foo bar"
 
 
     let g:startify_lists = [
