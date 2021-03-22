@@ -37,6 +37,8 @@ let home=$HOME
         Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
         Plug 'sheerun/vim-polyglot'
 
+        "Buffers"
+        Plug 'troydm/zoomwintab.vim'
 
         "Themes"
         Plug 'christianchiarulli/nvcode-color-schemes.vim'
@@ -103,7 +105,9 @@ let home=$HOME
     set scrolloff=10
     set number
     set timeoutlen=600
-    set autochdir
+    
+    "au BufReadPre,FileReadPre * if !(&ft ==? "NvimTree") | silent! cd %:p:h
+    autocmd BufReadPost * :cd %:p:h
 
     "Persistent undo"
     let s:undoDir = "/tmp/.undodir_" . $USER
@@ -146,7 +150,7 @@ let home=$HOME
     map <Leader>fz <CMD>Telescope find_files find_command=rg,--hidden,--files prompt_prefix=🔍<CR>
     map <Leader>fg <CMD>Telescope git_files prompt_prefix=🔍<CR>
     map <Leader>fc <CMD>Telescope live_grep prompt_prefix=🔍<CR>
-    map <leader>ft <CMD>NvimTreeToggle<cr><bar><CMD>sleep 50m<CR><CMD>NvimTreeToggle<cr><bar><CMD>sleep 50m<CR><CMD>NvimTreeToggle<cr>
+    map <leader>fl <CMD>NvimTreeToggle<cr><bar><CMD>sleep 50m<CR><CMD>NvimTreeToggle<cr><bar><CMD>sleep 50m<CR><CMD>NvimTreeToggle<cr>
     
     let g:which_key_map.f = {
     \ 'name' : '+find',
@@ -155,7 +159,7 @@ let home=$HOME
     \ 'z' : [':Telescope find_files find_command=rg,--hidden,--files prompt_prefix=🔍', 'find-hidden-files'],
     \ 'c' : [':Telescope live_grep', 'find-code'],
     \ 'g' : [':Telescope git_files', 'find-git-files'],
-    \ 't' : ['NvimTreeToggle', 'file-tree'],
+    \ 'l' : ['NvimTreeToggle', 'file-tree'],
     \}
 
     "LSP"
@@ -184,7 +188,7 @@ let home=$HOME
     \ 'i' : [':LspImplementation', 'goto-implementation'],
     \ 'r' : [':LspReferences', 'goto-references'],
     \ 'n' : [':LspRename', 'rename-symbol'],
-    \ 'a' : [':LspCodeAction', 'code-action'],
+    \ 'a' : [':LspCodeActionJava', 'code-action'],
     \ 'f' : ['<C-w>gf', 'goto-file'],
     \ 'p' : [':LspFormat', 'prettier-format'],
     \ 'e' : {
@@ -198,8 +202,8 @@ let home=$HOME
     \ }
 
     "Terminal"
-    map <silent> <Leader>tt <CMD>15split<bar>terminal<CR>
-    map <silent> <Leader>tv <CMD>vsplit<bar>terminal<CR>
+    map <silent> <Leader>tt <CMD>bot 15split term://zsh<CR>
+    map <silent> <Leader>tv <CMD>vsplit term://zsh<CR>
     map <silent> <Leader>tf <CMD>terminal<CR>
     map <Leader>tr <CMD>TerminatorOpenTerminal<CR><CMD>TerminatorRunFileInTerminal<CR><Esc>
 
@@ -219,6 +223,7 @@ let home=$HOME
     map <Leader>bc <CMD>cd %:p:h<CR>
     map <Leader>bv <CMD>vsplit<CR>
     map <Leader>bh <CMD>split<CR>
+    map <Leader>bo <CMD>ZoomWinTabToggle<CR>
 
     let g:which_key_map.b = {
     \ 'name' : '+buffer' ,
@@ -228,6 +233,7 @@ let home=$HOME
     \ 'h' : [':split', 'horizontal-split'],
     \ 'e' : [':enew', 'open-empty-buffer'],
     \ 'c' : [':cd %:p:h', 'set-cwd'],
+    \ 'o' : ['ZoomWinTabToggle', 'toggle-fullscreen'],
     \ }
 
     "Git"
@@ -362,10 +368,8 @@ let home=$HOME
 
 "Plugin configuration"
     "Easymotion"
+    map s <plug>(easymotion-bd-f)
     map S <plug>(easymotion-bd-f2)
-    map s <plug>(easymotion-bd-f2)
-    nmap S <Plug>(easymotion-overwin-f2)
-    nmap s <Plug>(easymotion-overwin-f)
     let g:EasyMotion_smartcase = 1
 
     "Auto-save"
@@ -397,7 +401,14 @@ let home=$HOME
     luafile $HOME/.config/nvim/lua/lsp-servers.lua
     luafile $HOME/.config/nvim/lua/lsp-config.lua
     luafile $HOME/.config/nvim/lua/lsputils-config.lua
-    au FileType java lua start_jdt()
+
+    "Make sure that cwd is the file before starting server
+    function! s:java_start_lsp()
+        cd %:p:h
+        lua start_jdt()
+    endfunction
+    "map <Leader>jls <CMD>sleep 1000m<bar>lua start_jdt()<CR>
+    au FileType java call s:java_start_lsp()
 
     "Lexima"
     "Return is 
@@ -449,6 +460,7 @@ let home=$HOME
             \ {'line': 'IN3030', 'cmd': 'cd $HOME/Documents/School/IN3030/'},
             \ {'line': 'IN3020', 'cmd': 'cd $HOME/Documents/School/IN3020/'},
             \ {'line': 'Retting', 'cmd': 'cd $HOME/Documents/Retting/'},
+            \ {'line': 'Timelister', 'cmd': 'cd $HOME/Documents/School/GRUPPELÆRER/IN1010_2021/timelister'},
         \]
         return files
     endfunction
@@ -462,18 +474,18 @@ let home=$HOME
         \ ['Reload Vim', 'source $MYVIMRC']
     \ ]
 
-    "Terminator"
-    command! RunTerminal <CMD>TerminatorOpenTerminal<CR><CMD>TerminatorRunFileInTerminal<CR>
-    let g:terminator_clear_default_mappings = "foo bar"
-
-
     let g:startify_lists = [
-    \ { 'type': 'files', 'header': ['MRU'] },
-    \ { 'type': function('s:oftenUsed'), 'header': ['Often used'] },
+    \ { 'type': 'files', 'header': ['Recent'] },
+    \ { 'type': function('s:oftenUsed'), 'header': ['UiO'] },
     \ { 'type': function('s:configFiles'), 'header': ['Config files'], 'indices': ['cv', 'cb', 'ca', 'ci', 'cr', 'ck', 'cp', 'co'] },
     \ { 'type': 'commands', 'header': ['Commands'], 'indices': ['cs'] },
     \ { 'type': function('s:luaFiles'), 'header': ['Lua files'] },
     \ ]
+
+    "Terminator"
+    command! RunTerminal <CMD>TerminatorOpenTerminal<CR><CMD>TerminatorRunFileInTerminal<CR>
+    let g:terminator_clear_default_mappings = "foo bar"
+
 
     "Vimtex"
     augroup tex

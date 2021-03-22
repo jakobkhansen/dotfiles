@@ -5,7 +5,6 @@ local nvim_lsp = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 capabilities.workspace.configuration = true
-USER = vim.fn.expand('$USER')
 
 
 -- Python
@@ -23,9 +22,7 @@ local extendedClientCapabilities = require'jdtls'.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 
-local function jdtls_on_attach(client, bufnr)
-    on_attach(client, bufnr)
-    local opts = { silent = true; }
+local function jdtls_on_attach()
     require'jdtls.setup'.add_commands()
 end
 
@@ -80,3 +77,31 @@ nvim_lsp.tsserver.setup{}
 
 -- Latex
 nvim_lsp.texlab.setup{}
+
+-- Lua
+USER = vim.fn.expand('$USER')
+
+local sumneko_root_path = "/home/" .. USER .. "/.langservers/lua-language-server"
+local sumneko_binary = "/home/" .. USER .. "/.langservers/lua-language-server/bin/Linux/lua-language-server"
+
+require'lspconfig'.sumneko_lua.setup {
+    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+                -- Setup your lua path
+                path = vim.split(package.path, ';')
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {'vim'}
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true}
+            }
+        }
+    }
+}

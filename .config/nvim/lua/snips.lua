@@ -19,6 +19,7 @@ snippets.snippets = {
         h4 = U.match_indentation "#### $0",
         h5 = U.match_indentation "##### $0",
         block = U.match_indentation "`$0`",
-        code = U.match_indentation "```$1\n$0\n```"
+        code = U.match_indentation "```$1\n$0\n```",
+        math = U.match_indentation "\\$$0\\$"
     }
 }
