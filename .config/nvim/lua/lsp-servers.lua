@@ -17,6 +17,11 @@ nvim_lsp.html.setup {
     capabilities = capabilities;
 }
 
+-- CSS
+nvim_lsp.cssls.setup {
+    capabilities = capabilities;
+}
+
 -- Java
 local extendedClientCapabilities = require'jdtls'.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true

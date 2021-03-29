@@ -40,10 +40,11 @@ let home=$HOME
         "Buffers"
         Plug 'troydm/zoomwintab.vim'
 
-        "Themes"
+        "Themes and Visuals"
         Plug 'christianchiarulli/nvcode-color-schemes.vim'
         Plug 'vim-airline/vim-airline'
         Plug 'vim-airline/vim-airline-themes'
+        Plug 'kyazdani42/nvim-web-devicons'
 
 
         "Files and git"
@@ -54,8 +55,9 @@ let home=$HOME
 
         "Menus"
         Plug 'nvim-telescope/telescope.nvim'
-        Plug 'liuchengxu/vim-which-key'
+        "Plug 'liuchengxu/vim-which-key'
         Plug 'mhinz/vim-startify'
+        Plug 'spinks/vim-leader-guide'
 
         "LSP"
         Plug 'neovim/nvim-lspconfig'
@@ -72,7 +74,12 @@ let home=$HOME
         Plug 'lervag/vimtex'
 
         "Random"
-        Plug 'hugolgst/vimsence'
+        "Plug 'hugolgst/vimsence'
+        "Plug 'aurieh/discord.nvim'
+        Plug 'jakobkhansen/discord.nvim', { 'branch': 'logwarnvariable' }
+
+        
+
 
     call plug#end()
 
@@ -107,7 +114,7 @@ let home=$HOME
     set timeoutlen=600
     
     "au BufReadPre,FileReadPre * if !(&ft ==? "NvimTree") | silent! cd %:p:h
-    autocmd BufReadPost * :cd %:p:h
+    "autocmd BufReadPost * :cd %:p:h
 
     "Persistent undo"
     let s:undoDir = "/tmp/.undodir_" . $USER
@@ -138,11 +145,9 @@ let home=$HOME
     command! LspDiagnosticsNext lua vim.lsp.diagnostic.goto_next()
     command! LspDiagnosticsPrev lua vim.lsp.diagnostic.goto_prev()
 
-    nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+    "nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
     let g:which_key_map = {}
-
-    "Not categorized"
-    noremap<Leader>no <CMD>nohlsearch<CR>
+    let g:lmap = {}
 
     "Find x"
     map <Leader>ff <CMD>Telescope find_files prompt_prefix=🔍<CR>
@@ -151,17 +156,15 @@ let home=$HOME
     map <Leader>fg <CMD>Telescope git_files prompt_prefix=🔍<CR>
     map <Leader>fc <CMD>Telescope live_grep prompt_prefix=🔍<CR>
     map <leader>fl <CMD>NvimTreeToggle<cr><bar><CMD>sleep 50m<CR><CMD>NvimTreeToggle<cr><bar><CMD>sleep 50m<CR><CMD>NvimTreeToggle<cr>
-    
-    let g:which_key_map.f = {
-    \ 'name' : '+find',
-    \ 'f' : [':Telescope find_files', 'find-files'],
-    \ 'h' : [':Telescope find_files find_command=rg,--files,/home/jakob prompt_prefix=🔍', 'find-files-home'],
-    \ 'z' : [':Telescope find_files find_command=rg,--hidden,--files prompt_prefix=🔍', 'find-hidden-files'],
-    \ 'c' : [':Telescope live_grep', 'find-code'],
-    \ 'g' : [':Telescope git_files', 'find-git-files'],
-    \ 'l' : ['NvimTreeToggle', 'file-tree'],
-    \}
 
+    let g:lmap.f = {'name': 'find'}
+    let g:lmap.f.f = 'find-files'
+    let g:lmap.f.h = 'find-files-home'
+    let g:lmap.f.z = 'find-hidden-files'
+    let g:lmap.f.c = 'find-code'
+    let g:lmap.f.g = 'find-git-files'
+    let g:lmap.f.l = 'file-tree'
+    
     "LSP"
     map <silent> <Leader>lh <CMD>LspHover<CR>
     map <silent> <Leader>ls <CMD>LspSignature<CR>
@@ -171,7 +174,7 @@ let home=$HOME
     map <silent> <Leader>ln <CMD>LspRename<CR>
     nmap <silent> <Leader>la <CMD>LspCodeActionJava<CR>
     vmap <silent> <Leader>la <CMD>LspCodeActionJavaVisual<CR>
-    map <silent> <Leader>lf <C-w>gf
+    map <silent> <Leader>lf gf
     nmap <silent> <Leader>lp <CMD>LspFormat<CR>
     map <silent> <Leader>led <CMD>Telescope lsp_document_diagnostics<CR>
     map <silent> <Leader>lew <CMD>Telescope lsp_workspace_diagnostics<CR>
@@ -180,41 +183,35 @@ let home=$HOME
     map <silent> <Leader>lep <CMD>LspDiagnosticsPrev<CR>
     imap <silent> <A-Tab> <CMD>LspHover<CR>
 
-    let g:which_key_map.l = {
-    \ 'name' : '+lsp',
-    \ 'h' : [':LspHover', 'show-hover'],
-    \ 's' : [':LspSignature', 'show-signature'],
-    \ 'd' : [':LspDefinition', 'goto-definition'],
-    \ 'i' : [':LspImplementation', 'goto-implementation'],
-    \ 'r' : [':LspReferences', 'goto-references'],
-    \ 'n' : [':LspRename', 'rename-symbol'],
-    \ 'a' : [':LspCodeActionJava', 'code-action'],
-    \ 'f' : ['<C-w>gf', 'goto-file'],
-    \ 'p' : [':LspFormat', 'prettier-format'],
-    \ 'e' : {
-        \ 'name' : '+diagnostics',
-        \ 'l' : [':LspLineDiagnostics', 'line-diagnostics'],
-        \ 'd' : ['Telescope lsp_document_diagnostics', 'document-diagnostics'],
-        \ 'w' : ['Telescope lsp_workspace_diagnostics', 'workspace-diagnostics'],
-        \ 'n' : [':LspDiagnosticsNext', 'next-diagnostic'],
-        \ 'p' : [':LspDiagnosticsPrev', 'prev-diagnostic'],
-        \ },
-    \ }
+    let g:lmap.l = {'name': 'lsp'}
+    let g:lmap.l.h = 'show-hover'
+    let g:lmap.l.s = 'show-signature'
+    let g:lmap.l.d = 'goto-definition'
+    let g:lmap.l.i = 'goto-implementation'
+    let g:lmap.l.r = 'goto-references'
+    let g:lmap.l.n = 'rename-symbol'
+    let g:lmap.l.a = 'code-action'
+    let g:lmap.l.f = 'goto-file'
+    let g:lmap.l.p = 'prettier-format'
+
+    let g:lmap.l.e = {'name': 'diagnostics'}
+    let g:lmap.l.e.l = 'line-diagnostics'
+    let g:lmap.l.e.d = 'document-diagnostics'
+    let g:lmap.l.e.w = 'workspace-diagnostics'
+    let g:lmap.l.e.n = 'next-diagnostic'
+    let g:lmap.l.e.p = 'prev-diagnostic'
 
     "Terminal"
     map <silent> <Leader>tt <CMD>bot 15split term://zsh<CR>
     map <silent> <Leader>tv <CMD>vsplit term://zsh<CR>
     map <silent> <Leader>tf <CMD>terminal<CR>
-    map <Leader>tr <CMD>TerminatorOpenTerminal<CR><CMD>TerminatorRunFileInTerminal<CR><Esc>
+    map <silent> <leader>tr <CMD>TerminatorOpenTerminal<CR><CMD>TerminatorRunFileInTerminal<CR><Esc>:wincmd p<CR>i
 
-
-    let g:which_key_map.t = {
-    \ 'name' : '+terminal',
-    \ 't' : [':15split|terminal', 'mini-terminal'],
-    \ 'v' : [':vsplit|terminal', 'vertical-terminal'],
-    \ 'f' : [':terminal', ' full-terminal'],
-    \ 'r' : [':TerminatorOpenTerminal<bar>TerminatorRunFileInTerminal', 'terminal-run'],
-    \ }
+    let g:lmap.t = {'name': 'terminal'}
+    let g:lmap.t.t = 'mini-terminal'
+    let g:lmap.t.v = 'vertical-terminal'
+    let g:lmap.t.f = 'full-terminal'
+    let g:lmap.t.r = 'terminal-run'
 
     "Buffers and cwd"
     map <Leader>be <CMD>enew<CR>
@@ -225,16 +222,13 @@ let home=$HOME
     map <Leader>bh <CMD>split<CR>
     map <Leader>bo <CMD>ZoomWinTabToggle<CR>
 
-    let g:which_key_map.b = {
-    \ 'name' : '+buffer' ,
-    \ 'd' : [':bd', 'close-file'],
-    \ 'D' : [':bn|:bd#', 'delete-buffer'],
-    \ 'v' : [':vsplit', 'vertical-split'],
-    \ 'h' : [':split', 'horizontal-split'],
-    \ 'e' : [':enew', 'open-empty-buffer'],
-    \ 'c' : [':cd %:p:h', 'set-cwd'],
-    \ 'o' : ['ZoomWinTabToggle', 'toggle-fullscreen'],
-    \ }
+    let g:lmap.b = {'name': 'buffer'}
+    let g:lmap.b.d = 'close-file'
+    let g:lmap.b.v = 'vertical-split'
+    let g:lmap.b.h = 'horizontal-split'
+    let g:lmap.b.e = 'open-empty-buffer'
+    let g:lmap.b.c = 'set-cwd'
+    let g:lmap.b.o = 'toggle-fullscreen'
 
     "Git"
     map <Leader>gc <CMD>Telescope git_commits prompt_prefix=🔍<CR>
@@ -244,38 +238,39 @@ let home=$HOME
     map <Leader>gm <CMD>Git mergetool<CR>
     map <Leader>gs <CMD>G<CR>
 
-    let g:which_key_map.g = {
-    \ 'name' : '+git',
-    \ 'c' : [':Telescope git_commits', 'git-commits'],
-    \ 'b' : [':Telescope git_branches', 'git-branch'],
-    \ 'h' : [':Git blame', 'git-blame'],
-    \ 'd' : [':Git diff', 'git-diff'],
-    \ 'm' : [':Git mergetool', 'git-mergetool'],
-    \ 's' : [':G', 'git-status'],
-    \}
+    let g:lmap.g = {'name': 'git'}
+    let g:lmap.g.c = 'git-commits'
+    let g:lmap.g.b = 'git-branch'
+    let g:lmap.g.h = 'git-blame'
+    let g:lmap.g.d = 'git-diff'
+    let g:lmap.g.m = 'git-mergetool'
+    let g:lmap.g.s = 'git-status'
+
 
     "Help"
     map <silent> <Leader>ht <CMD>Telescope help_tags prompt_prefix=🔍<CR>
     map <silent> <Leader>hm <CMD>Telescope man_pages prompt_prefix=🔍<CR>
     map <silent> <Leader>hw <CMD>execute "h " . expand("<cword>")<CR>
 
-    let g:which_key_map.h = {
-    \ 'name': '+help',
-    \ 't' : [':Telescope help_tags', 'help-tags'],
-    \ 'm' : [':Telescope man_pages', 'man-pages'],
-    \ 'w' : [':execute "h " . expand("<cword>")', 'help-cword'],
-    \}
+    let g:lmap.h = {'name': 'help'}
+    let g:lmap.h.t = 'help-tags'
+    let g:lmap.h.m = 'man-pages'
+    let g:lmap.h.w = 'help-cword'
 
-    "<Leader>no does :noh
-    let g:which_key_map.n = {'name' : 'which_key_ignore'}
+    "Not categorized"
+    noremap<Leader>no <CMD>nohlsearch<CR>
+    let g:lmap.n = {'name': 'leader_ignore'}
+    let g:lmap.n.o = 'leader_ignore'
 
-    "<Leader>BD does bd"
-    let g:which_key_map.B = {'name' : 'which_key_ignore'}
+    let g:lmap.s = {'name': 'leader_ignore'}
+    let g:lmap.s.s = 'leader_ignore'
+    let g:lmap.B = {'name': 'leader_ignore'}
+    let g:lmap.B.D = 'leader_ignore'
 
-    "<Leader>ss opens Startify"
-    let g:which_key_map.s = {'name' : 'which_key_ignore'}
 
-    call which_key#register('<Space>', "g:which_key_map")
+    call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
+    nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+    vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 
 
 "Vim Bindings"
@@ -323,10 +318,28 @@ let home=$HOME
     noremap zh 10zh
     noremap zl 10zl
 
+    function! TabCloseRight(bang)
+        let cur=tabpagenr()
+        while cur < tabpagenr('$')
+            exe 'tabclose' . a:bang . ' ' . (cur + 1)
+        endwhile
+    endfunction
+
+    function! TabCloseLeft(bang)
+        while tabpagenr() > 1
+            exe 'tabclose' . a:bang . ' 1'
+        endwhile
+    endfunction
+
+    "Delete all buffers to the left and right"
+    map <F2> <CMD>2,-1bufdo bd<CR>
+    map <F3> <CMD>+1,$bufdo bd<CR>
 
 
     "Terminal"
     tnoremap <silent> <Esc> <C-\><C-n>
+    "Set Neovim dir to terminal dir"
+    tnoremap <C-b>c pwd\|xclip -selection clipboard<CR><C-\><C-n>:cd <C-r>+<CR>i
 
     tnoremap <C-h> <C-\><C-N><C-w>h
     tnoremap <C-j> <C-\><C-N><C-w>j
@@ -338,6 +351,8 @@ let home=$HOME
     tnoremap <C-M-k> <C-\><C-N><CMD>resize+5<CR>i
     tnoremap <C-M-l> <C-\><C-N><CMD>vertical resize+5<CR>i
     tnoremap <C-M-r> <C-\><C-N><C-W>=i
+
+
 
     au TermOpen * startinsert
 
@@ -371,6 +386,7 @@ let home=$HOME
     map s <plug>(easymotion-bd-f)
     map S <plug>(easymotion-bd-f2)
     let g:EasyMotion_smartcase = 1
+    let g:EasyMotion_do_mapping = 0
 
     "Auto-save"
     let g:auto_save = 1
@@ -383,7 +399,7 @@ let home=$HOME
 
     "Nvim-tree"
     let g:nvim_tree_auto_close = 1
-    let g:nvim_tree_ignore = [ '.class', '.pdf' ]
+    let g:nvim_tree_ignore = [ '*.class', '*.pdf' ]
     let g:nvim_tree_quit_on_open = 1
     let g:nvim_tree_hide_dotfiles = 1
     luafile $HOME/.config/nvim/lua/nvim-tree-config.lua
@@ -461,6 +477,7 @@ let home=$HOME
             \ {'line': 'IN3020', 'cmd': 'cd $HOME/Documents/School/IN3020/'},
             \ {'line': 'Retting', 'cmd': 'cd $HOME/Documents/Retting/'},
             \ {'line': 'Timelister', 'cmd': 'cd $HOME/Documents/School/GRUPPELÆRER/IN1010_2021/timelister'},
+            \ {'line': 'TODO', 'cmd': 'edit $HOME/Documents/TODO.md'},
         \]
         return files
     endfunction
@@ -486,6 +503,14 @@ let home=$HOME
     command! RunTerminal <CMD>TerminatorOpenTerminal<CR><CMD>TerminatorRunFileInTerminal<CR>
     let g:terminator_clear_default_mappings = "foo bar"
 
+    "Discord.nvim"
+    let g:discord_log_warn = 0
+
+    "Vim-leader-guide"
+    let g:leaderGuide_display_plus_menus = 1
+    let g:leaderGuide_vertical = 0
+    let g:leaderGuide_position = 'botleft'
+    let g:leaderGuide_hspace = 5
 
     "Vimtex"
     augroup tex

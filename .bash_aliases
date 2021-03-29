@@ -30,7 +30,7 @@ alias ranger='source ranger'
 alias r=ranger
 alias n=nvim
 
-alias kattispy="/home/jakob/Documents/Personal/KattisSolutions/kattis_shell_python.sh"$1
+alias kattispy="/home/jakob/Documents/Personal/KattisSolutions/kattis_shell_python.sh"
 alias kattissubmit="/home/jakob/Scripts/submit.py"
 alias kotlinrun="/home/jakob/Scripts/kotlinrun.py"
 
