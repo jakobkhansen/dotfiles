@@ -15,6 +15,7 @@ alias la='ls -A'
 alias l='ls'
 alias ff="\$(/home/jakob/Scripts/fzf_navigate.py)"
 alias c="clear"
+alias size="du -sh "
 
 alias dagens="/home/jakob/Documents/Personal/Middag-IFI/middag.py"
 

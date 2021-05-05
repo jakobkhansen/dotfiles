@@ -207,6 +207,15 @@ scroll-down = ~/.config/polybar/polybar-scripts/pulseaudio-control/pulseaudio-co
 label-padding = 2
 label-foreground = ${colors.foreground}
 
+[module/pipewire-control]
+type = custom/script
+label = "%output%"
+exec = ~/.config/polybar/polybar-scripts/pipewire/pipewire.sh
+click-left = exec pavucontrol &
+click-right = ~/.config/polybar/polybar-scripts/pipewire/pipewire.sh mute &
+scroll-up = ~/.config/polybar/polybar-scripts/pipewire/pipewire.sh up &
+scroll-down = ~/.config/polybar/polybar-scripts/pipewire/pipewire.sh down &
+
 
 [module/battery]
 type = internal/battery

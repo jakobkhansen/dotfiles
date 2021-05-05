@@ -1,3 +1,7 @@
+local remap = vim.api.nvim_set_keymap
+local npairs = require('nvim-autopairs')
+_G.CompeConfig = {}
+
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
@@ -25,29 +29,20 @@ require'compe'.setup {
   };
 }
 
+vim.g.completion_confirm_key = ""
+function CompeConfig.compe_completion_confirm ()
+  if vim.fn.pumvisible() ~= 0  then
+    if vim.fn.complete_info()["selected"] ~= -1 then
+      return vim.fn["compe#confirm"](npairs.esc("<c-r>"))
+    else
+      vim.defer_fn(function()
+        vim.fn["compe#confirm"]("<cr>")
+      end, 20)
+      return npairs.autopairs_cr()
+    end
+  else
+    return npairs.autopairs_cr()
+  end
+end
 
---local remap = vim.api.nvim_set_keymap
---local npairs = require('nvim-autopairs')
-
----- skip it, if you use another global object
---_G.MUtils= {}
-
---vim.g.completion_confirm_key = ""
---MUtils.completion_confirm=function()
-  --if vim.fn.pumvisible() ~= 0  then
-    --if vim.fn.complete_info()["selected"] ~= -1 then
-      --vim.fn["compe#confirm"]()
-      --return npairs.esc("<c-y>")
-    --else
-      --vim.defer_fn(function()
-        --vim.fn["compe#confirm"]("<cr>")
-      --end, 20)
-      --return npairs.esc("<c-n>")
-    --end
-  --else
-    --return npairs.check_break_line_char()
-  --end
---end
-
-
---remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+remap('i' , '<CR>','v:lua.CompeConfig.compe_completion_confirm()', { expr = true, noremap = true })

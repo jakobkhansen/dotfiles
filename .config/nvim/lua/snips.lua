@@ -23,5 +23,10 @@ snippets.snippets = {
         math = U.match_indentation "\\$$0\\$",
         checkempty = U.match_indentation "[ ]",
         checkfull = U.match_indentation "[x]"
+    };
+
+    tex = {
+        bullet = U.match_indentation "\\begin{itemize}\n    \\item $0\n\\end{itemize}",
+        numlist = U.match_indentation "\\begin{enumerate}\n    \\item $0\n\\end{enumerate}"
     }
 }

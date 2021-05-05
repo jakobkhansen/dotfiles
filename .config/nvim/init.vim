@@ -27,7 +27,7 @@ let home=$HOME
 
         "Text manipulation"
         Plug 'scrooloose/nerdcommenter'
-        Plug 'cohama/lexima.vim'
+        Plug 'windwp/nvim-autopairs'
 
         "Movement"
         Plug 'easymotion/vim-easymotion'
@@ -55,7 +55,6 @@ let home=$HOME
 
         "Menus"
         Plug 'nvim-telescope/telescope.nvim'
-        "Plug 'liuchengxu/vim-which-key'
         Plug 'mhinz/vim-startify'
         Plug 'spinks/vim-leader-guide'
 
@@ -74,9 +73,7 @@ let home=$HOME
         Plug 'lervag/vimtex'
 
         "Random"
-        "Plug 'hugolgst/vimsence'
-        "Plug 'aurieh/discord.nvim'
-        Plug 'jakobkhansen/discord.nvim', { 'branch': 'logwarnvariable' }
+        Plug 'andweeb/presence.nvim'
 
         
 
@@ -111,10 +108,9 @@ let home=$HOME
     set mouse=a
     set scrolloff=10
     set number
+    set relativenumber
     set timeoutlen=600
     
-    "au BufReadPre,FileReadPre * if !(&ft ==? "NvimTree") | silent! cd %:p:h
-    "autocmd BufReadPost * :cd %:p:h
 
     "Persistent undo"
     let s:undoDir = "/tmp/.undodir_" . $USER
@@ -155,7 +151,8 @@ let home=$HOME
     map <Leader>fz <CMD>Telescope find_files find_command=rg,--hidden,--files prompt_prefix=🔍<CR>
     map <Leader>fg <CMD>Telescope git_files prompt_prefix=🔍<CR>
     map <Leader>fc <CMD>Telescope live_grep prompt_prefix=🔍<CR>
-    map <leader>fl <CMD>NvimTreeToggle<cr><bar><CMD>sleep 50m<CR><CMD>NvimTreeToggle<cr><bar><CMD>sleep 50m<CR><CMD>NvimTreeToggle<cr>
+    map <leader>fl <CMD>NvimTreeToggle<cr><bar><CMD>NvimTreeToggle<CR><bar><CMD>NvimTreeToggle<CR>
+
 
     let g:lmap.f = {'name': 'find'}
     let g:lmap.f.f = 'find-files'
@@ -202,7 +199,18 @@ let home=$HOME
     let g:lmap.l.e.p = 'prev-diagnostic'
 
     "Terminal"
-    map <silent> <Leader>tt <CMD>bot 15split term://zsh<CR>
+    function ToggleTerminal()
+        if &buftype ==# 'terminal'
+            :bd!
+        else
+            :bot 15split term://zsh
+            :set nobl
+            :nnoremap <buffer> <Tab> <Tab>
+            :nnoremap <buffer> <S-Tab> <S-Tab>
+        endif
+    endfunction
+
+    map <silent> <Leader>tt <CMD>call ToggleTerminal()<CR><CMD>set nobl<CR>
     map <silent> <Leader>tv <CMD>vsplit term://zsh<CR>
     map <silent> <Leader>tf <CMD>terminal<CR>
     map <silent> <leader>tr <CMD>TerminatorOpenTerminal<CR><CMD>TerminatorRunFileInTerminal<CR><Esc>:wincmd p<CR>i
@@ -215,8 +223,8 @@ let home=$HOME
 
     "Buffers and cwd"
     map <Leader>be <CMD>enew<CR>
-    map <Leader>bd <CMD>bd!<CR>
-    map <Leader>BD <CMD>bn <bar> :bd!#<CR>
+    map <Leader>bd <CMD>bn <bar> :bd!#<CR>
+    map <Leader>BD <CMD>bd!<CR>
     map <Leader>bc <CMD>cd %:p:h<CR>
     map <Leader>bv <CMD>vsplit<CR>
     map <Leader>bh <CMD>split<CR>
@@ -298,11 +306,13 @@ let home=$HOME
     nnoremap <A-k> :m-2<CR>==
     nnoremap <A-j> :m+<CR>==
 
-    "Buffers"
+    "Buffers and tabs"
     nmap <Tab> <CMD>bn<CR>
     nmap <S-Tab> <CMD>bp<CR>
+    map <A-Tab> <CMD>
     nnoremap <F5> :%bd!<bar>e#<bar>bd!#<CR>
     nnoremap <F6> :bufdo bwipeout!<CR>
+    map <Leader><BS> <CMD>cd ..<CR>
         
     noremap <C-h> <C-w>h
     noremap <C-j> <C-w>j
@@ -332,14 +342,17 @@ let home=$HOME
     endfunction
 
     "Delete all buffers to the left and right"
-    map <F2> <CMD>2,-1bufdo bd<CR>
-    map <F3> <CMD>+1,$bufdo bd<CR>
+    map <F2> <CMD>2,-1bufdo bd!<CR>
+    map <F3> <CMD>+1,$bufdo bd!<CR>
 
 
     "Terminal"
+    tnoremap <silent> <C-q> <Esc>
     tnoremap <silent> <Esc> <C-\><C-n>
     "Set Neovim dir to terminal dir"
-    tnoremap <C-b>c pwd\|xclip -selection clipboard<CR><C-\><C-n>:cd <C-r>+<CR>i
+    au TermOpen * map <buffer> <Leader>bc ipwd\|xclip -selection clipboard<CR><C-\><C-n>:cd <C-r>+<CR>i
+    au TermOpen * map <buffer> <Leader>bd <CMD>call ToggleTerminal()<CR>
+
 
     tnoremap <C-h> <C-\><C-N><C-w>h
     tnoremap <C-j> <C-\><C-N><C-w>j
@@ -408,6 +421,7 @@ let home=$HOME
     luafile /home/jakob/.config/nvim/lua/telescope-config.lua
     "Telescope (or LSP?) randomly fucks with number and signcolumn
     au BufAdd,BufCreate,BufNew * set number
+    au BufAdd,BufCreate,BufNew * set relativenumber
     au BufAdd,BufCreate,BufNew * set signcolumn=no
 
     "Ranger"
@@ -426,20 +440,16 @@ let home=$HOME
     "map <Leader>jls <CMD>sleep 1000m<bar>lua start_jdt()<CR>
     au FileType java call s:java_start_lsp()
 
-    "Lexima"
-    "Return is 
-    "let g:lexima_no_default_rules = v:true
-    call lexima#set_default_rules()
-
     "Nvim-compe"
     set completeopt=menuone,noselect
     set pumheight=10
     inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    inoremap <silent><expr> <CR> compe#confirm(lexima#expand('<LT>CR>', 'i'))
     
-    let g:lexima_accept_pum_with_enter = 1
     luafile $HOME/.config/nvim/lua/nvim-compe-config.lua
+
+    "Nvim-autopairs"
+    luafile $HOME/.config/nvim/lua/nvim-autopairs-config.lua
 
     "Treesitter"
     luafile $HOME/.config/nvim/lua/treesitter-config.lua
@@ -472,12 +482,13 @@ let home=$HOME
 
     function! s:oftenUsed()
         let files = [
+            \ {'line': 'TODO', 'cmd': 'edit $HOME/Documents/TODO.md'},
             \ {'line': 'IN3050', 'cmd': 'cd $HOME/Documents/School/IN3050/'},
             \ {'line': 'IN3030', 'cmd': 'cd $HOME/Documents/School/IN3030/'},
             \ {'line': 'IN3020', 'cmd': 'cd $HOME/Documents/School/IN3020/'},
             \ {'line': 'Retting', 'cmd': 'cd $HOME/Documents/Retting/'},
             \ {'line': 'Timelister', 'cmd': 'cd $HOME/Documents/School/GRUPPELÆRER/IN1010_2021/timelister'},
-            \ {'line': 'TODO', 'cmd': 'edit $HOME/Documents/TODO.md'},
+            \ {'line': 'Kattis', 'cmd': 'cd $HOME/Documents/Personal/KattisSolutions'},
         \]
         return files
     endfunction
@@ -492,19 +503,17 @@ let home=$HOME
     \ ]
 
     let g:startify_lists = [
-    \ { 'type': 'files', 'header': ['Recent'] },
-    \ { 'type': function('s:oftenUsed'), 'header': ['UiO'] },
-    \ { 'type': function('s:configFiles'), 'header': ['Config files'], 'indices': ['cv', 'cb', 'ca', 'ci', 'cr', 'ck', 'cp', 'co'] },
+    \ { 'type': 'files', 'header': ['   Recent'] },
+    \ { 'type': function('s:oftenUsed'), 'header': ['   Often used'], 'indices': ['todo', '3050', '3030', '3020'] },
+    \ { 'type': function('s:configFiles'), 'header': ['   Config files'], 'indices': ['cv', 'cb', 'ca', 'ci', 'cr', 'ck', 'cp', 'co'] },
     \ { 'type': 'commands', 'header': ['Commands'], 'indices': ['cs'] },
-    \ { 'type': function('s:luaFiles'), 'header': ['Lua files'] },
+    \ { 'type': function('s:luaFiles'), 'header': ['   Lua files'] },
     \ ]
 
     "Terminator"
     command! RunTerminal <CMD>TerminatorOpenTerminal<CR><CMD>TerminatorRunFileInTerminal<CR>
     let g:terminator_clear_default_mappings = "foo bar"
 
-    "Discord.nvim"
-    let g:discord_log_warn = 0
 
     "Vim-leader-guide"
     let g:leaderGuide_display_plus_menus = 1
@@ -553,7 +562,7 @@ let home=$HOME
 
     function MarkdownImage(filename)
         silent !mkdir images > /dev/null 2>&1
-        let imageName = ("images/" . expand('%:r') . "_" . a:filename . ".png")
+        let imageName = ("images/" . expand('%:t:h') . "_" . a:filename . ".png")
         silent execute "!scrot -a $(slop -f '\\\%x,\\\%y,\\\%w,\\\%h') --line style=solid,color='white' " . imageName
 
         silent execute "normal! i<center>![Image](" . imageName . ")</center>"

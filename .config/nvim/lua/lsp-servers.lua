@@ -43,7 +43,7 @@ function start_jdt()
             server_side_fuzzy_completion = true,
         };
         capabilities = capabilities;
-        cmd = {'jdtls'};
+        cmd = {'java-lsp.sh'};
 
         settings = {
             java = {
