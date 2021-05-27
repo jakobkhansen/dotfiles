@@ -22,7 +22,13 @@ snippets.snippets = {
         code = U.match_indentation "```$1\n$0\n```",
         math = U.match_indentation "\\$$0\\$",
         checkempty = U.match_indentation "[ ]",
-        checkfull = U.match_indentation "[x]"
+        checkfull = U.match_indentation "[x]",
+
+        derivative = U.match_indentation "\\frac{\\partial}{\\partial $0}",
+
+        bra = U.match_indentation "Bra, dette fungerer helt riktig.",
+        fint = U.match_indentation "Fint, dette fungerer helt riktig.",
+        frivillig = U.match_indentation "Ikke gjort. Anbefaler at du gjør dette som forberedelse til eksamen! :)",
     };
 
     tex = {

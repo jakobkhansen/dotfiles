@@ -83,6 +83,9 @@ nvim_lsp.tsserver.setup{}
 -- Latex
 nvim_lsp.texlab.setup{}
 
+-- Kotlin
+nvim_lsp.kotlin_language_server.setup{}
+
 -- Lua
 USER = vim.fn.expand('$USER')
 

@@ -225,13 +225,15 @@ let home=$HOME
     map <Leader>be <CMD>enew<CR>
     map <Leader>bd <CMD>bn <bar> :bd!#<CR>
     map <Leader>BD <CMD>bd!<CR>
+    map <Leader>bx <CMD>close<CR>
     map <Leader>bc <CMD>cd %:p:h<CR>
     map <Leader>bv <CMD>vsplit<CR>
     map <Leader>bh <CMD>split<CR>
     map <Leader>bo <CMD>ZoomWinTabToggle<CR>
 
     let g:lmap.b = {'name': 'buffer'}
-    let g:lmap.b.d = 'close-file'
+    let g:lmap.b.d = 'buffer-delete'
+    let g:lmap.b.x = 'buffer-close'
     let g:lmap.b.v = 'vertical-split'
     let g:lmap.b.h = 'horizontal-split'
     let g:lmap.b.e = 'open-empty-buffer'
@@ -245,6 +247,7 @@ let home=$HOME
     map <Leader>gd <CMD>Git diff<CR>
     map <Leader>gm <CMD>Git mergetool<CR>
     map <Leader>gs <CMD>G<CR>
+    map <Leader>gb <CMD>silent !gh repo view --web<CR>
 
     let g:lmap.g = {'name': 'git'}
     let g:lmap.g.c = 'git-commits'
@@ -253,6 +256,7 @@ let home=$HOME
     let g:lmap.g.d = 'git-diff'
     let g:lmap.g.m = 'git-mergetool'
     let g:lmap.g.s = 'git-status'
+    let g:lmap.g.b = 'git-browser'
 
 
     "Help"
@@ -506,7 +510,7 @@ let home=$HOME
     \ { 'type': 'files', 'header': ['   Recent'] },
     \ { 'type': function('s:oftenUsed'), 'header': ['   Often used'], 'indices': ['todo', '3050', '3030', '3020'] },
     \ { 'type': function('s:configFiles'), 'header': ['   Config files'], 'indices': ['cv', 'cb', 'ca', 'ci', 'cr', 'ck', 'cp', 'co'] },
-    \ { 'type': 'commands', 'header': ['Commands'], 'indices': ['cs'] },
+    \ { 'type': 'commands', 'header': ['   Commands'], 'indices': ['cs'] },
     \ { 'type': function('s:luaFiles'), 'header': ['   Lua files'] },
     \ ]
 
@@ -543,6 +547,7 @@ let home=$HOME
 
 
     "Markdown"
+    let g:pencil#textwidth = 90
     let g:instant_markdown_autostart = 0
     let g:instant_markdown_autoscroll = 1
     let g:instant_markdown_allow_unsafe_content = 1
@@ -554,7 +559,7 @@ let home=$HOME
       au FileType markdown command! Preview call MarkdownPreview()
       au FileType markdown command! PreviewStop :InstantMarkdownStop
       au FileType markdown command! PreviewPDF call CompileMarkdownPDF()
-      au FileType markdown call pencil#init({'wrap': 'soft', 'autoformat': 0})
+      au FileType markdown call pencil#init({'wrap': 'hard', 'autoformat': 0})
       au FileType markdown command! -nargs=1 Img call MarkdownImage(<f-args>)
       au FileType markdown set conceallevel=2
     augroup END
@@ -573,5 +578,6 @@ let home=$HOME
         silent! :InstantMarkdownPreview
     endfunction
 
-    "Markdown conceal colors is weird because of Polyglot I guess"
+    "Polyglot weird stuff"
+    let g:python_highlight_space_errors = v:false
     hi clear Conceal
