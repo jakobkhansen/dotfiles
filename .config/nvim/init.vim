@@ -65,7 +65,8 @@ let home=$HOME
         Plug 'mfussenegger/nvim-jdtls'
 
         "Snippets"
-        Plug 'norcalli/snippets.nvim'
+        "Plug 'norcalli/snippets.nvim'
+        Plug 'L3MON4D3/LuaSnip'
 
         "Notes"
         Plug 'reedes/vim-pencil'
@@ -279,6 +280,8 @@ let home=$HOME
     let g:lmap.B = {'name': 'leader_ignore'}
     let g:lmap.B.D = 'leader_ignore'
 
+    let g:lmap["<BS>"] = 'leader_ignore'
+
 
     call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
     nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
@@ -352,7 +355,9 @@ let home=$HOME
 
     "Terminal"
     tnoremap <silent> <C-q> <Esc>
+
     tnoremap <silent> <Esc> <C-\><C-n>
+
     "Set Neovim dir to terminal dir"
     au TermOpen * map <buffer> <Leader>bc ipwd\|xclip -selection clipboard<CR><C-\><C-n>:cd <C-r>+<CR>i
     au TermOpen * map <buffer> <Leader>bd <CMD>call ToggleTerminal()<CR>
@@ -458,9 +463,15 @@ let home=$HOME
     "Treesitter"
     luafile $HOME/.config/nvim/lua/treesitter-config.lua
 
-    "Snippets.nvim"
-    luafile $HOME/.config/nvim/lua/nvim-snippets-config.lua
-    luafile $HOME/.config/nvim/lua/snips.lua
+    "LuaSnip"
+    luafile $HOME/.config/nvim/lua/luasnips.lua
+
+    snoremap <silent> <C-k> <cmd>lua require'luasnip'.jump(1)<Cr>
+    snoremap <silent> <C-j> <cmd>lua require'luasnip'.jump(-1)<Cr>
+
+    imap <silent> <C-k> <CMD>lua require'luasnip'.jump(1)<CR>
+    inoremap <silent> <C-j> <cmd>lua require'luasnip'.jump(-1)<Cr>
+
 
     "Bclose"
     let g:bclose_no_plugin_maps = v:true
@@ -503,14 +514,15 @@ let home=$HOME
     endfunction
 
     let g:startify_commands = [
-        \ ['Reload Vim', 'source $MYVIMRC']
+        \ ['Reload Vim', 'source $MYVIMRC'],
+        \ ['Update plugins', 'PlugUpdate']
     \ ]
 
     let g:startify_lists = [
     \ { 'type': 'files', 'header': ['   Recent'] },
     \ { 'type': function('s:oftenUsed'), 'header': ['   Often used'], 'indices': ['todo', '3050', '3030', '3020'] },
     \ { 'type': function('s:configFiles'), 'header': ['   Config files'], 'indices': ['cv', 'cb', 'ca', 'ci', 'cr', 'ck', 'cp', 'co'] },
-    \ { 'type': 'commands', 'header': ['   Commands'], 'indices': ['cs'] },
+    \ { 'type': 'commands', 'header': ['   Commands'], 'indices': ['cs', 'pu'] },
     \ { 'type': function('s:luaFiles'), 'header': ['   Lua files'] },
     \ ]
 

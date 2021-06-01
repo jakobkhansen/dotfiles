@@ -24,7 +24,7 @@ require'compe'.setup {
     nvim_lua = true;
     spell = true;
     tags = true;
-    snippets_nvim = true;
+    luasnip = true;
     treesitter = true;
   };
 }

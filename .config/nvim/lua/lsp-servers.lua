@@ -1,5 +1,3 @@
-require'snippets'.use_suggested_mappings()
-
 -- Setup
 local nvim_lsp = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -31,12 +29,30 @@ local function jdtls_on_attach()
     require'jdtls.setup'.add_commands()
 end
 
+function find_root_better(markers, bufname)
+  bufname = bufname or vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+  local dirname = vim.fn.fnamemodify(bufname, ':p:h')
+  local getparent = function(p)
+    return vim.fn.fnamemodify(p, ':h')
+  end
+  while not (getparent(dirname) == dirname) do
+    for _, marker in ipairs(markers) do
+      if vim.loop.fs_stat(require('jdtls.path').join(dirname, marker)) then
+        return dirname
+      end
+    end
+    dirname = getparent(dirname)
+  end
+  return vim.fn.getcwd()
+end
+
 function start_jdt()
     local config = {
         init_options = {
-            extendedClientCapabilities = extendedClientCapabilities
+            extendedClientCapabilities = extendedClientCapabilities;
         },
-        root_dir = vim.fn.getcwd(),       --root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml'}),
+        --root_dir = vim.fn.getcwd(),
+        root_dir = find_root_better({'build.gradle', 'pom.xml'}),
         on_attach = jdtls_on_attach,
         flags = {
             allow_incremental_sync = true,
