@@ -501,8 +501,7 @@ let home=$HOME
             \ {'line': 'IN3050', 'cmd': 'cd $HOME/Documents/School/IN3050/'},
             \ {'line': 'IN3030', 'cmd': 'cd $HOME/Documents/School/IN3030/'},
             \ {'line': 'IN3020', 'cmd': 'cd $HOME/Documents/School/IN3020/'},
-            \ {'line': 'Retting', 'cmd': 'cd $HOME/Documents/Retting/'},
-            \ {'line': 'Timelister', 'cmd': 'cd $HOME/Documents/School/GRUPPELÆRER/IN1010_2021/timelister'},
+            \ {'line': 'Neovim', 'cmd': 'cd $HOME/.config/nvim/'},
             \ {'line': 'Kattis', 'cmd': 'cd $HOME/Documents/Personal/KattisSolutions'},
         \]
         return files
