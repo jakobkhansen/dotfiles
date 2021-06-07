@@ -29,6 +29,10 @@ require'compe'.setup {
   };
 }
 
+vim.api.nvim_command([[
+    autocmd BufEnter *.md :setlocal spell
+]])
+
 vim.g.completion_confirm_key = ""
 function CompeConfig.compe_completion_confirm ()
   if vim.fn.pumvisible() ~= 0  then

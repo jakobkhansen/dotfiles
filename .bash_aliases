@@ -42,6 +42,7 @@ alias pushschool="cd /home/jakob/Documents/School; git add .; git commit -m 'Upd
 alias gitview="gh repo view --web"
 alias gitroot="cd \$(git rev-parse --show-toplevel)"
 
+
 function gitpush() {
     git add -u 
     git commit -m $1
@@ -64,3 +65,7 @@ alias tlmgr="/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode"
 alias anaconda="export PATH=\"$HOME/.config/anaconda3/bin:\$PATH\""
 
 alias drag="dragon-drag-and-drop"
+
+alias monleft="xrandr --auto; xrandr --output HDMI-1 --left-of eDP-1"
+alias monright="xrandr --auto; xrandr --output HDMI-1 --right-of eDP-1"
+alias mondup="xrandr --auto; xrandr --output HDMI-1 --same-as eDP-1"

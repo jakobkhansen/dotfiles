@@ -15,7 +15,6 @@
     "6. Plugin configuration"
 
 let mapleader="\<Space>"
-let home=$HOME
 
 "Plugins"
     call plug#begin()
@@ -148,7 +147,7 @@ let home=$HOME
 
     "Find x"
     map <Leader>ff <CMD>Telescope find_files prompt_prefix=🔍<CR>
-    map <Leader>fh <CMD>Telescope find_files find_command=rg,--files,/home/jakob prompt_prefix=🔍<CR>
+    map <Leader>fh <CMD>Telescope find_files find_command=rg,--files,/home/ prompt_prefix=🔍<CR>
     map <Leader>fz <CMD>Telescope find_files find_command=rg,--hidden,--files prompt_prefix=🔍<CR>
     map <Leader>fg <CMD>Telescope git_files prompt_prefix=🔍<CR>
     map <Leader>fc <CMD>Telescope live_grep prompt_prefix=🔍<CR>
@@ -245,19 +244,29 @@ let home=$HOME
     map <Leader>gc <CMD>Telescope git_commits prompt_prefix=🔍<CR>
     map <Leader>gb <CMD>Telescope git_branches prompt_prefix=🔍<CR>
     map <Leader>gh <CMD>Git blame<CR>
-    map <Leader>gd <CMD>Git diff<CR>
     map <Leader>gm <CMD>Git mergetool<CR>
-    map <Leader>gs <CMD>G<CR>
-    map <Leader>gb <CMD>silent !gh repo view --web<CR>
+    map <Leader>gs <CMD>Ge :<CR>
+    map <Leader>gv <CMD>silent !gh repo view --web<CR>
+
+    map <Leader>gdo <CMD>Gvdiffsplit!<CR>
+    map <Leader>gdh <CMD>diffget //2<CR>
+    map <Leader>gdl <CMD>diffget //3<CR>
+    map <Leader>gdu <CMD>diffupdate<CR>
 
     let g:lmap.g = {'name': 'git'}
     let g:lmap.g.c = 'git-commits'
     let g:lmap.g.b = 'git-branch'
     let g:lmap.g.h = 'git-blame'
-    let g:lmap.g.d = 'git-diff'
     let g:lmap.g.m = 'git-mergetool'
     let g:lmap.g.s = 'git-status'
-    let g:lmap.g.b = 'git-browser'
+    let g:lmap.g.v = 'git-browser'
+
+    let g:lmap.g.d = {'name': 'git-diff'}
+    let g:lmap.g.d.o = 'git-diff-vsplit'
+    let g:lmap.g.d.h = 'git-diff-take-left'
+    let g:lmap.g.d.l = 'git-diff-take-right'
+    let g:lmap.g.d.u = 'git-diff-update'
+
 
 
     "Help"
@@ -427,7 +436,7 @@ let home=$HOME
     luafile $HOME/.config/nvim/lua/nvim-tree-config.lua
 
     "Telescope"
-    luafile /home/jakob/.config/nvim/lua/telescope-config.lua
+    luafile $HOME/.config/nvim/lua/telescope-config.lua
     "Telescope (or LSP?) randomly fucks with number and signcolumn
     au BufAdd,BufCreate,BufNew * set number
     au BufAdd,BufCreate,BufNew * set relativenumber
@@ -592,3 +601,9 @@ let home=$HOME
     "Polyglot weird stuff"
     let g:python_highlight_space_errors = v:false
     hi clear Conceal
+
+    "Hide spelling mistakes"
+    hi clear SpellBad
+    hi clear SpellCap
+    hi clear SpellRare
+    hi clear SpellLocal
