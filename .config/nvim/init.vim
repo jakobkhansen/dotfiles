@@ -29,7 +29,6 @@ let mapleader="\<Space>"
         Plug 'windwp/nvim-autopairs'
 
         "Movement"
-        Plug 'easymotion/vim-easymotion'
         Plug 'psliwka/vim-smoothie'
 
         "Syntax highlighting"
@@ -44,13 +43,13 @@ let mapleader="\<Space>"
         Plug 'vim-airline/vim-airline'
         Plug 'vim-airline/vim-airline-themes'
         Plug 'kyazdani42/nvim-web-devicons'
+        Plug 'folke/tokyonight.nvim'
 
 
         "Files and git"
         Plug '907th/vim-auto-save'
         Plug 'tpope/vim-fugitive'
         Plug 'kyazdani42/nvim-tree.lua'
-        Plug 'erietz/vim-terminator'
 
         "Menus"
         Plug 'nvim-telescope/telescope.nvim'
@@ -62,9 +61,12 @@ let mapleader="\<Space>"
         Plug 'RishabhRD/nvim-lsputils'
         Plug 'hrsh7th/nvim-compe'
         Plug 'mfussenegger/nvim-jdtls'
+        Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+
+        "Debugging"
+        Plug 'erietz/vim-terminator'
 
         "Snippets"
-        "Plug 'norcalli/snippets.nvim'
         Plug 'L3MON4D3/LuaSnip'
 
         "Notes"
@@ -109,7 +111,7 @@ let mapleader="\<Space>"
     set scrolloff=10
     set number
     set relativenumber
-    set timeoutlen=600
+    set timeoutlen=300
     
 
     "Persistent undo"
@@ -152,6 +154,7 @@ let mapleader="\<Space>"
     map <Leader>fg <CMD>Telescope git_files prompt_prefix=🔍<CR>
     map <Leader>fc <CMD>Telescope live_grep prompt_prefix=🔍<CR>
     map <leader>fl <CMD>NvimTreeToggle<cr><bar><CMD>NvimTreeToggle<CR><bar><CMD>NvimTreeToggle<CR>
+    map <Leader>fb <CMD>Telescope buffers<CR>
 
 
     let g:lmap.f = {'name': 'find'}
@@ -178,7 +181,6 @@ let mapleader="\<Space>"
     map <silent> <Leader>lel <CMD>LspLineDiagnostics<CR>
     map <silent> <Leader>len <CMD>LspDiagnosticsNext<CR>
     map <silent> <Leader>lep <CMD>LspDiagnosticsPrev<CR>
-    imap <silent> <A-Tab> <CMD>LspHover<CR>
 
     let g:lmap.l = {'name': 'lsp'}
     let g:lmap.l.h = 'show-hover'
@@ -230,6 +232,7 @@ let mapleader="\<Space>"
     map <Leader>bv <CMD>vsplit<CR>
     map <Leader>bh <CMD>split<CR>
     map <Leader>bo <CMD>ZoomWinTabToggle<CR>
+    map <Leader>bt <CMD>tabnew<CR>
 
     let g:lmap.b = {'name': 'buffer'}
     let g:lmap.b.d = 'buffer-delete'
@@ -237,6 +240,7 @@ let mapleader="\<Space>"
     let g:lmap.b.v = 'vertical-split'
     let g:lmap.b.h = 'horizontal-split'
     let g:lmap.b.e = 'open-empty-buffer'
+    let g:lmap.b.t = 'open-new-tab'
     let g:lmap.b.c = 'set-cwd'
     let g:lmap.b.o = 'toggle-fullscreen'
 
@@ -312,6 +316,10 @@ let mapleader="\<Space>"
     vmap <silent> K 10k
     vmap <silent> J 10j
 
+    au FileType startify map K 10k
+    au FileType startify map J 10j
+    
+
     noremap <silent> ; ,
     noremap <silent> , ;
 
@@ -325,7 +333,10 @@ let mapleader="\<Space>"
     "Buffers and tabs"
     nmap <Tab> <CMD>bn<CR>
     nmap <S-Tab> <CMD>bp<CR>
-    map <A-Tab> <CMD>
+
+    map <A-Tab> <CMD>tabNext<CR>
+    map <A-S-Tab> <CMD>tabprevious<CR>
+
     nnoremap <F5> :%bd!<bar>e#<bar>bd!#<CR>
     nnoremap <F6> :bufdo bwipeout!<CR>
     map <Leader><BS> <CMD>cd ..<CR>
@@ -413,11 +424,6 @@ let mapleader="\<Space>"
 
 
 "Plugin configuration"
-    "Easymotion"
-    map s <plug>(easymotion-bd-f)
-    map S <plug>(easymotion-bd-f2)
-    let g:EasyMotion_smartcase = 1
-    let g:EasyMotion_do_mapping = 0
 
     "Auto-save"
     let g:auto_save = 1
@@ -433,7 +439,21 @@ let mapleader="\<Space>"
     let g:nvim_tree_ignore = [ '*.class', '*.pdf' ]
     let g:nvim_tree_quit_on_open = 1
     let g:nvim_tree_hide_dotfiles = 1
+    let g:nvim_tree_window_picker_exclude = {
+    \   'buftype': [
+    \     'terminal'
+    \   ]
+    \ }
     luafile $HOME/.config/nvim/lua/nvim-tree-config.lua
+
+    "Special cd binding for NvimTree"
+    function! Set_cwd()
+        let new_dir = expand("%:p:h")
+        let command = "cd " . new_dir
+        :windo execute command
+    endfunction
+
+    autocmd FileType NvimTree map <buffer> <Leader>bc <CMD>call Set_cwd()<CR>
 
     "Telescope"
     luafile $HOME/.config/nvim/lua/telescope-config.lua
@@ -584,6 +604,7 @@ let mapleader="\<Space>"
       au FileType markdown set conceallevel=2
     augroup END
 
+    command! Open :silent !xdg-open '%:p' &
 
     function MarkdownImage(filename)
         silent !mkdir images > /dev/null 2>&1

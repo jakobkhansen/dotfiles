@@ -26,10 +26,12 @@ extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 
 local function jdtls_on_attach()
+    require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+    require('virtualtypes').on_attach()
     require'jdtls.setup'.add_commands()
 end
 
-function find_root_better(markers, bufname)
+function Find_root_better(markers, bufname)
   bufname = bufname or vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
   local dirname = vim.fn.fnamemodify(bufname, ':p:h')
   local getparent = function(p)
@@ -46,13 +48,15 @@ function find_root_better(markers, bufname)
   return vim.fn.getcwd()
 end
 
+
+
 function start_jdt()
     local config = {
         init_options = {
             extendedClientCapabilities = extendedClientCapabilities;
         },
         --root_dir = vim.fn.getcwd(),
-        root_dir = find_root_better({'build.gradle', 'pom.xml'}),
+        root_dir = Find_root_better({'build.gradle', 'pom.xml'}),
         on_attach = jdtls_on_attach,
         flags = {
             allow_incremental_sync = true,
@@ -94,7 +98,48 @@ function start_jdt()
 end
 
 -- Typescript
-nvim_lsp.tsserver.setup{}
+nvim_lsp.tsserver.setup{
+    on_attach = function(client, bufnr)
+    -- disable tsserver formatting if you plan on formatting via null-ls
+
+        local ts_utils = require("nvim-lsp-ts-utils")
+
+        -- defaults
+        ts_utils.setup {
+            debug = false,
+            disable_commands = false,
+            enable_import_on_completion = false,
+
+            -- eslint
+            eslint_enable_code_actions = true,
+            eslint_enable_disable_comments = true,
+            eslint_bin = "eslint",
+            eslint_config_fallback = nil,
+
+            -- eslint diagnostics
+            eslint_enable_diagnostics = true,
+            eslint_diagnostics_debounce = 250,
+
+            -- formatting
+            enable_formatting = false,
+            formatter = "prettier",
+            formatter_config_fallback = nil,
+
+            -- parentheses completion
+            complete_parens = false,
+            signature_help_in_parens = false,
+
+            -- update imports on file move
+            update_imports_on_move = false,
+            require_confirmation_on_move = false,
+            watch_dir = nil,
+        }
+
+        -- required to fix code action ranges
+        ts_utils.setup_client(client)
+
+    end
+}
 
 -- Latex
 nvim_lsp.texlab.setup{}
