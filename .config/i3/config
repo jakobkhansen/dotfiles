@@ -248,3 +248,5 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +10%
 
 # Lock-screen
 bindsym $mod+shift+x exec --no-startup-id betterlockscreen -l dim
+
+

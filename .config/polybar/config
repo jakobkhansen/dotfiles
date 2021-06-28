@@ -200,7 +200,7 @@ label=%output%
 
 format-underline = ${colors.blue}
 
-exec = pulseaudio-control --sink-nicknames-from device.description listen
+exec = pulseaudio-control --sink-nickname alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi___ucm0001.hw_sofhdadsp__sink:Speakers --sink-nickname bluez_sink.38_FB_14_E5_9A_B9.a2dp_sink:Freebuds listen
 click-left = exec pavucontrol &
 scroll-up = ~/.config/polybar/polybar-scripts/pulseaudio-control/pulseaudio-control.bash up
 scroll-down = ~/.config/polybar/polybar-scripts/pulseaudio-control/pulseaudio-control.bash down
