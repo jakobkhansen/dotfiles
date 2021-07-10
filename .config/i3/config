@@ -172,6 +172,7 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id "compton --config /home/jakob/.config/compton/compton.conf"
 exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "polybar -r MainBar"
+exec --no-startup-id "polybar -r SecondMonitor"
 exec --no-startup-id redshift
 exec --no-startup-id i3-battery-popup -n -L 15 -t 30s -s ~/.config/dunst/light.mp3
 exec --no-startup-id unclutter

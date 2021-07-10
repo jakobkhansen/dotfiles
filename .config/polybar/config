@@ -331,3 +331,6 @@ card = intel_backlight
 ; Default: false
 enable-scroll = true
 
+[bar/SecondMonitor]
+inherit = bar/MainBar
+monitor = HDMI-1

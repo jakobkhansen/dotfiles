@@ -50,6 +50,8 @@ let mapleader="\<Space>"
         Plug '907th/vim-auto-save'
         Plug 'tpope/vim-fugitive'
         Plug 'kyazdani42/nvim-tree.lua'
+        Plug 'idanarye/vim-merginal'
+        Plug 'rhysd/conflict-marker.vim'
 
         "Menus"
         Plug 'nvim-telescope/telescope.nvim'
@@ -246,15 +248,15 @@ let mapleader="\<Space>"
 
     "Git"
     map <Leader>gc <CMD>Telescope git_commits prompt_prefix=🔍<CR>
-    map <Leader>gb <CMD>Telescope git_branches prompt_prefix=🔍<CR>
+    map <Leader>gb <CMD>Merginal<CR>
     map <Leader>gh <CMD>Git blame<CR>
     map <Leader>gm <CMD>Git mergetool<CR>
     map <Leader>gs <CMD>Ge :<CR>
     map <Leader>gv <CMD>silent !gh repo view --web<CR>
 
     map <Leader>gdo <CMD>Gvdiffsplit!<CR>
-    map <Leader>gdh <CMD>diffget //2<CR>
-    map <Leader>gdl <CMD>diffget //3<CR>
+    map <Leader>gdh <CMD>ConflictMarkerOurselves<CR>
+    map <Leader>gdl <CMD>ConflictMarkerThemselves<CR>
     map <Leader>gdu <CMD>diffupdate<CR>
 
     let g:lmap.g = {'name': 'git'}
@@ -267,8 +269,8 @@ let mapleader="\<Space>"
 
     let g:lmap.g.d = {'name': 'git-diff'}
     let g:lmap.g.d.o = 'git-diff-vsplit'
-    let g:lmap.g.d.h = 'git-diff-take-left'
-    let g:lmap.g.d.l = 'git-diff-take-right'
+    let g:lmap.g.d.h = 'git-diff-take-ours'
+    let g:lmap.g.d.l = 'git-diff-take-theirs'
     let g:lmap.g.d.u = 'git-diff-update'
 
 
