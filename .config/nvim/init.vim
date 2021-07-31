@@ -48,8 +48,8 @@ let mapleader="\<Space>"
 
         "Files and git"
         Plug '907th/vim-auto-save'
-        Plug 'tpope/vim-fugitive'
         Plug 'kyazdani42/nvim-tree.lua'
+        Plug 'tpope/vim-fugitive'
         Plug 'idanarye/vim-merginal'
         Plug 'rhysd/conflict-marker.vim'
 
@@ -65,9 +65,6 @@ let mapleader="\<Space>"
         Plug 'mfussenegger/nvim-jdtls'
         Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
-        "Debugging"
-        Plug 'erietz/vim-terminator'
-
         "Snippets"
         Plug 'L3MON4D3/LuaSnip'
 
@@ -75,6 +72,7 @@ let mapleader="\<Space>"
         Plug 'reedes/vim-pencil'
         Plug 'instant-markdown/vim-instant-markdown'
         Plug 'lervag/vimtex'
+        Plug 'vhyrro/neorg'
 
         "Random"
         Plug 'andweeb/presence.nvim'
@@ -277,7 +275,6 @@ let mapleader="\<Space>"
 
     "Help"
     map <silent> <Leader>ht <CMD>Telescope help_tags prompt_prefix=🔍<CR>
-    map <silent> <Leader>hm <CMD>Telescope man_pages prompt_prefix=🔍<CR>
     map <silent> <Leader>hw <CMD>execute "h " . expand("<cword>")<CR>
 
     let g:lmap.h = {'name': 'help'}
@@ -433,7 +430,7 @@ let mapleader="\<Space>"
     let g:auto_save_events = ["CursorHold", "InsertLeave", "TextChanged"]
 
     "Nerd commenter"
-    noremap # :call NERDComment(0, "toggle")<CR>
+    noremap <silent> # :call nerdcommenter#Comment(0, "toggle")<CR>
     let g:NERDCreateDefaultMappings = 0
 
     "Nvim-tree"
@@ -503,13 +500,15 @@ let mapleader="\<Space>"
     imap <silent> <C-k> <CMD>lua require'luasnip'.jump(1)<CR>
     inoremap <silent> <C-j> <cmd>lua require'luasnip'.jump(-1)<Cr>
 
+    "Neorg"
+    luafile $HOME/.config/nvim/lua/neorg-config.lua
 
     "Bclose"
     let g:bclose_no_plugin_maps = v:true
 
-
     "Startify"
     map <Leader>ss <CMD>Startify<CR>
+
     let g:startify_files_number = 5
     function! s:configFiles()
         let files = [
@@ -556,16 +555,13 @@ let mapleader="\<Space>"
     \ { 'type': function('s:luaFiles'), 'header': ['   Lua files'] },
     \ ]
 
-    "Terminator"
-    command! RunTerminal <CMD>TerminatorOpenTerminal<CR><CMD>TerminatorRunFileInTerminal<CR>
-    let g:terminator_clear_default_mappings = "foo bar"
-
 
     "Vim-leader-guide"
     let g:leaderGuide_display_plus_menus = 1
     let g:leaderGuide_vertical = 0
     let g:leaderGuide_position = 'botleft'
     let g:leaderGuide_hspace = 5
+
 
     "Vimtex"
     augroup tex
@@ -600,7 +596,6 @@ let mapleader="\<Space>"
     augroup markdown
       au FileType markdown command! Preview call MarkdownPreview()
       au FileType markdown command! PreviewStop :InstantMarkdownStop
-      au FileType markdown command! PreviewPDF call CompileMarkdownPDF()
       au FileType markdown call pencil#init({'wrap': 'hard', 'autoformat': 0})
       au FileType markdown command! -nargs=1 Img call MarkdownImage(<f-args>)
       au FileType markdown set conceallevel=2

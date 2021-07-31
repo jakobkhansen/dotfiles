@@ -26,6 +26,7 @@ require'compe'.setup {
     tags = true;
     luasnip = true;
     treesitter = true;
+    neorg = true;
   };
 }
 

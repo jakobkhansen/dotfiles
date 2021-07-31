@@ -44,7 +44,7 @@ ls.snippets = {
         ls.parser.parse_snippet({trig="math"}, "\\$$0\\$"),
         ls.parser.parse_snippet({trig="checkempty"}, "[ ]"),
         ls.parser.parse_snippet({trig="checkfull"}, "[x]"),
-    }
+    },
 }
 
 
