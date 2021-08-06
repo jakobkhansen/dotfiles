@@ -77,9 +77,6 @@ let mapleader="\<Space>"
         "Random"
         Plug 'andweeb/presence.nvim'
 
-        
-
-
     call plug#end()
 
 
@@ -100,8 +97,8 @@ let mapleader="\<Space>"
 
     "Buffers"
     set hidden
-    set splitbelow
     set splitright
+    set splitbelow
 
     "Random options"
     set nowrap
@@ -154,6 +151,7 @@ let mapleader="\<Space>"
     map <Leader>fg <CMD>Telescope git_files prompt_prefix=🔍<CR>
     map <Leader>fc <CMD>Telescope live_grep prompt_prefix=🔍<CR>
     map <leader>fl <CMD>NvimTreeToggle<cr><bar><CMD>NvimTreeToggle<CR><bar><CMD>NvimTreeToggle<CR>
+    "map <leader>fl <CMD>NvimTreeToggle<cr>
     map <Leader>fb <CMD>Telescope buffers<CR>
 
 
@@ -209,6 +207,7 @@ let mapleader="\<Space>"
             :set nobl
             :nnoremap <buffer> <Tab> <Tab>
             :nnoremap <buffer> <S-Tab> <S-Tab>
+            :nnoremap <buffer> <Leader>bd <CMD>call ToggleTerminal()<CR>
         endif
     endfunction
 
@@ -379,8 +378,6 @@ let mapleader="\<Space>"
 
     "Set Neovim dir to terminal dir"
     au TermOpen * map <buffer> <Leader>bc ipwd\|xclip -selection clipboard<CR><C-\><C-n>:cd <C-r>+<CR>i
-    au TermOpen * map <buffer> <Leader>bd <CMD>call ToggleTerminal()<CR>
-
 
     tnoremap <C-h> <C-\><C-N><C-w>h
     tnoremap <C-j> <C-\><C-N><C-w>j
@@ -429,6 +426,7 @@ let mapleader="\<Space>"
     let g:auto_save_silent = 1
     let g:auto_save_events = ["CursorHold", "InsertLeave", "TextChanged"]
 
+
     "Nerd commenter"
     noremap <silent> # :call nerdcommenter#Comment(0, "toggle")<CR>
     let g:NERDCreateDefaultMappings = 0
@@ -457,12 +455,9 @@ let mapleader="\<Space>"
     "Telescope"
     luafile $HOME/.config/nvim/lua/telescope-config.lua
     "Telescope (or LSP?) randomly fucks with number and signcolumn
-    au BufAdd,BufCreate,BufNew * set number
-    au BufAdd,BufCreate,BufNew * set relativenumber
-    au BufAdd,BufCreate,BufNew * set signcolumn=no
-
-    "Ranger"
-    let g:ranger_map_keys = 0
+    "au BufAdd,BufCreate,BufNew * set number
+    "au BufAdd,BufCreate,BufNew * set relativenumber
+    "au BufAdd,BufCreate,BufNew * set signcolumn=no
 
     "LSP"
     luafile $HOME/.config/nvim/lua/lsp-servers.lua
@@ -503,6 +498,7 @@ let mapleader="\<Space>"
     "Neorg"
     luafile $HOME/.config/nvim/lua/neorg-config.lua
 
+
     "Bclose"
     let g:bclose_no_plugin_maps = v:true
 
@@ -527,12 +523,13 @@ let mapleader="\<Space>"
 
     function! s:oftenUsed()
         let files = [
-            \ {'line': 'TODO', 'cmd': 'edit $HOME/Documents/TODO.md'},
-            \ {'line': 'IN3050', 'cmd': 'cd $HOME/Documents/School/IN3050/'},
-            \ {'line': 'IN3030', 'cmd': 'cd $HOME/Documents/School/IN3030/'},
-            \ {'line': 'IN3020', 'cmd': 'cd $HOME/Documents/School/IN3020/'},
+            \ {'line': 'TODO', 'cmd': 'edit $HOME/Documents/TODO.norg'},
+            "\ {'line': 'IN3050', 'cmd': 'cd $HOME/Documents/School/IN3050/'},
+            "\ {'line': 'IN3030', 'cmd': 'cd $HOME/Documents/School/IN3030/'},
+            "\ {'line': 'IN3020', 'cmd': 'cd $HOME/Documents/School/IN3020/'},
             \ {'line': 'Neovim', 'cmd': 'cd $HOME/.config/nvim/'},
             \ {'line': 'Kattis', 'cmd': 'cd $HOME/Documents/Personal/KattisSolutions'},
+            \ {'line': 'jakobhansen.dev', 'cmd': 'cd $HOME/Documents/Dev/jakobhansen.dev'}
         \]
         return files
     endfunction
@@ -544,14 +541,15 @@ let mapleader="\<Space>"
 
     let g:startify_commands = [
         \ ['Reload Vim', 'source $MYVIMRC'],
-        \ ['Update plugins', 'PlugUpdate']
+        \ ['Update plugins', 'PlugUpdate'],
+        \ ['Clean plugins', 'PlugClean']
     \ ]
 
     let g:startify_lists = [
     \ { 'type': 'files', 'header': ['   Recent'] },
-    \ { 'type': function('s:oftenUsed'), 'header': ['   Often used'], 'indices': ['todo', '3050', '3030', '3020'] },
+    \ { 'type': function('s:oftenUsed'), 'header': ['   Often used'], 'indices': ['todo'] },
     \ { 'type': function('s:configFiles'), 'header': ['   Config files'], 'indices': ['cv', 'cb', 'ca', 'ci', 'cr', 'ck', 'cp', 'co'] },
-    \ { 'type': 'commands', 'header': ['   Commands'], 'indices': ['cs', 'pu'] },
+    \ { 'type': 'commands', 'header': ['   Commands'], 'indices': ['cs', 'pu', 'pc'] },
     \ { 'type': function('s:luaFiles'), 'header': ['   Lua files'] },
     \ ]
 
