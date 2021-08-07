@@ -175,8 +175,9 @@ lmap.h = {
 noremap('<Leader>no', '<CMD>nohlsearch<CR>')
 map('<Leader><BS>', '<CMD>cd ..<CR>')
 
-lmap.n = { name = 'leader_ignore' }
-lmap.n.o = 'leader_ignore'
+lmap.n = { name = 'leader_ignore', n = 'leader_ignore'}
+lmap['<BS>'] = 'leader_ignore'
+lmap.s = { name = 'leader_ignore', s = 'leader_ignore'}
 
 
 
@@ -188,6 +189,7 @@ vim.g.lmap = lmap
 
 vim.g.leaderGuide_display_plus_menus = 1
 vim.g.leaderGuide_vertical = 0
+vim.g.leaderGuide_position = 'botleft'
 vim.g.leaderGuide_hspace = 5
 
 vimscript('call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")', false)

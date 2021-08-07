@@ -51,6 +51,7 @@ vim.g.startify_lists = {
     { type = 'files', header = {'   Recent'} },
     { type = oftenUsed, header = {'   Often used'}, indices={'todo'}},
     { type = configFiles, header = {'   Config files'}, indices = {'cv', 'cb', 'ca', 'ci', 'cr', 'ck', 'cp', 'co'}},
+    { type = 'commands', header = {'   Commands'}, indices = {'cs', 'pu', 'pc'} },
     { type = luaFiles, header = {'   Lua config files'} },
 
 }

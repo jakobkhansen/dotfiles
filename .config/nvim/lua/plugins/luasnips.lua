@@ -1,4 +1,8 @@
 local ls = require'luasnip'
+local vimp = require('vimp')
+local snoremap = vimp.snoremap
+local imap = vimp.imap
+local inoremap = vimp.inoremap
 
 
 -- Every unspecified option will be set to the default.
@@ -51,3 +55,13 @@ ls.snippets = {
 }
 
 
+snoremap({'silent'}, '<C-k>', '<CMD>lua require("luasnip").jump(1)<CR>')
+snoremap({'silent'}, '<C-j>', '<CMD>lua require("luasnip").jump(-1)<CR>')
+imap({'silent'}, '<C-j>', '<CMD>lua require("luasnip").jump(-1)<CR>')
+imap({'silent'}, '<C-k>', '<CMD>lua require("luasnip").jump(1)<CR>')
+
+--snoremap <silent> <C-k> <cmd>lua require'luasnip'.jump(1)<Cr>
+--snoremap <silent> <C-j> <cmd>lua require'luasnip'.jump(-1)<Cr>
+
+--imap <silent> <C-k> <CMD>lua require'luasnip'.jump(1)<CR>
+--inoremap <silent> <C-j> <cmd>lua require'luasnip'.jump(-1)<Cr>
