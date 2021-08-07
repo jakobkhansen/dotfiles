@@ -1,4 +1,8 @@
+local command = vim.api.nvim_command
+local vimscript = vim.api.nvim_exec
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+local noremap = require('vimp').noremap
+
 
 vim.g.nvim_tree_auto_close = 1
 vim.g.nvim_tree_ignore = {'*.class', '*.pdf'}
@@ -42,3 +46,13 @@ vim.g.nvim_tree_bindings = {
   { key = "q",                            cb = tree_cb("close") },
   { key = "g?",                           cb = tree_cb("toggle_help") },
 }
+
+function Set_cwd()
+    dir = vim.fn.expand('%:p:h')
+    cd_command = 'cd ' .. dir
+    command('windo ' .. cd_command)
+end
+
+
+vimscript('autocmd FileType NvimTree map <buffer> <Leader>bc <CMD>lua Set_cwd()<CR>', false)
+
