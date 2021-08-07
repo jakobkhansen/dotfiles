@@ -1,6 +1,7 @@
 -- Setup
 local nvim_lsp = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+local vimscript = vim.api.nvim_exec
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 capabilities.workspace.configuration = true
 
@@ -62,6 +63,7 @@ end
 
 
 function start_jdt()
+    vimscript('cd %:p:h', false)
     local config = {
         init_options = {
             extendedClientCapabilities = extendedClientCapabilities;
@@ -107,6 +109,10 @@ function start_jdt()
 
     require('jdtls').start_or_attach(config)
 end
+
+vimscript('au FileType java lua start_jdt()', false)
+
+
 
 -- Typescript
 nvim_lsp.tsserver.setup{

@@ -51,3 +51,5 @@ function CompeConfig.compe_completion_confirm ()
 end
 
 remap('i' , '<CR>','v:lua.CompeConfig.compe_completion_confirm()', { expr = true, noremap = true })
+remap('i', '<Tab>', 'pumvisible() ? "<C-n>" : "<Tab>"', { expr = true })
+remap('i', '<S-Tab>', 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })

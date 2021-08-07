@@ -1,32 +1,14 @@
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
--- Old
---vim.g.nvim_tree_bindings = {
-  --["l"]              = tree_cb("edit"),
-  --["o"]              = tree_cb("edit"),
-  --["<2-LeftMouse>"]  = tree_cb("edit"),
-  --["<2-RightMouse>"] = tree_cb("cd"),
-  --["<CR>"]           = tree_cb("cd"),
-  --["<C-v>"]          = tree_cb("vsplit"),
-  --["<C-h>"]          = tree_cb("split"),
-  --["<C-t>"]          = tree_cb("tabnew"),
-  --["h"]              = tree_cb("close_node"),
-  --["<S-CR>"]         = tree_cb("close_node"),
-  --["<Tab>"]          = tree_cb("preview"),
-  --["I"]              = tree_cb("toggle_ignored"),
-  --["z"]              = tree_cb("toggle_dotfiles"),
-  --["R"]              = tree_cb("refresh"),
-  --["a"]              = tree_cb("create"),
-  --["d"]              = tree_cb("remove"),
-  --["r"]              = tree_cb("rename"),
-  --["<C-r>"]          = tree_cb("full_rename"),
-  --["x"]              = tree_cb("cut"),
-  --["c"]              = tree_cb("copy"),
-  --["p"]              = tree_cb("paste"),
-  --["[c"]             = tree_cb("prev_git_item"),
-  --["]c"]             = tree_cb("next_git_item"),
-  --["<BS>"]           = tree_cb("dir_up"),
-  --["q"]              = tree_cb("close"),
---}
+
+vim.g.nvim_tree_auto_close = 1
+vim.g.nvim_tree_ignore = {'*.class', '*.pdf'}
+vim.g.nvim_tree_quit_on_open = 1
+vim.g.nvim_tree_hide_dotfiles = 1
+vim.g.nvim_tree_window_picker_exclude = {
+    buftype = {
+        'terminal'
+    }
+}
 
 vim.g.nvim_tree_bindings = {
   { key = {"l", "o", "<2-LeftMouse>"}, cb = tree_cb("edit") },
