@@ -3,7 +3,7 @@ local vimscript = vim.api.nvim_exec
 vim.g.startify_files_number = 5
 
 vim.g.startify_commands = {
-    {'Reload Vim', 'source $MYVIMRC'},
+    {'Reload Vim', 'luafile $MYVIMRC'},
     {'Update plugins', 'PlugUpdate'},
     {'Clean plugins', 'PlugClean'}
 }
@@ -16,6 +16,7 @@ local function oftenUsed()
         {line = 'Neovim', cmd = 'cd $HOME/.config/nvim/'},
         {line = 'Kattis', cmd = 'cd $HOME/Documents/Personal/KattisSolutions'},
         {line = 'jakobhansen.dev', cmd = 'cd $HOME/Documents/Dev/jakobhansen.dev'},
+        {line = 'veggen-react', cmd = 'cd $HOME/Documents/Dev/veggen-react'},
     }
 end
 

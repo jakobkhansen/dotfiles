@@ -25,8 +25,7 @@ opt.splitright = true
 opt.splitbelow = true
 
 -- Random
-opt.number = true
-opt.wrap = false
+opt.number = true opt.wrap = false
 opt.smartcase = true
 opt.ignorecase = true
 opt.mouse = 'a'
@@ -40,10 +39,19 @@ opt.pumheight = 10
 
 -- Visuals
 opt.termguicolors = true
-opt.signcolumn = 'no'
+opt.signcolumn = 'yes:1'
 
 vimscript("colorscheme onedark", false)
+
+-- Background
 highlight('Normal', {guibg="NONE", ctermbg="NONE"}, false)
+highlight('SignColumn', {guibg="NONE", ctermbg="NONE"}, false)
+
+-- Remove spelling mistake highlight
+vimscript("hi clear SpellBad", false)
+vimscript("hi clear SpellCap", false)
+vimscript("hi clear SpellRare", false)
+vimscript("hi clear SpellLocal", false)
 
 
 -- Persistent undo

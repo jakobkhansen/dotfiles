@@ -47,6 +47,32 @@ vim.g.nvim_tree_bindings = {
   { key = "g?",                           cb = tree_cb("toggle_help") },
 }
 
+vim.g.nvim_tree_icons = {
+    default = "",
+    symlink = "",
+    git = {
+        unstaged = "✗",
+        staged = "✓",
+        unmerged = "",
+        renamed = "➜",
+        untracked = "★",
+        deleted = "",
+        ignored = "◌"
+    },
+    folder = {
+        -- disable indent_markers option to get arrows working or if you want both arrows and indent then just add the arrow icons in front            ofthe default and opened folders below!
+        -- arrow_open = "",
+        -- arrow_closed = "",
+        default = "",
+        open = "",
+        empty = "", -- 
+        empty_open = "",
+        symlink = "",
+        symlink_open = ""
+    }
+}
+
+
 function Set_cwd()
     dir = vim.fn.expand('%:p:h')
     cd_command = 'cd ' .. dir

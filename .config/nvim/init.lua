@@ -36,6 +36,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	Plug 'tpope/vim-fugitive'
 	Plug 'idanarye/vim-merginal'
 	Plug 'rhysd/conflict-marker.vim'
+    Plug 'lewis6991/gitsigns.nvim'
 
 	--"Menus"
 	Plug 'nvim-telescope/telescope.nvim'
@@ -48,6 +49,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	Plug 'hrsh7th/nvim-compe'
 	Plug 'mfussenegger/nvim-jdtls'
 	Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+    Plug 'glepnir/lspsaga.nvim'
 
 	--"Snippets"
 	Plug 'L3MON4D3/LuaSnip'
@@ -84,5 +86,8 @@ require('plugins.auto-save-config')
 require('plugins.airline-config')
 require('plugins.startify-config')
 require('plugins.nerdcommenter-config')
+require('plugins.gitsigns-config')
+require('plugins.lspsaga-config')
+require('plugins.icons')
 
 require('plugins.nvim-autopairs-config')

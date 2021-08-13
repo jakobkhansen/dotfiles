@@ -6,59 +6,62 @@ local map = vimp.map
 local noremap = vimp.noremap
 local nmap = vimp.nmap
 local nnoremap = vimp.nnoremap
+local imap = vimp.imap
+local inoremap = vimp.inoremap
 local vmap = vimp.vmap
 local vnoremap = vimp.vnoremap
 local tmap = vimp.tmap
 local tnoremap = vimp.tnoremap
 
 -- Remaps
-remap('', '+', '$', { noremap = true })
-remap('', '""', '"+y', { noremap = true })
-remap('', '<LeftMouse>', '<Nop>', { noremap = true })
+noremap('+', '$')
+noremap('""', '"+y')
+noremap('<LeftMouse>', '<Nop>')
+inoremap('<LeftMouse>', '<Nop>')
 
 -- Movement
-remap('', 'J', '10j', {})
-remap('', 'K', '10k', {})
+map('J', '10j')
+map('K', '10k')
 
-remap('', ';', ',', { noremap = true })
-remap('', ',', ';', { noremap = true })
+noremap(';', ',')
+noremap(',', ';')
 
 -- Text manipulation
-remap('n', 'Q', 'gqap', { silent = true, noremap = true })
-remap('n', '<A-k>', '<CMD>m-2<CR>', { noremap = true })
-remap('n', '<A-j>', '<CMD>m+<CR>', { noremap = true })
+noremap({silent = true}, 'Q', 'gqap')
+noremap('<A-k>', '<CMD>m-2<CR>')
+noremap('<A-j>', '<CMD>m+<CR>')
 
 -- Buffers and tabs
 
-remap('n', '<Tab>', '<CMD>bn<CR>', {})
-remap('n', '<S-Tab>', '<CMD>bp<CR>', {})
+nmap('<Tab>', '<CMD>bn<CR>')
+nmap('<S-Tab>', '<CMD>bp<CR>')
 
-remap('n', '<A-Tab>', '<CMD>tabNext<CR>', {})
-remap('n', '<A-S-Tab>', '<CMD>tabprevious<CR>', {})
+nmap('<A-S-Tab>', '<CMD>tabprevious<CR>')
+nmap('<A-Tab>', '<CMD>tabNext<CR>')
 
 --  Move to buffer
-remap('n', '<C-h>', '<C-w>h', { noremap = true })
-remap('n', '<C-j>', '<C-w>j', { noremap = true })
-remap('n', '<C-k>', '<C-w>k', { noremap = true })
-remap('n', '<C-l>', '<C-w>l', { noremap = true })
+nnoremap('<C-h>', '<C-w>h')
+nnoremap('<C-j>', '<C-w>j')
+nnoremap('<C-k>', '<C-w>k')
+nnoremap('<C-l>', '<C-w>l')
 
 --  Resize buffers
-remap('n', '<C-M-h', 'vertical resize-5', { noremap = true })
-remap('n', '<C-M-j', 'resize-5', { noremap = true })
-remap('n', '<C-M-k', 'resize+5', { noremap = true })
-remap('n', '<C-M-l', 'vertical resize+5', { noremap = true })
-remap('n', '<C-M-r', '<C-W>=', { noremap = true })
+nnoremap('<C-M-h>', '<CMD>vertical resize-5<CR>')
+nnoremap('<C-M-j>', '<CMD>resize-5<CR>')
+nnoremap('<C-M-k>', '<CMD>resize+5<CR>')
+nnoremap('<C-M-l>', '<CMD>vertical resize+5<CR>')
+nnoremap('<C-A-r>', '<C-W>=')
 
 --  Move horizontally
-remap('n', 'zh', '10zh', { noremap = true })
-remap('n', 'zl', '10zl', { noremap = true })
+noremap('zh', '10zh')
+noremap('zl', '10zl')
 
 --  Delete all buffers to left and right
-remap('', '<F2>', '<CMD>2,-1budfo bd!<CR>', {})
-remap('', '<F3>', '<CMD>+1,$budfo bd!<CR>', {})
+map('<F2>', '<CMD>2,-1budfo bd!<CR>')
+map('<F3>', '<CMD>+1,$budfo bd!<CR>')
 
 -- Terminal
-tnoremap({'silent'}, '<C-q>', '<Esc>')
+noremap({'silent'}, '<C-q>', '<Esc>')
 tnoremap({'silent'}, '<Esc>', '<C-\\><C-n>')
 
 tnoremap('<C-h>', '<C-\\><C-n><C-w>h')
