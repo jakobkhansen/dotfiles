@@ -1,5 +1,6 @@
 local Plug = vim.fn['plug#']
 
+
 vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 
     --"Plugin dependencies"
@@ -89,5 +90,6 @@ require('plugins.nerdcommenter-config')
 require('plugins.gitsigns-config')
 require('plugins.lspsaga-config')
 require('plugins.icons')
+require('plugins.markdown-config')
 
 require('plugins.nvim-autopairs-config')

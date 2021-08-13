@@ -1,0 +1,13 @@
+local vimscript = vim.api.nvim_exec
+
+vim.g.instant_markdown_autostart = 0
+vim.g.instant_markdown_allow_unsafe_content = 1
+vim.g.instant_markdown_mathjax = 1
+
+function _G.MarkdownPreview()
+    vimscript('silent! :InstantMarkdownStop', false)
+    vimscript('silent! :InstantMarkdownPreview', false)
+end
+
+vimscript('au FileType markdown command! Preview :lua MarkdownPreview()', false)
+vimscript('au FileType markdown command! PreviewStop :lua InstantMarkdownStop', false)
