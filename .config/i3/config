@@ -251,6 +251,6 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +10%
 bindsym $mod+shift+x exec --no-startup-id betterlockscreen -l dim
 
 # Fix stupid keybinding shit
-exec --no-startup-id xmodmap -e "keycode 51 = less greater"
+#exec --no-startup-id xmodmap -e "keycode 51 = less greater"
 exec --no-startup-id xmodmap -e "keycode 248 = apostrophe asterisk apostrophe asterisk dead_doubleacute multiply dead_doubleacute"
 

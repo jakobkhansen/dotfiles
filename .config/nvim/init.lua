@@ -37,7 +37,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	Plug 'tpope/vim-fugitive'
 	Plug 'idanarye/vim-merginal'
 	Plug 'rhysd/conflict-marker.vim'
-    Plug 'lewis6991/gitsigns.nvim'
+    --Plug 'lewis6991/gitsigns.nvim'
 
 	--"Menus"
 	Plug 'nvim-telescope/telescope.nvim'
@@ -55,11 +55,13 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	--"Snippets"
 	Plug 'L3MON4D3/LuaSnip'
 
-	--"Notes"
+	--"Notes and organization"
 	Plug 'reedes/vim-pencil'
 	Plug 'instant-markdown/vim-instant-markdown'
 	Plug 'lervag/vimtex'
-	Plug 'vhyrro/neorg'
+    Plug('vhyrro/neorg') --{['branch'] = 'stable'})
+    Plug 'itchyny/calendar.vim'
+
 
 	--"Random"
 	Plug 'andweeb/presence.nvim'
@@ -87,7 +89,7 @@ require('plugins.auto-save-config')
 require('plugins.airline-config')
 require('plugins.startify-config')
 require('plugins.nerdcommenter-config')
-require('plugins.gitsigns-config')
+--require('plugins.gitsigns-config')
 require('plugins.lspsaga-config')
 require('plugins.icons')
 require('plugins.markdown-config')

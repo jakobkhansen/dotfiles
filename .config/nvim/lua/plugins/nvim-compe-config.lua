@@ -32,6 +32,7 @@ require'compe'.setup {
 
 vim.api.nvim_command([[
     autocmd BufEnter *.md :setlocal spell
+    autocmd BufEnter *.norg :setlocal spell
 ]])
 
 vim.g.completion_confirm_key = ""
