@@ -49,7 +49,6 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	--"LSP"
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'RishabhRD/nvim-lsputils'
-	--Plug 'hrsh7th/nvim-compe'
 
     Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-buffer'
@@ -87,7 +86,6 @@ require('leadermaps')
 
 -- Require plugins
 require('plugins.treesitter-config')
---require('plugins.nvim-compe-config')
 require('plugins.lsp-config')
 require('plugins.lsp-servers')
 require('plugins.lsputils-config')
