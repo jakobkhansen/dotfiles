@@ -49,7 +49,15 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	--"LSP"
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'RishabhRD/nvim-lsputils'
-	Plug 'hrsh7th/nvim-compe'
+	--Plug 'hrsh7th/nvim-compe'
+
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'saadparwaiz1/cmp_luasnip'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'kdheepak/cmp-latex-symbols'
+
 	Plug 'mfussenegger/nvim-jdtls'
 	Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
     Plug 'glepnir/lspsaga.nvim'
@@ -79,7 +87,7 @@ require('leadermaps')
 
 -- Require plugins
 require('plugins.treesitter-config')
-require('plugins.nvim-compe-config')
+--require('plugins.nvim-compe-config')
 require('plugins.lsp-config')
 require('plugins.lsp-servers')
 require('plugins.lsputils-config')
@@ -95,5 +103,6 @@ require('plugins.gitsigns-config')
 require('plugins.lspsaga-config')
 require('plugins.icons')
 require('plugins.markdown-config')
+require('plugins.nvim-cmp-config')
 
 require('plugins.nvim-autopairs-config')
