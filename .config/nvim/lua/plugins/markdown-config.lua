@@ -4,6 +4,7 @@ vim.g.instant_markdown_autostart = 0
 vim.g.instant_markdown_allow_unsafe_content = 1
 vim.g.instant_markdown_mathjax = 1
 vim.g.vim_markdown_math = 1
+vim.g.instant_markdown_mermaid = 1
 
 
 function _G.MarkdownPreview()

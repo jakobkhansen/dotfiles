@@ -14,6 +14,13 @@ nvim_lsp.pyright.setup{
 -- HTML
 nvim_lsp.html.setup {
     capabilities = capabilities;
+    commands = {
+      Format = {
+        function()
+          vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
+        end
+      }
+    }
 }
 
 -- CSS

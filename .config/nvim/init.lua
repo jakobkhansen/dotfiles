@@ -13,6 +13,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	--"Text manipulation"
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'windwp/nvim-autopairs'
+    Plug 'tpope/vim-surround'
 
 	--"Movement"
 	Plug 'psliwka/vim-smoothie'
@@ -52,6 +53,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	Plug 'mfussenegger/nvim-jdtls'
 	Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
     Plug 'glepnir/lspsaga.nvim'
+    Plug 'sbdchd/neoformat'
 
 	--"Snippets"
 	Plug 'L3MON4D3/LuaSnip'
