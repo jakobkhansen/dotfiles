@@ -12,11 +12,16 @@ vim.g.startify_commands = {
 -- Often Used
 local function oftenUsed()
     return {
-        {line = 'TODO', cmd = 'edit $HOME/Documents/TODO.norg'},
+        {line = ' TODO', cmd = 'edit $HOME/Documents/TODO.norg'},
         {line = 'Neovim', cmd = 'cd $HOME/.config/nvim/'},
         {line = 'Kattis', cmd = 'cd $HOME/Documents/Personal/KattisSolutions'},
+        {line = ' Timeliste', cmd = 'edit $HOME/Documents/School/GRUPPELÆRER/IN2010_2021/timeliste-august.norg'},
+        {line = ' IN5320 - Plattform', cmd = 'cd $HOME/Documents/School/IN5320'},
+        {line = ' IN5170 - Parallel', cmd = 'cd $HOME/Documents/School/IN5170'},
+        {line = ' IN5290 - Ethical Hacking', cmd = 'cd $HOME/Documents/School/IN5290'},
         {line = 'jakobhansen.dev', cmd = 'cd $HOME/Documents/Dev/jakobhansen.dev'},
         {line = 'veggen-react', cmd = 'cd $HOME/Documents/Dev/veggen-react'},
+
     }
 end
 
@@ -50,7 +55,7 @@ end
 
 vim.g.startify_lists = {
     { type = 'files', header = {'   Recent'} },
-    { type = oftenUsed, header = {'   Often used'}, indices={'todo', 'nv', 'ka'}},
+    { type = oftenUsed, header = {'   Often used'}, indices={'todo', 'nv', 'ka', 'time', '5320', '5170', '5290'}},
     { type = configFiles, header = {'   Config files'}, indices = {'cv', 'cb', 'ca', 'ci', 'cr', 'ck', 'cp', 'co'}},
     { type = 'commands', header = {'   Commands'}, indices = {'cs', 'pu', 'pc'} },
     { type = luaFiles, header = {'   Lua config files'} },

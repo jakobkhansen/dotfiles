@@ -45,7 +45,7 @@ floating_modifier $mod
 bindsym Control+Mod1+Return exec --no-startup-id $terminal
 
 # start a terminal with nvim, don't quit afterwards
-bindsym Control+Mod1+BackSpace exec --no-startup-id $terminal $HOME/Scripts/openvimhotkey.sh
+bindsym Control+Mod1+BackSpace exec --no-startup-id $terminal $HOME/Documents/Scripts/openvimhotkey.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -173,7 +173,7 @@ exec --no-startup-id "compton --config /home/jakob/.config/compton/compton.conf"
 exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "polybar -r MainBar"
 exec --no-startup-id "polybar -r SecondMonitor"
-exec --no-startup-id redshift
+exec --no-startup-id "redshift -l 59.91273:10.74609"
 exec --no-startup-id i3-battery-popup -n -L 15 -t 30s -s ~/.config/dunst/light.mp3
 exec --no-startup-id unclutter
 exec --no-startup-id autocutsel -fork -selection CLIPBOARD
@@ -186,10 +186,10 @@ focus_on_window_activation focus
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 
-bindsym $mod+n exec --no-startup-id /home/jakob/Scripts/empty_workspace.sh
-bindsym $mod+Shift+n exec --no-startup-id /home/jakob/Scripts/move_to_empty_workspace.sh
+bindsym $mod+n exec --no-startup-id /home/jakob/Documents/Scripts/empty_workspace.sh
+bindsym $mod+Shift+n exec --no-startup-id /home/jakob/Documents/Scripts/move_to_empty_workspace.sh
 
-bindsym $mod+Shift+t exec --no-startup-id /home/jakob/Scripts/truncate_workspaces.py
+bindsym $mod+Shift+t exec --no-startup-id /home/jakob/Documents/Scripts/truncate_workspaces.py
 
 # Mouse
 focus_follows_mouse no

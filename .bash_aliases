@@ -13,7 +13,7 @@ fi
 alias ll='ls -a'
 alias la='ls -A'
 alias l='ls'
-alias ff="\$(/home/jakob/Scripts/fzf_navigate.py)"
+alias ff="\$(/home/jakob/Documents/Scripts/fzf_navigate.py)"
 alias c="clear"
 alias size="du -sh "
 
@@ -32,8 +32,8 @@ alias r=ranger
 alias n=nvim
 
 alias kattispy="/home/jakob/Documents/Personal/KattisSolutions/kattis_shell_python.sh"
-alias kattissubmit="/home/jakob/Scripts/submit.py"
-alias kotlinrun="/home/jakob/Scripts/kotlinrun.py"
+alias kattissubmit="/home/jakob/Documents/Scripts/submit.py"
+alias kotlinrun="/home/jakob/Documents/Scripts/kotlinrun.py"
 
 
 alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/jakob'
@@ -53,7 +53,7 @@ alias orphans="yay -Rns \$(yay -Qtdq)"
 
 alias open="echo -ne '\n' | xdg-open $1 > /dev/null 2>&1"
 
-alias latexinit="/home/jakob/Scripts/latextemplate.sh $1"
+alias latexinit="/home/jakob/Documents/Scripts/latextemplate.sh $1"
 
 
 alias sxiv="sxiv -a"

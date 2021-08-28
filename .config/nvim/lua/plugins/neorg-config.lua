@@ -1,3 +1,5 @@
+vimscript = vim.api.nvim_exec
+
 require('neorg').setup {
     -- Tell Neorg what modules to load
     load = {

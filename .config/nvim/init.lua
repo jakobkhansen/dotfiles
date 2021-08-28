@@ -1,6 +1,7 @@
 local Plug = vim.fn['plug#']
 
 
+
 vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 
     --"Plugin dependencies"
@@ -17,7 +18,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	Plug 'psliwka/vim-smoothie'
 
 	--"Syntax highlighting"
-	Plug('nvim-treesitter/nvim-treesitter', {['do'] = vim.fn['TSUpdate']})
+    Plug('nvim-treesitter/nvim-treesitter', {['do'] = vim.fn['TSUpdate']})
 	Plug 'sheerun/vim-polyglot'
 
 	--"Buffers"
@@ -37,7 +38,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	Plug 'tpope/vim-fugitive'
 	Plug 'idanarye/vim-merginal'
 	Plug 'rhysd/conflict-marker.vim'
-    --Plug 'lewis6991/gitsigns.nvim'
+    Plug 'lewis6991/gitsigns.nvim'
 
 	--"Menus"
 	Plug 'nvim-telescope/telescope.nvim'
@@ -59,20 +60,19 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	Plug 'reedes/vim-pencil'
 	Plug 'instant-markdown/vim-instant-markdown'
 	Plug 'lervag/vimtex'
-    Plug('vhyrro/neorg') --{['branch'] = 'stable'})
-    Plug 'itchyny/calendar.vim'
+    Plug('vhyrro/neorg', {['branch'] = 'unstable'})
 
 
 	--"Random"
 	Plug 'andweeb/presence.nvim'
-    Plug 'svermeulen/vimpeccable'
+  Plug 'svermeulen/vimpeccable'
 
 vim.call('plug#end')
 
 -- Require modules
 
-require('opts')
 require('maps')
+require('opts')
 require('leadermaps')
 
 -- Require plugins
@@ -89,7 +89,7 @@ require('plugins.auto-save-config')
 require('plugins.airline-config')
 require('plugins.startify-config')
 require('plugins.nerdcommenter-config')
---require('plugins.gitsigns-config')
+require('plugins.gitsigns-config')
 require('plugins.lspsaga-config')
 require('plugins.icons')
 require('plugins.markdown-config')

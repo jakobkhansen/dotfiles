@@ -43,7 +43,8 @@ nmap('<A-Tab>', '<CMD>tabNext<CR>')
 nnoremap('<C-h>', '<C-w>h')
 nnoremap('<C-j>', '<C-w>j')
 nnoremap('<C-k>', '<C-w>k')
-nnoremap('<C-l>', '<C-w>l')
+--nnoremap('<C-l>', '<C-w>l')
+vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {noremap = true})
 
 --  Resize buffers
 nnoremap('<C-M-h>', '<CMD>vertical resize-5<CR>')
