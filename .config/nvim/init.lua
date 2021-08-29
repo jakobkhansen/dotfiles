@@ -30,7 +30,8 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'kyazdani42/nvim-web-devicons'
-	Plug 'folke/tokyonight.nvim'
+	--Plug 'folke/tokyonight.nvim'
+    Plug 'jakobkhansen/tokyonight.nvim'
 
 
 	--"Files and git"

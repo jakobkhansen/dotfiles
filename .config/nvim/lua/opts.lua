@@ -42,7 +42,16 @@ opt.pumheight = 10
 opt.termguicolors = true
 opt.signcolumn = 'yes:1'
 
-vimscript("colorscheme onedark", false)
+vim.g.tokyonight_transparent = true
+vim.g.tokyonight_transparent_sidebar = true
+vim.g.tokyonight_colors = {
+    info = "#FFFFFF",
+    hint = "#FFFFFF"
+}
+vim.g.tokyonight_italic_keywords = false
+vim.g.tokyonight_italic_comments = false
+vimscript("colorscheme tokyonight", false)
+
 
 -- Background
 highlight('Normal', {guibg="NONE", ctermbg="NONE"}, false)
