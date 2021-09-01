@@ -20,6 +20,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 
 	--"Syntax highlighting"
     Plug('nvim-treesitter/nvim-treesitter', {['do'] = vim.fn['TSUpdate']})
+    Plug 'nvim-treesitter/playground'
 	Plug 'sheerun/vim-polyglot'
 
 	--"Buffers"
@@ -32,6 +33,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	Plug 'kyazdani42/nvim-web-devicons'
 	--Plug 'folke/tokyonight.nvim'
     Plug 'jakobkhansen/tokyonight.nvim'
+    Plug 'ishan9299/nvim-solarized-lua'
 
 
 	--"Files and git"
@@ -75,7 +77,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 
 	--"Random"
 	Plug 'andweeb/presence.nvim'
-  Plug 'svermeulen/vimpeccable'
+    Plug 'svermeulen/vimpeccable'
 
 vim.call('plug#end')
 
@@ -103,5 +105,6 @@ require('plugins.lspsaga-config')
 require('plugins.icons')
 require('plugins.markdown-config')
 require('plugins.nvim-cmp-config')
+require('plugins.latex-config')
 
 require('plugins.nvim-autopairs-config')

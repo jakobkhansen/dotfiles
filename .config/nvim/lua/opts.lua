@@ -33,6 +33,8 @@ opt.mouse = 'a'
 opt.scrolloff = 10
 opt.relativenumber = true
 opt.timeoutlen = 300
+opt.foldmethod = 'indent'
+opt.foldlevel = 99
 
 -- Completion
 opt.completeopt='menuone,noselect'
@@ -44,6 +46,7 @@ opt.signcolumn = 'yes:1'
 
 vim.g.tokyonight_transparent = true
 vim.g.tokyonight_transparent_sidebar = true
+--vim.g.tokyonight_style = "day"
 vim.g.tokyonight_colors = {
     info = "#FFFFFF",
     hint = "#FFFFFF"
@@ -56,6 +59,20 @@ vimscript("colorscheme tokyonight", false)
 -- Background
 highlight('Normal', {guibg="NONE", ctermbg="NONE"}, false)
 highlight('SignColumn', {guibg="NONE", ctermbg="NONE"}, false)
+
+-- LightMode command
+function _G.LightMode()
+    vimscript("colorscheme solarized-low", false)
+    opt.background = 'light'
+end
+
+function _G.DarkMode()
+    vimscript("colorscheme tokyonight", false)
+    opt.background = 'dark'
+end
+
+vimscript('command! LightMode :lua LightMode()', false)
+vimscript('command! DarkMode :lua DarkMode()', false)
 
 -- Remove spelling mistake highlight
 vimscript("hi clear SpellBad", false)
