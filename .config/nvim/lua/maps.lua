@@ -58,8 +58,8 @@ noremap('zh', '10zh')
 noremap('zl', '10zl')
 
 --  Delete all buffers to left and right
-map('<F2>', '<CMD>2,-1budfo bd!<CR>')
-map('<F3>', '<CMD>+1,$budfo bd!<CR>')
+map('<F2>', '<CMD>2,-1bufdo bd!<CR>')
+map('<F3>', '<CMD>+1,$bufdo bd!<CR>')
 
 -- Terminal
 noremap({'silent'}, '<C-q>', '<Esc>')

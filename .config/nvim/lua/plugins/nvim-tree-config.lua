@@ -10,7 +10,9 @@ vim.g.nvim_tree_quit_on_open = 1
 vim.g.nvim_tree_hide_dotfiles = 1
 vim.g.nvim_tree_window_picker_exclude = {
     buftype = {
-        'terminal'
+        'terminal',
+        'term',
+        'term://zsh'
     }
 }
 

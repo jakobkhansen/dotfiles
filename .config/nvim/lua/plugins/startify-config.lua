@@ -15,7 +15,7 @@ local function oftenUsed()
         {line = ' TODO', cmd = 'edit $HOME/Documents/TODO.norg'},
         {line = 'Neovim', cmd = 'cd $HOME/.config/nvim/'},
         {line = 'Kattis', cmd = 'cd $HOME/Documents/Personal/KattisSolutions'},
-        {line = ' Timeliste', cmd = 'edit $HOME/Documents/School/GRUPPELÆRER/IN2010_2021/timeliste-august.norg'},
+        {line = ' Timeliste', cmd = 'edit $HOME/Documents/School/GRUPPELÆRER/IN2010_2021/timeliste-september.norg'},
         {line = ' IN5320 - Plattform', cmd = 'cd $HOME/Documents/School/IN5320'},
         {line = ' IN5170 - Parallel', cmd = 'cd $HOME/Documents/School/IN5170'},
         {line = ' IN5290 - Ethical Hacking', cmd = 'cd $HOME/Documents/School/IN5290'},

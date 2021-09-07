@@ -46,7 +46,6 @@ opt.signcolumn = 'yes:1'
 
 vim.g.tokyonight_transparent = true
 vim.g.tokyonight_transparent_sidebar = true
---vim.g.tokyonight_style = "day"
 vim.g.tokyonight_colors = {
     info = "#FFFFFF",
     hint = "#FFFFFF"
@@ -56,14 +55,18 @@ vim.g.tokyonight_italic_comments = false
 vimscript("colorscheme tokyonight", false)
 
 
+
 -- Background
 highlight('Normal', {guibg="NONE", ctermbg="NONE"}, false)
 highlight('SignColumn', {guibg="NONE", ctermbg="NONE"}, false)
 
 -- LightMode command
 function _G.LightMode()
-    vimscript("colorscheme solarized-low", false)
-    opt.background = 'light'
+    require('github-theme').setup({
+        themeStyle = "light",
+        darkSidebar = false,
+        hideEndOfBuffer = true
+    })
 end
 
 function _G.DarkMode()
@@ -93,5 +96,6 @@ opt.undofile = true
 opt.swapfile = false
 
 -- Disable default mappings
+
 
 vim.g.bclose_no_plugin_maps = false

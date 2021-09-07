@@ -42,6 +42,7 @@ alias pushschool="cd /home/jakob/Documents/School; git add .; git commit -m 'Upd
 alias gitview="gh repo view --web"
 alias gitroot="cd \$(git rev-parse --show-toplevel)"
 
+alias serve="browser-sync start -s -f . "
 
 function gitpush() {
     git add -u 

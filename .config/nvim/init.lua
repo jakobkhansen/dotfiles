@@ -31,9 +31,9 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'kyazdani42/nvim-web-devicons'
-	--Plug 'folke/tokyonight.nvim'
     Plug 'jakobkhansen/tokyonight.nvim'
     Plug 'ishan9299/nvim-solarized-lua'
+    Plug 'projekt0n/github-nvim-theme'
 
 
 	--"Files and git"
@@ -106,5 +106,6 @@ require('plugins.icons')
 require('plugins.markdown-config')
 require('plugins.nvim-cmp-config')
 require('plugins.latex-config')
+require('plugins.neoformat-config')
 
 require('plugins.nvim-autopairs-config')
