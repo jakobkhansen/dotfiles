@@ -13,7 +13,7 @@ fi
 alias ll='ls -a'
 alias la='ls -A'
 alias l='ls'
-alias ff="\$(/home/jakob/Documents/Scripts/fzf_navigate.py)"
+alias ff="$HOME/Documents/Scripts/fzf_navigate.py"
 alias c="clear"
 alias size="du -sh "
 

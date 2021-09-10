@@ -19,6 +19,7 @@ cmp.setup {
         { name = 'path' },
         { name = 'buffer' },
         { name = 'latex_symbols' },
+        { name = 'neorg' }
     },
     snippet = {
       expand = function(args)
