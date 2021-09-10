@@ -59,6 +59,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
     Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'hrsh7th/cmp-path'
     Plug 'kdheepak/cmp-latex-symbols'
+    Plug 'f3fora/cmp-spell'
 
 	Plug 'mfussenegger/nvim-jdtls'
 	Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'

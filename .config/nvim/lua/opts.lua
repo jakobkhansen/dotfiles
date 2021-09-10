@@ -67,6 +67,7 @@ function _G.LightMode()
         darkSidebar = false,
         hideEndOfBuffer = true
     })
+    vimscript(":AirlineTheme tokyonight<CR>", false)
 end
 
 function _G.DarkMode()

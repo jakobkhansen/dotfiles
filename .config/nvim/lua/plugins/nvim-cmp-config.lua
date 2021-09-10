@@ -19,7 +19,8 @@ cmp.setup {
         { name = 'path' },
         { name = 'buffer' },
         { name = 'latex_symbols' },
-        { name = 'neorg' }
+        { name = 'neorg' },
+        { name = 'spell' },
     },
     snippet = {
       expand = function(args)

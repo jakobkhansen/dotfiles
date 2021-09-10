@@ -13,3 +13,6 @@ require('neorg').setup {
                 },
     },
 }
+
+vimscript('au FileType norg set spell', false)
+vimscript('au FileType norg set spell', false)
