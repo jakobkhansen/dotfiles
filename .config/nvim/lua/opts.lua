@@ -63,16 +63,17 @@ highlight('SignColumn', {guibg="NONE", ctermbg="NONE"}, false)
 -- LightMode command
 function _G.LightMode()
     require('github-theme').setup({
-        themeStyle = "light",
-        darkSidebar = false,
-        hideEndOfBuffer = true
+        theme_style = "light",
+        dark_sidebar = false,
+        hide_end_of_buffer = true
     })
-    vimscript(":AirlineTheme tokyonight<CR>", false)
+    vim.api.nvim_command('AirlineTheme base16_classic_light')
 end
 
 function _G.DarkMode()
     vimscript("colorscheme tokyonight", false)
     opt.background = 'dark'
+    vim.api.nvim_command('AirlineTheme tokyonight')
 end
 
 vimscript('command! LightMode :lua LightMode()', false)

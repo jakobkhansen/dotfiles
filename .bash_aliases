@@ -13,7 +13,7 @@ fi
 alias ll='ls -a'
 alias la='ls -A'
 alias l='ls'
-alias ff="$HOME/Documents/Scripts/fzf_navigate.py"
+alias ff="\$($HOME/Documents/Scripts/fzf_navigate.py)"
 alias c="clear"
 alias size="du -sh "
 
@@ -69,4 +69,5 @@ alias drag="dragon-drag-and-drop"
 
 alias monleft="xrandr --auto; xrandr --output HDMI-1 --left-of eDP-1"
 alias monright="xrandr --auto; xrandr --output HDMI-1 --right-of eDP-1"
+alias monup="xrandr --auto; xrandr --output HDMI-1 --above eDP-1"
 alias mondup="xrandr --auto; xrandr --output HDMI-1 --same-as eDP-1"

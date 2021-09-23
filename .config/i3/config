@@ -108,6 +108,39 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+workspace $ws1 output eDP-1
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output eDP-1
+workspace $ws5 output eDP-1
+workspace $ws6 output eDP-1
+workspace $ws7 output eDP-1
+workspace $ws8 output eDP-1
+workspace $ws9 output eDP-1
+workspace $ws10 output eDP-1
+
+set $ws11 "11"
+set $ws12 "12"
+set $ws13 "13"
+set $ws14 "14"
+set $ws15 "15"
+set $ws16 "16"
+set $ws17 "17"
+set $ws18 "18"
+set $ws19 "19"
+set $ws20 "20"
+
+workspace $ws11 output HDMI-1
+workspace $ws12 output HDMI-1
+workspace $ws13 output HDMI-1
+workspace $ws14 output HDMI-1
+workspace $ws15 output HDMI-1
+workspace $ws16 output HDMI-1
+workspace $ws17 output HDMI-1
+workspace $ws18 output HDMI-1
+workspace $ws19 output HDMI-1
+workspace $ws20 output HDMI-1
+
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -120,6 +153,17 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
+bindsym $mod+control+1 workspace number $ws11
+bindsym $mod+control+2 workspace number $ws12
+bindsym $mod+control+3 workspace number $ws13
+bindsym $mod+control+4 workspace number $ws14
+bindsym $mod+control+5 workspace number $ws15
+bindsym $mod+control+6 workspace number $ws16
+bindsym $mod+control+7 workspace number $ws17
+bindsym $mod+control+8 workspace number $ws18
+bindsym $mod+control+9 workspace number $ws19
+bindsym $mod+control+0 workspace number $ws20
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -131,6 +175,17 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+
+bindsym $mod+control+Shift+1 move container to workspace number $ws11
+bindsym $mod+control+Shift+2 move container to workspace number $ws12
+bindsym $mod+control+Shift+3 move container to workspace number $ws13
+bindsym $mod+control+Shift+4 move container to workspace number $ws14
+bindsym $mod+control+Shift+5 move container to workspace number $ws15
+bindsym $mod+control+Shift+6 move container to workspace number $ws16
+bindsym $mod+control+Shift+7 move container to workspace number $ws17
+bindsym $mod+control+Shift+8 move container to workspace number $ws18
+bindsym $mod+control+Shift+9 move container to workspace number $ws19
+bindsym $mod+control+Shift+0 move container to workspace number $ws20
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
