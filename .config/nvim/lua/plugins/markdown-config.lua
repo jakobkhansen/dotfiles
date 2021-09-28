@@ -15,3 +15,5 @@ end
 vimscript('au FileType markdown command! Preview :lua MarkdownPreview()', false)
 vimscript('au FileType markdown command! PreviewStop :lua InstantMarkdownStop', false)
 vimscript('au FileType markdown set conceallevel=2', false)
+vimscript('au FileType markdown set wrap', false)
+vimscript("autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})", false)

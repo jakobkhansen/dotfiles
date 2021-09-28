@@ -3,9 +3,7 @@ local vimscript = vim.api.nvim_exec
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 local noremap = require('vimp').noremap
 
-
-vim.g.nvim_tree_auto_close = 1
-vim.g.nvim_tree_ignore = {'*.class', '*.pdf'}
+vim.g.nvim_tree_ignore = {'*.class'}
 vim.g.nvim_tree_quit_on_open = 1
 vim.g.nvim_tree_hide_dotfiles = 1
 vim.g.nvim_tree_window_picker_exclude = {
@@ -16,7 +14,7 @@ vim.g.nvim_tree_window_picker_exclude = {
     }
 }
 
-vim.g.nvim_tree_bindings = {
+local bindings = {
   { key = {"l", "o", "<2-LeftMouse>"}, cb = tree_cb("edit") },
   { key = {"<2-RightMouse>", "<CR>"},    cb = tree_cb("cd") },
   { key = "<C-v>",                        cb = tree_cb("vsplit") },
@@ -49,6 +47,7 @@ vim.g.nvim_tree_bindings = {
   { key = "g?",                           cb = tree_cb("toggle_help") },
 }
 
+
 vim.g.nvim_tree_icons = {
     default = "",
     symlink = "",
@@ -71,6 +70,33 @@ vim.g.nvim_tree_icons = {
         empty_open = "",
         symlink = "",
         symlink_open = ""
+    }
+}
+
+require'nvim-tree'.setup {
+    auto_close = true,
+    update_cwd = true,
+
+    update_focused_file = {
+        -- enables the feature
+        enable      = true,
+        -- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
+        -- only relevant when `update_focused_file.enable` is true
+        update_cwd  = true,
+        -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
+        -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
+        ignore_list = {},
+    },
+
+    view = {
+
+        mappings = {
+          -- custom only false will merge the list with the default mappings
+          -- if true, it will only use your list to set the mappings
+          custom_only = true,
+          -- list of mappings to set on the tree manually
+          list = bindings
+        }
     }
 }
 

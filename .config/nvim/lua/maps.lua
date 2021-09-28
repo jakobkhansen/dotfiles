@@ -62,7 +62,7 @@ map('<F2>', '<CMD>2,-1bufdo bd!<CR>')
 map('<F3>', '<CMD>+1,$bufdo bd!<CR>')
 
 -- Terminal
-noremap({'silent'}, '<C-q>', '<Esc>')
+tnoremap({'silent'}, '<C-q>', '<Esc>')
 tnoremap({'silent'}, '<Esc>', '<C-\\><C-n>')
 
 tnoremap('<C-h>', '<C-\\><C-n><C-w>h')

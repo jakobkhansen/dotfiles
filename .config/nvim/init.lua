@@ -74,6 +74,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	Plug 'instant-markdown/vim-instant-markdown'
 	Plug 'lervag/vimtex'
     Plug('vhyrro/neorg', {['branch'] = 'unstable'})
+    Plug 'preservim/vim-pencil'
 
 
 	--"Random"

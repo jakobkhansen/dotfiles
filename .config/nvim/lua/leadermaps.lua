@@ -82,7 +82,7 @@ function ToggleTerminal()
     if buftype == 'terminal' then
         command('close')
     else
-        command('15split term://zsh')
+        command('botright 15new | term')
         command('set nobl')
         nnoremap({'buffer'}, '<Tab>', '<Tab>')
         nnoremap({'buffer'}, '<S-Tab>', '<S-Tab>')
