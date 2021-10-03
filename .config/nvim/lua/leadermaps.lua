@@ -24,7 +24,8 @@ map('<Leader>ff', '<CMD>Telescope find_files prompt_prefix=🔍<CR>')
 map('<Leader>fh', '<CMD>Telescope find_files find_command=rg,--files,/home/ prompt_prefix=🔍<CR>')
 map('<Leader>fg', '<CMD>Telescope git_files prompt_prefix=🔍<CR>')
 map('<Leader>fc', '<CMD>Telescope live_grep prompt_prefix=🔍<CR>')
-map('<Leader>fl', '<CMD>NvimTreeToggle<CR><bar><CMD>NvimTreeToggle<CR><bar><CMD>NvimTreeToggle<CR>')
+map('<Leader>fl', '<CMD>NvimTreeToggle<CR>')
+map('<Leader>fb', '<CMD>Telescope buffers<CR>')
 
 
 lmap.f = {

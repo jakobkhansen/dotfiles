@@ -73,33 +73,6 @@ vim.g.nvim_tree_icons = {
     }
 }
 
-require'nvim-tree'.setup {
-    auto_close = true,
-    update_cwd = true,
-
-    update_focused_file = {
-        -- enables the feature
-        enable      = true,
-        -- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
-        -- only relevant when `update_focused_file.enable` is true
-        update_cwd  = true,
-        -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
-        -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
-        ignore_list = {},
-    },
-
-    view = {
-
-        mappings = {
-          -- custom only false will merge the list with the default mappings
-          -- if true, it will only use your list to set the mappings
-          custom_only = true,
-          -- list of mappings to set on the tree manually
-          list = bindings
-        }
-    }
-}
-
 
 function Set_cwd()
     dir = vim.fn.expand('%:p:h')
@@ -109,4 +82,27 @@ end
 
 
 vimscript('autocmd FileType NvimTree map <buffer> <Leader>bc <CMD>lua Set_cwd()<CR>', false)
+
+require'nvim-tree'.setup {
+    auto_close = true,
+    update_cwd = true,
+
+    system_open = {
+        -- the command to run this, leaving nil should work in most cases
+        cmd  = 'xdg-open',
+        -- the command arguments as a list
+        args = {}
+    },
+
+    view = {
+
+        mappings = {
+          -- custom only false will merge the list with the default mappings
+          -- if true, it will only use your list to set the mappings
+          custom_only = false,
+          -- list of mappings to set on the tree manually
+          list = bindings
+        }
+    }
+}
 

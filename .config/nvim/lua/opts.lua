@@ -11,13 +11,21 @@ local highlight = vim.highlight.create
 vimscript("filetype plugin indent on", false)
 vimscript("au FileType * setlocal fo-=c fo-=r fo-=o", false)
 
+
 opt.smartindent = true
 opt.autoindent = true
 opt.expandtab = true
+
+-- Tabstop: Number of space in a <Tab>
 opt.tabstop = 4
+
+-- Shiftwidth: Number of spaces in an indentation
 opt.shiftwidth = 4
+
+-- Softtabstop: How many columns is a <Tab> or <BS>
 opt.softtabstop = 4
---opt.tw = 90
+
+opt.tw = 90
 
 
 -- Buffers

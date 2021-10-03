@@ -121,7 +121,12 @@ vimscript('au FileType java lua start_jdt()', false)
 
 
 
+
 -- Typescript
+
+require("null-ls").config {}
+require("lspconfig")["null-ls"].setup {}
+
 nvim_lsp.tsserver.setup{
     on_attach = function(client, bufnr)
     -- disable tsserver formatting if you plan on formatting via null-ls
@@ -132,7 +137,7 @@ nvim_lsp.tsserver.setup{
         ts_utils.setup {
             debug = false,
             disable_commands = false,
-            enable_import_on_completion = false,
+            enable_import_on_completion = true,
 
             -- eslint
             eslint_enable_code_actions = true,

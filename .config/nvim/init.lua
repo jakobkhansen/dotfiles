@@ -28,8 +28,9 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 
 	--"Themes and Visuals"
 	Plug 'christianchiarulli/nvcode-color-schemes.vim'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+
 	Plug 'kyazdani42/nvim-web-devicons'
     Plug 'jakobkhansen/tokyonight.nvim'
     Plug 'ishan9299/nvim-solarized-lua'
@@ -63,6 +64,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 
 	Plug 'mfussenegger/nvim-jdtls'
 	Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+    Plug 'jose-elias-alvarez/null-ls.nvim'
     --Plug 'tami5/lspsaga.nvim'
     Plug 'sbdchd/neoformat'
 
@@ -82,6 +84,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
     Plug 'svermeulen/vimpeccable'
 
 vim.call('plug#end')
+
 
 -- Require modules
 
