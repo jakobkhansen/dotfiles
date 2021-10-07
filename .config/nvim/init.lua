@@ -65,7 +65,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	Plug 'mfussenegger/nvim-jdtls'
 	Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
     Plug 'jose-elias-alvarez/null-ls.nvim'
-    --Plug 'tami5/lspsaga.nvim'
+    Plug 'tami5/lspsaga.nvim'
     Plug 'sbdchd/neoformat'
 
 	--"Snippets"
@@ -91,6 +91,7 @@ vim.call('plug#end')
 require('maps')
 require('opts')
 require('leadermaps')
+require('language_configs')
 
 -- Require plugins
 require('plugins.treesitter-config')
@@ -106,7 +107,7 @@ require('plugins.airline-config')
 require('plugins.startify-config')
 require('plugins.nerdcommenter-config')
 require('plugins.gitsigns-config')
---require('plugins.lspsaga-config')
+require('plugins.lspsaga-config')
 require('plugins.icons')
 require('plugins.markdown-config')
 require('plugins.nvim-cmp-config')

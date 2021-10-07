@@ -4,7 +4,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
           severity_limit = "Error",
       },
 
-      signs = true,
+      --signs = true,
 
       update_in_insert = false,
   }

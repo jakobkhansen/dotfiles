@@ -47,7 +47,7 @@ noremap({'silent'}, '<Leader>ln', lsp.rename)
 nnoremap({'silent'}, '<Leader>la', require('jdtls').code_action)
 vnoremap({'silent'}, '<Leader>la', '<CMD>lua require("jdtls").code_action(true)<CR>')
 map({'silent'}, '<Leader>lf', 'gf')
-nmap({'silent'}, '<Leader>lp', '<CMD>lua vim.lsp.buf.formatting_sync(nil, 100)<CR>')
+nmap({'silent'}, '<Leader>lp', '<CMD>lua vim.lsp.buf.formatting_sync()<CR>')
 map({'silent'}, '<Leader>led', '<CMD>Telescope lsp_document_diagnostics<CR>')
 map({'silent'}, '<Leader>lew', '<CMD>Telescope lsp_workspace_diagnostics<CR>')
 noremap({'silent'}, '<Leader>lel', diagnostic.show_line_diagnostics)
@@ -175,6 +175,7 @@ lmap.h = {
 -- Not categorized
 noremap('<Leader>no', '<CMD>nohlsearch<CR>')
 map('<Leader><BS>', '<CMD>cd ..<CR>')
+map('<Leader>w', '<CMD>w<CR>')
 
 lmap.n = { name = 'leader_ignore', n = 'leader_ignore'}
 lmap['<BS>'] = 'leader_ignore'

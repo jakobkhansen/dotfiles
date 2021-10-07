@@ -71,3 +71,7 @@ alias monleft="xrandr --auto; xrandr --output HDMI-1 --left-of eDP-1"
 alias monright="xrandr --auto; xrandr --output HDMI-1 --right-of eDP-1"
 alias monup="xrandr --auto; xrandr --output HDMI-1 --above eDP-1"
 alias mondup="xrandr --auto; xrandr --output HDMI-1 --same-as eDP-1"
+
+
+alias pm2start="pm2 start npm -- start --restart-delay=3000"
+alias pm2restart="pm2 delete npm && sleep 3 && pm2start"
