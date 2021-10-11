@@ -20,7 +20,6 @@ cmp.setup {
         { name = 'buffer' },
         { name = 'latex_symbols' },
         { name = 'neorg' },
-        { name = 'spell' },
     },
     snippet = {
       expand = function(args)

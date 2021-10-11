@@ -21,20 +21,26 @@ lmap = {}
 
 -- Find x
 map('<Leader>ff', '<CMD>Telescope find_files prompt_prefix=🔍<CR>')
-map('<Leader>fh', '<CMD>Telescope find_files find_command=rg,--files,/home/ prompt_prefix=🔍<CR>')
+map('<Leader>fhf', '<CMD>Telescope find_files find_command=rg,--files,/home/ prompt_prefix=🔍<CR>')
 map('<Leader>fg', '<CMD>Telescope git_files prompt_prefix=🔍<CR>')
 map('<Leader>fc', '<CMD>Telescope live_grep prompt_prefix=🔍<CR>')
 map('<Leader>fl', '<CMD>NvimTreeToggle<CR>')
 map('<Leader>fb', '<CMD>Telescope buffers<CR>')
+map('<Leader>fd', '<CMD>lua telescope_find_dir()<CR>')
+map('<Leader>fhd', '<CMD>lua telescope_find_dir_home()<CR>')
 
 
 lmap.f = {
     name = 'find',
     f = 'find-files',
-    h = 'find-files-home',
+    h = {
+        d = 'find-dir-home',
+        f = 'find-files-home',
+    },
     g = 'find-git-files',
     c = 'find-code',
-    l = 'file-tree'
+    l = 'file-tree',
+    d = 'find-directory',
 }
 
 -- LSP

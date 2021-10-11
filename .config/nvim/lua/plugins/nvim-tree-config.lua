@@ -106,3 +106,12 @@ require'nvim-tree'.setup {
     }
 }
 
+require('fm-nvim').setup{
+	config =
+	{
+		edit_cmd = "edit", -- opts: 'tabedit'; 'split'; 'pedit'; etc...
+		border   = "rounded", -- opts: 'rounded'; 'double'; 'single'; 'solid'; 'shawdow'
+		height   = 0.9,
+		width    = 0.9,
+	}
+}
