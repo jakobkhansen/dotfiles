@@ -53,7 +53,8 @@ noremap({'silent'}, '<Leader>ln', lsp.rename)
 nnoremap({'silent'}, '<Leader>la', require('jdtls').code_action)
 vnoremap({'silent'}, '<Leader>la', '<CMD>lua require("jdtls").code_action(true)<CR>')
 map({'silent'}, '<Leader>lf', 'gf')
-nmap({'silent'}, '<Leader>lp', '<CMD>lua vim.lsp.buf.formatting_sync()<CR>')
+nmap({'silent'}, '<Leader>lp', '<CMD>Neoformat<CR>')
+--nmap({'silent'}, '<Leader>lp', '<CMD>lua vim.lsp.buf.formatting_sync()<CR>')
 map({'silent'}, '<Leader>led', '<CMD>Telescope lsp_document_diagnostics<CR>')
 map({'silent'}, '<Leader>lew', '<CMD>Telescope lsp_workspace_diagnostics<CR>')
 noremap({'silent'}, '<Leader>lel', diagnostic.show_line_diagnostics)
@@ -82,25 +83,7 @@ lmap.l = {
 }
 
 
--- Terminal
-function ToggleTerminal()
-    local buftype = vim.fn.getbufvar("", '&buftype')
 
-    if buftype == 'terminal' then
-        command('close')
-    else
-        command('botright 15new | term')
-        command('set nobl')
-        nnoremap({'buffer'}, '<Tab>', '<Tab>')
-        nnoremap({'buffer'}, '<S-Tab>', '<S-Tab>')
-        nnoremap({'buffer'}, '<Leader>bd', '<CMD>call ToggleTerminal()<CR>')
-    end
-end
-
-noremap({'silent'}, '<Leader>tt', ToggleTerminal)
-map({'silent'}, '<Leader>tv', '<CMD>vsplit term://zsh<CR>')
-map({'silent'}, '<Leader>th', '<CMD>split term://zsh<CR>')
-map({'silent'}, '<Leader>tf', '<CMD>terminal<CR>')
 
 
 lmap.t = {

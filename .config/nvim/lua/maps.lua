@@ -75,7 +75,3 @@ tnoremap('<C-M-j>', '<C-\\><C-n><CMD>resize-5<CR>i')
 tnoremap('<C-M-k>', '<C-\\><C-n><CMD>resize+5<CR>i')
 tnoremap('<C-M-l>', '<C-\\><C-n><CMD>vertical resize+5<CR>i')
 tnoremap('<C-M-r>', '<C-\\><C-n><C-W>=i')
-
-vimscript('au TermOpen * map <buffer> <Leader>bc ipwd\\|xclip -selection clipboard<CR><C-\\><C-n>:cd <C-r>+<CR>i', false)
-
-vimscript('au TermOpen * startinsert', false)

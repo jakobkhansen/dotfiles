@@ -124,66 +124,53 @@ vimscript('au FileType java lua start_jdt()', false)
 
 -- Typescript
 
-require("null-ls").config ({
-    sources = { require("null-ls").builtins.formatting.stylua }
-})
+--require("null-ls").config ({
+    --sources = { require("null-ls").builtins.formatting.stylua }
+--})
 
-require("lspconfig")["null-ls"].setup {}
+--require("lspconfig")["null-ls"].setup {}
 
 nvim_lsp.tsserver.setup{
     on_attach = function(client, bufnr)
     -- disable tsserver formatting if you plan on formatting via null-ls
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-
-
-        local ts_utils = require("nvim-lsp-ts-utils")
-
-        -- defaults
-        ts_utils.setup {
-            debug = false,
-            disable_commands = false,
-            enable_import_on_completion = true,
-
-            import_all_timeout = 5000, -- ms
-            import_all_priorities = {
-                buffers = 4, -- loaded buffer names
-                buffer_content = 3, -- loaded buffer content
-                local_files = 2, -- git files or files with relative path markers
-                same_file = 1, -- add to existing import statement
-            },
-            import_all_scan_buffers = 100,
-            import_all_select_source = false,
-
-             --eslint
-            eslint_enable_code_actions = true,
-            eslint_enable_disable_comments = true,
-            eslint_bin = "eslint",
-            eslint_config_fallback = nil,
-
-            -- eslint diagnostics
-            eslint_enable_diagnostics = true,
-            eslint_diagnostics_debounce = 250,
-
-            -- formatting
-            enable_formatting = true,
-            formatter = "prettierd",
-            formatter_opts = {},
-
-            -- parentheses completion
-            complete_parens = false,
-            signature_help_in_parens = true,
-
-            -- update imports on file move
-            update_imports_on_move = false,
-            require_confirmation_on_move = false,
-            watch_dir = nil,
-        }
-
-        -- required to fix code action ranges
-        ts_utils.setup_client(client)
+    --client.resolved_capabilities.document_formatting = false
+    --client.resolved_capabilities.document_range_formatting = false
 
     end
+}
+
+nvim_lsp.eslint.setup{
+    settings = {
+      validate = 'on',
+      packageManager = 'npm',
+      useESLintClass = false,
+      codeActionOnSave = {
+        enable = true,
+        mode = 'all',
+      },
+      format = true,
+      quiet = false,
+      onIgnoredFiles = 'off',
+      rulesCustomizations = {},
+      run = 'onType',
+      -- If nodePath is a non-null/undefined value the eslint LSP runs into runtime exceptions.
+      --
+      -- It's recommended not to change this.
+      nodePath = '',
+      -- Automatically determine working directory by locating .eslintrc config files.
+      --
+      -- It's recommended not to change this.
+      workingDirectory = { mode = 'auto' },
+      codeAction = {
+        disableRuleComment = {
+          enable = false,
+          location = 'separateLine',
+        },
+        showDocumentation = {
+          enable = false,
+        },
+      },
+    },
 }
 
 -- Latex

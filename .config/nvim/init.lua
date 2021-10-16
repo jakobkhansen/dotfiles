@@ -25,6 +25,8 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 
 	--"Buffers"
 	Plug 'troydm/zoomwintab.vim'
+    Plug 'kwkarlwang/bufresize.nvim'
+
 
 	--"Themes and Visuals"
 	Plug 'christianchiarulli/nvcode-color-schemes.vim'
@@ -46,14 +48,17 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
     Plug 'lewis6991/gitsigns.nvim'
     Plug 'is0n/fm-nvim'
 
+    -- "Terminal"
+    Plug 'akinsho/toggleterm.nvim'
+
 	--"Menus"
 	Plug 'nvim-telescope/telescope.nvim'
+    Plug('nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'make'})
 	Plug 'mhinz/vim-startify'
 	Plug 'spinks/vim-leader-guide'
 
 	--"LSP"
 	Plug 'neovim/nvim-lspconfig'
-	Plug 'RishabhRD/nvim-lsputils'
 
     Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-buffer'
@@ -63,12 +68,13 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
     Plug 'kdheepak/cmp-latex-symbols'
 
 	Plug 'mfussenegger/nvim-jdtls'
-	Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
-    Plug 'jose-elias-alvarez/null-ls.nvim'
+	--Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+    --Plug 'jose-elias-alvarez/null-ls.nvim'
     Plug 'sbdchd/neoformat'
 
 	--"Snippets"
 	Plug 'L3MON4D3/LuaSnip'
+    Plug 'rafamadriz/friendly-snippets'
 
 	--"Notes and organization"
 	Plug 'reedes/vim-pencil'
@@ -96,7 +102,9 @@ require('language_configs')
 require('plugins.treesitter-config')
 require('plugins.lsp-config')
 require('plugins.lsp-servers')
-require('plugins.lsputils-config')
+
+require('plugins.toggleterm')
+require('plugins.bufresize-config')
 
 require('plugins.luasnips')
 
@@ -105,14 +113,12 @@ require('plugins.neorg-config')
 require('plugins.nvim-tree-config')
 require('plugins.telescope-config')
 require('plugins.autosave-config')
---require('plugins.auto-save-config')
 
 require('plugins.airline-config')
 require('plugins.startify-config')
 
 require('plugins.nerdcommenter-config')
 require('plugins.gitsigns-config')
---require('plugins.lspsaga-config')
 require('plugins.icons')
 require('plugins.markdown-config')
 require('plugins.nvim-cmp-config')
