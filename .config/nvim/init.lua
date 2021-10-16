@@ -38,7 +38,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 
 
 	--"Files and git"
-	Plug '907th/vim-auto-save'
+    Plug 'Pocco81/AutoSave.nvim'
 	Plug 'kyazdani42/nvim-tree.lua'
 	Plug 'tpope/vim-fugitive'
 	Plug 'idanarye/vim-merginal'
@@ -65,7 +65,6 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	Plug 'mfussenegger/nvim-jdtls'
 	Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
     Plug 'jose-elias-alvarez/null-ls.nvim'
-    --Plug 'tami5/lspsaga.nvim'
     Plug 'sbdchd/neoformat'
 
 	--"Snippets"
@@ -98,13 +97,19 @@ require('plugins.treesitter-config')
 require('plugins.lsp-config')
 require('plugins.lsp-servers')
 require('plugins.lsputils-config')
+
 require('plugins.luasnips')
+
 require('plugins.neorg-config')
+
 require('plugins.nvim-tree-config')
 require('plugins.telescope-config')
-require('plugins.auto-save-config')
+require('plugins.autosave-config')
+--require('plugins.auto-save-config')
+
 require('plugins.airline-config')
 require('plugins.startify-config')
+
 require('plugins.nerdcommenter-config')
 require('plugins.gitsigns-config')
 --require('plugins.lspsaga-config')
