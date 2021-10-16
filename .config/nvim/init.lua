@@ -32,6 +32,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
 	Plug 'christianchiarulli/nvcode-color-schemes.vim'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'lukas-reineke/indent-blankline.nvim'
 
 	Plug 'kyazdani42/nvim-web-devicons'
     Plug 'jakobkhansen/tokyonight.nvim'
@@ -56,6 +57,7 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
     Plug('nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'make'})
 	Plug 'mhinz/vim-startify'
 	Plug 'spinks/vim-leader-guide'
+    Plug 'folke/trouble.nvim'
 
 	--"LSP"
 	Plug 'neovim/nvim-lspconfig'
@@ -89,8 +91,6 @@ vim.call('plug#begin', '$HOME/.config/nvim/plugged')
     Plug 'svermeulen/vimpeccable'
 
 vim.call('plug#end')
-
-
 -- Require modules
 
 require('maps')
@@ -102,6 +102,7 @@ require('language_configs')
 require('plugins.treesitter-config')
 require('plugins.lsp-config')
 require('plugins.lsp-servers')
+require('plugins.trouble-config')
 
 require('plugins.toggleterm')
 require('plugins.bufresize-config')

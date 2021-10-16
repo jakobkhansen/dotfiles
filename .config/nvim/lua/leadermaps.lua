@@ -55,8 +55,7 @@ vnoremap({'silent'}, '<Leader>la', '<CMD>lua require("jdtls").code_action(true)<
 map({'silent'}, '<Leader>lf', 'gf')
 nmap({'silent'}, '<Leader>lp', '<CMD>Neoformat<CR>')
 --nmap({'silent'}, '<Leader>lp', '<CMD>lua vim.lsp.buf.formatting_sync()<CR>')
-map({'silent'}, '<Leader>led', '<CMD>Telescope lsp_document_diagnostics<CR>')
-map({'silent'}, '<Leader>lew', '<CMD>Telescope lsp_workspace_diagnostics<CR>')
+map({'silent'}, '<Leader>lee', '<CMD>TroubleToggle<CR>')
 noremap({'silent'}, '<Leader>lel', diagnostic.show_line_diagnostics)
 noremap({'silent'}, '<Leader>len', diagnostic.goto_next)
 noremap({'silent'}, '<Leader>lep', diagnostic.goto_prev)
@@ -74,9 +73,8 @@ lmap.l = {
     p = 'prettier-format',
     e = {
         name = 'diagnostics',
+        e = 'diagnostic-overview',
         l = 'line-diagnostics',
-        d = 'document-diagnostics',
-        w = 'workspace-diagnostics',
         n = 'next-diagnostic',
         p = 'prev-diagnostic'
     }
@@ -121,7 +119,7 @@ lmap.b = {
 
 -- Git
 map('<Leader>gc', '<CMD>Telescope git_commits prompt_prefix=🔍<CR>')
-map('<Leader>gb', '<CMD>Merginal<CR>')
+map('<Leader>gb', '<CMD>silent Merginal<CR>')
 map('<Leader>gh', '<CMD>Git blame<CR>')
 map('<Leader>gm', '<CMD>Git mergetool<CR>')
 map('<Leader>gs', '<CMD>Ge :<CR>')
