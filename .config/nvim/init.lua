@@ -55,7 +55,12 @@ require("packer").startup(function(use)
 	})
 
 	use("vim-airline/vim-airline-themes")
-	use("lukas-reineke/indent-blankline.nvim")
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("plugins.indent-blankline-config")
+		end,
+	})
 	use({
 		"kyazdani42/nvim-web-devicons",
 		config = function()
