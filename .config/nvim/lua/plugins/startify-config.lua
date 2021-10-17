@@ -4,8 +4,8 @@ vim.g.startify_files_number = 5
 
 vim.g.startify_commands = {
     {'Reload Vim', 'luafile $MYVIMRC'},
-    {'Update plugins', 'PlugUpdate'},
-    {'Clean plugins', 'PlugClean'}
+    {'Update plugins', 'PackerSync'},
+    {'Clean plugins', 'PackerClean'}
 }
 
 

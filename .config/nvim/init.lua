@@ -1,129 +1,197 @@
-local Plug = vim.fn['plug#']
-
-
-
-vim.call('plug#begin', '$HOME/.config/nvim/plugged')
-
-    --"Plugin dependencies"
-	Plug 'nvim-lua/popup.nvim'
-	Plug 'nvim-lua/plenary.nvim'
-	Plug 'RishabhRD/popfix'
-	Plug 'rbgrouleff/bclose.vim'
+require("packer").startup(function(use)
+	--"Libraries and dependencies"
+	use("wbthomason/packer.nvim")
+	use("svermeulen/vimpeccable")
+	use("nvim-lua/popup.nvim")
+	use("nvim-lua/plenary.nvim")
+	use("RishabhRD/popfix")
+	use("rbgrouleff/bclose.vim")
 
 	--"Text manipulation"
-	Plug 'scrooloose/nerdcommenter'
-	Plug 'windwp/nvim-autopairs'
-    Plug 'tpope/vim-surround'
+	use({
+		"scrooloose/nerdcommenter",
+		config = function()
+			require("plugins.nerdcommenter-config")
+		end,
+	})
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("plugins.nvim-autopairs-config")
+		end,
+	})
+	use("tpope/vim-surround")
 
 	--"Movement"
-	Plug 'psliwka/vim-smoothie'
+	use("psliwka/vim-smoothie")
 
 	--"Syntax highlighting"
-    Plug('nvim-treesitter/nvim-treesitter', {['do'] = vim.fn['TSUpdate']})
-    Plug 'nvim-treesitter/playground'
-	Plug 'sheerun/vim-polyglot'
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("plugins.treesitter-config")
+		end,
+	})
+	use("nvim-treesitter/playground")
+	use("sheerun/vim-polyglot")
 
 	--"Buffers"
-	Plug 'troydm/zoomwintab.vim'
-    Plug 'kwkarlwang/bufresize.nvim'
-
+	use("troydm/zoomwintab.vim")
+	use({
+		"kwkarlwang/bufresize.nvim",
+		config = function()
+			require("bufresize").setup()
+		end,
+	})
 
 	--"Themes and Visuals"
-	Plug 'christianchiarulli/nvcode-color-schemes.vim'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'lukas-reineke/indent-blankline.nvim'
+	use("christianchiarulli/nvcode-color-schemes.vim")
 
-	Plug 'kyazdani42/nvim-web-devicons'
-    Plug 'jakobkhansen/tokyonight.nvim'
-    Plug 'ishan9299/nvim-solarized-lua'
-    Plug 'projekt0n/github-nvim-theme'
+	use({
+		"vim-airline/vim-airline",
+		config = function()
+			require("plugins.airline-config")
+		end,
+	})
 
+	use("vim-airline/vim-airline-themes")
+	use("lukas-reineke/indent-blankline.nvim")
+	use({
+		"kyazdani42/nvim-web-devicons",
+		config = function()
+			require("plugins.icons")
+		end,
+	})
+	use("jakobkhansen/tokyonight.nvim")
+	use("ishan9299/nvim-solarized-lua")
+	use("projekt0n/github-nvim-theme")
 
 	--"Files and git"
-    Plug 'Pocco81/AutoSave.nvim'
-	Plug 'kyazdani42/nvim-tree.lua'
-	Plug 'tpope/vim-fugitive'
-	Plug 'idanarye/vim-merginal'
-	Plug 'rhysd/conflict-marker.vim'
-    Plug 'lewis6991/gitsigns.nvim'
-    Plug 'is0n/fm-nvim'
+	use({
+		"Pocco81/AutoSave.nvim",
+		config = function()
+			require("plugins.autosave-config")
+		end,
+	})
 
-    -- "Terminal"
-    Plug 'akinsho/toggleterm.nvim'
+	use({
+		"kyazdani42/nvim-tree.lua",
+		config = function()
+			require("plugins.nvim-tree-config")
+		end,
+	})
+
+	use("tpope/vim-fugitive")
+	use("idanarye/vim-merginal")
+	use("rhysd/conflict-marker.vim")
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("plugins.gitsigns-config")
+		end,
+	})
+	use("is0n/fm-nvim")
+
+	-- "Terminal"
+	use({
+		"akinsho/toggleterm.nvim",
+		config = function()
+			require("plugins.toggleterm-config")
+		end,
+	})
 
 	--"Menus"
-	Plug 'nvim-telescope/telescope.nvim'
-    Plug('nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'make'})
-	Plug 'mhinz/vim-startify'
-	Plug 'spinks/vim-leader-guide'
-    Plug 'folke/trouble.nvim'
+	use({
+		"nvim-telescope/telescope.nvim",
+		config = function()
+			require("plugins.telescope-config")
+		end,
+	})
+
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	use({
+		"mhinz/vim-startify",
+		config = function()
+			require("plugins.startify-config")
+		end,
+	})
+
+	use("spinks/vim-leader-guide")
+	use({
+		"folke/trouble.nvim",
+		config = function()
+			require("plugins.trouble-config")
+		end,
+	})
 
 	--"LSP"
-	Plug 'neovim/nvim-lspconfig'
+	use({
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("plugins.lsp-config")
+			require("plugins.lsp-servers")
+		end,
+	})
 
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'saadparwaiz1/cmp_luasnip'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'kdheepak/cmp-latex-symbols'
+	use({
+		"hrsh7th/nvim-cmp",
+		config = function()
+			require("plugins.nvim-cmp-config")
+		end,
+	})
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-nvim-lsp")
 
-	Plug 'mfussenegger/nvim-jdtls'
-	--Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
-    --Plug 'jose-elias-alvarez/null-ls.nvim'
-    Plug 'sbdchd/neoformat'
+	use("saadparwaiz1/cmp_luasnip")
+	use("hrsh7th/cmp-path")
+	use("kdheepak/cmp-latex-symbols")
+
+	use("mfussenegger/nvim-jdtls")
+	--use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+	--use 'jose-elias-alvarez/null-ls.nvim'
+	use({
+		"sbdchd/neoformat",
+		config = function()
+			require("plugins.neoformat-config")
+		end,
+	})
 
 	--"Snippets"
-	Plug 'L3MON4D3/LuaSnip'
-    Plug 'rafamadriz/friendly-snippets'
+	use({
+		"L3MON4D3/LuaSnip",
+		config = function()
+			require("plugins.luasnips-config")
+		end,
+	})
+	use("rafamadriz/friendly-snippets")
 
 	--"Notes and organization"
-	Plug 'reedes/vim-pencil'
-	Plug 'instant-markdown/vim-instant-markdown'
-	Plug 'lervag/vimtex'
-    Plug('vhyrro/neorg', {['branch'] = 'unstable'})
-    Plug 'preservim/vim-pencil'
-
-
-	--"Random"
-	Plug 'andweeb/presence.nvim'
-    Plug 'svermeulen/vimpeccable'
-
-vim.call('plug#end')
--- Require modules
-
-require('maps')
-require('opts')
-require('leadermaps')
-require('language_configs')
+	use("reedes/vim-pencil")
+	use({
+		"instant-markdown/vim-instant-markdown",
+		config = function()
+			require("plugins.markdown-config")
+		end,
+	})
+	use({
+		"lervag/vimtex",
+		config = function()
+			require("plugins.latex-config")
+		end,
+	})
+	use({
+		"vhyrro/neorg",
+		branch = "unstable",
+		config = function()
+			require("plugins.neorg-config")
+		end,
+	})
+	use("andweeb/presence.nvim")
+end)
 
 -- Require plugins
-require('plugins.treesitter-config')
-require('plugins.lsp-config')
-require('plugins.lsp-servers')
-require('plugins.trouble-config')
 
-require('plugins.toggleterm')
-require('plugins.bufresize-config')
-
-require('plugins.luasnips')
-
-require('plugins.neorg-config')
-
-require('plugins.nvim-tree-config')
-require('plugins.telescope-config')
-require('plugins.autosave-config')
-
-require('plugins.airline-config')
-require('plugins.startify-config')
-
-require('plugins.nerdcommenter-config')
-require('plugins.gitsigns-config')
-require('plugins.icons')
-require('plugins.markdown-config')
-require('plugins.nvim-cmp-config')
-require('plugins.latex-config')
-require('plugins.neoformat-config')
-
-require('plugins.nvim-autopairs-config')
+require("maps")
+require("opts")
+require("leadermaps")
+require("language_configs")
