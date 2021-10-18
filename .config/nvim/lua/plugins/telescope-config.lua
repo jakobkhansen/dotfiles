@@ -31,8 +31,8 @@ function _G.telescope_find_dir(opts)
 			actions.select_default:replace(function()
 				local selection = action_state.get_selected_entry()
                 if selection ~= nil then
-				    command("cd " .. selection[1])
 				    actions.close(prompt_bufnr)
+				    command("cd " .. selection[1])
                 end
 			end)
 			return true
@@ -49,8 +49,8 @@ function _G.telescope_find_dir_home(opts)
 			actions.select_default:replace(function()
 				local selection = action_state.get_selected_entry()
                 if selection ~= nil then
-				    command("cd " .. selection[1])
 				    actions.close(prompt_bufnr)
+				    command("cd " .. selection[1])
                 end
 				return
 			end)

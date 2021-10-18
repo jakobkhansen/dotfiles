@@ -6,6 +6,8 @@ local command = vim.api.nvim_command
 local ui = require('toggleterm.ui')
 
 
+
+
 require("toggleterm").setup{
   -- size can be a number or function which is passed the current terminal
   size = function(term)
@@ -50,8 +52,6 @@ vimscript('au TermOpen * map <buffer> <Leader>bc ipwd\\|xclip -selection clipboa
 
 vimscript('au FileType toggleterm map <buffer> <Tab> <Nop>', false)
 
-vimscript('au TermOpen * startinsert', false)
-
 vimscript('au TermOpen * map <buffer> <Leader>bd <CMD>bd!<CR>', false)
 
 vimscript('au DirChanged * lua updateTermDirectory()', false)
@@ -61,11 +61,14 @@ function _G.updateTermDirectory()
     local num = 1
     local is_open = terms.get(num) ~= nil and terms.get(num):is_open() or false
 
-    --print(vim.inspect(terms.get(num).dir))
-    --print(vim.inspect(dir))
     if is_open and terms.get(num).dir ~= dir then
         terms.get(num):send({ fmt("chdir %s", dir)})
         command('cd ' .. dir)
         ui.goto_previous()
     end
 end
+
+-- Create default terminal
+local term = terms.Terminal:new({count = i, id = i})
+term:open()
+term:close()
