@@ -57,13 +57,15 @@ vimscript('au TermOpen * map <buffer> <Leader>bd <CMD>bd!<CR>', false)
 vimscript('au DirChanged * lua updateTermDirectory()', false)
 
 function _G.updateTermDirectory()
-    local dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h")
+    local dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p")
     local num = 1
     local is_open = terms.get(num) ~= nil and terms.get(num):is_open() or false
 
+    --print(vim.inspect(terms.get(num).dir))
+    --print(vim.inspect(dir))
     if is_open and terms.get(num).dir ~= dir then
         terms.get(num):send({ fmt("chdir %s", dir)})
-        ui.goto_previous()
         command('cd ' .. dir)
+        ui.goto_previous()
     end
 end
