@@ -1,5 +1,9 @@
 local map = vimp.map
 local vimscript = vim.api.nvim_exec
+local terms = require("toggleterm.terminal")
+local fmt = string.format
+local command = vim.api.nvim_command
+local ui = require('toggleterm.ui')
 
 
 require("toggleterm").setup{
@@ -49,3 +53,17 @@ vimscript('au FileType toggleterm map <buffer> <Tab> <Nop>', false)
 vimscript('au TermOpen * startinsert', false)
 
 vimscript('au TermOpen * map <buffer> <Leader>bd <CMD>bd!<CR>', false)
+
+vimscript('au DirChanged * lua updateTermDirectory()', false)
+
+function _G.updateTermDirectory()
+    local dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h")
+    local num = 1
+    local is_open = terms.get(num) ~= nil and terms.get(num):is_open() or false
+
+    if is_open and terms.get(num).dir ~= dir then
+        terms.get(num):send({ fmt("chdir %s", dir)})
+        ui.goto_previous()
+        command('cd ' .. dir)
+    end
+end

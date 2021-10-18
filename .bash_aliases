@@ -19,6 +19,7 @@ alias size="du -sh "
 
 alias dagens="/home/jakob/Documents/Personal/Middag-IFI/middag.py"
 
+alias cd_old="cd"
 alias cd="cs"
 
 # Change directory and ls
