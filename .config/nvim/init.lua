@@ -72,12 +72,12 @@ require("packer").startup(function(use)
 	use("projekt0n/github-nvim-theme")
 
 	--"Files and git"
-    use({
-        "jakobkhansen/AutoSave.nvim",
-        config = function()
-            require("plugins.autosave-config")
-        end,
-    })
+	use({
+		"jakobkhansen/AutoSave.nvim",
+		config = function()
+			require("plugins.autosave-config")
+		end,
+	})
 
 	use({
 		"kyazdani42/nvim-tree.lua",
@@ -112,8 +112,14 @@ require("packer").startup(function(use)
 			require("plugins.telescope-config")
 		end,
 	})
-
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	use({
+		"AckslD/nvim-neoclip.lua",
+		config = function()
+			require("neoclip").setup()
+            require('telescope').load_extension('neoclip')
+		end,
+	})
 	use({
 		"mhinz/vim-startify",
 		config = function()
@@ -144,9 +150,9 @@ require("packer").startup(function(use)
 			require("plugins.nvim-cmp-config")
 		end,
 	})
-    use({
-        "onsails/lspkind-nvim",
-    })
+	use({
+		"onsails/lspkind-nvim",
+	})
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-nvim-lsp")
 

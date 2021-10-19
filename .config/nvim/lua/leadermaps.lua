@@ -28,6 +28,7 @@ map('<Leader>fl', '<CMD>NvimTreeToggle<CR>')
 map('<Leader>fb', '<CMD>Telescope buffers<CR>')
 map('<Leader>fd', '<CMD>lua telescope_find_dir()<CR>')
 map('<Leader>fhd', '<CMD>lua telescope_find_dir_home()<CR>')
+map('<Leader>fp', '<CMD>Telescope neoclip<CR>')
 
 
 lmap.f = {
