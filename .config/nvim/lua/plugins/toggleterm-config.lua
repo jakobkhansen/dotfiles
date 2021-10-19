@@ -69,6 +69,6 @@ function _G.updateTermDirectory()
 end
 
 -- Create default terminal
-local term = terms.Terminal:new({count = i, id = i})
-term:open()
-term:close()
+--local term = terms.Terminal:new({count = i, id = i})
+--term:open()
+--term:close()

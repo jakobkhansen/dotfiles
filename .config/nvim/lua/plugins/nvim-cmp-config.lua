@@ -1,4 +1,6 @@
 local cmp = require('cmp')
+local lspkind = require('lspkind')
+
 cmp.setup {
     -- You can set mappings if you want
     mapping = {
@@ -26,4 +28,7 @@ cmp.setup {
         require'luasnip'.lsp_expand(args.body)
       end
     },
+    formatting = {
+        format = lspkind.cmp_format({with_text = false, maxwidth = 50})
+    }
 }
