@@ -164,7 +164,7 @@ lmap.h = {
 noremap('<Leader>no', '<CMD>nohlsearch<CR>')
 map('<Leader><BS>', '<CMD>cd ..<CR>')
 map('<Leader>w', '<CMD>w<CR>')
-map('<Leader><CR>', '<CMD>TermExec go_back=0 cmd="!!"<CR>')
+map('<Leader><CR>', '<CMD>TermExec go_back=1 cmd="!!"<CR>')
 
 lmap.n = { name = 'leader_ignore', n = 'leader_ignore'}
 lmap['<BS>'] = 'leader_ignore'
