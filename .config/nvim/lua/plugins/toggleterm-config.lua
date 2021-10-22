@@ -62,7 +62,8 @@ function _G.updateTermDirectory()
     local is_open = terms.get(num) ~= nil and terms.get(num):is_open() or false
 
     if is_open and terms.get(num).dir ~= dir then
-        terms.get(num):send({ fmt("chdir %s", dir)})
+        terms.get(num):send({ fmt(" chdir '%s'", dir)})
+        terms.get(num):send({ fmt(" ", dir)})
         command('cd ' .. dir)
         ui.goto_previous()
     end
