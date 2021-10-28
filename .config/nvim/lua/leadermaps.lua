@@ -104,6 +104,8 @@ map('<Leader>bv', '<CMD>vsplit<CR>')
 map('<Leader>bh', '<CMD>split<CR>')
 map('<Leader>bo', '<CMD>ZoomWinTabToggle<CR>')
 map('<Leader>bt', '<CMD>tabnew<CR>')
+map('<Leader>bm', '<CMD>WinShift<CR>')
+
 
 lmap.b = {
     name = 'buffer',
@@ -168,7 +170,11 @@ map('<Leader><CR>', '<CMD>TermExec go_back=1 cmd="!!"<CR>')
 
 lmap.n = { name = 'leader_ignore', n = 'leader_ignore'}
 lmap['<BS>'] = 'leader_ignore'
+lmap['<CR>'] = 'leader_ignore'
 lmap.s = { name = 'leader_ignore', s = 'leader_ignore'}
+lmap.w = 'leader_ignore'
+
+lmap.o = { name = 'neorg'}
 
 
 

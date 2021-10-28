@@ -14,11 +14,11 @@ require('nvim-autopairs').setup({
     --ignored_next_char = "%w",
 })
 
-require('nvim-autopairs.completion.cmp').setup({
-    map_cr = true,
-    map_complete = true,
-    auto_select = false,
-})
+--require('nvim-autopairs.completion.cmp').setup({
+    --map_cr = true,
+    --map_complete = true,
+    --auto_select = false,
+--})
 
 
 require('nvim-treesitter.configs').setup {

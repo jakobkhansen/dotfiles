@@ -43,6 +43,7 @@ require("packer").startup(function(use)
 			require("bufresize").setup()
 		end,
 	})
+    use('sindrets/winshift.nvim')
 
 	--"Themes and Visuals"
 	use("christianchiarulli/nvcode-color-schemes.vim")
@@ -73,7 +74,7 @@ require("packer").startup(function(use)
 
 	--"Files and git"
 	use({
-		"jakobkhansen/AutoSave.nvim",
+		"Pocco81/AutoSave.nvim",
 		config = function()
 			require("plugins.autosave-config")
 		end,
@@ -117,7 +118,7 @@ require("packer").startup(function(use)
 		"AckslD/nvim-neoclip.lua",
 		config = function()
 			require("neoclip").setup()
-            require('telescope').load_extension('neoclip')
+			require("telescope").load_extension("neoclip")
 		end,
 	})
 	use({
@@ -126,7 +127,6 @@ require("packer").startup(function(use)
 			require("plugins.startify-config")
 		end,
 	})
-
 	use("spinks/vim-leader-guide")
 	use({
 		"folke/trouble.nvim",
