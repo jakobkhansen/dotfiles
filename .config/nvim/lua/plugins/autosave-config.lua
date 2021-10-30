@@ -6,7 +6,7 @@ require('autosave').setup(
         conditions = {
             exists = true,
             filename_is_not = {},
-            filetype_is_not = {},
+            filetype_is_not = {'javascript'},
             modifiable = true
         },
         write_all_buffers = false,

@@ -22,6 +22,7 @@ lmap = {}
 -- Find x
 map('<Leader>ff', '<CMD>Telescope find_files prompt_prefix=🔍<CR>')
 map('<Leader>fhf', '<CMD>Telescope find_files find_command=rg,--files,/home/ prompt_prefix=🔍<CR>')
+map('<Leader>fhh', '<CMD>Telescope find_files find_command=rg,--files,--hidden,/home/ prompt_prefix=🔍<CR>')
 map('<Leader>fg', '<CMD>Telescope git_files prompt_prefix=🔍<CR>')
 map('<Leader>fc', '<CMD>Telescope live_grep prompt_prefix=🔍<CR>')
 map('<Leader>fl', '<CMD>NvimTreeToggle<CR>')
@@ -35,6 +36,7 @@ lmap.f = {
     name = 'find',
     f = 'find-files',
     h = {
+        name = 'find-home',
         d = 'find-dir-home',
         f = 'find-files-home',
     },
@@ -42,6 +44,8 @@ lmap.f = {
     c = 'find-code',
     l = 'file-tree',
     d = 'find-directory',
+    b = 'find-buffers',
+    p = 'find-clipboard',
 }
 
 -- LSP
@@ -117,7 +121,8 @@ lmap.b = {
     h = 'horizontal-split',
     o = 'toggle-fullscreen',
     c = 'set-cwd',
-    t = 'open-new-tab'
+    t = 'open-new-tab',
+    m = 'buffer-move'
 }
 
 -- Git

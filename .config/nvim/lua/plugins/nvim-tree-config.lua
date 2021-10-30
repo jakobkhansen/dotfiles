@@ -3,9 +3,9 @@ local vimscript = vim.api.nvim_exec
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 local noremap = require('vimp').noremap
 
-vim.g.nvim_tree_ignore = {'*.class'}
+--vim.g.nvim_tree_ignore = {'*.class'}
 vim.g.nvim_tree_quit_on_open = 1
-vim.g.nvim_tree_hide_dotfiles = 1
+--vim.g.nvim_tree_hide_dotfiles = 1
 vim.g.nvim_tree_window_picker_exclude = {
     buftype = {
         'terminal',
@@ -86,6 +86,8 @@ vimscript('autocmd FileType NvimTree map <buffer> <Leader>bc <CMD>lua Set_cwd()<
 require'nvim-tree'.setup {
     auto_close = true,
     update_cwd = true,
+    --hide_dotfiles = 1,
+    --ignore = {"*.class"},
 
     system_open = {
         -- the command to run this, leaving nil should work in most cases
@@ -103,6 +105,10 @@ require'nvim-tree'.setup {
           -- list of mappings to set on the tree manually
           list = bindings
         }
+    },
+    filters = {
+        dotfiles = true,
+        custom = {"*.class"}
     }
 }
 

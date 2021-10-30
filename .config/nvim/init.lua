@@ -21,6 +21,7 @@ require("packer").startup(function(use)
 		end,
 	})
 	use("tpope/vim-surround")
+    use("jose-elias-alvarez/nvim-lsp-ts-utils")
 
 	--"Movement"
 	use("psliwka/vim-smoothie")
@@ -56,12 +57,12 @@ require("packer").startup(function(use)
 	})
 
 	use("vim-airline/vim-airline-themes")
-	use({
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("plugins.indent-blankline-config")
-		end,
-	})
+	--use({
+		--"lukas-reineke/indent-blankline.nvim",
+		--config = function()
+			--require("plugins.indent-blankline-config")
+		--end,
+	--})
 	use({
 		"kyazdani42/nvim-web-devicons",
 		config = function()
