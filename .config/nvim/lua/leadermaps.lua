@@ -26,6 +26,7 @@ map('<Leader>fhh', '<CMD>Telescope find_files find_command=rg,--files,--hidden,/
 map('<Leader>fg', '<CMD>Telescope git_files prompt_prefix=🔍<CR>')
 map('<Leader>fc', '<CMD>Telescope live_grep prompt_prefix=🔍<CR>')
 map('<Leader>fl', '<CMD>NvimTreeToggle<CR>')
+map('<Leader>fr', '<CMD>Ranger --choosedir="/tmp/ranger_dir"<CR>')
 map('<Leader>fb', '<CMD>Telescope buffers<CR>')
 map('<Leader>fd', '<CMD>lua telescope_find_dir()<CR>')
 map('<Leader>fhd', '<CMD>lua telescope_find_dir_home()<CR>')
@@ -43,6 +44,7 @@ lmap.f = {
     g = 'find-git-files',
     c = 'find-code',
     l = 'file-tree',
+    r = 'find-ranger',
     d = 'find-directory',
     b = 'find-buffers',
     p = 'find-clipboard',

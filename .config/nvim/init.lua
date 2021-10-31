@@ -21,7 +21,8 @@ require("packer").startup(function(use)
 		end,
 	})
 	use("tpope/vim-surround")
-    use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use("jose-elias-alvarez/null-ls.nvim")
 
 	--"Movement"
 	use("psliwka/vim-smoothie")
@@ -44,7 +45,7 @@ require("packer").startup(function(use)
 			require("bufresize").setup()
 		end,
 	})
-    use('sindrets/winshift.nvim')
+	use("sindrets/winshift.nvim")
 
 	--"Themes and Visuals"
 	use("christianchiarulli/nvcode-color-schemes.vim")
@@ -58,10 +59,10 @@ require("packer").startup(function(use)
 
 	use("vim-airline/vim-airline-themes")
 	--use({
-		--"lukas-reineke/indent-blankline.nvim",
-		--config = function()
-			--require("plugins.indent-blankline-config")
-		--end,
+	--"lukas-reineke/indent-blankline.nvim",
+	--config = function()
+	--require("plugins.indent-blankline-config")
+	--end,
 	--})
 	use({
 		"kyazdani42/nvim-web-devicons",
@@ -89,7 +90,7 @@ require("packer").startup(function(use)
 	})
 
 	use("tpope/vim-fugitive")
-	use("idanarye/vim-merginal")
+	use({ "idanarye/vim-merginal", branch = "develop" })
 	use("rhysd/conflict-marker.vim")
 	use({
 		"lewis6991/gitsigns.nvim",
@@ -97,7 +98,12 @@ require("packer").startup(function(use)
 			require("plugins.gitsigns-config")
 		end,
 	})
-	use("is0n/fm-nvim")
+	use({
+		"is0n/fm-nvim",
+		config = function()
+			require("plugins.fm-nvim-config")
+		end,
+	})
 
 	-- "Terminal"
 	use({

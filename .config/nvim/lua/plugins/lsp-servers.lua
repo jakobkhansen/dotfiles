@@ -117,97 +117,59 @@ vimscript("au FileType java lua start_jdt()", false)
 
 -- Typescript
 
---require("null-ls").config ({
---sources = { require("null-ls").builtins.formatting.stylua }
---})
+require("null-ls").config{}
 
---require("lspconfig")["null-ls"].setup {}
+require("lspconfig")["null-ls"].setup {}
 
 nvim_lsp.tsserver.setup({
 	on_attach = function(client, bufnr)
-		-- disable tsserver formatting if you plan on formatting via null-ls
-		--client.resolved_capabilities.document_formatting = false
-		--client.resolved_capabilities.document_range_formatting = false
-		--local ts_utils = require("nvim-lsp-ts-utils")
+        local ts_utils = require("nvim-lsp-ts-utils")
 
-		---- defaults
-		--ts_utils.setup({
-			--debug = false,
-			--disable_commands = false,
-			--enable_import_on_completion = false,
+        -- defaults
+        ts_utils.setup({
+            debug = false,
+            disable_commands = false,
+            enable_import_on_completion = true,
 
-			---- import all
-			--import_all_timeout = 5000, -- ms
-			---- lower numbers indicate higher priority
-			--import_all_priorities = {
-				--same_file = 1, -- add to existing import statement
-				--local_files = 2, -- git files or files with relative path markers
-				--buffer_content = 3, -- loaded buffer content
-				--buffers = 4, -- loaded buffer names
-			--},
-			--import_all_scan_buffers = 100,
-			--import_all_select_source = false,
+            -- import all
+            import_all_timeout = 5000, -- ms
+            -- lower numbers indicate higher priority
+            import_all_priorities = {
+                same_file = 1, -- add to existing import statement
+                local_files = 2, -- git files or files with relative path markers
+                buffer_content = 3, -- loaded buffer content
+                buffers = 4, -- loaded buffer names
+            },
+            import_all_scan_buffers = 100,
+            import_all_select_source = true,
 
-			---- eslint
-			--eslint_enable_code_actions = true,
-			--eslint_enable_disable_comments = true,
-			--eslint_bin = "eslint",
-			--eslint_enable_diagnostics = false,
-			--eslint_opts = {},
+            -- eslint
+            eslint_enable_code_actions = false,
+            eslint_enable_disable_comments = true,
+            eslint_bin = "eslint",
+            eslint_enable_diagnostics = false,
+            eslint_opts = {},
 
-			---- formatting
-			--enable_formatting = false,
-			--formatter = "prettier",
-			--formatter_opts = {},
+            -- formatting
+            enable_formatting = false,
+            formatter = "prettier",
+            formatter_opts = {},
 
-			---- update imports on file move
-			--update_imports_on_move = false,
-			--require_confirmation_on_move = false,
-			--watch_dir = nil,
+            -- update imports on file move
+            update_imports_on_move = true,
+            require_confirmation_on_move = false,
+            watch_dir = nil,
 
-			---- filter diagnostics
-			--filter_out_diagnostics_by_severity = {},
-			--filter_out_diagnostics_by_code = {},
-		--})
+            -- filter diagnostics
+            filter_out_diagnostics_by_severity = {},
+            filter_out_diagnostics_by_code = {},
+        })
 
-		---- required to fix code action ranges and filter diagnostics
-		--ts_utils.setup_client(client)
+        -- required to fix code action ranges and filter diagnostics
+        ts_utils.setup_client(client)
 	end,
 })
 
-nvim_lsp.eslint.setup({
-	settings = {
-		validate = "on",
-		packageManager = "npm",
-		useESLintClass = false,
-		codeActionOnSave = {
-			enable = true,
-			mode = "all",
-		},
-		format = true,
-		quiet = false,
-		onIgnoredFiles = "off",
-		rulesCustomizations = {},
-		run = "onType",
-		-- If nodePath is a non-null/undefined value the eslint LSP runs into runtime exceptions.
-		--
-		-- It's recommended not to change this.
-		nodePath = "",
-		-- Automatically determine working directory by locating .eslintrc config files.
-		--
-		-- It's recommended not to change this.
-		workingDirectory = { mode = "auto" },
-		codeAction = {
-			disableRuleComment = {
-				enable = false,
-				location = "separateLine",
-			},
-			showDocumentation = {
-				enable = false,
-			},
-		},
-	},
-})
 
 -- Latex
 nvim_lsp.texlab.setup({})
