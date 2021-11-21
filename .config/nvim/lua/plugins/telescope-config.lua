@@ -21,11 +21,13 @@ require("telescope").setup({
 })
 
 require('telescope').load_extension('fzf')
+require('telescope').load_extension("termfinder")
 
 function _G.telescope_find_dir(opts)
+    opts = opts or {}
 	pickers.new(opts, {
 		prompt_title = "Find Directory",
-		finder = finders.new_oneshot_job({ "fd" }, { "-t", "d" }),
+		finder = finders.new_oneshot_job({ "fd", "-t", "d" }),
 		sorter = conf.generic_sorter(opts),
 		attach_mappings = function(prompt_bufnr, map)
 			actions.select_default:replace(function()

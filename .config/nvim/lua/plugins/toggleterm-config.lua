@@ -45,9 +45,6 @@ require("toggleterm").setup{
   }
 }
 
-map({'silent'}, '<Leader>tf', '<CMD>terminal<CR>')
-map({'silent'}, '<Leader>tt', '<Cmd>exe v:count1 . "ToggleTerm"<CR>')
-
 vimscript('au TermOpen * map <buffer> <Leader>bc ipwd\\|xclip -selection clipboard<CR><C-\\><C-n>:cd <C-r>+<CR>i', false)
 
 vimscript('au FileType toggleterm map <buffer> <Tab> <Nop>', false)

@@ -38,3 +38,6 @@ imap({'silent'}, '<C-k>', '<CMD>lua require("luasnip").jump(1)<CR>')
 --imap <silent> <C-k> <CMD>lua require'luasnip'.jump(1)<CR>
 --inoremap <silent> <C-j> <cmd>lua require'luasnip'.jump(-1)<Cr>
 require("luasnip/loaders/from_vscode").lazy_load()
+
+require'luasnip'.filetype_extend("javascript", {"javascriptreact"})
+require'luasnip'.filetype_extend("typescript", {"typescriptreact"})

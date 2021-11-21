@@ -31,6 +31,7 @@ map('<Leader>fb', '<CMD>Telescope buffers<CR>')
 map('<Leader>fd', '<CMD>lua telescope_find_dir()<CR>')
 map('<Leader>fhd', '<CMD>lua telescope_find_dir_home()<CR>')
 map('<Leader>fp', '<CMD>Telescope neoclip<CR>')
+map('<Leader>ft', '<CMD>Telescope termfinder find<CR>')
 
 
 lmap.f = {
@@ -48,6 +49,7 @@ lmap.f = {
     d = 'find-directory',
     b = 'find-buffers',
     p = 'find-clipboard',
+    t = 'find-term',
 }
 
 -- LSP
@@ -91,8 +93,11 @@ lmap.l = {
 
 
 
+map({'silent'}, '<Leader>tf', '<CMD>terminal<CR>')
+map({'silent'}, '<Leader>tt', '<Cmd>exe v:count1 . "ToggleTerm"<CR>')
+
 lmap.t = {
-    name = 'terminal',
+    name = 'term',
     t = 'mini-terminal',
     v = 'vertical-terminal',
     h = 'horizontal-terminal',
@@ -102,8 +107,6 @@ lmap.t = {
 
 -- Buffers and cwd
 map('<Leader>be', '<CMD>enew<CR>')
-map('<Leader>bd', '<CMD>bn <bar> :bd!#<CR>')
-map('<Leader>bD', '<CMD>bd!<CR>')
 map('<Leader>bx', '<CMD>close<CR>')
 map('<Leader>bc', '<CMD>cd %:p:h<CR>')
 map('<Leader>bv', '<CMD>vsplit<CR>')
@@ -115,13 +118,12 @@ map('<Leader>bm', '<CMD>WinShift<CR>')
 
 lmap.b = {
     name = 'buffer',
+    d = 'buffer-close',
     e = 'open-empty-buffer',
-    d = 'buffer-delete',
-    D = 'leader_ignore',
-    x = 'buffer-close',
+    x = 'window-close',
     v = 'vertical-split',
     h = 'horizontal-split',
-    o = 'toggle-fullscreen',
+    o = 'maximize-buffer',
     c = 'set-cwd',
     t = 'open-new-tab',
     m = 'buffer-move'
@@ -160,7 +162,7 @@ lmap.g = {
 
 
 -- Help
-map({'silent'}, '<Leader>ht', '<CMD>Telescope help_tags prompt_prefix=🔍')
+map({'silent'}, '<Leader>ht', '<CMD>Telescope help_tags prompt_prefix=🔍<CR>')
 map({'silent'}, '<Leader>hw', '<CMD>execute "h " . expand("<cword>")<CR>')
 
 lmap.h = {

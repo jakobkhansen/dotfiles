@@ -35,7 +35,8 @@ require("packer").startup(function(use)
 		end,
 	})
 	use("nvim-treesitter/playground")
-	use("sheerun/vim-polyglot")
+    use("windwp/nvim-ts-autotag")
+    use("sheerun/vim-polyglot")
 
 	--"Buffers"
 	use("troydm/zoomwintab.vim")
@@ -58,12 +59,6 @@ require("packer").startup(function(use)
 	})
 
 	use("vim-airline/vim-airline-themes")
-	--use({
-	--"lukas-reineke/indent-blankline.nvim",
-	--config = function()
-	--require("plugins.indent-blankline-config")
-	--end,
-	--})
 	use({
 		"kyazdani42/nvim-web-devicons",
 		config = function()
@@ -71,7 +66,6 @@ require("packer").startup(function(use)
 		end,
 	})
 	use("jakobkhansen/tokyonight.nvim")
-	use("ishan9299/nvim-solarized-lua")
 	use("projekt0n/github-nvim-theme")
 
 	--"Files and git"
@@ -82,12 +76,6 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		"kyazdani42/nvim-tree.lua",
-		config = function()
-			require("plugins.nvim-tree-config")
-		end,
-	})
 
 	use("tpope/vim-fugitive")
 	use({ "idanarye/vim-merginal", branch = "develop" })
@@ -98,12 +86,6 @@ require("packer").startup(function(use)
 			require("plugins.gitsigns-config")
 		end,
 	})
-	use({
-		"is0n/fm-nvim",
-		config = function()
-			require("plugins.fm-nvim-config")
-		end,
-	})
 
 	-- "Terminal"
 	use({
@@ -112,6 +94,7 @@ require("packer").startup(function(use)
 			require("plugins.toggleterm-config")
 		end,
 	})
+    use {'tknightz/telescope-termfinder.nvim'}
 
 	--"Menus"
 	use({
@@ -122,10 +105,9 @@ require("packer").startup(function(use)
 	})
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({
-		"AckslD/nvim-neoclip.lua",
+		"kyazdani42/nvim-tree.lua",
 		config = function()
-			require("neoclip").setup()
-			require("telescope").load_extension("neoclip")
+			require("plugins.nvim-tree-config")
 		end,
 	})
 	use({
@@ -139,6 +121,19 @@ require("packer").startup(function(use)
 		"folke/trouble.nvim",
 		config = function()
 			require("plugins.trouble-config")
+		end,
+	})
+	use({
+		"is0n/fm-nvim",
+		config = function()
+			require("plugins.fm-nvim-config")
+		end,
+	})
+	use({
+		"AckslD/nvim-neoclip.lua",
+		config = function()
+			require("neoclip").setup()
+			require("telescope").load_extension("neoclip")
 		end,
 	})
 
@@ -157,19 +152,17 @@ require("packer").startup(function(use)
 			require("plugins.nvim-cmp-config")
 		end,
 	})
-	use({
-		"onsails/lspkind-nvim",
-	})
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-nvim-lsp")
-
 	use("saadparwaiz1/cmp_luasnip")
 	use("hrsh7th/cmp-path")
 	use("kdheepak/cmp-latex-symbols")
 
+	use({
+		"onsails/lspkind-nvim",
+	})
+
 	use("mfussenegger/nvim-jdtls")
-	--use 'jose-elias-alvarez/nvim-lsp-ts-utils'
-	--use 'jose-elias-alvarez/null-ls.nvim'
 	use({
 		"sbdchd/neoformat",
 		config = function()
