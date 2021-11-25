@@ -35,8 +35,8 @@ require("packer").startup(function(use)
 		end,
 	})
 	use("nvim-treesitter/playground")
-    use("windwp/nvim-ts-autotag")
-    use("sheerun/vim-polyglot")
+	use("windwp/nvim-ts-autotag")
+	use("sheerun/vim-polyglot")
 
 	--"Buffers"
 	use("troydm/zoomwintab.vim")
@@ -51,12 +51,12 @@ require("packer").startup(function(use)
 	--"Themes and Visuals"
 	use("christianchiarulli/nvcode-color-schemes.vim")
 
-    use({
-        "vim-airline/vim-airline",
-        config = function()
-            require("plugins.airline-config")
-        end,
-    })
+	use({
+		"vim-airline/vim-airline",
+		config = function()
+			require("plugins.airline-config")
+		end,
+	})
 
 	use("vim-airline/vim-airline-themes")
 	use({
@@ -76,7 +76,6 @@ require("packer").startup(function(use)
 		end,
 	})
 
-
 	use("tpope/vim-fugitive")
 	use({ "idanarye/vim-merginal", branch = "develop" })
 	use("rhysd/conflict-marker.vim")
@@ -94,7 +93,7 @@ require("packer").startup(function(use)
 			require("plugins.toggleterm-config")
 		end,
 	})
-    use {'tknightz/telescope-termfinder.nvim'}
+	use({ "tknightz/telescope-termfinder.nvim" })
 
 	--"Menus"
 	use({
@@ -145,6 +144,13 @@ require("packer").startup(function(use)
 			require("plugins.lsp-servers")
 		end,
 	})
+	use("mfussenegger/nvim-jdtls")
+	use({
+		"simrat39/rust-tools.nvim",
+		config = function()
+			require("rust-tools").setup({})
+		end,
+	})
 
 	use({
 		"hrsh7th/nvim-cmp",
@@ -162,7 +168,6 @@ require("packer").startup(function(use)
 		"onsails/lspkind-nvim",
 	})
 
-	use("mfussenegger/nvim-jdtls")
 	use({
 		"sbdchd/neoformat",
 		config = function()
