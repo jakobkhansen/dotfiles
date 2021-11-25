@@ -16,6 +16,7 @@ set $terminal kitty
 # Bind caps-lock to escape
 exec --no-startup-id xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 
@@ -77,6 +78,7 @@ bindsym $mod+Shift+l move right
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+bindsym $mod+y fullscreen disable; floating enable; resize set 600 350; move window to position 1315 725
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking

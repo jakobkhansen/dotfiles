@@ -51,12 +51,12 @@ require("packer").startup(function(use)
 	--"Themes and Visuals"
 	use("christianchiarulli/nvcode-color-schemes.vim")
 
-	use({
-		"vim-airline/vim-airline",
-		config = function()
-			require("plugins.airline-config")
-		end,
-	})
+    use({
+        "vim-airline/vim-airline",
+        config = function()
+            require("plugins.airline-config")
+        end,
+    })
 
 	use("vim-airline/vim-airline-themes")
 	use({

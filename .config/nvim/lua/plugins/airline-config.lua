@@ -3,3 +3,6 @@ vim.g.airline_powerline_fonts = 1
 vim.g['airline#extensions#tabline#enabled'] = 1
 vim.g['airline#extensions#tabline#fnamemod'] = ':t'
 vim.g['airline#extensions#tabline#ignore_bufadd_pat'] = '!|defx|gundo|nerd_tree|startify|tagbar|undotree|vimfiler'
+vim.g['airline_section_y'] = ''
+vim.g['airline#extensions#whitespace#enabled'] = 0
+vim.g['airline_detect_spell'] = 0

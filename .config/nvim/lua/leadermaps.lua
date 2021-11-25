@@ -32,6 +32,7 @@ map('<Leader>fd', '<CMD>lua telescope_find_dir()<CR>')
 map('<Leader>fhd', '<CMD>lua telescope_find_dir_home()<CR>')
 map('<Leader>fp', '<CMD>Telescope neoclip<CR>')
 map('<Leader>ft', '<CMD>Telescope termfinder find<CR>')
+map('<Leader>fm', '<CMD>Telescope marks<CR>')
 
 
 lmap.f = {
