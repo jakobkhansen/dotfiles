@@ -17,3 +17,14 @@ vim.g.neoformat_java_prettier = {
 }
 
 vim.g.neoformat_enabled_java = {'prettier'}
+vim.g.neoformat_enabled_cpp = {'astyle'}
+
+vim.g.neoformat_cpp_astyle = {
+    exe = 'astyle',
+    args = {
+        '--mode=c',
+        '--indent-classes',
+        '--indent=spaces=2'
+    },
+    stdin = 1
+}

@@ -165,6 +165,7 @@ lmap.g = {
 -- Help
 map({'silent'}, '<Leader>ht', '<CMD>Telescope help_tags prompt_prefix=🔍<CR>')
 map({'silent'}, '<Leader>hw', '<CMD>execute "h " . expand("<cword>")<CR>')
+map({'silent'}, '<Leader>hm', '<CMD>Telescope man_pages<CR>')
 
 lmap.h = {
     name = 'help',
