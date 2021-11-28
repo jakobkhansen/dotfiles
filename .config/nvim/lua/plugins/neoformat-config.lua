@@ -24,7 +24,8 @@ vim.g.neoformat_cpp_astyle = {
     args = {
         '--mode=c',
         '--indent-classes',
-        '--indent=spaces=2'
+        '--indent=spaces=2',
+        '--style=attach',
     },
     stdin = 1
 }

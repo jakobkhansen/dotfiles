@@ -109,6 +109,11 @@ require'nvim-tree'.setup {
     filters = {
         dotfiles = true,
         custom = {"*.class"}
+    },
+    git = {
+        enable = true,
+        ignore = false,
+        timeout = 500,
     }
 }
 

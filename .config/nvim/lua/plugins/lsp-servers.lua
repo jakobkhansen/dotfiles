@@ -1,5 +1,6 @@
 -- Setup
 local nvim_lsp = require("lspconfig")
+local util = require("lspconfig/util")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local vimscript = vim.api.nvim_exec
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -219,5 +220,6 @@ require("lspconfig").ccls.setup({
 			excludeArgs = { "-frounding-math" },
 		},
 	},
+    root_dir = util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git', 'build/compile_commands.json'),
 })
 
