@@ -312,9 +312,6 @@ bindsym $mod+shift+x exec --no-startup-id betterlockscreen -l dim
 #exec --no-startup-id xmodmap -e "keycode 248 = apostrophe asterisk apostrophe asterisk dead_doubleacute multiply dead_doubleacute"
 
 # Mouse mode
-set $mod Mod4
-set $mod2 Mod1
-
 mode "mouse" {
 
     # set your three speeds here
@@ -337,12 +334,10 @@ mode "mouse" {
     bindsym Shift+k exec xdotool mousemove_relative -- 0 -$fast
     bindsym Shift+l exec xdotool mousemove_relative $fast 0
 
-    # Mouse movement (fast) -- vim keybindings
+    bindsym $mod+h exec xdotool mousemove 480 540
+    bindsym $mod+l exec xdotool mousemove 1440 540
 
-    bindsym Shift+$mod2+h exec xdotool mousemove_relative -- -$fast 0
-    bindsym Shift+$mod2+j exec xdotool mousemove_relative 0 $fast
-    bindsym Shift+$mod2+k exec xdotool mousemove_relative -- 0 -$fast
-    bindsym Shift+$mod2+l exec xdotool mousemove_relative $fast 0
+    bindsym z exec xdotool mousemove 0 0
 
 
     # Left Click
@@ -364,13 +359,14 @@ mode "mouse" {
     bindsym Shift+s exec xdotool mousedown 3
 
     # Left Drag release
-    bindsym $mod2+f exec xdotool mouseup 1
+    bindsym Mod1+f exec xdotool mouseup 1
 
     # Middle Drag release
-    bindsym $mod2+d exec xdotool mouseup 2
+    bindsym Mod1+d exec xdotool mouseup 2
 
     # Right Drag release
-    bindsym $mod2+s exec xdotool mouseup 3
+    bindsym Mod1+s exec xdotool mouseup 3
+
 
 
     # return to normal keybindings -- IMPORTANT!!
