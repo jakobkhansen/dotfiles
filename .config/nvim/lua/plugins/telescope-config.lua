@@ -45,7 +45,27 @@ end
 function _G.telescope_find_dir_home(opts)
 	pickers.new(opts, {
 		prompt_title = "Find Directory",
-		finder = finders.new_oneshot_job({ "fd", ".", vim.fn.expand("$HOME") }, { "-t", "d", "-a" }),
+		finder = finders.new_oneshot_job({ "fd", ".", vim.fn.expand("$HOME"), "-t", "d", "-a" }),
+		sorter = conf.generic_sorter(opts),
+		attach_mappings = function(prompt_bufnr, map)
+			actions.select_default:replace(function()
+				local selection = action_state.get_selected_entry()
+                if selection ~= nil then
+				    actions.close(prompt_bufnr)
+				    command("cd " .. selection[1])
+                end
+				return
+			end)
+			return true
+		end,
+	}):find()
+end
+
+
+function _G.telescope_find_dir_hidden(opts)
+	pickers.new(opts, {
+		prompt_title = "Find Directory",
+		finder = finders.new_oneshot_job({ "fd", "-t", "d", "-a", "-H" }),
 		sorter = conf.generic_sorter(opts),
 		attach_mappings = function(prompt_bufnr, map)
 			actions.select_default:replace(function()

@@ -21,7 +21,14 @@ lmap = {}
 
 -- Find x
 map('<Leader>ff', '<CMD>Telescope find_files prompt_prefix=🔍<CR>')
+
 map('<Leader>fhf', '<CMD>Telescope find_files find_command=rg,--files,/home/ prompt_prefix=🔍<CR>')
+map('<Leader>fhd', '<CMD>lua telescope_find_dir_home()<CR>')
+
+map('<Leader>fzf', '<CMD>Telescope find_files find_command=rg,--files,--hidden prompt_prefix=🔍<CR>')
+map('<Leader>fzd', '<CMD>lua telescope_find_dir_hidden()<CR>')
+
+
 map('<Leader>fhh', '<CMD>Telescope find_files find_command=rg,--files,--hidden,/home/ prompt_prefix=🔍<CR>')
 map('<Leader>fg', '<CMD>Telescope git_files prompt_prefix=🔍<CR>')
 map('<Leader>fc', '<CMD>Telescope live_grep prompt_prefix=🔍<CR>')
@@ -29,7 +36,6 @@ map('<Leader>fl', '<CMD>NvimTreeToggle<CR>')
 map('<Leader>fr', '<CMD>Ranger --choosedir="/tmp/ranger_dir"<CR>')
 map('<Leader>fb', '<CMD>Telescope buffers<CR>')
 map('<Leader>fd', '<CMD>lua telescope_find_dir()<CR>')
-map('<Leader>fhd', '<CMD>lua telescope_find_dir_home()<CR>')
 map('<Leader>fp', '<CMD>Telescope neoclip<CR>')
 map('<Leader>ft', '<CMD>Telescope termfinder find<CR>')
 map('<Leader>fm', '<CMD>Telescope marks<CR>')
