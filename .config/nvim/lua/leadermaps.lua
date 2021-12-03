@@ -29,7 +29,6 @@ map('<Leader>fzf', '<CMD>Telescope find_files find_command=rg,--files,--hidden p
 map('<Leader>fzd', '<CMD>lua telescope_find_dir_hidden()<CR>')
 
 
-map('<Leader>fhh', '<CMD>Telescope find_files find_command=rg,--files,--hidden,/home/ prompt_prefix=🔍<CR>')
 map('<Leader>fg', '<CMD>Telescope git_files prompt_prefix=🔍<CR>')
 map('<Leader>fc', '<CMD>Telescope live_grep prompt_prefix=🔍<CR>')
 map('<Leader>fl', '<CMD>NvimTreeToggle<CR>')
@@ -48,6 +47,11 @@ lmap.f = {
         name = 'find-home',
         d = 'find-dir-home',
         f = 'find-files-home',
+    },
+    z = {
+        name = 'find-hidden',
+        d = 'find-hidden-dir',
+        f = 'find-hidden-file'
     },
     g = 'find-git-files',
     c = 'find-code',

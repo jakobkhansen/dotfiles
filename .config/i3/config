@@ -322,50 +322,50 @@ mode "mouse" {
 
     # Mouse movement (slow/fine-tuned) -- vim keybindings
 
-    bindsym h exec xdotool mousemove_relative -- -$quick 0
-    bindsym j exec xdotool mousemove_relative 0 $quick
-    bindsym k exec xdotool mousemove_relative -- 0 -$quick
-    bindsym l exec xdotool mousemove_relative $quick 0
+    bindsym h exec --no-startup-id xdotool mousemove_relative -- -$quick 0
+    bindsym j exec --no-startup-id xdotool mousemove_relative 0 $quick
+    bindsym k exec --no-startup-id xdotool mousemove_relative -- 0 -$quick
+    bindsym l exec --no-startup-id xdotool mousemove_relative $quick 0
 
     # Mouse movement (quicker) -- vim keybindings
 
-    bindsym Shift+h exec xdotool mousemove_relative -- -$fast 0
-    bindsym Shift+j exec xdotool mousemove_relative 0 $fast
-    bindsym Shift+k exec xdotool mousemove_relative -- 0 -$fast
-    bindsym Shift+l exec xdotool mousemove_relative $fast 0
+    bindsym Shift+h exec --no-startup-id xdotool mousemove_relative -- -$fast 0
+    bindsym Shift+j exec --no-startup-id xdotool mousemove_relative 0 $fast
+    bindsym Shift+k exec --no-startup-id xdotool mousemove_relative -- 0 -$fast
+    bindsym Shift+l exec --no-startup-id xdotool mousemove_relative $fast 0
 
-    bindsym $mod+h exec xdotool mousemove 480 540
-    bindsym $mod+l exec xdotool mousemove 1440 540
+    bindsym $mod+h exec --no-startup-id xdotool mousemove 480 540
+    bindsym $mod+l exec --no-startup-id xdotool mousemove 1440 540
 
-    bindsym z exec xdotool mousemove 0 0
+    bindsym z exec --no-startup-id xdotool mousemove 0 0
 
 
     # Left Click
-    bindsym f exec xdotool click 1
+    bindsym f exec --no-startup-id xdotool click 1
 
     # Middle Click
-    bindsym d exec xdotool click 2
+    bindsym d exec --no-startup-id xdotool click 2
 
     # Right Click
-    bindsym s exec xdotool click 3
+    bindsym s exec --no-startup-id xdotool click 3
 
     # Left Click-and-drag
-    bindsym Shift+f exec xdotool mousedown 1
+    bindsym Shift+f exec --no-startup-id xdotool mousedown 1
 
     # Middle Click-and-drag 
-    bindsym Shift+d exec xdotool mousedown 2
+    bindsym Shift+d exec --no-startup-id xdotool mousedown 2
 
     # Right Click-and-drag
-    bindsym Shift+s exec xdotool mousedown 3
+    bindsym Shift+s exec --no-startup-id xdotool mousedown 3
 
     # Left Drag release
-    bindsym Mod1+f exec xdotool mouseup 1
+    bindsym Mod1+f exec --no-startup-id xdotool mouseup 1
 
     # Middle Drag release
-    bindsym Mod1+d exec xdotool mouseup 2
+    bindsym Mod1+d exec --no-startup-id xdotool mouseup 2
 
     # Right Drag release
-    bindsym Mod1+s exec xdotool mouseup 3
+    bindsym Mod1+s exec --no-startup-id xdotool mouseup 3
 
 
 
