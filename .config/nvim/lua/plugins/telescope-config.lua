@@ -38,6 +38,8 @@ function _G.telescope_find_dir(opts)
                 end
 			end)
 			return true
+
+
 		end,
 	}):find()
 end
