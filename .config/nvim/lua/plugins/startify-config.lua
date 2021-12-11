@@ -14,7 +14,7 @@ local function oftenUsed()
 		{ line = " TODO", cmd = "edit $HOME/Documents/TODO.norg" },
 		{ line = "Neovim", cmd = "cd $HOME/.config/nvim/" },
 		{ line = "Kattis", cmd = "cd $HOME/Documents/Personal/KattisSolutions" },
-		{ line = " Timeliste", cmd = "edit $HOME/Documents/School/GRUPPELÆRER/IN2010_2021/timeliste-november.norg" },
+		{ line = " Timeliste", cmd = "edit $HOME/Documents/School/GRUPPELÆRER/IN2010_2021/timeliste-desember.norg" },
 	}
 end
 

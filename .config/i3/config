@@ -334,17 +334,24 @@ mode "mouse" {
     bindsym Shift+k exec --no-startup-id xdotool mousemove_relative -- 0 -$fast
     bindsym Shift+l exec --no-startup-id xdotool mousemove_relative $fast 0
 
-    bindsym $mod+h exec --no-startup-id xdotool mousemove 480 540
-    bindsym $mod+l exec --no-startup-id xdotool mousemove 1440 540
+    bindsym $mod+h exec --no-startup-id xdotool mousemove_relative -- -540 0
+    bindsym $mod+j exec --no-startup-id xdotool mousemove_relative -- 0 250
+    bindsym $mod+k exec --no-startup-id xdotool mousemove_relative -- 0 -250
+    bindsym $mod+l exec --no-startup-id xdotool mousemove_relative 540 0
+
+    bindsym g exec --no-startup-id xdotool mousemove_relative 0 -1080
+    bindsym Shift+g exec --no-startup-id xdotool mousemove_relative 0 1080
 
     bindsym z exec --no-startup-id xdotool mousemove 0 0
+    bindsym m exec --no-startup-id xdotool mousemove 960 540
+
 
 
     # Left Click
     bindsym f exec --no-startup-id xdotool click 1
 
     # Middle Click
-    bindsym d exec --no-startup-id xdotool click 2
+    #bindsym d exec --no-startup-id xdotool click 2
 
     # Right Click
     bindsym s exec --no-startup-id xdotool click 3
