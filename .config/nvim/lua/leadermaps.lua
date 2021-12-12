@@ -15,7 +15,7 @@ local vnoremap = vimp.vnoremap
 
 vim.g.mapleader = " "
 
-lmap = {}
+local lmap = {}
 
 -- Find x
 map("<Leader>ff", "<CMD>Telescope find_files prompt_prefix=🔍<CR>")
@@ -124,7 +124,6 @@ lmap.b = {
 	v = "vertical-split",
 	h = "horizontal-split",
 	o = "maximize-buffer",
-	c = "set-cwd",
 	t = "open-new-tab",
 	m = "buffer-move",
 }
