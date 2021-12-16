@@ -39,7 +39,7 @@ require("lspconfig").jsonls.setup({
 	},
 })
 
--- Java
+---- Java
 local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
@@ -116,69 +116,66 @@ end
 
 vimscript("au FileType java lua start_jdt()", false)
 
--- Typescript
+---- Typescript
 
-require("null-ls").config{}
-
-require("lspconfig")["null-ls"].setup {}
+require("null-ls").setup({})
 
 nvim_lsp.tsserver.setup({
 	on_attach = function(client, bufnr)
-        local ts_utils = require("nvim-lsp-ts-utils")
+		local ts_utils = require("nvim-lsp-ts-utils")
 
-        -- defaults
-        ts_utils.setup({
-            debug = false,
-            disable_commands = false,
-            enable_import_on_completion = true,
+		-- defaults
+		ts_utils.setup({
+			debug = false,
+			disable_commands = false,
+			enable_import_on_completion = true,
 
-            -- import all
-            import_all_timeout = 5000, -- ms
-            -- lower numbers indicate higher priority
-            import_all_priorities = {
-                same_file = 1, -- add to existing import statement
-                local_files = 2, -- git files or files with relative path markers
-                buffer_content = 3, -- loaded buffer content
-                buffers = 4, -- loaded buffer names
-            },
-            import_all_scan_buffers = 100,
-            import_all_select_source = true,
+			-- import all
+			import_all_timeout = 5000, -- ms
+			-- lower numbers indicate higher priority
+			import_all_priorities = {
+				same_file = 1, -- add to existing import statement
+				local_files = 2, -- git files or files with relative path markers
+				buffer_content = 3, -- loaded buffer content
+				buffers = 4, -- loaded buffer names
+			},
+			import_all_scan_buffers = 100,
+			import_all_select_source = true,
 
-            -- eslint
-            eslint_enable_code_actions = false,
-            eslint_enable_disable_comments = true,
-            eslint_bin = "eslint",
-            eslint_enable_diagnostics = false,
-            eslint_opts = {},
+			-- eslint
+			eslint_enable_code_actions = false,
+			eslint_enable_disable_comments = true,
+			eslint_bin = "eslint",
+			eslint_enable_diagnostics = false,
+			eslint_opts = {},
 
-            -- formatting
-            enable_formatting = false,
-            formatter = "prettier",
-            formatter_opts = {},
+			-- formatting
+			enable_formatting = false,
+			formatter = "prettier",
+			formatter_opts = {},
 
-            -- update imports on file move
-            update_imports_on_move = true,
-            require_confirmation_on_move = false,
-            watch_dir = nil,
+			-- update imports on file move
+			update_imports_on_move = true,
+			require_confirmation_on_move = false,
+			watch_dir = nil,
 
-            -- filter diagnostics
-            filter_out_diagnostics_by_severity = {},
-            filter_out_diagnostics_by_code = {},
-        })
+			-- filter diagnostics
+			filter_out_diagnostics_by_severity = {},
+			filter_out_diagnostics_by_code = {},
+		})
 
-        -- required to fix code action ranges and filter diagnostics
-        ts_utils.setup_client(client)
+		-- required to fix code action ranges and filter diagnostics
+		ts_utils.setup_client(client)
 	end,
 })
 
-
--- Latex
+---- Latex
 nvim_lsp.texlab.setup({})
 
--- Kotlin
+---- Kotlin
 nvim_lsp.kotlin_language_server.setup({})
 
--- Lua
+---- Lua
 USER = vim.fn.expand("$USER")
 
 local sumneko_root_path = "/home/" .. USER .. "/.langservers/lua-language-server"
@@ -209,7 +206,7 @@ require("lspconfig").sumneko_lua.setup({
 	},
 })
 
--- C++
+---- C++
 require("lspconfig").ccls.setup({
 	init_options = {
 		compilationDatabaseDirectory = "build",
@@ -220,6 +217,24 @@ require("lspconfig").ccls.setup({
 			excludeArgs = { "-frounding-math" },
 		},
 	},
-    root_dir = util.root_pattern('compile_commands.json', '.ccls', 'compile_flags.txt', '.git', 'build/compile_commands.json'),
+	root_dir = util.root_pattern(
+		"compile_commands.json",
+		".ccls",
+		"compile_flags.txt",
+		".git",
+		"build/compile_commands.json"
+	),
 })
 
+-- Tailwind CSS
+nvim_lsp.tailwindcss.setup({
+	settings = {
+		tailwindCSS = {
+			experimental = {
+				classRegex = {
+                    "tailwind\\('([^)]*)\\')", "'([^']*)'"
+				},
+			},
+		},
+	},
+})
