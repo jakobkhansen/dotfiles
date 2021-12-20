@@ -3,7 +3,7 @@ local vimscript = vim.api.nvim_exec
 local command = vim.api.nvim_command
 
 local lsp = vim.lsp.buf
-local diagnostic = vim.lsp.diagnostic
+local diagnostic = vim.diagnostic
 
 local vimp = require("vimp")
 local map = vimp.map
@@ -70,9 +70,8 @@ nnoremap({ "silent" }, "<Leader>la", lsp.code_action)
 vnoremap({ "silent" }, "<Leader>la", lsp.range_code_action)
 map({ "silent" }, "<Leader>lf", "gf")
 nmap({ "silent" }, "<Leader>lp", "<CMD>Neoformat<CR>")
---nmap({'silent'}, '<Leader>lp', '<CMD>lua vim.lsp.buf.formatting_sync()<CR>')
 map({ "silent" }, "<Leader>lee", "<CMD>TroubleToggle<CR>")
-noremap({ "silent" }, "<Leader>lel", diagnostic.show_line_diagnostics)
+noremap({ "silent" }, "<Leader>lel", diagnostic.open_float)
 noremap({ "silent" }, "<Leader>len", diagnostic.goto_next)
 noremap({ "silent" }, "<Leader>lep", diagnostic.goto_prev)
 

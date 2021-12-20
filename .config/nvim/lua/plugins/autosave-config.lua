@@ -15,7 +15,3 @@ require('autosave').setup(
         debounce_delay = 250,
     }
 )
-
-require('autosave').hook_before_saving = function ()
-    --vim.g.auto_save_abort = true
-end
