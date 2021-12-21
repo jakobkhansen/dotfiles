@@ -134,14 +134,14 @@ function CWDgitRoot()
 
 	if git_root ~= nil then
 		local cd_command = "cd " .. git_root
-        command(cd_command)
+		command(cd_command)
 	else
 		print("Not a git repository")
 	end
 end
 
 map("<Leader>pc", "<CMD>cd %:p:h<CR>")
-noremap({"silent"}, "<Leader>pg", CWDgitRoot)
+noremap({ "silent" }, "<Leader>pg", CWDgitRoot)
 map("<Leader>p<BS>", "<CMD>cd ..<CR>")
 
 lmap.p = {
@@ -183,11 +183,20 @@ lmap.g = {
 }
 
 -- Neorg
-map({"silent"}, '<leader>otc', '<CMD>Neorg gtd capture<CR>')
-map({"silent"}, '<leader>ote', '<CMD>Neorg gtd edit<CR>')
-map({"silent"}, '<leader>otv', '<CMD>Neorg gtd views<CR>')
-map({"silent"}, '<leader>oj', '<CMD>Neorg journal today<CR>')
-lmap.o = { name = "neorg" }
+map({ "silent" }, "<leader>otc", "<CMD>Neorg gtd capture<CR>")
+map({ "silent" }, "<leader>ote", "<CMD>Neorg gtd edit<CR>")
+map({ "silent" }, "<leader>ott", "<CMD>Neorg gtd views<CR>")
+map({ "silent" }, "<leader>oj", "<CMD>Neorg journal today<CR>")
+lmap.o = {
+	name = "organize",
+	j = "journal",
+	t = {
+		name = "tasks",
+		t = "overview",
+		c = "capture",
+		e = "edit",
+	},
+}
 
 -- Help
 map({ "silent" }, "<Leader>ht", "<CMD>Telescope help_tags prompt_prefix=🔍<CR>")
@@ -200,7 +209,6 @@ lmap.h = {
 	w = "help-cword",
 }
 
-
 -- Not categorized
 noremap("<Leader>no", "<CMD>nohlsearch<CR>")
 map("<Leader><BS>", "<CMD>cd ..<CR>")
@@ -212,7 +220,6 @@ lmap["<BS>"] = "leader_ignore"
 lmap["<CR>"] = "leader_ignore"
 lmap.s = { name = "leader_ignore", s = "leader_ignore" }
 lmap.w = "leader_ignore"
-
 
 -- Startify
 map("<Leader>ss", "<CMD>Startify<CR>")

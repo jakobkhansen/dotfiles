@@ -57,12 +57,13 @@ vim.g.tokyonight_transparent_sidebar = true
 --vim.g.tokyonight_style = "night"
 vim.g.tokyonight_colors = {
     info = "#FFFFFF",
-    hint = "#FFFFFF"
+    hint = "#FFFFFF",
 }
 vim.g.tokyonight_italic_keywords = false
 vim.g.tokyonight_italic_comments = false
 vimscript("colorscheme tokyonight", false)
 
+highlight('BufferLineFill', {guibg="NONE", ctermbg="NONE"}, false)
 
 
 -- Background

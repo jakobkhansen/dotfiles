@@ -51,28 +51,20 @@ require("packer").startup(function(use)
 	-- "Themes and Visuals"
 	use("christianchiarulli/nvcode-color-schemes.vim")
 
-	--use({
-	--"vim-airline/vim-airline",
-	--config = function()
-	--require("plugins.airline-config")
-	--end,
-	--})
-
-	--use("vim-airline/vim-airline-themes")
-	use({
-		"akinsho/bufferline.nvim",
-		config = function()
-			require("plugins.bufferline-config")
-		end,
-		requires = "kyazdani42/nvim-web-devicons",
-	})
+    use({
+        "akinsho/bufferline.nvim",
+        config = function()
+            require("plugins.bufferline-config")
+        end,
+        requires = "kyazdani42/nvim-web-devicons",
+    })
 	use({
 		"kyazdani42/nvim-web-devicons",
 		config = function()
 			require("plugins.icons")
 		end,
 	})
-	use("folke/tokyonight.nvim")
+    use("jakobkhansen/tokyonight.nvim")
 	use("projekt0n/github-nvim-theme")
 
 	-- "Files and git"
