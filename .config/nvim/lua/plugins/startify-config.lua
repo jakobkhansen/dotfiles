@@ -55,3 +55,5 @@ vim.g.startify_lists = {
 	{ type = "commands", header = { "   Commands" }, indices = { "cs", "pu", "pc" } },
 	{ type = luaFiles, header = { "   Lua config files" } },
 }
+
+

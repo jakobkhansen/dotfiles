@@ -214,12 +214,16 @@ noremap("<Leader>no", "<CMD>nohlsearch<CR>")
 map("<Leader><BS>", "<CMD>cd ..<CR>")
 map("<Leader>w", "<CMD>w<CR>")
 map("<Leader><CR>", '<CMD>TermExec go_back=1 cmd="!!"<CR>')
+map("<Leader><", "<CMD>BufferLineMovePrev<CR>")
+map("<Leader>>", "<CMD>BufferLineMoveNext<CR>")
 
 lmap.n = { name = "leader_ignore", n = "leader_ignore" }
 lmap["<BS>"] = "leader_ignore"
 lmap["<CR>"] = "leader_ignore"
 lmap.s = { name = "leader_ignore", s = "leader_ignore" }
 lmap.w = "leader_ignore"
+lmap["<"] = "leader_ignore"
+lmap[">"] = "leader_ignore"
 
 -- Startify
 map("<Leader>ss", "<CMD>Startify<CR>")

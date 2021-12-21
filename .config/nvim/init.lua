@@ -199,7 +199,7 @@ require("packer").startup(function(use)
 	})
 	use({
 		"vhyrro/neorg",
-		branch = "main",
+		branch = "better-concealing-performance",
 		config = function()
 			require("plugins.neorg-config")
 		end,

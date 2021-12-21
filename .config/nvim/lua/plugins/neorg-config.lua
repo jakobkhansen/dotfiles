@@ -64,6 +64,6 @@ neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, key
 end)
 
 vimscript("au FileType norg set spell", false)
-vimscript("au FileType norg map <buffer> <Leader> <Leader>", false)
+--vimscript("au FileType norg map <buffer> <Leader> <Leader>", false)
 --vimscript("autocmd VimEnter * NeorgStart", false)
 command("silent! NeorgStart silent=true")
