@@ -9,16 +9,16 @@ require("packer").startup(function(use)
 
 	-- "Text manipulation"
 	use({
-	      "scrooloose/nerdcommenter",
-	      config = function()
-	      	require("plugins.nerdcommenter-config")
-	      end,
+		"scrooloose/nerdcommenter",
+		config = function()
+			require("plugins.nerdcommenter-config")
+		end,
 	})
 	use({
-	      "windwp/nvim-autopairs",
-	      config = function()
-	      	require("plugins.nvim-autopairs-config")
-	      end,
+		"windwp/nvim-autopairs",
+		config = function()
+			require("plugins.nvim-autopairs-config")
+		end,
 	})
 	use("tpope/vim-surround")
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
@@ -29,10 +29,10 @@ require("packer").startup(function(use)
 
 	-- "Syntax highlighting"
 	use({
-	      "nvim-treesitter/nvim-treesitter",
-	      config = function()
-	      	require("plugins.treesitter-config")
-	      end,
+		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("plugins.treesitter-config")
+		end,
 	})
 	use("nvim-treesitter/playground")
 	use("windwp/nvim-ts-autotag")
@@ -41,122 +41,129 @@ require("packer").startup(function(use)
 	-- "Buffers"
 	use("troydm/zoomwintab.vim")
 	use({
-	      "kwkarlwang/bufresize.nvim",
-	      config = function()
-	      	require("bufresize").setup()
-	      end,
+		"kwkarlwang/bufresize.nvim",
+		config = function()
+			require("bufresize").setup()
+		end,
 	})
 	use("sindrets/winshift.nvim")
 
 	-- "Themes and Visuals"
 	use("christianchiarulli/nvcode-color-schemes.vim")
 
-	use({
-	      "vim-airline/vim-airline",
-	      config = function()
-	      	require("plugins.airline-config")
-	      end,
-	})
+	--use({
+	--"vim-airline/vim-airline",
+	--config = function()
+	--require("plugins.airline-config")
+	--end,
+	--})
 
-	use("vim-airline/vim-airline-themes")
+	--use("vim-airline/vim-airline-themes")
 	use({
-	      "kyazdani42/nvim-web-devicons",
-	      config = function()
-	      	require("plugins.icons")
-	      end,
+		"akinsho/bufferline.nvim",
+		config = function()
+			require("plugins.bufferline-config")
+		end,
+		requires = "kyazdani42/nvim-web-devicons",
 	})
-	use("jakobkhansen/tokyonight.nvim")
+	use({
+		"kyazdani42/nvim-web-devicons",
+		config = function()
+			require("plugins.icons")
+		end,
+	})
+	use("folke/tokyonight.nvim")
 	use("projekt0n/github-nvim-theme")
 
 	-- "Files and git"
 	use({
-	      "Pocco81/AutoSave.nvim",
-	      config = function()
-	      	require("plugins.autosave-config")
-	      end,
+		"Pocco81/AutoSave.nvim",
+		config = function()
+			require("plugins.autosave-config")
+		end,
 	})
 
 	use("tpope/vim-fugitive")
 	use({ "idanarye/vim-merginal", branch = "develop" })
 	use("rhysd/conflict-marker.vim")
 	use({
-	      "lewis6991/gitsigns.nvim",
-	      config = function()
-	      	require("plugins.gitsigns-config")
-	      end,
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("plugins.gitsigns-config")
+		end,
 	})
 
-	 -- "Terminal"
+	-- "Terminal"
 	use({
-	      "akinsho/toggleterm.nvim",
-	      config = function()
-	      	require("plugins.toggleterm-config")
-	      end,
+		"akinsho/toggleterm.nvim",
+		config = function()
+			require("plugins.toggleterm-config")
+		end,
 	})
 	use({ "tknightz/telescope-termfinder.nvim" })
 
 	-- "Menus"
 	use({
-	      "nvim-telescope/telescope.nvim",
-	      config = function()
-	      	require("plugins.telescope-config")
-	      end,
+		"nvim-telescope/telescope.nvim",
+		config = function()
+			require("plugins.telescope-config")
+		end,
 	})
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({
-	      "kyazdani42/nvim-tree.lua",
-	      config = function()
-	      	require("plugins.nvim-tree-config")
-	      end,
+		"kyazdani42/nvim-tree.lua",
+		config = function()
+			require("plugins.nvim-tree-config")
+		end,
 	})
 	use({
-	      "mhinz/vim-startify",
-	      config = function()
-	      	require("plugins.startify-config")
-	      end,
+		"mhinz/vim-startify",
+		config = function()
+			require("plugins.startify-config")
+		end,
 	})
 	use("spinks/vim-leader-guide")
 	use({
-	      "folke/trouble.nvim",
-	      config = function()
-	      	require("plugins.trouble-config")
-	      end,
+		"folke/trouble.nvim",
+		config = function()
+			require("plugins.trouble-config")
+		end,
 	})
 	use({
-	      "is0n/fm-nvim",
-	      config = function()
-	      	require("plugins.fm-nvim-config")
-	      end,
+		"is0n/fm-nvim",
+		config = function()
+			require("plugins.fm-nvim-config")
+		end,
 	})
 	use({
-	      "AckslD/nvim-neoclip.lua",
-	      config = function()
-	      	require("neoclip").setup()
-	      	require("telescope").load_extension("neoclip")
-	      end,
+		"AckslD/nvim-neoclip.lua",
+		config = function()
+			require("neoclip").setup()
+			require("telescope").load_extension("neoclip")
+		end,
 	})
 
 	-- "LSP"
 	use({
-	      "neovim/nvim-lspconfig",
-	      config = function()
-	      	require("plugins.lsp-config")
-	      	require("plugins.lsp-servers")
-	      end,
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("plugins.lsp-config")
+			require("plugins.lsp-servers")
+		end,
 	})
 	use("mfussenegger/nvim-jdtls")
 	use({
-	      "simrat39/rust-tools.nvim",
-	      config = function()
-	      	require("rust-tools").setup({})
-	      end,
+		"simrat39/rust-tools.nvim",
+		config = function()
+			require("rust-tools").setup({})
+		end,
 	})
 
 	use({
-	      "hrsh7th/nvim-cmp",
-	      config = function()
-	      	require("plugins.nvim-cmp-config")
-	      end,
+		"hrsh7th/nvim-cmp",
+		config = function()
+			require("plugins.nvim-cmp-config")
+		end,
 	})
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-nvim-lsp")
@@ -165,50 +172,52 @@ require("packer").startup(function(use)
 	use("kdheepak/cmp-latex-symbols")
 
 	use({
-	      "onsails/lspkind-nvim",
+		"onsails/lspkind-nvim",
 	})
 
 	use({
-	      "sbdchd/neoformat",
-	      config = function()
-	      	require("plugins.neoformat-config")
-	      end,
+		"sbdchd/neoformat",
+		config = function()
+			require("plugins.neoformat-config")
+		end,
 	})
 
 	-- "Snippets"
 	use({
-	      "L3MON4D3/LuaSnip",
-	      config = function()
-	      	require("plugins.luasnips-config")
-	      end,
+		"L3MON4D3/LuaSnip",
+		config = function()
+			require("plugins.luasnips-config")
+		end,
 	})
 	use("rafamadriz/friendly-snippets")
 
 	-- "Notes and organization"
 	use("reedes/vim-pencil")
 	use({
-	      "instant-markdown/vim-instant-markdown",
-	      config = function()
-	      	require("plugins.markdown-config")
-	      end,
+		"instant-markdown/vim-instant-markdown",
+		config = function()
+			require("plugins.markdown-config")
+		end,
 	})
-    use({
-          "lervag/vimtex",
-          config = function()
-              require("plugins.latex-config")
-          end,
-    })
-    use({
-          "vhyrro/neorg",
-          branch = "main",
-          config = function()
-              require("plugins.neorg-config")
-          end,
-    })
+	use({
+		"lervag/vimtex",
+		config = function()
+			require("plugins.latex-config")
+		end,
+	})
+	use({
+		"vhyrro/neorg",
+		branch = "main",
+		config = function()
+			require("plugins.neorg-config")
+		end,
+		requires = "nvim-neorg/neorg-telescope",
+	})
+	use("nvim-neorg/neorg-telescope")
 	use("andweeb/presence.nvim")
 end)
 
- -- Require plugins
+-- Require plugins
 
 require("maps")
 require("opts")

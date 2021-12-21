@@ -52,8 +52,9 @@ opt.pumheight = 10
 opt.termguicolors = true
 opt.signcolumn = 'yes:1'
 
-vim.g.tokyonight_transparent = true
+--vim.g.tokyonight_transparent = true
 vim.g.tokyonight_transparent_sidebar = true
+--vim.g.tokyonight_style = "night"
 vim.g.tokyonight_colors = {
     info = "#FFFFFF",
     hint = "#FFFFFF"
@@ -65,8 +66,8 @@ vimscript("colorscheme tokyonight", false)
 
 
 -- Background
-highlight('Normal', {guibg="NONE", ctermbg="NONE"}, false)
-highlight('SignColumn', {guibg="NONE", ctermbg="NONE"}, false)
+--highlight('Normal', {guibg="NONE", ctermbg="NONE"}, false)
+--highlight('SignColumn', {guibg="NONE", ctermbg="NONE"}, false)
 
 -- LightMode command
 function _G.LightMode()
@@ -75,7 +76,6 @@ function _G.LightMode()
         dark_sidebar = false,
         hide_end_of_buffer = true
     })
-    vim.api.nvim_command('AirlineTheme base16_classic_light')
 end
 
 function _G.DarkMode()

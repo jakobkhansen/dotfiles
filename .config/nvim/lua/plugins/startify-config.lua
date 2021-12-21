@@ -5,16 +5,14 @@ vim.g.startify_files_number = 5
 vim.g.startify_commands = {
 	{ "Reload Vim", "luafile $MYVIMRC" },
 	{ "Update plugins", "PackerSync" },
-	{ "Clean plugins", "PackerClean" },
 }
 
 -- Often Used
 local function oftenUsed()
 	return {
-		{ line = " TODO", cmd = "edit $HOME/Documents/GTD/inbox.norg" },
-		{ line = "Neovim", cmd = "cd $HOME/.config/nvim/" },
-		{ line = "Kattis", cmd = "cd $HOME/Documents/Personal/KattisSolutions" },
+		{ line = " TODO", cmd = "edit $HOME/Documents/gtd/inbox.norg" },
 		{ line = " Timeliste", cmd = "edit $HOME/Documents/School/GRUPPELÆRER/IN2010_2021/timeliste-desember.norg" },
+		{ line = " Neovim", cmd = "cd $HOME/.config/nvim/" },
 	}
 end
 
@@ -39,7 +37,7 @@ local function luaFiles()
 	local scan = require("plenary").scandir
 	local home = vim.env["HOME"]
 	local files = scan.scan_dir(home .. "/.config/nvim/lua")
-	out = {}
+	local out = {}
 	for i, v in ipairs(files) do
 		out[i] = { line = v, path = v }
 	end
@@ -48,7 +46,7 @@ end
 
 vim.g.startify_lists = {
 	{ type = "files", header = { "   Recent" } },
-	{ type = oftenUsed, header = { "   Often used" }, indices = { "todo", "nv", "ka", "time" } },
+	{ type = oftenUsed, header = { "   Often used" }, indices = { "todo", "time", "nv", "on" } },
 	{
 		type = configFiles,
 		header = { "   Config files" },

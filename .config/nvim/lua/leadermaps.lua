@@ -182,6 +182,13 @@ lmap.g = {
 	},
 }
 
+-- Neorg
+map({"silent"}, '<leader>otc', '<CMD>Neorg gtd capture<CR>')
+map({"silent"}, '<leader>ote', '<CMD>Neorg gtd edit<CR>')
+map({"silent"}, '<leader>otv', '<CMD>Neorg gtd views<CR>')
+map({"silent"}, '<leader>oj', '<CMD>Neorg journal today<CR>')
+lmap.o = { name = "neorg" }
+
 -- Help
 map({ "silent" }, "<Leader>ht", "<CMD>Telescope help_tags prompt_prefix=🔍<CR>")
 map({ "silent" }, "<Leader>hw", '<CMD>execute "h " . expand("<cword>")<CR>')
@@ -192,6 +199,7 @@ lmap.h = {
 	t = "help-tags",
 	w = "help-cword",
 }
+
 
 -- Not categorized
 noremap("<Leader>no", "<CMD>nohlsearch<CR>")
@@ -205,7 +213,6 @@ lmap["<CR>"] = "leader_ignore"
 lmap.s = { name = "leader_ignore", s = "leader_ignore" }
 lmap.w = "leader_ignore"
 
-lmap.o = { name = "neorg" }
 
 -- Startify
 map("<Leader>ss", "<CMD>Startify<CR>")
