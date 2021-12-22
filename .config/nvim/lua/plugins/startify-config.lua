@@ -7,15 +7,6 @@ vim.g.startify_commands = {
 	{ "Update plugins", "PackerSync" },
 }
 
--- Often Used
-local function oftenUsed()
-	return {
-		{ line = "gtd", cmd = "cd $HOME/Documents/gtd" },
-		{ line = " Timeliste", cmd = "edit $HOME/Documents/School/GRUPPELÆRER/IN2010_2021/timeliste-desember.norg" },
-		{ line = " Neovim", cmd = "cd $HOME/.config/nvim/" },
-	}
-end
-
 local function configFiles()
 	local files = {
 		{ line = "vim", path = "$MYVIMRC" },
@@ -46,7 +37,6 @@ end
 
 vim.g.startify_lists = {
 	{ type = "files", header = { "   Recent" } },
-	{ type = oftenUsed, header = { "   Often used" }, indices = { "gtd", "time", "nv", "on" } },
 	{
 		type = configFiles,
 		header = { "   Config files" },

@@ -143,11 +143,15 @@ end
 map("<Leader>pc", "<CMD>cd %:p:h<CR>")
 noremap({ "silent" }, "<Leader>pg", CWDgitRoot)
 map("<Leader>p<BS>", "<CMD>cd ..<CR>")
+map("<Leader>pn", "<CMD>cd $HOME/.config/nvim<CR>")
+map("<Leader>po", "<CMD>cd $HOME/Documents/gtd<CR>")
 
 lmap.p = {
 	name = "path",
 	c = "current-file",
 	g = "git-root",
+	n = "neovim",
+    o = "gtd"
 }
 lmap.p["<BS>"] = ".."
 
@@ -196,6 +200,7 @@ lmap.o = {
 		c = "capture",
 		e = "edit",
 	},
+    h = "hours"
 }
 
 -- Help

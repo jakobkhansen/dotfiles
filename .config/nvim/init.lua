@@ -108,12 +108,12 @@ require("packer").startup(function(use)
 			require("plugins.nvim-tree-config")
 		end,
 	})
-	use({
-		"mhinz/vim-startify",
-		config = function()
-			require("plugins.startify-config")
-		end,
-	})
+    use({
+        "mhinz/vim-startify",
+        config = function()
+            require("plugins.startify-config")
+        end,
+    })
 	use("spinks/vim-leader-guide")
 	use({
 		"folke/trouble.nvim",
