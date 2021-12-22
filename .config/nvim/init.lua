@@ -4,8 +4,8 @@ require("packer").startup(function(use)
 	use("svermeulen/vimpeccable")
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim")
-	use("RishabhRD/popfix")
-	use("rbgrouleff/bclose.vim")
+	--use("RishabhRD/popfix")
+	--use("rbgrouleff/bclose.vim")
 
 	-- "Text manipulation"
 	use({
@@ -25,7 +25,13 @@ require("packer").startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim")
 
 	--"Movement"
-	use("psliwka/vim-smoothie")
+	--use("psliwka/vim-smoothie")
+	use({
+		"karb94/neoscroll.nvim",
+		config = function()
+			require("neoscroll").setup({hide_cursor = false})
+		end,
+	})
 
 	-- "Syntax highlighting"
 	use({
@@ -48,23 +54,20 @@ require("packer").startup(function(use)
 	})
 	use("sindrets/winshift.nvim")
 
-	-- "Themes and Visuals"
-	use("christianchiarulli/nvcode-color-schemes.vim")
-
-    use({
-        "akinsho/bufferline.nvim",
-        config = function()
-            require("plugins.bufferline-config")
-        end,
-        requires = "kyazdani42/nvim-web-devicons",
-    })
+	use({
+		"akinsho/bufferline.nvim",
+		config = function()
+			require("plugins.bufferline-config")
+		end,
+		requires = "kyazdani42/nvim-web-devicons",
+	})
 	use({
 		"kyazdani42/nvim-web-devicons",
 		config = function()
 			require("plugins.icons")
 		end,
 	})
-    use("jakobkhansen/tokyonight.nvim")
+	use("jakobkhansen/tokyonight.nvim")
 	use("projekt0n/github-nvim-theme")
 
 	-- "Files and git"
@@ -108,12 +111,12 @@ require("packer").startup(function(use)
 			require("plugins.nvim-tree-config")
 		end,
 	})
-    use({
-        "mhinz/vim-startify",
-        config = function()
-            require("plugins.startify-config")
-        end,
-    })
+	use({
+		"mhinz/vim-startify",
+		config = function()
+			require("plugins.startify-config")
+		end,
+	})
 	use("spinks/vim-leader-guide")
 	use({
 		"folke/trouble.nvim",
@@ -205,7 +208,6 @@ require("packer").startup(function(use)
 		end,
 		requires = "nvim-neorg/neorg-telescope",
 	})
-	use("nvim-neorg/neorg-telescope")
 	use("andweeb/presence.nvim")
 end)
 

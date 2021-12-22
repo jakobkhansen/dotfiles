@@ -107,6 +107,7 @@ lmap.t = {
 }
 
 -- Buffers and cwd
+map("<Leader>bd", "<CMD>b#|bd#<CR>")
 map("<Leader>be", "<CMD>enew<CR>")
 map("<Leader>bx", "<CMD>close<CR>")
 map("<Leader>bv", "<CMD>vsplit<CR>")

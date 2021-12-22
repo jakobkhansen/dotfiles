@@ -107,6 +107,3 @@ opt.undofile = true
 opt.swapfile = false
 
 -- Disable default mappings
-
-
-vim.g.bclose_no_plugin_maps = false
