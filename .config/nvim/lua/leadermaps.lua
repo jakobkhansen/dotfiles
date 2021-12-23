@@ -12,6 +12,8 @@ local lsp = vim.lsp.buf
 local diagnostic = vim.diagnostic
 
 wk.register({
+
+	-- Find x
 	f = {
 		name = "find",
 		f = { "<CMD>Telescope find_files<CR>", "find-files" },
@@ -56,6 +58,7 @@ wk.register({
 		},
 	},
 
+	-- Buffer
 	b = {
 		name = "buffer",
 		d = { "<CMD>Bclose<CR>", "buffer-close" },
@@ -66,6 +69,8 @@ wk.register({
 		o = { "<CMD>ZoomWinTabToggle<CR>", "maximize-buffer" },
 		m = { "<CMD>WinShift<CR>", "buffer-move" },
 	},
+
+	-- LSP
 	l = {
 		name = "lsp",
 		d = { lsp.definition, "goto-definition" },
@@ -81,11 +86,15 @@ wk.register({
 			l = { diagnostic.open_float, "line-diagnostics" },
 		},
 	},
+
+	-- Terminal
 	t = {
 		name = "terminal",
 		t = { "<CMD>exe v:count1 . 'ToggleTerm'<CR>", "popup-terminal" },
 		f = { "<CMD>terminal<CR>", "full-terminal" },
 	},
+
+	-- Git
 	g = {
 		name = "git",
 		s = { "<CMD>Ge :<CR>", "git-status" },
@@ -95,6 +104,8 @@ wk.register({
 		m = { "<CMD>Git mergetool<CR>", "git-mergetool" },
 		v = { "<CMD>silent !gh repo view --web<CR>", "git-browser" },
 	},
+
+	-- Path, cwd
 	p = {
 		name = "path",
 		h = { "<CMD>cd $HOME<CR>", "path-home" },
@@ -103,10 +114,20 @@ wk.register({
 		c = { "<CMD>cd %:p:h<CR>", "path-current-file" },
 		o = { "<CMD>cd $HOME/.config/gtd<CR>", "path-gtd" },
 	},
-    o = {
-        name = "organize",
-        h = { "<CMD>Neorg journal custom " .. utils.getFirstDayOfCurrentMonth() .. "<CR>", "journal"}
-    },
+
+	-- Neorg
+	o = {
+		name = "organize",
+		h = { "<CMD>Neorg journal custom " .. utils.getFirstDayOfCurrentMonth() .. "<CR>", "hours" },
+		j = { "<CMD>Neorg journal today<CR>", "journal" },
+        t = {
+            name = "task",
+            t = { "<CMD>Neorg gtd views<CR>", "task-overview"},
+            c = { "<CMD>Neorg gtd capture<CR>", "task-capture"},
+            e = { "<CMD>Neorg gtd edit<CR>", "task-edit"},
+        }
+	},
+
 	-- Uncategorized
 	s = {
 		name = "which_key_ignore",
