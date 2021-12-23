@@ -6,6 +6,7 @@ local vimscript = vim.api.nvim_exec
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.workspace.configuration = true
 
+
 -- Python
 nvim_lsp.pyright.setup({
 	capabilities = capabilities,
