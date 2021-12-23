@@ -21,9 +21,6 @@ ls.snippets = {
         ls.parser.parse_snippet({trig="checkempty"}, "[ ]"),
         ls.parser.parse_snippet({trig="checkfull"}, "[x]"),
     },
-    norg = {
-        ls.parser.parse_snippet({trig="code"}, "@code ${1:java}\n$0\n@end"),
-    }
 }
 
 

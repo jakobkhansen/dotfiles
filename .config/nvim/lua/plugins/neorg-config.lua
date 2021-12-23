@@ -19,10 +19,11 @@ require("neorg").setup({
 				engine = "nvim-cmp", -- We current support nvim-compe and nvim-cmp only
 			},
 		},
-		["core.norg.concealer"] = {}, -- Allows for use of icons
+		["core.norg.concealer"] = {
+		},
 		["core.keybinds"] = { -- Configure core.keybinds
 			config = {
-                default_keybinds = true, -- Generate the default keybinds
+				default_keybinds = true, -- Generate the default keybinds
 				neorg_leader = "<Leader>o", -- This is the default if unspecified
 			},
 		},
@@ -38,16 +39,16 @@ require("neorg").setup({
 			},
 		},
 		["core.norg.journal"] = {
-            config = {
-                workspace = "gtd"
-            }
-        },
+			config = {
+				workspace = "gtd",
+			},
+		},
 	},
 })
 
 local function getFirstDayOfCurrentMonth()
-    print(os.date("%Y") .. "-" .. os.date("%m") .. "-01")
-    return os.date("%Y") .. "-" .. os.date("%m") .. "-01"
+	print(os.date("%Y") .. "-" .. os.date("%m") .. "-01")
+	return os.date("%Y") .. "-" .. os.date("%m") .. "-01"
 end
 
 map({ "silent" }, "<leader>oh", "<CMD>Neorg journal custom " .. getFirstDayOfCurrentMonth() .. "<CR>")

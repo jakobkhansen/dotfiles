@@ -1,4 +1,4 @@
-local remap = vim.api.nvim_set_keymap
+local keymap = vim.api.nvim_set_keymap
 local vimscript = vim.api.nvim_exec
 
 local vimp = require('vimp')
@@ -12,6 +12,7 @@ local vmap = vimp.vmap
 local vnoremap = vimp.vnoremap
 local tmap = vimp.tmap
 local tnoremap = vimp.tnoremap
+
 
 -- Remaps
 noremap('+', '$')
@@ -30,6 +31,7 @@ noremap(',', ';')
 noremap({silent = true}, 'Q', 'gqap')
 noremap('<A-k>', '<CMD>m-2<CR>')
 noremap('<A-j>', '<CMD>m+<CR>')
+imap('<C-v>', '<C-r>0')
 
 -- Buffers and tabs
 

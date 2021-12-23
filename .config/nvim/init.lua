@@ -5,7 +5,7 @@ require("packer").startup(function(use)
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim")
 	--use("RishabhRD/popfix")
-	--use("rbgrouleff/bclose.vim")
+    use("rbgrouleff/bclose.vim")
 
 	-- "Text manipulation"
 	use({
@@ -29,7 +29,7 @@ require("packer").startup(function(use)
 	use({
 		"karb94/neoscroll.nvim",
 		config = function()
-			require("neoscroll").setup({hide_cursor = false})
+			require("plugins.neoscroll-config")
 		end,
 	})
 
@@ -111,13 +111,20 @@ require("packer").startup(function(use)
 			require("plugins.nvim-tree-config")
 		end,
 	})
+
 	use({
 		"mhinz/vim-startify",
 		config = function()
 			require("plugins.startify-config")
 		end,
 	})
-	use("spinks/vim-leader-guide")
+	--use("spinks/vim-leader-guide")
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			require("plugins.which-key-config")
+		end,
+	})
 	use({
 		"folke/trouble.nvim",
 		config = function()
@@ -215,5 +222,7 @@ end)
 
 require("maps")
 require("opts")
+--require("leadermaps")
+--require("leadermapsnew")
 require("leadermaps")
 require("language_configs")
