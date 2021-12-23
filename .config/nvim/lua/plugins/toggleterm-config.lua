@@ -1,4 +1,3 @@
-local map = vimp.map
 local vimscript = vim.api.nvim_exec
 local terms = require("toggleterm.terminal")
 local fmt = string.format

@@ -1,7 +1,6 @@
 local command = vim.api.nvim_command
 local vimscript = vim.api.nvim_exec
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
-local noremap = require('vimp').noremap
 
 --vim.g.nvim_tree_ignore = {'*.class'}
 vim.g.nvim_tree_quit_on_open = 1
@@ -75,8 +74,8 @@ vim.g.nvim_tree_icons = {
 
 
 function Set_cwd()
-    dir = vim.fn.expand('%:p:h')
-    cd_command = 'cd ' .. dir
+    local dir = vim.fn.expand('%:p:h')
+    local cd_command = 'cd ' .. dir
     command('windo ' .. cd_command)
 end
 

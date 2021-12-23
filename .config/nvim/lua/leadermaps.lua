@@ -103,6 +103,10 @@ wk.register({
 		c = { "<CMD>cd %:p:h<CR>", "path-current-file" },
 		o = { "<CMD>cd $HOME/.config/gtd<CR>", "path-gtd" },
 	},
+    o = {
+        name = "organize",
+        h = { "<CMD>Neorg journal custom " .. utils.getFirstDayOfCurrentMonth() .. "<CR>", "journal"}
+    },
 	-- Uncategorized
 	s = {
 		name = "which_key_ignore",

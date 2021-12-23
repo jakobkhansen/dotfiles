@@ -1,8 +1,6 @@
 local ls = require'luasnip'
-local vimp = require('vimp')
-local snoremap = vimp.snoremap
-local imap = vimp.imap
-local inoremap = vimp.inoremap
+local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
 
 
 -- Every unspecified option will be set to the default.
@@ -24,10 +22,10 @@ ls.snippets = {
 }
 
 
-snoremap({'silent'}, '<C-k>', '<CMD>lua require("luasnip").jump(1)<CR>')
-snoremap({'silent'}, '<C-j>', '<CMD>lua require("luasnip").jump(-1)<CR>')
-imap({'silent'}, '<C-j>', '<CMD>lua require("luasnip").jump(-1)<CR>')
-imap({'silent'}, '<C-k>', '<CMD>lua require("luasnip").jump(1)<CR>')
+keymap("s", "<C-k>",  '<CMD>lua require("luasnip").jump(1)<CR>', opts)
+keymap("s", "<C-j>",  '<CMD>lua require("luasnip").jump(-1)<CR>', opts)
+keymap("i", "<C-j>",  '<CMD>lua require("luasnip").jump(-1)<CR>', opts)
+keymap("i", "<C-k>",  '<CMD>lua require("luasnip").jump(1)<CR>', opts)
 
 --snoremap <silent> <C-k> <cmd>lua require'luasnip'.jump(1)<Cr>
 --snoremap <silent> <C-j> <cmd>lua require'luasnip'.jump(-1)<Cr>

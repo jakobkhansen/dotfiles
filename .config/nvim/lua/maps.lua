@@ -1,79 +1,70 @@
 local keymap = vim.api.nvim_set_keymap
 local vimscript = vim.api.nvim_exec
 
-local vimp = require('vimp')
-local map = vimp.map
-local noremap = vimp.noremap
-local nmap = vimp.nmap
-local nnoremap = vimp.nnoremap
-local imap = vimp.imap
-local inoremap = vimp.inoremap
-local vmap = vimp.vmap
-local vnoremap = vimp.vnoremap
-local tmap = vimp.tmap
-local tnoremap = vimp.tnoremap
+
+local opts = { noremap = true, silent = true }
+local term_opts = { silent = true }
 
 
--- Remaps
-noremap('+', '$')
-noremap('""', '"+y')
-noremap('<LeftMouse>', '<Nop>')
-inoremap('<LeftMouse>', '<Nop>')
+keymap("", "+", "$", opts)
+keymap("", '""', '"+y', opts)
+keymap("", "<LeftMouse>", "<Nop>", opts)
+keymap("i", "<LeftMouse>", "<Nop>", opts)
 
 -- Movement
-map('J', '10j')
-map('K', '10k')
+keymap("", "J", "10j", opts)
+keymap("", "K", "10k", opts)
 
-noremap(';', ',')
-noremap(',', ';')
+keymap("", ";", ",", opts)
+keymap("", ",", ";", opts)
+
 
 -- Text manipulation
-noremap({silent = true}, 'Q', 'gqap')
-noremap('<A-k>', '<CMD>m-2<CR>')
-noremap('<A-j>', '<CMD>m+<CR>')
-imap('<C-v>', '<C-r>0')
+keymap("", "Q", "gqap", opts)
+keymap("", "<A-k>", "<CMD>m-2<CR>", opts)
+keymap("", "<A-j>", "<CMD>m+<CR>", opts)
+keymap("i", "<C-v>", "<C-r>0", opts)
 
 -- Buffers and tabs
+keymap("n", "<Tab>", "<CMD>bn<CR>", opts)
+keymap("n", "<S-Tab>", "<CMD>bp<CR>", opts)
 
-nmap('<Tab>', '<CMD>bn<CR>')
-nmap('<S-Tab>', '<CMD>bp<CR>')
-
-nmap('<A-S-Tab>', '<CMD>tabprevious<CR>')
-nmap('<A-Tab>', '<CMD>tabNext<CR>')
+keymap("n", "<A-Tab>", "<CMD>tabNext<CR>", opts)
+keymap("n", "<A-S-Tab>", "<CMD>tabprevious<CR>", opts)
 
 --  Move to buffer
-nnoremap('<C-h>', '<C-w>h')
-nnoremap('<C-j>', '<C-w>j')
-nnoremap('<C-k>', '<C-w>k')
---nnoremap('<C-l>', '<C-w>l')
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {noremap = true})
+keymap("n", "<C-h>", "<C-w>h", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
+keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-l>", "<C-w>l", opts)
+
 
 --  Resize buffers
-nnoremap('<C-M-h>', '<CMD>vertical resize-5<CR>')
-nnoremap('<C-M-j>', '<CMD>resize-5<CR>')
-nnoremap('<C-M-k>', '<CMD>resize+5<CR>')
-nnoremap('<C-M-l>', '<CMD>vertical resize+5<CR>')
-nnoremap('<C-A-r>', '<C-W>=')
+keymap("n", "<C-m-h>", "<CMD>vertical resize-5<CR>", opts)
+keymap("n", "<C-m-j>", "<CMD>resize-5<CR>", opts)
+keymap("n", "<C-m-k>", "<CMD>resize+5<CR>", opts)
+keymap("n", "<C-m-l>", "<CMD>vertical resize+5<CR>", opts)
+keymap("n", "<C-A-r>", "<C-W>=", opts)
 
 --  Move horizontally
-noremap('zh', '10zh')
-noremap('zl', '10zl')
+keymap("", "zh", "10zh", opts)
+keymap("", "zl", "10zl", opts)
 
 --  Delete all buffers to left and right
-map('<F2>', '<CMD>2,-1bufdo bd!<CR>')
-map('<F3>', '<CMD>+1,$bufdo bd!<CR>')
+keymap("", "<F2>", "<CMD>2,-1bufdo bd!<CR>", opts)
+keymap("", "<F3>", "<CMD>+1,$bufdo bd!<CR>", opts)
 
 -- Terminal
-tnoremap({'silent'}, '<C-q>', '<Esc>')
-tnoremap({'silent'}, '<Esc>', '<C-\\><C-n>')
+keymap("t", "<C-q>", "<Esc>", opts)
+keymap("t", "<Esc>", "<C-\\><C-n>", opts)
 
-tnoremap('<C-h>', '<C-\\><C-n><C-w>h')
-tnoremap('<C-j>', '<C-\\><C-n><C-w>j')
-tnoremap('<C-k>', '<C-\\><C-n><C-w>k')
-tnoremap('<C-l>', '<C-\\><C-n><C-w>l')
+keymap("t", "<C-h>", "<C-\\><C-n><C-w>h", opts)
+keymap("t", "<C-j>", "<C-\\><C-n><C-w>j", opts)
+keymap("t", "<C-k>", "<C-\\><C-n><C-w>k", opts)
+keymap("t", "<C-l>", "<C-\\><C-n><C-w>l", opts)
 
-tnoremap('<C-M-h>', '<C-\\><C-n><CMD>vertical resize-5<CR>i')
-tnoremap('<C-M-j>', '<C-\\><C-n><CMD>resize-5<CR>i')
-tnoremap('<C-M-k>', '<C-\\><C-n><CMD>resize+5<CR>i')
-tnoremap('<C-M-l>', '<C-\\><C-n><CMD>vertical resize+5<CR>i')
-tnoremap('<C-M-r>', '<C-\\><C-n><C-W>=i')
+keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>vertical resize-5<CR>i", opts)
+keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>resize-5<CR>i", opts)
+keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>resize+5<CR>i", opts)
+keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>vertical resize+5<CR>i", opts)
+keymap("t", "<C-M-r>", "<C-\\><C-n><C-W>=i", opts)

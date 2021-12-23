@@ -4,10 +4,6 @@ local vimscript = vim.api.nvim_exec
 local highlight = vim.highlight.create
 
 -- Vim options
-
-
--- call("filetype plugin indent on")
-
 vimscript("filetype plugin indent on", false)
 vimscript("au FileType * setlocal fo-=c fo-=r fo-=o", false)
 
@@ -52,9 +48,7 @@ opt.pumheight = 10
 opt.termguicolors = true
 opt.signcolumn = 'yes:1'
 
---vim.g.tokyonight_transparent = true
 vim.g.tokyonight_transparent_sidebar = true
---vim.g.tokyonight_style = "night"
 vim.g.tokyonight_colors = {
     info = "#FFFFFF",
     hint = "#FFFFFF",
@@ -66,9 +60,6 @@ vimscript("colorscheme tokyonight", false)
 highlight('BufferLineFill', {guibg="NONE", ctermbg="NONE"}, false)
 
 
--- Background
---highlight('Normal', {guibg="NONE", ctermbg="NONE"}, false)
---highlight('SignColumn', {guibg="NONE", ctermbg="NONE"}, false)
 
 -- LightMode command
 function _G.LightMode()
@@ -107,5 +98,4 @@ opt.undofile = true
 opt.swapfile = false
 
 -- Disable default mappings
-
 vim.g.bclose_no_plugin_maps = true

@@ -1,7 +1,5 @@
 vimscript = vim.api.nvim_exec
 command = vim.api.nvim_command
-local vimp = require("vimp")
-local map = vimp.map
 
 require("neorg").setup({
 	-- Tell Neorg what modules to load
@@ -46,12 +44,7 @@ require("neorg").setup({
 	},
 })
 
-local function getFirstDayOfCurrentMonth()
-	print(os.date("%Y") .. "-" .. os.date("%m") .. "-01")
-	return os.date("%Y") .. "-" .. os.date("%m") .. "-01"
-end
 
-map({ "silent" }, "<leader>oh", "<CMD>Neorg journal custom " .. getFirstDayOfCurrentMonth() .. "<CR>")
 
 vimscript("au FileType norg set spell", false)
 command("silent! NeorgStart silent=true")

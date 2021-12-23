@@ -1,9 +1,7 @@
-local vimp = require('vimp')
-local nnoremap = vimp.nnoremap
-local noremap = vimp.nnoremap
-local vnoremap = vimp.vnoremap
-local vimscript = vim.api.nvim_exec
+local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
 
-vimscript('noremap <silent> # :call nerdcommenter#Comment(0, "toggle")<CR>', false)
+
+keymap("", "#", ':call nerdcommenter#Comment(0, "toggle")<CR>', opts)
 
 vim.g.NERDCreateDefaultMappings = 0

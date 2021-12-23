@@ -14,4 +14,9 @@ function P.CWDgitRoot()
 	end
 end
 
+function P.getFirstDayOfCurrentMonth()
+	print(os.date("%Y") .. "-" .. os.date("%m") .. "-01")
+	return os.date("%Y") .. "-" .. os.date("%m") .. "-01"
+end
+
 return P

@@ -1,11 +1,8 @@
 require("packer").startup(function(use)
 	-- "Libraries and dependencies"
 	use("wbthomason/packer.nvim")
-	use("svermeulen/vimpeccable")
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim")
-	--use("RishabhRD/popfix")
-    use("rbgrouleff/bclose.vim")
 
 	-- "Text manipulation"
 	use({
@@ -53,6 +50,7 @@ require("packer").startup(function(use)
 		end,
 	})
 	use("sindrets/winshift.nvim")
+    use("rbgrouleff/bclose.vim")
 
 	use({
 		"akinsho/bufferline.nvim",
