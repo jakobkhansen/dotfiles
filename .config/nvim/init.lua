@@ -61,9 +61,9 @@ require("packer").startup(function(use)
 	})
 	use({
 		"kyazdani42/nvim-web-devicons",
-		config = function()
-			require("plugins.icons")
-		end,
+		--config = function()
+			--require("plugins.icons")
+		--end,
 	})
 	use("jakobkhansen/tokyonight.nvim")
 	use("projekt0n/github-nvim-theme")
