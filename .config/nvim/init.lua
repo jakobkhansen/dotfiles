@@ -6,9 +6,9 @@ require("packer").startup(function(use)
 
 	-- "Text manipulation"
 	use({
-		"scrooloose/nerdcommenter",
+		"numToStr/Comment.nvim",
 		config = function()
-			require("plugins.nerdcommenter-config")
+			require("Comment").setup()
 		end,
 	})
 	use({
@@ -18,11 +18,8 @@ require("packer").startup(function(use)
 		end,
 	})
 	use("tpope/vim-surround")
-	use("jose-elias-alvarez/nvim-lsp-ts-utils")
-	use("jose-elias-alvarez/null-ls.nvim")
 
 	--"Movement"
-	--use("psliwka/vim-smoothie")
 	use({
 		"karb94/neoscroll.nvim",
 		config = function()
@@ -37,8 +34,6 @@ require("packer").startup(function(use)
 			require("plugins.treesitter-config")
 		end,
 	})
-	use("nvim-treesitter/playground")
-	use("windwp/nvim-ts-autotag")
 	use("sheerun/vim-polyglot")
 
 	-- "Buffers"
@@ -49,8 +44,8 @@ require("packer").startup(function(use)
 			require("bufresize").setup()
 		end,
 	})
+	use("rbgrouleff/bclose.vim")
 	use("sindrets/winshift.nvim")
-    use("rbgrouleff/bclose.vim")
 
 	use({
 		"akinsho/bufferline.nvim",
@@ -59,12 +54,7 @@ require("packer").startup(function(use)
 		end,
 		requires = "kyazdani42/nvim-web-devicons",
 	})
-	use({
-		"kyazdani42/nvim-web-devicons",
-		--config = function()
-			--require("plugins.icons")
-		--end,
-	})
+	use("kyazdani42/nvim-web-devicons")
 	use("jakobkhansen/tokyonight.nvim")
 	use("projekt0n/github-nvim-theme")
 
@@ -152,12 +142,10 @@ require("packer").startup(function(use)
 		end,
 	})
 	use("mfussenegger/nvim-jdtls")
-	use({
-		"simrat39/rust-tools.nvim",
-		config = function()
-			require("rust-tools").setup({})
-		end,
-	})
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use("windwp/nvim-ts-autotag")
+	-- use("jose-elias-alvarez/null-ls.nvim")
+	-- use({"simrat39/rust-tools.nvim", config = function() require("rust-tools").setup({}) end, })
 
 	use({
 		"hrsh7th/nvim-cmp",
@@ -192,7 +180,6 @@ require("packer").startup(function(use)
 	use("rafamadriz/friendly-snippets")
 
 	-- "Notes and organization"
-	use("reedes/vim-pencil")
 	use({
 		"instant-markdown/vim-instant-markdown",
 		config = function()
@@ -207,7 +194,7 @@ require("packer").startup(function(use)
 	})
 	use({
 		"vhyrro/neorg",
-		branch = "better-concealing-performance",
+		-- branch = "better-concealing-performance",
 		config = function()
 			require("plugins.neorg-config")
 		end,
@@ -220,7 +207,6 @@ end)
 
 require("maps")
 require("opts")
---require("leadermaps")
---require("leadermapsnew")
 require("leadermaps")
 require("language_configs")
+-- require("netrw")

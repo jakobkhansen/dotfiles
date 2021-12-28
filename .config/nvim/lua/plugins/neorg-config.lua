@@ -1,5 +1,5 @@
-vimscript = vim.api.nvim_exec
-command = vim.api.nvim_command
+local vimscript = vim.api.nvim_exec
+local command = vim.api.nvim_command
 
 require("neorg").setup({
 	-- Tell Neorg what modules to load
@@ -18,6 +18,11 @@ require("neorg").setup({
 			},
 		},
 		["core.norg.concealer"] = {
+			config = { -- Note that this table is optional and doesn't need to be provided
+                markup = {
+                    enabled = false,
+                },
+			},
 		},
 		["core.keybinds"] = { -- Configure core.keybinds
 			config = {
@@ -43,8 +48,6 @@ require("neorg").setup({
 		},
 	},
 })
-
-
 
 vimscript("au FileType norg set spell", false)
 command("silent! NeorgStart silent=true")

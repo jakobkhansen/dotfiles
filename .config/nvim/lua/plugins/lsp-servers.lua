@@ -67,7 +67,7 @@ function Find_root_better(markers, bufname)
 	return vim.fn.getcwd()
 end
 
-function start_jdt()
+local function start_jdt()
 	vimscript("cd %:p:h", false)
 	local config = {
 		init_options = {
@@ -119,7 +119,7 @@ vimscript("au FileType java lua start_jdt()", false)
 
 ---- Typescript
 
-require("null-ls").setup({})
+-- require("null-ls").setup({})
 
 nvim_lsp.tsserver.setup({
 	on_attach = function(client, bufnr)

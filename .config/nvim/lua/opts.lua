@@ -73,7 +73,6 @@ end
 function _G.DarkMode()
     vimscript("colorscheme tokyonight", false)
     opt.background = 'dark'
-    vim.api.nvim_command('AirlineTheme tokyonight')
 end
 
 vimscript('command! LightMode :lua LightMode()', false)

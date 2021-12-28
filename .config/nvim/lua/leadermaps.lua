@@ -120,13 +120,20 @@ wk.register({
 		name = "organize",
 		h = { "<CMD>Neorg journal custom " .. utils.getFirstDayOfCurrentMonth() .. "<CR>", "hours" },
 		j = { "<CMD>Neorg journal today<CR>", "journal" },
-        t = {
-            name = "task",
-            t = { "<CMD>Neorg gtd views<CR>", "task-overview"},
-            c = { "<CMD>Neorg gtd capture<CR>", "task-capture"},
-            e = { "<CMD>Neorg gtd edit<CR>", "task-edit"},
-        }
+		t = {
+			name = "task",
+			t = { "<CMD>Neorg gtd views<CR>", "task-overview" },
+			c = { "<CMD>Neorg gtd capture<CR>", "task-capture" },
+			e = { "<CMD>Neorg gtd edit<CR>", "task-edit" },
+		},
 	},
+
+    -- Help
+    h = {
+        name = "help",
+        t = { "<CMD>Telescope help_tags<CR>", "help-tags"},
+        w = { '<CMD>execute "h " . expand("<cword>")<CR>', "help-tags"},
+    },
 
 	-- Uncategorized
 	s = {
