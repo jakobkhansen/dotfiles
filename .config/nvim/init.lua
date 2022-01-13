@@ -5,45 +5,17 @@ require("packer").startup(function(use)
 	use("nvim-lua/plenary.nvim")
 
 	-- "Text manipulation"
-	use({
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-	})
-	use({
-		"windwp/nvim-autopairs",
-		config = function()
-			require("plugins.nvim-autopairs-config")
-		end,
-	})
+    use({ "numToStr/Comment.nvim", config = function() require("Comment").setup() end })
+	use({"windwp/nvim-autopairs", config = function() require("plugins.nvim-autopairs-config") end })
 	use("tpope/vim-surround")
 
 	--"Movement"
-	use({
-		"karb94/neoscroll.nvim",
-		config = function()
-			require("plugins.neoscroll-config")
-		end,
-	})
-
-	-- "Syntax highlighting"
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("plugins.treesitter-config")
-		end,
-	})
-	use("sheerun/vim-polyglot")
+    use({ "karb94/neoscroll.nvim", config = function() require("plugins.neoscroll-config") end })
+    use({ "petertriho/nvim-scrollbar", config = function() require("plugins.nvim-scrollbar-config") end })
 
 	-- "Buffers"
 	use("troydm/zoomwintab.vim")
-	use({
-		"kwkarlwang/bufresize.nvim",
-		config = function()
-			require("bufresize").setup()
-		end,
-	})
+    use({ "kwkarlwang/bufresize.nvim", config = function() require("bufresize").setup() end })
 	use("rbgrouleff/bclose.vim")
 	use("sindrets/winshift.nvim")
 
@@ -54,77 +26,26 @@ require("packer").startup(function(use)
 		end,
 		requires = "kyazdani42/nvim-web-devicons",
 	})
+
 	use("kyazdani42/nvim-web-devicons")
 	use("jakobkhansen/tokyonight.nvim")
 	use("projekt0n/github-nvim-theme")
 
 	-- "Files and git"
-	use({
-		"Pocco81/AutoSave.nvim",
-		config = function()
-			require("plugins.autosave-config")
-		end,
-	})
+    use({ "Pocco81/AutoSave.nvim", config = function() require("plugins.autosave-config") end })
 
 	use("tpope/vim-fugitive")
 	use({ "idanarye/vim-merginal", branch = "develop" })
 	use("rhysd/conflict-marker.vim")
-	use({
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("plugins.gitsigns-config")
-		end,
-	})
+    use({ "lewis6991/gitsigns.nvim", config = function() require("plugins.gitsigns-config") end })
 
 	-- "Terminal"
-	use({
-		"akinsho/toggleterm.nvim",
-		config = function()
-			require("plugins.toggleterm-config")
-		end,
-	})
+    use({ "akinsho/toggleterm.nvim", config = function() require("plugins.toggleterm-config") end })
 	use({ "tknightz/telescope-termfinder.nvim" })
 
-	-- "Menus"
-	use({
-		"nvim-telescope/telescope.nvim",
-		config = function()
-			require("plugins.telescope-config")
-		end,
-	})
+    -- "IDE"
+    use({ "nvim-telescope/telescope.nvim", config = function() require("plugins.telescope-config") end })
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use({
-		"kyazdani42/nvim-tree.lua",
-		config = function()
-			require("plugins.nvim-tree-config")
-		end,
-	})
-
-	use({
-		"mhinz/vim-startify",
-		config = function()
-			require("plugins.startify-config")
-		end,
-	})
-	--use("spinks/vim-leader-guide")
-	use({
-		"folke/which-key.nvim",
-		config = function()
-			require("plugins.which-key-config")
-		end,
-	})
-	use({
-		"folke/trouble.nvim",
-		config = function()
-			require("plugins.trouble-config")
-		end,
-	})
-	use({
-		"is0n/fm-nvim",
-		config = function()
-			require("plugins.fm-nvim-config")
-		end,
-	})
 	use({
 		"AckslD/nvim-neoclip.lua",
 		config = function()
@@ -133,65 +54,42 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	-- "LSP"
-	use({
-		"neovim/nvim-lspconfig",
-		config = function()
-			require("plugins.lsp-config")
-			require("plugins.lsp-servers")
-		end,
-	})
+    use({ "kyazdani42/nvim-tree.lua", config = function() require("plugins.nvim-tree-config") end })
+
+    use({ "mhinz/vim-startify", config = function() require("plugins.startify-config") end })
+
+    use({ "folke/which-key.nvim", config = function() require("plugins.which-key-config") end })
+    use({ "folke/trouble.nvim", config = function() require("plugins.trouble-config") end })
+    use({ "is0n/fm-nvim", config = function() require("plugins.fm-nvim-config") end })
+
+	-- "LSP and languages"
+    use({ "neovim/nvim-lspconfig", config = function() require("plugins.lsp-config") require("plugins.lsp-servers") end })
 	use("mfussenegger/nvim-jdtls")
+    use({ "onsails/lspkind-nvim", })
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("windwp/nvim-ts-autotag")
-	-- use("jose-elias-alvarez/null-ls.nvim")
-	-- use({"simrat39/rust-tools.nvim", config = function() require("rust-tools").setup({}) end, })
 
-	use({
-		"hrsh7th/nvim-cmp",
-		config = function()
-			require("plugins.nvim-cmp-config")
-		end,
-	})
+
+    use({ "hrsh7th/nvim-cmp", config = function() require("plugins.nvim-cmp-config") end })
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("saadparwaiz1/cmp_luasnip")
 	use("hrsh7th/cmp-path")
 	use("kdheepak/cmp-latex-symbols")
 
-	use({
-		"onsails/lspkind-nvim",
-	})
+    use({ "sbdchd/neoformat", config = function() require("plugins.neoformat-config") end })
 
-	use({
-		"sbdchd/neoformat",
-		config = function()
-			require("plugins.neoformat-config")
-		end,
-	})
+	-- "Syntax highlighting"
+    use({ "nvim-treesitter/nvim-treesitter", config = function() require("plugins.treesitter-config") end })
+    use("sheerun/vim-polyglot")
 
 	-- "Snippets"
-	use({
-		"L3MON4D3/LuaSnip",
-		config = function()
-			require("plugins.luasnips-config")
-		end,
-	})
+    use({ "L3MON4D3/LuaSnip", config = function() require("plugins.luasnips-config") end })
 	use("rafamadriz/friendly-snippets")
 
 	-- "Notes and organization"
-	use({
-		"instant-markdown/vim-instant-markdown",
-		config = function()
-			require("plugins.markdown-config")
-		end,
-	})
-	use({
-		"lervag/vimtex",
-		config = function()
-			require("plugins.latex-config")
-		end,
-	})
+    use({ "instant-markdown/vim-instant-markdown", config = function() require("plugins.markdown-config") end })
+    use({ "lervag/vimtex", config = function() require("plugins.latex-config") end })
 	use({
 		"vhyrro/neorg",
 		-- branch = "better-concealing-performance",
@@ -209,4 +107,3 @@ require("maps")
 require("opts")
 require("leadermaps")
 require("language_configs")
--- require("netrw")

@@ -3,6 +3,9 @@ local command = vim.api.nvim_command
 
 require("neorg").setup({
 	-- Tell Neorg what modules to load
+	-- logger = {
+	-- 	level = "info",
+	-- },
 	load = {
 		["core.defaults"] = {}, -- Load all the default modules
 		["core.norg.dirman"] = { -- Manage your directories with Neorg
@@ -18,11 +21,6 @@ require("neorg").setup({
 			},
 		},
 		["core.norg.concealer"] = {
-			config = { -- Note that this table is optional and doesn't need to be provided
-                markup = {
-                    enabled = false,
-                },
-			},
 		},
 		["core.keybinds"] = { -- Configure core.keybinds
 			config = {
@@ -38,6 +36,9 @@ require("neorg").setup({
 				workspace = "gtd",
 				default_lists = {
 					inbox = "inbox.norg",
+				},
+				exclude = {
+					"journal",
 				},
 			},
 		},

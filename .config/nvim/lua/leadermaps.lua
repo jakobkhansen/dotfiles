@@ -112,7 +112,8 @@ wk.register({
 		g = { utils.CWDgitRoot, "path-git-root" },
 		n = { "<CMD>cd $HOME/.config/nvim<CR>", "path-neovim-config" },
 		c = { "<CMD>cd %:p:h<CR>", "path-current-file" },
-		o = { "<CMD>cd $HOME/.config/gtd<CR>", "path-gtd" },
+		o = { "<CMD>cd $HOME/Documents/gtd<CR>", "path-gtd" },
+		k = { "<CMD>cd $HOME/Documents/Personal/KattisSolutions<CR>", "path-kattis" },
 	},
 
 	-- Neorg
@@ -120,6 +121,7 @@ wk.register({
 		name = "organize",
 		h = { "<CMD>Neorg journal custom " .. utils.getFirstDayOfCurrentMonth() .. "<CR>", "hours" },
 		j = { "<CMD>Neorg journal today<CR>", "journal" },
+		p = { "<CMD>edit $HOME/Documents/gtd/projects.norg<CR>", "projects" },
 		t = {
 			name = "task",
 			t = { "<CMD>Neorg gtd views<CR>", "task-overview" },
@@ -146,6 +148,7 @@ wk.register({
 		o = { "<CMD>nohlsearch<CR>", "which_key_ignore" },
 	},
 	["<BS>"] = { "<CMD>cd ..<CR>", "which_key_ignore" },
+	["<CR>"] = { "<CMD>TermExec go_back=1 cmd='!!'<CR>", "which_key_ignore" },
 }, { prefix = "<Leader>" })
 
 wk.register({

@@ -131,7 +131,7 @@ source ~/.bash_aliases
 
 # Powerline
 powerline-daemon -q
-. /usr/lib/python3.9/site-packages/powerline/bindings/zsh/powerline.zsh
+# . /usr/lib/python3.9/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # Backspace fix
 bindkey "^?" backward-delete-char

@@ -67,7 +67,7 @@ function Find_root_better(markers, bufname)
 	return vim.fn.getcwd()
 end
 
-local function start_jdt()
+function start_jdt()
 	vimscript("cd %:p:h", false)
 	local config = {
 		init_options = {
