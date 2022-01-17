@@ -114,6 +114,7 @@ wk.register({
 		c = { "<CMD>cd %:p:h<CR>", "path-current-file" },
 		o = { "<CMD>cd $HOME/Documents/gtd<CR>", "path-gtd" },
 		k = { "<CMD>cd $HOME/Documents/Personal/KattisSolutions<CR>", "path-kattis" },
+		s = { "<CMD>cd $HOME/Documents/School<CR>", "path-school" },
 	},
 
 	-- Neorg
