@@ -96,6 +96,7 @@ require("packer").startup(function(use)
 		end,
 		requires = "nvim-neorg/neorg-telescope",
 	})
+    use({"jakobkhansen/clipboard-image.nvim", config = function() require("plugins.clipboard-image-config") end})
 	use("andweeb/presence.nvim")
 end)
 
