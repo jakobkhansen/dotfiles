@@ -31,6 +31,7 @@ alias h="cd ~"
 alias ranger='source ranger'
 alias r=ranger
 alias n=nvim
+alias mastern="nvim -u ~/Documents/Dev/masterneovim/init.lua"
 
 alias kattispy="/home/jakob/Documents/Personal/KattisSolutions/kattis_shell_python.sh"
 alias kattissubmit="/home/jakob/Documents/Scripts/submit.py"
