@@ -61,7 +61,7 @@ wk.register({
 	-- Buffer
 	b = {
 		name = "buffer",
-		d = { "<CMD>Bclose<CR>", "buffer-close" },
+		d = { "<CMD>lua MiniBufremove.wipeout()<CR>", "buffer-close" },
 		e = { "<CMD>enew<CR>", "open-empty-buffer" },
 		x = { "<CMD>close<CR>", "window-close" },
 		v = { "<CMD>vsplit<CR>", "vertical-split" },

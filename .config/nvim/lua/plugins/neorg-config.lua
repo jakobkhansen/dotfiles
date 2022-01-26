@@ -28,6 +28,7 @@ require("neorg").setup({
 				neorg_leader = "<Leader>o", -- This is the default if unspecified
 			},
 		},
+		["core.presenter"] = {},
 		["core.integrations.telescope"] = {},
 		["core.gtd.ui"] = {},
 		["core.gtd.queries"] = {},

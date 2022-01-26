@@ -4,10 +4,12 @@ require("packer").startup(function(use)
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim")
 
+    -- "Multi-functionality"
+    -- Mini provides pairs, surround, commenting and bufremoval functionality
+    use({"echasnovski/mini.nvim", config = function() require("plugins.mini-config") end })
+
 	-- "Text manipulation"
-    use({ "numToStr/Comment.nvim", config = function() require("Comment").setup() end })
-	use({"windwp/nvim-autopairs", config = function() require("plugins.nvim-autopairs-config") end })
-	use("tpope/vim-surround")
+    use("tpope/vim-speeddating")
 
 	--"Movement"
     use({ "karb94/neoscroll.nvim", config = function() require("plugins.neoscroll-config") end })
@@ -16,7 +18,6 @@ require("packer").startup(function(use)
 	-- "Buffers"
 	use("troydm/zoomwintab.vim")
     use({ "kwkarlwang/bufresize.nvim", config = function() require("bufresize").setup() end })
-	use("rbgrouleff/bclose.vim")
 	use("sindrets/winshift.nvim")
 
 	use({
@@ -80,6 +81,7 @@ require("packer").startup(function(use)
 
 	-- "Syntax highlighting"
     use({ "nvim-treesitter/nvim-treesitter", config = function() require("plugins.treesitter-config") end })
+    use("nvim-treesitter/playground")
     use("sheerun/vim-polyglot")
 
 	-- "Snippets"

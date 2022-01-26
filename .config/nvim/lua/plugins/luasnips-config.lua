@@ -12,8 +12,6 @@ ls.config.set_config({
 
 
 ls.snippets = {
-
-
     markdown = {
         ls.parser.parse_snippet({trig="math"}, "\\$$0\\$"),
         ls.parser.parse_snippet({trig="checkempty"}, "[ ]"),
@@ -27,11 +25,6 @@ keymap("s", "<C-j>",  '<CMD>lua require("luasnip").jump(-1)<CR>', opts)
 keymap("i", "<C-j>",  '<CMD>lua require("luasnip").jump(-1)<CR>', opts)
 keymap("i", "<C-k>",  '<CMD>lua require("luasnip").jump(1)<CR>', opts)
 
---snoremap <silent> <C-k> <cmd>lua require'luasnip'.jump(1)<Cr>
---snoremap <silent> <C-j> <cmd>lua require'luasnip'.jump(-1)<Cr>
-
---imap <silent> <C-k> <CMD>lua require'luasnip'.jump(1)<CR>
---inoremap <silent> <C-j> <cmd>lua require'luasnip'.jump(-1)<Cr>
 require("luasnip/loaders/from_vscode").lazy_load()
 
 require'luasnip'.filetype_extend("javascript", {"javascriptreact"})
