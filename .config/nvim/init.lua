@@ -30,7 +30,7 @@ require("packer").startup(function(use)
 
 	use("kyazdani42/nvim-web-devicons")
 	use("jakobkhansen/tokyonight.nvim")
-	-- use("projekt0n/github-nvim-theme")
+	use("projekt0n/github-nvim-theme")
 
 	-- "Files and git"
     use({ "Pocco81/AutoSave.nvim", config = function() require("plugins.autosave-config") end })

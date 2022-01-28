@@ -22,7 +22,7 @@ require("bufferline").setup({
 		--- some limitations that will *NOT* be fixed.
 		max_name_length = 25,
 		max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
-		tab_size = 18,
+		tab_size = 15,
 		diagnostics = "nvim_lsp",
 		diagnostics_update_in_insert = false,
 		diagnostics_indicator = function(count, level, diagnostics_dict, context)
@@ -39,7 +39,7 @@ require("bufferline").setup({
 		persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
 		-- can also be a table containing 2 custom separators
 		-- [focused and unfocused]. eg: { '|', '|' }
-        --separator_style = "slant"
+        separator_style = {'', ''},
 		--enforce_regular_tabs = false | true,
         always_show_bufferline = false,
 		--sort_by = 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
