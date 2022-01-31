@@ -70,8 +70,8 @@ vim.g.nvim_tree_icons = {
 require("nvim-tree").setup({
 	auto_close = true,
 	update_cwd = true,
-	disable_netrw = false,
-	hijack_netrw = false,
+	disable_netrw = true,
+	hijack_netrw = true,
 	--hide_dotfiles = 1,
 	--ignore = {"*.class"},
 

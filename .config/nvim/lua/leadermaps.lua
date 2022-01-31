@@ -44,7 +44,7 @@ wk.register({
 		},
 		b = { "<CMD>Telescope buffers<CR>", "find-buffers" },
 		z = {
-			name = "find-hidden-dir",
+			name = "find-hidden",
 			f = {
 				"<CMD>Telescope find_files find_command=rg,--files,--hidden prompt_prefix=🔍<CR>",
 				"find-hidden-file",

@@ -31,11 +31,12 @@ alias h="cd ~"
 alias ranger='source ranger'
 alias r=ranger
 alias n=nvim
-alias mastern="nvim -u ~/Documents/Dev/masterneovim/init.lua"
 
 alias kattispy="/home/jakob/Documents/Personal/KattisSolutions/kattis_shell_python.sh"
 alias kattissubmit="/home/jakob/Documents/Scripts/submit.py"
+
 alias kotlinrun="/home/jakob/Documents/Scripts/kotlinrun.py"
+alias absc="java -jar $HOME/Documents/Dev/abs/compiler/absfrontend.jar --erlang"
 
 
 alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/jakob'
