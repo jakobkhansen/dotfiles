@@ -276,6 +276,7 @@ bindsym $mod+q split toggle
 # Bluetooth
 exec --no-startup-id "blueman-applet"
 bindsym F11 exec --no-startup-id "bluetoothctl connect 68:13:24:9C:40:F6"
+bindsym F10 exec --no-startup-id "bluetoothctl disconnect 68:13:24:9C:40:F6"
 bindsym F12 exec --no-startup-id "playerctl play-pause"
 
 # Application window settings
