@@ -26,7 +26,6 @@ vimscript('au FileType markdown command! PreviewStop :lua InstantMarkdownStop', 
 vimscript('au FileType markdown setlocal conceallevel=2', false)
 vimscript('au FileType markdown setlocal wrap', false)
 vimscript('au FileType markdown setlocal tw=0', false)
-vimscript("autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})", false)
 vimscript('au FileType markdown command! -nargs=1 Img call MarkdownImage(<f-args>)', false)
 
 

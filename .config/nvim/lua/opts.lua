@@ -2,6 +2,7 @@ local opt = vim.opt
 local call = vim.call
 local vimscript = vim.api.nvim_exec
 local highlight = vim.highlight.create
+local set_highlight = vim.api.nvim_set_hl
 
 -- Vim options
 vimscript("filetype plugin indent on", false)
@@ -56,8 +57,6 @@ vim.g.tokyonight_colors = {
 vim.g.tokyonight_italic_keywords = false
 vim.g.tokyonight_italic_comments = false
 vimscript("colorscheme tokyonight", false)
-
-highlight('BufferLineFill', {guibg="NONE", ctermbg="NONE"}, false)
 
 
 
