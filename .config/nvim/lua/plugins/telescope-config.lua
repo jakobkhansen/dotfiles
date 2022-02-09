@@ -22,6 +22,7 @@ require("telescope").setup({
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension("termfinder")
+require('telescope').load_extension('file_browser')
 
 function _G.telescope_find_dir(opts)
     opts = opts or {}

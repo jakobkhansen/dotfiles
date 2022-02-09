@@ -47,6 +47,7 @@ require("packer").startup(function(use)
     -- "IDE"
     use({ "nvim-telescope/telescope.nvim", config = function() require("plugins.telescope-config") end })
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+    use({"nvim-telescope/telescope-file-browser.nvim"})
 	use({
 		"AckslD/nvim-neoclip.lua",
 		config = function()
@@ -76,6 +77,7 @@ require("packer").startup(function(use)
 	use("saadparwaiz1/cmp_luasnip")
 	use("hrsh7th/cmp-path")
 	use("kdheepak/cmp-latex-symbols")
+    use("hrsh7th/cmp-nvim-lsp-signature-help")
 
     use({ "sbdchd/neoformat", config = function() require("plugins.neoformat-config") end })
 
