@@ -22,7 +22,6 @@ cmp.setup({
 		{ name = "buffer" },
 		{ name = "latex_symbols" },
 		{ name = "neorg" },
-		{ name = "signature_help" },
 	},
 	snippet = {
 		expand = function(args)

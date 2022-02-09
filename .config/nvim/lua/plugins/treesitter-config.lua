@@ -41,7 +41,7 @@ require("nvim-treesitter.configs").setup({
 	},
 	indent = {
 		enable = true,
-		disable = { "python", "cpp" },
+		disable = { "python", "cpp", "java" },
 	},
 	autotag = {
 		enable = true,
