@@ -17,45 +17,14 @@ wk.register({
 	f = {
 		name = "find",
 		f = { "<CMD>Telescope find_files<CR>", "find-files" },
-		d = {
-			function()
-				_G.telescope_find_dir()
-			end,
-			"find-directory",
-		},
+		d = { "<CMD>Telescope file_browser files=false<CR>", "find-directory" },
 		g = { "<CMD>Telescope git_files prompt_prefix=🔍<CR>", "find-git" },
 		r = { '<CMD>Ranger --choosedir="/tmp/ranger_dir"<CR>', "find-ranger" },
-		l = { "<CMD>NvimTreeToggle<CR>", "file-tree" },
+		l = { "<CMD>Telescope file_browser<CR>", "file-browser" },
 		c = { "<CMD>Telescope live_grep prompt_prefix=🔍<CR>", "file-tree" },
 		p = { "<CMD>Telescope neoclip<CR>", "find-clipboard" },
 		t = { "<CMD>Telescope termfinder find<CR>", "find-termminal" },
-		h = {
-			name = "find-home",
-			f = {
-				"<CMD>Telescope find_files find_command=rg,--files,/home/ prompt_prefix=🔍<CR>",
-				"find-home-files",
-			},
-			d = {
-				function()
-					_G.telescope_find_dir_home()
-				end,
-				"find-home-dir",
-			},
-		},
 		b = { "<CMD>Telescope buffers<CR>", "find-buffers" },
-		z = {
-			name = "find-hidden",
-			f = {
-				"<CMD>Telescope find_files find_command=rg,--files,--hidden prompt_prefix=🔍<CR>",
-				"find-hidden-file",
-			},
-			d = {
-				function()
-					_G.telescope_find_dir_hidden()
-				end,
-				"find-hidden-dir",
-			},
-		},
 	},
 
 	-- Buffer
@@ -131,12 +100,12 @@ wk.register({
 		},
 	},
 
-    -- Help
-    h = {
-        name = "help",
-        t = { "<CMD>Telescope help_tags<CR>", "help-tags"},
-        w = { '<CMD>execute "h " . expand("<cword>")<CR>', "help-tags"},
-    },
+	-- Help
+	h = {
+		name = "help",
+		t = { "<CMD>Telescope help_tags<CR>", "help-tags" },
+		w = { '<CMD>execute "h " . expand("<cword>")<CR>', "help-tags" },
+	},
 
 	-- Uncategorized
 	s = {

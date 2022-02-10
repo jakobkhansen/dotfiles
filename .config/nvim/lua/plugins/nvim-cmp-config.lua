@@ -22,6 +22,10 @@ cmp.setup({
 		{ name = "buffer" },
 		{ name = "latex_symbols" },
 		{ name = "neorg" },
+		{
+			name = "dictionary",
+			keyword_length = 2,
+		},
 	},
 	snippet = {
 		expand = function(args)
@@ -31,4 +35,16 @@ cmp.setup({
 	formatting = {
 		format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
 	},
+})
+
+require("cmp_dictionary").setup({
+    dic = {
+        ["norg, markdown"] = { "/usr/share/dict/words" },
+    },
+    -- The following are default values, so you don't need to write them if you don't want to change them
+    exact = 2,
+    first_case_insensitive = false,
+    async = false,
+    capacity = 5,
+    debug = false,
 })

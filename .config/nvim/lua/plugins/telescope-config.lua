@@ -4,6 +4,7 @@ local conf = require("telescope.config").values
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local command = vim.api.nvim_command
+local fb_actions = require("telescope").extensions.file_browser.actions
 
 require("telescope").setup({
 	extensions = {
@@ -14,73 +15,37 @@ require("telescope").setup({
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			-- the default case_mode is "smart_case"
 		},
+		file_browser = {
+			mappings = {
+				["n"] = {
+					["<Esc>"] = function(prompt_bufnr)
+						local get_target_dir = function(finder)
+							local entry_path
+							if finder.files == false then
+								local entry = action_state.get_selected_entry()
+								entry_path = entry and entry.value -- absolute path
+							end
+							return finder.files and finder.path or entry_path
+						end
+
+						local current_picker = action_state.get_current_picker(prompt_bufnr)
+						local finder = current_picker.finder
+                        vim.cmd("cd" .. get_target_dir(finder))
+                        require("telescope.actions").close(prompt_bufnr)
+
+                        return true
+					end,
+                    ["<BS>"] = fb_actions.goto_parent_dir
+				},
+			},
+		},
 	},
 	defaults = {
 		file_ignore_patterns = { "%.class", "%.pdf" },
 	},
 })
 
-require('telescope').load_extension('fzf')
-require('telescope').load_extension("termfinder")
-require('telescope').load_extension('file_browser')
-
-function _G.telescope_find_dir(opts)
-    opts = opts or {}
-	pickers.new(opts, {
-		prompt_title = "Find Directory",
-		finder = finders.new_oneshot_job({ "fd", "-t", "d" }),
-		sorter = conf.generic_sorter(opts),
-		attach_mappings = function(prompt_bufnr, map)
-			actions.select_default:replace(function()
-				local selection = action_state.get_selected_entry()
-                if selection ~= nil then
-				    actions.close(prompt_bufnr)
-				    command("cd " .. selection[1])
-                end
-			end)
-			return true
-
-
-		end,
-	}):find()
-end
-
-function _G.telescope_find_dir_home(opts)
-	pickers.new(opts, {
-		prompt_title = "Find Directory",
-		finder = finders.new_oneshot_job({ "fd", ".", vim.fn.expand("$HOME"), "-t", "d", "-a" }),
-		sorter = conf.generic_sorter(opts),
-		attach_mappings = function(prompt_bufnr, map)
-			actions.select_default:replace(function()
-				local selection = action_state.get_selected_entry()
-                if selection ~= nil then
-				    actions.close(prompt_bufnr)
-				    command("cd " .. selection[1])
-                end
-				return
-			end)
-			return true
-		end,
-	}):find()
-end
-
-
-function _G.telescope_find_dir_hidden(opts)
-	pickers.new(opts, {
-		prompt_title = "Find Directory",
-		finder = finders.new_oneshot_job({ "fd", "-t", "d", "-a", "-H" }),
-		sorter = conf.generic_sorter(opts),
-		attach_mappings = function(prompt_bufnr, map)
-			actions.select_default:replace(function()
-				local selection = action_state.get_selected_entry()
-                if selection ~= nil then
-				    actions.close(prompt_bufnr)
-				    command("cd " .. selection[1])
-                end
-				return
-			end)
-			return true
-		end,
-	}):find()
-end
+require("telescope").load_extension("fzf")
+require("telescope").load_extension("termfinder")
+require("telescope").load_extension("file_browser")
 

@@ -56,7 +56,7 @@ require("packer").startup(function(use)
 		end,
 	})
 
-    use({ "kyazdani42/nvim-tree.lua", config = function() require("plugins.nvim-tree-config") end })
+    -- use({ "kyazdani42/nvim-tree.lua", config = function() require("plugins.nvim-tree-config") end })
 
     use({ "mhinz/vim-startify", config = function() require("plugins.startify-config") end })
 
@@ -77,6 +77,7 @@ require("packer").startup(function(use)
 	use("saadparwaiz1/cmp_luasnip")
 	use("hrsh7th/cmp-path")
 	use("kdheepak/cmp-latex-symbols")
+    use("uga-rosa/cmp-dictionary")
 
     use({ "sbdchd/neoformat", config = function() require("plugins.neoformat-config") end })
 
