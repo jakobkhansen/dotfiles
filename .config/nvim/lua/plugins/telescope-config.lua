@@ -30,7 +30,10 @@ require("telescope").setup({
 
 						local current_picker = action_state.get_current_picker(prompt_bufnr)
 						local finder = current_picker.finder
-                        vim.cmd("cd" .. get_target_dir(finder))
+                        local dir = get_target_dir(finder)
+                        if dir ~= nil then
+                            vim.cmd("cd" .. get_target_dir(finder))
+                        end
                         require("telescope.actions").close(prompt_bufnr)
 
                         return true
@@ -41,7 +44,7 @@ require("telescope").setup({
 		},
 	},
 	defaults = {
-		file_ignore_patterns = { "%.class", "%.pdf" },
+		file_ignore_patterns = { "%.class" },
 	},
 })
 
