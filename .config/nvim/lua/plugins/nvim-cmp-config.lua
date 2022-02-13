@@ -26,6 +26,7 @@ cmp.setup({
 			name = "dictionary",
 			keyword_length = 2,
 		},
+		{ name = "calc" },
 	},
 	snippet = {
 		expand = function(args)
@@ -38,13 +39,13 @@ cmp.setup({
 })
 
 require("cmp_dictionary").setup({
-    dic = {
-        ["norg, markdown"] = { "/usr/share/dict/words" },
-    },
-    -- The following are default values, so you don't need to write them if you don't want to change them
-    exact = 2,
-    first_case_insensitive = false,
-    async = false,
-    capacity = 5,
-    debug = false,
+	dic = {
+		["norg, markdown"] = { "/usr/share/dict/words" },
+	},
+	-- The following are default values, so you don't need to write them if you don't want to change them
+	exact = 2,
+	first_case_insensitive = false,
+	async = false,
+	capacity = 5,
+	debug = false,
 })

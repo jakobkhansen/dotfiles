@@ -78,6 +78,7 @@ require("packer").startup(function(use)
 	use("hrsh7th/cmp-path")
 	use("kdheepak/cmp-latex-symbols")
     use("uga-rosa/cmp-dictionary")
+    use("hrsh7th/cmp-calc")
 
     use({ "sbdchd/neoformat", config = function() require("plugins.neoformat-config") end })
 
