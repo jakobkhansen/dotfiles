@@ -18,6 +18,7 @@ cmp.setup({
 	sources = {
 		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
+		{ name = "treesitter" },
 		{ name = "path" },
 		{ name = "buffer" },
 		{ name = "latex_symbols" },

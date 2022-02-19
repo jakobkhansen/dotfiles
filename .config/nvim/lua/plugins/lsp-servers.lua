@@ -73,8 +73,7 @@ function start_jdt()
 		init_options = {
 			extendedClientCapabilities = extendedClientCapabilities,
 		},
-		--root_dir = vim.fn.getcwd(),
-		root_dir = Find_root_better({ "build.gradle", "pom.xml", "build.xml" }),
+		root_dir = Find_root_better({ "build.gradle", "pom.xml", "build.xml"}),
 		on_attach = jdtls_on_attach,
 		flags = {
 			allow_incremental_sync = true,
@@ -115,7 +114,7 @@ function start_jdt()
 	require("jdtls").start_or_attach(config)
 end
 
--- vimscript("au FileType java lua start_jdt()", false)
+vimscript("au FileType java lua start_jdt()", false)
 
 ---- Typescript
 

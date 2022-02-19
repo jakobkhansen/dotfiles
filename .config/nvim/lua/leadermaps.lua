@@ -4,23 +4,20 @@ vim.g.mapleader = " "
 
 local utils = require("utils")
 
-local telescope_find_dir = _G.telescope_find_dir
-local telescope_find_dir_home = _G.telescope_find_dir_home
-local telescope_find_dir_hidden = _G.telescope_find_dir_hidden
-
 local lsp = vim.lsp.buf
 local diagnostic = vim.diagnostic
 
 wk.register({
 
 	-- Find x
+
 	f = {
 		name = "find",
 		f = { "<CMD>Telescope find_files<CR>", "find-files" },
-		d = { "<CMD>Telescope file_browser files=false<CR>", "find-directory" },
+		d = { "<CMD>Telescope file_browser files=false hide_parent_dir=true cwd_to_path=true<CR>", "find-directory" },
 		g = { "<CMD>Telescope git_files prompt_prefix=🔍<CR>", "find-git" },
 		r = { '<CMD>Ranger --choosedir="/tmp/ranger_dir"<CR>', "find-ranger" },
-		l = { "<CMD>Telescope file_browser<CR>", "file-browser" },
+		l = { "<CMD>Telescope file_browser cwd_to_path=true hide_parent_dir=true<CR>", "file-browser" },
 		c = { "<CMD>Telescope live_grep prompt_prefix=🔍<CR>", "file-tree" },
 		p = { "<CMD>Telescope neoclip<CR>", "find-clipboard" },
 		t = { "<CMD>Telescope termfinder find<CR>", "find-termminal" },

@@ -58,13 +58,14 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;1
-font-1 = Unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-font-3 = Font Awesome 5 Free:pixelsize=10;3
-font-4 = Font Awesome 5 Free Solid:pixelsize=10;3
-font-5 = Font Awesome 5 Brands:pixelsize=10;3
-font-6 = Noto Color Emoji:style=Regular:scale=10
+font-0 = fixed:pixelsize=10;3
+font-1 = Fira Mono Nerd Font:pixelsize=10;3
+font-2 = Unifont:fontformat=truetype:size=8:antialias=false;0
+font-3 = siji:pixelsize=10;1
+font-4 = Font Awesome 5 Free:pixelsize=10;3
+font-5 = Font Awesome 5 Free Solid:pixelsize=10;3
+font-6 = Font Awesome 5 Brands:pixelsize=10;3
+font-7 = Noto Color Emoji:style=Regular:scale=10
 
 modules-left = i3
 modules-right = mpris pulseaudio-control memory backlight wlan battery date powermenu
@@ -223,36 +224,36 @@ battery = BAT1
 adapter = ADP1
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
+format-charging = <animation-charging>    <label-charging>
 format-charging-underline = #ffb52a
 
-format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = <ramp-capacity>    <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full = <ramp-capacity> <label-full>
+format-full = <ramp-capacity>    <label-full>
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+ramp-capacity-0 =  
+ramp-capacity-1 =  
+ramp-capacity-2 =  
+ramp-capacity-3 =  
+ramp-capacity-4 =  
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
+animation-charging-0 =  
+animation-charging-1 =  
+animation-charging-2 =  
+animation-charging-3 =  
+animation-charging-4 =  
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-3 = 
-animation-discharging-4 = 
+animation-discharging-0 =  
+animation-discharging-1 =  
+animation-discharging-2 =  
+animation-discharging-3 =  
+animation-discharging-4 =  
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 

@@ -12,6 +12,9 @@ ls.config.set_config({
 
 
 ls.snippets = {
+    all = {
+        ls.parser.parse_snippet({trig="ra"}, "→"),
+    },
     markdown = {
         ls.parser.parse_snippet({trig="math"}, "\\$$0\\$"),
         ls.parser.parse_snippet({trig="checkempty"}, "[ ]"),

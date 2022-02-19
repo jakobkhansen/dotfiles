@@ -150,6 +150,7 @@ require("packer").startup(function(use)
 	use("kdheepak/cmp-latex-symbols")
 	use("uga-rosa/cmp-dictionary")
 	use("hrsh7th/cmp-calc")
+    use("ray-x/cmp-treesitter")
 
 	use({
 		"sbdchd/neoformat",
