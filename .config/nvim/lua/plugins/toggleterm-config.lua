@@ -44,13 +44,11 @@ require("toggleterm").setup{
   }
 }
 
-vimscript('au TermOpen * map <buffer> <Leader>bc ipwd\\|xclip -selection clipboard<CR><C-\\><C-n>:cd <C-r>+<CR>i', false)
+-- vimscript('au TermOpen * map <buffer> <Leader>bc ipwd\\|xclip -selection clipboard<CR><C-\\><C-n>:cd <C-r>+<CR>i', false)
 
 vimscript('au FileType toggleterm map <buffer> <Tab> <Nop>', false)
 
-vimscript('au TermOpen * map <buffer> <Leader>bd <CMD>bd!<CR>', false)
-
-vimscript('au DirChanged * lua updateTermDirectory()', false)
+vimscript('au FileType toggleterm map <buffer> <Leader>pc <CMD>lua updateTermDirectory()<CR>', false)
 
 function _G.updateTermDirectory()
     local dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p")
@@ -61,7 +59,6 @@ function _G.updateTermDirectory()
         terms.get(num):send({ fmt(" chdir '%s'", dir)})
         terms.get(num):send({ fmt(" ", dir)})
         command('cd ' .. dir)
-        ui.goto_previous()
     end
 end
 

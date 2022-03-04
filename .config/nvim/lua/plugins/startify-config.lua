@@ -2,11 +2,6 @@ local vimscript = vim.api.nvim_exec
 
 vim.g.startify_files_number = 5
 
-vim.g.startify_commands = {
-	{ "Reload Vim", "luafile $MYVIMRC" },
-	{ "Update plugins", "PackerSync" },
-}
-
 local function configFiles()
 	local files = {
 		{ line = "vim", path = "$MYVIMRC" },

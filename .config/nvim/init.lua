@@ -168,6 +168,7 @@ require("packer").startup(function(use)
 	})
 	use("nvim-treesitter/playground")
 	use("sheerun/vim-polyglot")
+    use("vim-scripts/cup.vim")
 
 	-- "Snippets"
 	use({
@@ -197,6 +198,7 @@ require("packer").startup(function(use)
 			require("plugins.neorg-config")
 		end,
 		requires = "nvim-neorg/neorg-telescope",
+        commit = "180861c73f4eeceb661093ac5da88c8b548f2fea"
 	})
 	use({
 		"jakobkhansen/clipboard-image.nvim",
@@ -213,3 +215,6 @@ require("maps")
 require("opts")
 require("leadermaps")
 require("language_configs")
+
+-- Master thesis work
+require("ccdetect")

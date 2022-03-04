@@ -41,7 +41,7 @@ cmp.setup({
 
 require("cmp_dictionary").setup({
 	dic = {
-		["norg, markdown"] = { "/usr/share/dict/words" },
+		["norg,markdown,tex"] = { "/usr/share/dict/words" },
 	},
 	-- The following are default values, so you don't need to write them if you don't want to change them
 	exact = 2,

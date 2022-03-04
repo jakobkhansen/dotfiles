@@ -44,6 +44,7 @@ alias pushdotfiles="dotfiles add -u && dotfiles commit -m 'Updates' && dotfiles 
 alias pushschool="cd /home/jakob/Documents/School; git add .; git commit -m 'Updates'; git push"
 alias gitview="gh repo view --web"
 alias gitroot="cd \$(git rev-parse --show-toplevel)"
+alias gr=gitroot
 
 alias serve="browser-sync start -s -f . "
 

@@ -51,8 +51,7 @@ keymap("", "zh", "10zh", opts)
 keymap("", "zl", "10zl", opts)
 
 --  Delete all buffers to left and right
-keymap("", "<F2>", "<CMD>2,-1bufdo bd!<CR>", opts)
-keymap("", "<F3>", "<CMD>+1,$bufdo bd!<CR>", opts)
+keymap("", "<F3>", "<CMD>%bdelete|edit #<CR>", opts)
 
 -- Terminal
 keymap("t", "<C-q>", "<Esc>", opts)

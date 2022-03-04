@@ -22,6 +22,7 @@ wk.register({
 		p = { "<CMD>Telescope neoclip<CR>", "find-clipboard" },
 		t = { "<CMD>Telescope termfinder find<CR>", "find-termminal" },
 		b = { "<CMD>Telescope buffers<CR>", "find-buffers" },
+		j = { "<CMD>Telescope jumplist<CR>", "find-jump" },
 	},
 
 	-- Buffer
@@ -97,6 +98,13 @@ wk.register({
 		},
 	},
 
+    -- Shortcuts
+    s = {
+        name = "shortcuts",
+        p = {"<CMD>PackerSync<CR>", "packer-sync"},
+        s = {"<CMD>Startify<CR>", "startify"}
+    },
+
 	-- Help
 	h = {
 		name = "help",
@@ -105,10 +113,6 @@ wk.register({
 	},
 
 	-- Uncategorized
-	s = {
-		name = "which_key_ignore",
-		s = { "<CMD>Startify<CR>", "which_key_ignore" },
-	},
 	w = { "<CMD>w<CR>", "which_key_ignore" },
 	n = {
 		name = "which_key_ignore",

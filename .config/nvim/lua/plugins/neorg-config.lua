@@ -2,10 +2,6 @@ local vimscript = vim.api.nvim_exec
 local command = vim.api.nvim_command
 
 require("neorg").setup({
-	-- Tell Neorg what modules to load
-	-- logger = {
-	-- 	level = "info",
-	-- },
 	load = {
 		["core.defaults"] = {}, -- Load all the default modules
 		["core.norg.dirman"] = { -- Manage your directories with Neorg
@@ -13,6 +9,7 @@ require("neorg").setup({
 				workspaces = {
 					gtd = "~/Documents/gtd",
 				},
+                autochdir = false
 			},
 		},
 		["core.norg.completion"] = {
@@ -28,16 +25,12 @@ require("neorg").setup({
 				neorg_leader = "<Leader>o", -- This is the default if unspecified
 			},
 		},
-		["core.presenter"] = {},
 		["core.integrations.telescope"] = {},
 		["core.gtd.ui"] = {},
 		["core.gtd.queries"] = {},
 		["core.gtd.base"] = {
 			config = {
 				workspace = "gtd",
-				default_lists = {
-					inbox = "inbox.norg",
-				},
 				exclude = {
 					"journal",
 				},
@@ -51,5 +44,4 @@ require("neorg").setup({
 	},
 })
 
-vimscript("au FileType norg set spell", false)
 command("silent! NeorgStart silent=true")

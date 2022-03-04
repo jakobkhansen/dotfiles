@@ -3,6 +3,7 @@ local call = vim.call
 local vimscript = vim.api.nvim_exec
 local highlight = vim.highlight.create
 local set_highlight = vim.api.nvim_set_hl
+local command = vim.cmd
 
 -- Vim options
 vimscript("filetype plugin indent on", false)
@@ -35,7 +36,7 @@ opt.number = true opt.wrap = false
 opt.smartcase = true
 opt.ignorecase = true
 opt.mouse = 'a'
-opt.scrolloff = 10
+opt.scrolloff = 5
 opt.relativenumber = true
 opt.timeoutlen = 300
 opt.foldmethod = 'indent'
@@ -62,11 +63,13 @@ vimscript("colorscheme tokyonight", false)
 
 -- LightMode command
 function _G.LightMode()
-    require('github-theme').setup({
-        theme_style = "light",
-        dark_sidebar = false,
-        hide_end_of_buffer = true
-    })
+    vim.o.background = "light"
+    vimscript('colorscheme tokyonight', false)
+    -- require('github-theme').setup({
+    --     theme_style = "light",
+    --     dark_sidebar = false,
+    --     hide_end_of_buffer = true
+    -- })
 end
 
 function _G.DarkMode()
@@ -78,10 +81,6 @@ vimscript('command! LightMode :lua LightMode()', false)
 vimscript('command! DarkMode :lua DarkMode()', false)
 
 -- Remove spelling mistake highlight
-vimscript("hi clear SpellBad", false)
-vimscript("hi clear SpellCap", false)
-vimscript("hi clear SpellRare", false)
-vimscript("hi clear SpellLocal", false)
 
 
 -- Persistent undo
@@ -94,6 +93,3 @@ opt.undofile = true
 
 -- Swap files
 opt.swapfile = false
-
--- Disable default mappings
-vim.g.bclose_no_plugin_maps = true
