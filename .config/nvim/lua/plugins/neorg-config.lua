@@ -25,6 +25,11 @@ require("neorg").setup({
 				neorg_leader = "<Leader>o", -- This is the default if unspecified
 			},
 		},
+        ["core.presenter"] = {
+            config = {
+                zen_mode = "zen-mode"
+            }
+        },
 		["core.integrations.telescope"] = {},
 		["core.gtd.ui"] = {},
 		["core.gtd.queries"] = {},

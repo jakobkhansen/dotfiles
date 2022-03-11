@@ -67,3 +67,9 @@ keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>resize-5<CR>i", opts)
 keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>resize+5<CR>i", opts)
 keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>vertical resize+5<CR>i", opts)
 keymap("t", "<C-M-r>", "<C-\\><C-n><C-W>=i", opts)
+
+
+
+-- Master
+keymap("n", "<C-q>", '', {callback = vim.lsp.buf.code_action})
+keymap("v", "<C-q>", '', {callback = vim.lsp.buf.range_code_action})

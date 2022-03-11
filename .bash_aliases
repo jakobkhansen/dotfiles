@@ -79,3 +79,6 @@ alias mondup="xrandr --auto; xrandr --output HDMI-1 --same-as eDP-1"
 
 alias pm2start="pm2 start npm -- start --restart-delay=3000"
 alias pm2restart="pm2 delete npm && sleep 3 && pm2start"
+
+alias darkmode="kitty +kitten themes --reload-in=all Tokyo Night Storm"
+alias lightmode="kitty +kitten themes --reload-in=all Tokyo Night Day"

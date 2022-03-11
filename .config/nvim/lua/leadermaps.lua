@@ -28,7 +28,7 @@ wk.register({
 	-- Buffer
 	b = {
 		name = "buffer",
-		d = { "<CMD>lua MiniBufremove.wipeout()<CR>", "buffer-close" },
+		d = { "<CMD>lua MiniBufremove.wipeout(0, true)<CR>", "buffer-close" },
 		e = { "<CMD>enew<CR>", "open-empty-buffer" },
 		x = { "<CMD>close<CR>", "window-close" },
 		v = { "<CMD>vsplit<CR>", "vertical-split" },
@@ -102,7 +102,8 @@ wk.register({
     s = {
         name = "shortcuts",
         p = {"<CMD>PackerSync<CR>", "packer-sync"},
-        s = {"<CMD>Startify<CR>", "startify"}
+        s = {"<CMD>Startify<CR>", "startify"},
+        t = {"<CMD>lua ToggleThemeMode()<CR>", "toggle-theme"}
     },
 
 	-- Help
