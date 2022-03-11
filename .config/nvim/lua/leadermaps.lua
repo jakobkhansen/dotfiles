@@ -17,11 +17,11 @@ wk.register({
 		d = { "<CMD>Telescope file_browser files=false hide_parent_dir=true cwd_to_path=true<CR>", "find-directory" },
 		g = { "<CMD>Telescope git_files prompt_prefix=🔍<CR>", "find-git" },
 		r = { '<CMD>Ranger --choosedir="/tmp/ranger_dir"<CR>', "find-ranger" },
-		b = { "<CMD>Telescope file_browser cwd_to_path=true hide_parent_dir=true<CR>", "file-browser" },
+		l = { "<CMD>Telescope file_browser cwd_to_path=true hide_parent_dir=true<CR>", "file-browser" },
 		c = { "<CMD>Telescope live_grep prompt_prefix=🔍<CR>", "file-tree" },
 		p = { "<CMD>Telescope neoclip<CR>", "find-clipboard" },
 		t = { "<CMD>Telescope termfinder find<CR>", "find-termminal" },
-		w = { "<CMD>Telescope buffers<CR>", "find-buffers" },
+		b = { "<CMD>Telescope buffers<CR>", "find-buffers" },
 		j = { "<CMD>Telescope jumplist<CR>", "find-jump" },
 	},
 
