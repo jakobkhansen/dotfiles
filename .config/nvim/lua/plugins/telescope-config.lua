@@ -80,11 +80,11 @@ require("telescope").setup({
 				["<BS>"] = goto_parent_dir_check(),
 
 				["<A-f>"] = open_in(builtin.find_files, {}),
+				["<A-g>"] = open_in(builtin.git_files, {}),
 				["<A-d>"] = open_file_browser(false),
 				["<A-b>"] = open_file_browser(true),
 			},
 			i = {
-				["<BS>"] = goto_parent_dir_check(),
 				["<A-f>"] = open_in(builtin.find_files, {}),
 				["<A-g>"] = open_in(builtin.git_files, {}),
 				["<A-d>"] = open_file_browser(false),

@@ -71,5 +71,11 @@ keymap("t", "<C-M-r>", "<C-\\><C-n><C-W>=i", opts)
 
 
 -- Master
+function _G.RangeCodeActions()
+    local startPos = vim.fn.getcharpos("'<")
+    local endPos = vim.fn.getcharpos("'>")
+    print(vim.inspect(startPos))
+    print(vim.inspect(endPos))
+end
 keymap("n", "<C-q>", '', {callback = vim.lsp.buf.code_action})
-keymap("v", "<C-q>", '', {callback = vim.lsp.buf.range_code_action})
+keymap("v", "<C-q>", "<Esc>gv<CMD>lua vim.lsp.buf.range_code_action()<CR>", opts)

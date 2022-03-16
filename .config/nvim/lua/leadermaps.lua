@@ -44,6 +44,8 @@ wk.register({
 		h = { lsp.hover, "show-hover" },
 		s = { lsp.signature_help, "show-signature" },
 		r = { lsp.references, "goto-references" },
+		x = { "<CMD>LspRestart<CR>", "goto-references" },
+		i = { "<CMD>LspInfo<CR>", "goto-references" },
 		n = { lsp.rename, "rename-symbol" },
 		a = { lsp.code_action, "code-actions" },
 		p = { "<CMD>Neoformat<CR>", "prettier-format" },
@@ -126,6 +128,6 @@ wk.register({
 wk.register({
 	l = {
 		name = "lsp",
-		a = { lsp.range_code_action, "code-actions" },
+		a = { "<Esc>gv<CMD>lua vim.lsp.buf.range_code_action()<CR>", "code-actions" },
 	},
 }, { prefix = "<Leader>", mode = "v" })
