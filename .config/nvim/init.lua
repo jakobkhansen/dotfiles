@@ -1,7 +1,6 @@
 require("packer").startup(function(use)
 	-- "Libraries and dependencies"
 	use("wbthomason/packer.nvim")
-	-- use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim")
 
 	-- "Multi-functionality"
