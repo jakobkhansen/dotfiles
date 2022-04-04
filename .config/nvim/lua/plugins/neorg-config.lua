@@ -49,4 +49,4 @@ require("neorg").setup({
 	},
 })
 
-command("silent! NeorgStart silent=true")
+-- command("silent! NeorgStart silent=true")

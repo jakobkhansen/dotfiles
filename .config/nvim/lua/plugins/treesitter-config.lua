@@ -25,15 +25,6 @@ parser_configs.norg_table = {
     },
 }
 
-parser_configs.abs = {
-    install_info = {
-        url = "~/Documents/Dev/tree-sitter-abs",
-        files = {"src/parser.c"}
-    },
-    filetype = "abs"
-
-}
-
 require("nvim-treesitter.configs").setup({
 	ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	highlight = {

@@ -10,7 +10,6 @@ cmp.setup({
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Insert,
-			--select = true,
 		}),
 	},
 
@@ -21,8 +20,7 @@ cmp.setup({
 		{ name = "treesitter" },
 		{ name = "path" },
 		{ name = "buffer" },
-		{ name = "latex_symbols" },
-		{ name = "neorg" },
+		{ name = "latex_symbols", keyword_length = 2 },
 		{
 			name = "dictionary",
 			keyword_length = 2,

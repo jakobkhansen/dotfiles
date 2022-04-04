@@ -20,7 +20,6 @@ keymap("", ",", ";", opts)
 
 
 -- Text manipulation
-keymap("", "Q", "gqap", opts)
 keymap("", "<A-k>", "<CMD>m-2<CR>", opts)
 keymap("", "<A-j>", "<CMD>m+<CR>", opts)
 keymap("i", "<C-v>", "<C-r>0", opts)
@@ -77,5 +76,6 @@ function _G.RangeCodeActions()
     print(vim.inspect(startPos))
     print(vim.inspect(endPos))
 end
+
 keymap("n", "<C-q>", '', {callback = vim.lsp.buf.code_action})
 keymap("v", "<C-q>", "<Esc>gv<CMD>lua vim.lsp.buf.range_code_action()<CR>", opts)

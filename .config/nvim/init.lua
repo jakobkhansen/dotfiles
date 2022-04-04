@@ -2,6 +2,7 @@ require("packer").startup(function(use)
 	-- "Libraries and dependencies"
 	use("wbthomason/packer.nvim")
 	use("nvim-lua/plenary.nvim")
+    use("nathom/filetype.nvim")
 
 	-- "Multi-functionality"
 	-- Mini provides pairs, surround, commenting and bufremoval functionality
@@ -95,7 +96,6 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	-- use({ "kyazdani42/nvim-tree.lua", config = function() require("plugins.nvim-tree-config") end })
 
 	use({
 		"mhinz/vim-startify",
@@ -198,9 +198,8 @@ require("packer").startup(function(use)
 		end,
 		requires = "nvim-neorg/neorg-telescope",
 	})
-    use("sotte/presenting.vim")
 	use({
-		"jakobkhansen/clipboard-image.nvim",
+		"ekickx/clipboard-image.nvim",
 		config = function()
 			require("plugins.clipboard-image-config")
 		end,

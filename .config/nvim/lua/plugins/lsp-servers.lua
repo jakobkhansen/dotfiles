@@ -6,7 +6,6 @@ local vimscript = vim.api.nvim_exec
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.workspace.configuration = true
 
-
 -- Python
 nvim_lsp.pyright.setup({
 	capabilities = capabilities,
@@ -73,7 +72,7 @@ function start_jdt()
 		init_options = {
 			extendedClientCapabilities = extendedClientCapabilities,
 		},
-		root_dir = Find_root_better({ "build.gradle", "pom.xml", "build.xml"}),
+		root_dir = Find_root_better({ "build.gradle", "pom.xml", "build.xml" }),
 		on_attach = jdtls_on_attach,
 		flags = {
 			allow_incremental_sync = true,
@@ -232,9 +231,15 @@ nvim_lsp.tailwindcss.setup({
 		tailwindCSS = {
 			experimental = {
 				classRegex = {
-                    "tailwind\\('([^)]*)\\')", "'([^']*)'"
+					"tailwind\\('([^)]*)\\')",
+					"'([^']*)'",
 				},
 			},
 		},
 	},
+})
+
+-- Ltex
+require("lspconfig").ltex.setup({
+	filetypes = { "bib", "gitcommit", "org", "plaintex", "rst", "rnoweb", "tex" },
 })

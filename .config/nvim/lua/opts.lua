@@ -48,6 +48,10 @@ opt.pumheight = 10
 -- Visuals
 opt.termguicolors = true
 opt.signcolumn = "yes:1"
+-- vimscript("set statusline+=%{getcwd()}", false)
+opt.statusline = "%f %h%w%m%r %=%(%{getcwd()} %l,%c%V %= %P %)"
+-- opt.statusline = opt.statusline + "%!getcwd()"
+
 
 -- Vimtex
 vim.g.vimtex_fold_enabled = true
@@ -66,11 +70,6 @@ function _G.LightMode()
     command("silent !kitty +kitten themes --reload-in=all Tokyo Night Day", false)
 	vim.o.background = "light"
 	vimscript("colorscheme tokyonight", false)
-	-- require('github-theme').setup({
-	--     theme_style = "light",
-	--     dark_sidebar = false,
-	--     hide_end_of_buffer = true
-	-- })
 end
 
 function _G.DarkMode()

@@ -18,7 +18,7 @@ wk.register({
 		g = { "<CMD>Telescope git_files prompt_prefix=🔍<CR>", "find-git" },
 		r = { '<CMD>Ranger --choosedir="/tmp/ranger_dir"<CR>', "find-ranger" },
 		l = { "<CMD>Telescope file_browser cwd_to_path=true hide_parent_dir=true<CR>", "file-browser" },
-		c = { "<CMD>Telescope live_grep prompt_prefix=🔍<CR>", "file-tree" },
+		c = { "<CMD>Telescope live_grep prompt_prefix=🔍<CR>", "find-code" },
 		p = { "<CMD>Telescope neoclip<CR>", "find-clipboard" },
 		t = { "<CMD>Telescope termfinder find<CR>", "find-termminal" },
 		b = { "<CMD>Telescope buffers<CR>", "find-buffers" },
