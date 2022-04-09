@@ -6,11 +6,11 @@ autocmd("FileType", {
 })
 
 autocmd("FileType", {
-	pattern = "*.cup",
+	pattern = {"*.cup"},
 	command = "set filetype=cup",
 })
 
 autocmd("FileType", {
-	pattern = "*.cmp",
+	pattern = {"*.cmp"},
 	command = "set filetype=cmp",
 })

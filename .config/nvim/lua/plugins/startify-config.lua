@@ -1,5 +1,3 @@
-local vimscript = vim.api.nvim_exec
-
 vim.g.startify_files_number = 5
 
 local function configFiles()

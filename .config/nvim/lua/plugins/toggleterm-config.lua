@@ -1,8 +1,7 @@
-local vimscript = vim.api.nvim_exec
 local terms = require("toggleterm.terminal")
 local fmt = string.format
 local command = vim.api.nvim_command
-local ui = require("toggleterm.ui")
+local autocmd = vim.api.nvim_create_autocmd
 
 require("toggleterm").setup({
 	-- size can be a number or function which is passed the current terminal
@@ -22,7 +21,7 @@ require("toggleterm").setup({
 		},
 		StatusLine = {
 			gui = "NONE",
-			guibg = "Normal",
+			guifg = "Normal",
 			guibg = "Normal",
 		},
 		SignColumn = {
@@ -65,11 +64,17 @@ require("toggleterm").setup({
 	},
 })
 
--- vimscript('au TermOpen * map <buffer> <Leader>bc ipwd\\|xclip -selection clipboard<CR><C-\\><C-n>:cd <C-r>+<CR>i', false)
 
-vimscript("au FileType toggleterm map <buffer> <Tab> <Nop>", false)
+autocmd("FileType", {
+    pattern = "toggleterm",
+    command = "map <buffer> <Tab> <Nop>"
+})
 
-vimscript("au FileType toggleterm map <buffer> <Leader>pc <CMD>lua updateTermDirectory()<CR>", false)
+
+autocmd("FileType", {
+    pattern = "toggleterm",
+    command = "map <buffer> <Leader>pc <CMD>lua updateTermDirectory()<CR>"
+})
 
 function _G.updateTermDirectory()
 	local dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p")

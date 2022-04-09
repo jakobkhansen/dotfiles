@@ -1,5 +1,6 @@
 local command = vim.api.nvim_command
 local vimscript = vim.api.nvim_exec
+local add_command = vim.api.nvim_add_user_command
 
 local P = {}
 
@@ -39,7 +40,7 @@ function P.ToggleThemeMode()
 	end
 end
 
-vimscript("command! LightMode :lua LightMode()", false)
-vimscript("command! DarkMode :lua DarkMode()", false)
+add_command("LightMode", P.LightMode, {})
+add_command("DarkMode", P.DarkMode, {})
 
 return P

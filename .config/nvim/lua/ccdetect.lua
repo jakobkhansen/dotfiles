@@ -15,7 +15,7 @@ local function get_java_executable()
 end
 
 
-local jar = "/home/jakob/Documents/Dev/CCDetect-lsp/app/build/libs/app-all.jar"
+local jar = vim.env.HOME .. "/Documents/Dev/CCDetect-lsp/app/build/libs/app-all.jar"
 
 local cmd = { get_java_executable(), '-jar', jar }
 

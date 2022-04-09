@@ -1,3 +1,5 @@
+
+-- Plugins
 require("packer").startup(function(use)
 	-- "Libraries and dependencies"
 	use("wbthomason/packer.nvim")
@@ -172,7 +174,7 @@ require("packer").startup(function(use)
 	use("nvim-treesitter/playground")
     use("nvim-treesitter/nvim-treesitter-textobjects")
 
-	use("sheerun/vim-polyglot")
+	-- use("sheerun/vim-polyglot")
 	use("vim-scripts/cup.vim")
 
 	-- "Snippets"
@@ -212,7 +214,7 @@ require("packer").startup(function(use)
 	})
 end)
 
--- Require plugins
+-- Load rest of config
 
 require("maps")
 require("opts")

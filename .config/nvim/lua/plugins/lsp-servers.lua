@@ -2,8 +2,8 @@
 local nvim_lsp = require("lspconfig")
 local util = require("lspconfig/util")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-local vimscript = vim.api.nvim_exec
 local autocmd = vim.api.nvim_create_autocmd
+
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.workspace.configuration = true
 
@@ -69,9 +69,8 @@ end
 
 
 local function start_jdt()
-	vimscript("cd %:p:h", false)
     local project_name = vim.fn.fnamemodify(Find_root_better({ "build.gradle", "pom.xml", "build.xml" }), ':p:h:t')
-    local workspace_dir = '/home/jakob/.workspaces/' .. project_name
+    local workspace_dir = vim.env.HOME .. '/.workspaces/' .. project_name
 
 	local config = {
 		init_options = {
@@ -103,10 +102,10 @@ local function start_jdt()
 			"java.base/java.lang=ALL-UNNAMED",
 
 			"-jar",
-			"/home/jakob/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+			vim.env.HOME .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
 
 			"-configuration",
-			"/home/jakob/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",
+			vim.env.HOME .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",
 
 			"-data",
             workspace_dir

@@ -1,6 +1,3 @@
-local vimscript = vim.api.nvim_exec
-local command = vim.api.nvim_command
-
 require("neorg").setup({
 	load = {
 		["core.defaults"] = {}, -- Load all the default modules
@@ -48,5 +45,3 @@ require("neorg").setup({
 		},
 	},
 })
-
--- command("silent! NeorgStart silent=true")
