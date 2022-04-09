@@ -2,64 +2,85 @@ local vimscript = vim.api.nvim_exec
 local terms = require("toggleterm.terminal")
 local fmt = string.format
 local command = vim.api.nvim_command
-local ui = require('toggleterm.ui')
+local ui = require("toggleterm.ui")
 
-
-
-
-require("toggleterm").setup{
-  -- size can be a number or function which is passed the current terminal
-  size = function(term)
-    if term.direction == "horizontal" then
-      return 15
-    elseif term.direction == "vertical" then
-      return vim.o.columns * 0.4
-    end
-  end,
-  open_mapping = [[<C-\>]],
-  hide_numbers = false, -- hide the number column in toggleterm buffers
-  shade_filetypes = {},
-  shade_terminals = true,
-  shading_factor = '<number>', -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
-  start_in_insert = false,
-  insert_mappings = true, -- whether or not the open mapping applies in insert mode
-  persist_size = true,
-  direction = 'horizontal',
-  close_on_exit = true, -- close the terminal window when the process exits
-  shell = vim.o.shell, -- change the default shell
-  -- This field is only relevant if direction is set to 'float'
-  float_opts = {
-    -- The border key is *almost* the same as 'nvim_open_win'
-    -- see :h nvim_open_win for details on borders however
-    -- the 'curved' border is a custom border type
-    -- not natively supported but implemented in this plugin.
-    border = 'single',
-    --width = <value>,
-    --height = <value>,
-    winblend = 3,
-    highlights = {
-      border = "Normal",
-      background = "Normal",
-    }
-  }
-}
+require("toggleterm").setup({
+	-- size can be a number or function which is passed the current terminal
+	size = function(term)
+		if term.direction == "horizontal" then
+			return 15
+		elseif term.direction == "vertical" then
+			return vim.o.columns * 0.4
+		end
+	end,
+	highlights = {
+		-- highlights which map to a highlight group name and a table of it's values
+		-- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
+		Normal = {
+			guibg = "Normal",
+			guifg = "Normal",
+		},
+		StatusLine = {
+			gui = "NONE",
+			guibg = "Normal",
+			guibg = "Normal",
+		},
+		SignColumn = {
+			guifg = 'Normal',
+			guibg = 'Normal',
+		},
+		NormalFloat = {
+			link = "Normal",
+		},
+		FloatBorder = {
+			guifg = "Normal",
+			guibg = "Normal",
+		},
+	},
+	open_mapping = [[<C-\>]],
+	hide_numbers = false, -- hide the number column in toggleterm buffers
+	shade_filetypes = {},
+	shade_terminals = false,
+	shading_factor = 3, -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+	start_in_insert = false,
+	insert_mappings = true, -- whether or not the open mapping applies in insert mode
+	persist_size = true,
+	direction = "horizontal",
+	close_on_exit = true, -- close the terminal window when the process exits
+	shell = vim.o.shell, -- change the default shell
+	-- This field is only relevant if direction is set to 'float'
+	float_opts = {
+		-- The border key is *almost* the same as 'nvim_open_win'
+		-- see :h nvim_open_win for details on borders however
+		-- the 'curved' border is a custom border type
+		-- not natively supported but implemented in this plugin.
+		border = "single",
+		--width = <value>,
+		--height = <value>,
+		winblend = 3,
+		highlights = {
+			border = "Normal",
+			background = "Normal",
+		},
+	},
+})
 
 -- vimscript('au TermOpen * map <buffer> <Leader>bc ipwd\\|xclip -selection clipboard<CR><C-\\><C-n>:cd <C-r>+<CR>i', false)
 
-vimscript('au FileType toggleterm map <buffer> <Tab> <Nop>', false)
+vimscript("au FileType toggleterm map <buffer> <Tab> <Nop>", false)
 
-vimscript('au FileType toggleterm map <buffer> <Leader>pc <CMD>lua updateTermDirectory()<CR>', false)
+vimscript("au FileType toggleterm map <buffer> <Leader>pc <CMD>lua updateTermDirectory()<CR>", false)
 
 function _G.updateTermDirectory()
-    local dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p")
-    local num = 1
-    local is_open = terms.get(num) ~= nil and terms.get(num):is_open() or false
+	local dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":p")
+	local num = 1
+	local is_open = terms.get(num) ~= nil and terms.get(num):is_open() or false
 
-    if is_open and terms.get(num).dir ~= dir then
-        terms.get(num):send({ fmt(" chdir '%s'", dir)})
-        terms.get(num):send({ fmt(" ", dir)})
-        command('cd ' .. dir)
-    end
+	if is_open and terms.get(num).dir ~= dir then
+		terms.get(num):send({ fmt(" chdir '%s'", dir) })
+		terms.get(num):send({ fmt(" ", dir) })
+		command("cd " .. dir)
+	end
 end
 
 -- Create default terminal

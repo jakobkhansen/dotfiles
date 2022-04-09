@@ -1,4 +1,5 @@
 local command = vim.api.nvim_command
+local vimscript = vim.api.nvim_exec
 
 local P = {}
 
@@ -17,5 +18,28 @@ end
 function P.getFirstDayOfCurrentMonth()
 	return os.date("%Y") .. "-" .. os.date("%m") .. "-01"
 end
+
+function P.LightMode()
+    command("silent !kitty +kitten themes --reload-in=all Tokyo Night Day")
+	vim.o.background = "light"
+	vimscript("colorscheme tokyonight", false)
+end
+
+function P.DarkMode()
+    command("silent !kitty +kitten themes --reload-in=all Tokyo Night Storm")
+	vim.o.background = "dark"
+	vimscript("colorscheme tokyonight", false)
+end
+
+function P.ToggleThemeMode()
+	if vim.o.background == "dark" then
+		P.LightMode()
+	else
+		P.DarkMode()
+	end
+end
+
+vimscript("command! LightMode :lua LightMode()", false)
+vimscript("command! DarkMode :lua DarkMode()", false)
 
 return P

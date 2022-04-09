@@ -48,9 +48,10 @@ require("packer").startup(function(use)
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 
-	use("kyazdani42/nvim-web-devicons")
+
+    -- Visuals
 	use("jakobkhansen/tokyonight.nvim")
-	use("projekt0n/github-nvim-theme")
+	use("kyazdani42/nvim-web-devicons")
 
 	-- "Files and git"
 	use({
@@ -96,7 +97,6 @@ require("packer").startup(function(use)
 		end,
 	})
 
-
 	use({
 		"mhinz/vim-startify",
 		config = function()
@@ -110,18 +110,21 @@ require("packer").startup(function(use)
 			require("plugins.which-key-config")
 		end,
 	})
+
 	use({
 		"folke/trouble.nvim",
 		config = function()
 			require("plugins.trouble-config")
 		end,
 	})
+
 	use({
 		"is0n/fm-nvim",
 		config = function()
 			require("plugins.fm-nvim-config")
 		end,
 	})
+	use("andweeb/presence.nvim")
 
 	-- "LSP and languages"
 	use({
@@ -132,7 +135,8 @@ require("packer").startup(function(use)
 		end,
 	})
 	use("mfussenegger/nvim-jdtls")
-	use({ "onsails/lspkind-nvim" })
+	use("onsails/lspkind-nvim")
+
 	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("windwp/nvim-ts-autotag")
 
@@ -158,7 +162,7 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	-- "Syntax highlighting"
+	-- "Treesitter & Syntax highlighting"
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
@@ -166,6 +170,8 @@ require("packer").startup(function(use)
 		end,
 	})
 	use("nvim-treesitter/playground")
+    use("nvim-treesitter/nvim-treesitter-textobjects")
+
 	use("sheerun/vim-polyglot")
 	use("vim-scripts/cup.vim")
 
@@ -204,7 +210,6 @@ require("packer").startup(function(use)
 			require("plugins.clipboard-image-config")
 		end,
 	})
-	use("andweeb/presence.nvim")
 end)
 
 -- Require plugins

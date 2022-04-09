@@ -86,6 +86,29 @@ wk.register({
 		s = { "<CMD>cd $HOME/Documents/School<CR>", "path-school" },
 	},
 
+    -- Treesitter
+    e = {
+        name ="treesitter",
+        p = {
+            name = "parameter",
+            s = {
+                name = "swap",
+                n = { "<CMD>TSTextobjectSwapNext @parameter.inner<CR>", "swap-next"},
+                p = { "<CMD>TSTextobjectSwapPrevious @parameter.inner<CR>", "swap-prev"}
+            }
+        },
+        f = {
+            name = "function",
+            s = {
+                name = "swap",
+                n = { "<CMD>TSTextobjectSwapNext @function.outer<CR>", "swap-next"},
+                p = { "<CMD>TSTextobjectSwapPrevious @function.outer<CR>", "swap-prev"}
+            },
+            n = {"<CMD>TSTextobjectGotoNextStart @function.outer<CR>", "goto-next"},
+            p = {"<CMD>TSTextobjectGotoPreviousStart @function.outer<CR>", "goto-prev"}
+        }
+    },
+
 	-- Neorg
 	o = {
 		name = "organize",
@@ -105,7 +128,7 @@ wk.register({
         name = "shortcuts",
         p = {"<CMD>PackerSync<CR>", "packer-sync"},
         s = {"<CMD>Startify<CR>", "startify"},
-        t = {"<CMD>lua ToggleThemeMode()<CR>", "toggle-theme"}
+        t = {utils.ToggleThemeMode, "toggle-theme"}
     },
 
 	-- Help

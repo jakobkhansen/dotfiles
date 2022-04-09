@@ -3,6 +3,7 @@ local nvim_lsp = require("lspconfig")
 local util = require("lspconfig/util")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local vimscript = vim.api.nvim_exec
+local autocmd = vim.api.nvim_create_autocmd
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.workspace.configuration = true
 
@@ -66,8 +67,12 @@ function Find_root_better(markers, bufname)
 	return vim.fn.getcwd()
 end
 
-function start_jdt()
+
+local function start_jdt()
 	vimscript("cd %:p:h", false)
+    local project_name = vim.fn.fnamemodify(Find_root_better({ "build.gradle", "pom.xml", "build.xml" }), ':p:h:t')
+    local workspace_dir = '/home/jakob/.workspaces/' .. project_name
+
 	local config = {
 		init_options = {
 			extendedClientCapabilities = extendedClientCapabilities,
@@ -79,7 +84,33 @@ function start_jdt()
 			server_side_fuzzy_completion = true,
 		},
 		capabilities = capabilities,
-		cmd = { "java-lsp.sh" },
+		cmd = {
+
+			"/usr/lib/jvm/java-11-openjdk/bin/java", -- or '/path/to/java11_or_newer/bin/java'
+			-- depends on if `java` is in your $PATH env variable and if it points to the right version.
+
+			"-Declipse.application=org.eclipse.jdt.ls.core.id1",
+			"-Dosgi.bundles.defaultStartLevel=4",
+			"-Declipse.product=org.eclipse.jdt.ls.core.product",
+			"-Dlog.protocol=true",
+			"-Dlog.level=ALL",
+			"-Xms1g",
+            "-Xmx2G",
+			"--add-modules=ALL-SYSTEM",
+			"--add-opens",
+			"java.base/java.util=ALL-UNNAMED",
+			"--add-opens",
+			"java.base/java.lang=ALL-UNNAMED",
+
+			"-jar",
+			"/home/jakob/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+
+			"-configuration",
+			"/home/jakob/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",
+
+			"-data",
+            workspace_dir
+		},
 
 		settings = {
 			java = {
@@ -113,7 +144,7 @@ function start_jdt()
 	require("jdtls").start_or_attach(config)
 end
 
-vimscript("au FileType java lua start_jdt()", false)
+autocmd("FileType", {pattern = "java", callback = start_jdt})
 
 ---- Typescript
 

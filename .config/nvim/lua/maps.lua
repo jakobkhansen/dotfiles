@@ -1,9 +1,5 @@
 local keymap = vim.api.nvim_set_keymap
-local vimscript = vim.api.nvim_exec
-
-
 local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
 
 
 keymap("", "+", "$", opts)
@@ -68,14 +64,6 @@ keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>vertical resize+5<CR>i", opts)
 keymap("t", "<C-M-r>", "<C-\\><C-n><C-W>=i", opts)
 
 
-
--- Master
-function _G.RangeCodeActions()
-    local startPos = vim.fn.getcharpos("'<")
-    local endPos = vim.fn.getcharpos("'>")
-    print(vim.inspect(startPos))
-    print(vim.inspect(endPos))
-end
-
+-- Fix range code action
 keymap("n", "<C-q>", '', {callback = vim.lsp.buf.code_action})
 keymap("v", "<C-q>", "<Esc>gv<CMD>lua vim.lsp.buf.range_code_action()<CR>", opts)

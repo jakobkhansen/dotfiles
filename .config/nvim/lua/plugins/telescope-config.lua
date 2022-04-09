@@ -83,6 +83,7 @@ require("telescope").setup({
 				["<A-g>"] = open_in(builtin.git_files, {}),
 				["<A-d>"] = open_file_browser(false),
 				["<A-b>"] = open_file_browser(true),
+                ["o"] = fb_actions.open
 			},
 			i = {
 				["<A-f>"] = open_in(builtin.find_files, {}),

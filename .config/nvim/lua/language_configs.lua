@@ -1,8 +1,16 @@
-local vimscript = vim.api.nvim_exec
+local autocmd = vim.api.nvim_create_autocmd
 
-vimscript('au FileType javascript,javascriptreact,typescript,typescriptreact setlocal sts=2 ts=2 sw=2', false)
-vimscript('au FileType norg setlocal sts=2 ts=2 sw=2', false)
-vimscript('au FileType cpp,cmake setlocal sts=2 ts=2 sw=2', false)
-vimscript('au BufRead,BufNewFile *.abs set filetype=abs', false)
-vimscript('au BufRead,BufNewFile *.cup set filetype=cup', false)
-vimscript('au BufRead,BufNewFile *.cmp set filetype=cmp', false)
+autocmd("FileType", {
+	pattern = { "javascript,javascriptreact,typescript,typescriptreact", "norg", "cpp,cmake" },
+	command = "setlocal sts=2 ts=2 sw=2",
+})
+
+autocmd("FileType", {
+	pattern = "*.cup",
+	command = "set filetype=cup",
+})
+
+autocmd("FileType", {
+	pattern = "*.cmp",
+	command = "set filetype=cmp",
+})

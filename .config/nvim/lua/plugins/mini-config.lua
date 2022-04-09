@@ -23,6 +23,6 @@ require("mini.surround").setup({
 		find_left = "sF", -- Find surrounding (to the left)
 		highlight = "sh", -- Highlight surrounding
 		replace = "cs", -- Replace surrounding
-		update_n_lines = "sn", -- Update `n_lines`
+		update_n_lines = '', -- Update `n_lines`
 	},
 })
