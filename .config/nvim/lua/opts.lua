@@ -22,6 +22,7 @@ opt.splitbelow = true
 
 -- Random
 opt.number = true
+opt.mouse = 'a'
 opt.wrap = false
 opt.smartcase = true
 opt.ignorecase = true

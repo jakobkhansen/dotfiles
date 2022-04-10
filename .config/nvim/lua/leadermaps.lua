@@ -51,8 +51,10 @@ wk.register({
 		p = { "<CMD>Neoformat<CR>", "prettier-format" },
 		e = {
 			name = "diagnostics",
-			e = { "<CMD>TroubleToggle<CR>", "diagnostic-overview" },
+			e = { "<CMD>Telescope diagnostics<CR>", "diagnostic-overview" },
 			l = { diagnostic.open_float, "line-diagnostics" },
+            n = { diagnostic.goto_next, "goto-next" },
+            n = { diagnostic.goto_prev, "goto-prev" },
 		},
 	},
 
