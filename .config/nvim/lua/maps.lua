@@ -19,6 +19,7 @@ keymap("", ",", ";", opts)
 keymap("", "<A-k>", "<CMD>m-2<CR>", opts)
 keymap("", "<A-j>", "<CMD>m+<CR>", opts)
 keymap("i", "<C-v>", "<C-r>0", opts)
+keymap("", "<A-S-j>", "<S-j>", opts)
 
 -- Buffers and tabs
 keymap("n", "<Tab>", "<CMD>bn<CR>", opts)

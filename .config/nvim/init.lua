@@ -126,7 +126,6 @@ require("packer").startup(function(use)
 			require("plugins.fm-nvim-config")
 		end,
 	})
-	use("andweeb/presence.nvim")
 
 	-- "LSP and languages"
 	use({
