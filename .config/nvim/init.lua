@@ -114,13 +114,6 @@ require("packer").startup(function(use)
 	})
 
 	use({
-		"folke/trouble.nvim",
-		config = function()
-			require("plugins.trouble-config")
-		end,
-	})
-
-	use({
 		"is0n/fm-nvim",
 		config = function()
 			require("plugins.fm-nvim-config")

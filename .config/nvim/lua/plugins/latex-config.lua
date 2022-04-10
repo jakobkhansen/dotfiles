@@ -1,6 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
 
-autocmd({ "BufEnter" }, { command = ":VimtexCompile", pattern = "*.tex" })
+autocmd({ "BufReadPost" }, { command = ":VimtexCompile", pattern = "*.tex" })
+
 
 vim.g.vimtex_fold_enabled = true
 

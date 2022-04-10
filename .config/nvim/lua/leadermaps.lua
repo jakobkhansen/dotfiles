@@ -70,7 +70,7 @@ wk.register({
 		name = "git",
 		s = { "<CMD>Ge :<CR>", "git-status" },
 		c = { "<CMD>Telescope git_commits prompt_prefix=🔍<CR>", "git-status" },
-		b = { "<CMD>silent Merginal<CR>", "git-branches" },
+		b = { "<CMD>Telescope git_branches<CR>", "git-branches" },
 		h = { "<CMD>Git blame<CR>", "git-blame" },
 		m = { "<CMD>Git mergetool<CR>", "git-mergetool" },
 		v = { "<CMD>silent !gh repo view --web<CR>", "git-browser" },
