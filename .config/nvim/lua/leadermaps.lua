@@ -112,8 +112,8 @@ wk.register({
 	-- Neorg
 	o = {
 		name = "organize",
-		h = { "<CMD>Neorg journal custom " .. utils.getFirstDayOfCurrentMonth() .. "<CR>", "hours" },
-		j = { "<CMD>Neorg journal today<CR>", "journal" },
+		h = { "<CMD>silent! NeorgStart<CR><CMD>Neorg journal custom " .. utils.getFirstDayOfCurrentMonth() .. "<CR>", "hours" },
+		j = { "<CMD>silent! NeorgStart<CR><CMD>Neorg journal today<CR>", "journal" },
 		p = { "<CMD>edit $HOME/Documents/gtd/projects.norg<CR>", "projects" },
 		t = {
 			name = "task",
