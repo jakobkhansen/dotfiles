@@ -5,6 +5,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 local autocmd = vim.api.nvim_create_autocmd
 local add_command = vim.api.nvim_add_user_command
 local vimscript = vim.api.nvim_exec
+local command = vim.api.nvim_command
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.workspace.configuration = true
@@ -47,9 +48,6 @@ local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 local function jdtls_on_attach()
-	require("virtualtypes").on_attach()
-	require("jdtls.setup").add_commands()
-	require("jdtls").setup_dap({ hotcodereplace = "auto" })
 end
 
 function Find_root_better(markers, bufname)
@@ -70,7 +68,7 @@ function Find_root_better(markers, bufname)
 end
 
 local function start_jdt()
-    vimscript("cd %:p:h", false)
+	vimscript("cd %:p:h", false)
 	local project_name = vim.fn.fnamemodify(Find_root_better({ "build.gradle", "pom.xml", "build.xml" }), ":p:h:t")
 	local workspace_dir = vim.env.HOME .. "/.workspaces/" .. project_name
 
@@ -85,13 +83,24 @@ local function start_jdt()
 		vim.split(vim.fn.glob(vim.env.HOME .. "/.langservers/vscode-java-test/server/*.jar"), "\n")
 	)
 
+	require("jdtls.setup").add_commands()
+	require("jdtls").setup_dap({ hotcodereplace = "auto" })
+
+	add_command("JdtDap", function()
+		require("jdtls.dap").setup_dap_main_class_configs()
+	end, {})
+    add_command("JdtClearWorkspace", function()
+	    local workspace_dir = vim.env.HOME .. "/.workspaces/" .. project_name
+        command("silent ! rm -r " .. workspace_dir)
+        
+    end, {})
+
 	local config = {
 		init_options = {
 			extendedClientCapabilities = extendedClientCapabilities,
 			bundles = bundles,
 		},
 		root_dir = Find_root_better({ "build.gradle", "pom.xml", "build.xml" }),
-		on_attach = jdtls_on_attach,
 		flags = {
 			allow_incremental_sync = true,
 			server_side_fuzzy_completion = true,
@@ -156,13 +165,6 @@ local function start_jdt()
 end
 
 autocmd("FileType", { pattern = "java", callback = start_jdt })
-
-add_command("JdtUpdateConfig", require("jdtls").update_project_config, {})
-add_command("JdtDap", function()
-	require("jdtls.dap").setup_dap_main_class_configs()
-    require("jdtls").setup_dap({ hotcodereplace = "auto" })
-end, {})
-add_command("JdtRun", require("dap").continue, {})
 
 ---- Typescript
 

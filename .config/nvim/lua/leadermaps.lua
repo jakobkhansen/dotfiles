@@ -62,7 +62,8 @@ wk.register({
     -- DAP
     d = {
         name = "debug",
-        r = {dap.continue, "run"}
+        r = {dap.continue, "run"},
+        b = {dap.toggle_breakpoint, "toggle-breakpoint"}
     },
 
 	-- Terminal
