@@ -1,5 +1,6 @@
 local opt = vim.opt
 local vimscript = vim.api.nvim_exec
+local autocmd = vim.api.nvim_create_autocmd
 
 -- Vim options
 opt.smartindent = true
@@ -31,6 +32,13 @@ opt.relativenumber = true
 opt.timeoutlen = 300
 opt.foldmethod = "indent"
 opt.foldlevel = 99
+
+vimscript("au FileType * setlocal fo-=c fo-=r fo-=o", false)
+autocmd("FileType", {
+	pattern = "*",
+	command = "setlocal fo-=c fo-=r fo-=o",
+})
+
 
 -- Completion
 opt.completeopt = "menuone,noselect"

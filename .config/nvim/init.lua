@@ -128,6 +128,7 @@ require("packer").startup(function(use)
 			require("plugins.lsp-servers")
 		end,
 	})
+    use("mfussenegger/nvim-dap")
 	use("mfussenegger/nvim-jdtls")
 	use("onsails/lspkind-nvim")
 

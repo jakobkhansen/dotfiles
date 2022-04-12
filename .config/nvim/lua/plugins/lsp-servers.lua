@@ -3,6 +3,8 @@ local nvim_lsp = require("lspconfig")
 local util = require("lspconfig/util")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local autocmd = vim.api.nvim_create_autocmd
+local add_command = vim.api.nvim_add_user_command
+local vimscript = vim.api.nvim_exec
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.workspace.configuration = true
@@ -45,9 +47,9 @@ local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 local function jdtls_on_attach()
-	require("jdtls").setup_dap({ hotcodereplace = "auto" })
 	require("virtualtypes").on_attach()
 	require("jdtls.setup").add_commands()
+	require("jdtls").setup_dap({ hotcodereplace = "auto" })
 end
 
 function Find_root_better(markers, bufname)
@@ -67,14 +69,26 @@ function Find_root_better(markers, bufname)
 	return vim.fn.getcwd()
 end
 
-
 local function start_jdt()
-    local project_name = vim.fn.fnamemodify(Find_root_better({ "build.gradle", "pom.xml", "build.xml" }), ':p:h:t')
-    local workspace_dir = vim.env.HOME .. '/.workspaces/' .. project_name
+    vimscript("cd %:p:h", false)
+	local project_name = vim.fn.fnamemodify(Find_root_better({ "build.gradle", "pom.xml", "build.xml" }), ":p:h:t")
+	local workspace_dir = vim.env.HOME .. "/.workspaces/" .. project_name
+
+	local bundles = {
+		vim.fn.glob(
+			vim.env.HOME
+				.. "/.langservers/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
+		),
+	}
+	vim.list_extend(
+		bundles,
+		vim.split(vim.fn.glob(vim.env.HOME .. "/.langservers/vscode-java-test/server/*.jar"), "\n")
+	)
 
 	local config = {
 		init_options = {
 			extendedClientCapabilities = extendedClientCapabilities,
+			bundles = bundles,
 		},
 		root_dir = Find_root_better({ "build.gradle", "pom.xml", "build.xml" }),
 		on_attach = jdtls_on_attach,
@@ -94,7 +108,7 @@ local function start_jdt()
 			"-Dlog.protocol=true",
 			"-Dlog.level=ALL",
 			"-Xms1g",
-            "-Xmx2G",
+			"-Xmx2G",
 			"--add-modules=ALL-SYSTEM",
 			"--add-opens",
 			"java.base/java.util=ALL-UNNAMED",
@@ -102,13 +116,14 @@ local function start_jdt()
 			"java.base/java.lang=ALL-UNNAMED",
 
 			"-jar",
-			vim.env.HOME .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+			vim.env.HOME
+				.. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
 
 			"-configuration",
 			vim.env.HOME .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",
 
 			"-data",
-            workspace_dir
+			workspace_dir,
 		},
 
 		settings = {
@@ -135,15 +150,19 @@ local function start_jdt()
 				},
 			},
 		},
-		on_init = function(client)
-			client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
-		end,
 	}
 
 	require("jdtls").start_or_attach(config)
 end
 
-autocmd("FileType", {pattern = "java", callback = start_jdt})
+autocmd("FileType", { pattern = "java", callback = start_jdt })
+
+add_command("JdtUpdateConfig", require("jdtls").update_project_config, {})
+add_command("JdtDap", function()
+	require("jdtls.dap").setup_dap_main_class_configs()
+    require("jdtls").setup_dap({ hotcodereplace = "auto" })
+end, {})
+add_command("JdtRun", require("dap").continue, {})
 
 ---- Typescript
 
@@ -200,9 +219,6 @@ nvim_lsp.tsserver.setup({
 
 ---- Latex
 nvim_lsp.texlab.setup({})
-
----- Kotlin
-nvim_lsp.kotlin_language_server.setup({})
 
 ---- Lua
 USER = vim.fn.expand("$USER")

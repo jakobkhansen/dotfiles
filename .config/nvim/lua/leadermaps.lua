@@ -5,6 +5,7 @@ vim.g.mapleader = " "
 local utils = require("utils")
 
 local lsp = vim.lsp.buf
+local dap = require("dap")
 local diagnostic = vim.diagnostic
 
 wk.register({
@@ -54,9 +55,15 @@ wk.register({
 			e = { "<CMD>Telescope diagnostics<CR>", "diagnostic-overview" },
 			l = { diagnostic.open_float, "line-diagnostics" },
             n = { diagnostic.goto_next, "goto-next" },
-            n = { diagnostic.goto_prev, "goto-prev" },
+            p = { diagnostic.goto_prev, "goto-prev" },
 		},
 	},
+
+    -- DAP
+    d = {
+        name = "debug",
+        r = {dap.continue, "run"}
+    },
 
 	-- Terminal
 	t = {
@@ -88,28 +95,6 @@ wk.register({
 		s = { "<CMD>cd $HOME/Documents/School<CR>", "path-school" },
 	},
 
-    -- Treesitter
-    e = {
-        name ="treesitter",
-        p = {
-            name = "parameter",
-            s = {
-                name = "swap",
-                n = { "<CMD>TSTextobjectSwapNext @parameter.inner<CR>", "swap-next"},
-                p = { "<CMD>TSTextobjectSwapPrevious @parameter.inner<CR>", "swap-prev"}
-            }
-        },
-        f = {
-            name = "function",
-            s = {
-                name = "swap",
-                n = { "<CMD>TSTextobjectSwapNext @function.outer<CR>", "swap-next"},
-                p = { "<CMD>TSTextobjectSwapPrevious @function.outer<CR>", "swap-prev"}
-            },
-            n = {"<CMD>TSTextobjectGotoNextStart @function.outer<CR>", "goto-next"},
-            p = {"<CMD>TSTextobjectGotoPreviousStart @function.outer<CR>", "goto-prev"}
-        }
-    },
 
 	-- Neorg
 	o = {
