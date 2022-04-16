@@ -1,6 +1,6 @@
 local command = vim.api.nvim_command
 local vimscript = vim.api.nvim_exec
-local add_command = vim.api.nvim_add_user_command
+local add_command = vim.api.nvim_create_user_command
 
 local P = {}
 
