@@ -3,7 +3,7 @@ local nvim_lsp = require("lspconfig")
 local util = require("lspconfig/util")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local autocmd = vim.api.nvim_create_autocmd
-local add_command = vim.api.nvim_add_user_command
+local add_command = vim.api.nvim_create_user_command
 local vimscript = vim.api.nvim_exec
 local command = vim.api.nvim_command
 

@@ -40,4 +40,4 @@ configs["compila"] = {
 	config = {},
 }
 
-lspconfig["compila"].setup({})
+-- lspconfig["compila"].setup({})

@@ -42,10 +42,24 @@ local open_file_browser = function(files)
 		local curr_finder = current_picker.finder
 		local dir = get_target_dir(curr_finder)
 		print(dir)
-		-- print('Telescope file_browser path=' .. dir .. 'files=' .. tostring(files))
 		vim.cmd(
 			"Telescope file_browser hide_parent_dir=true, cwd_to_path=true path=" .. dir .. " files=" .. tostring(files)
 		)
+	end
+end
+
+local open_xdg = function()
+	return function(prompt_bufnr)
+		local entry = action_state.get_selected_entry()
+		local cmd = "xdg-open"
+		local path = entry["cwd"] .. "/" .. entry[1]
+		require("plenary.job")
+			:new({
+				command = cmd,
+				args = { path },
+			})
+			:start()
+		require("telescope.actions").close(prompt_bufnr)
 	end
 end
 
@@ -83,7 +97,7 @@ require("telescope").setup({
 				["<A-g>"] = open_in(builtin.git_files, {}),
 				["<A-d>"] = open_file_browser(false),
 				["<A-b>"] = open_file_browser(true),
-                ["o"] = fb_actions.open
+				["o"] = open_xdg(),
 			},
 			i = {
 				["<A-f>"] = open_in(builtin.find_files, {}),
