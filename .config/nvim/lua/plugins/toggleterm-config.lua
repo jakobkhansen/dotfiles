@@ -2,6 +2,7 @@ local terms = require("toggleterm.terminal")
 local fmt = string.format
 local command = vim.api.nvim_command
 local autocmd = vim.api.nvim_create_autocmd
+local Terminal = terms.Terminal
 
 require("toggleterm").setup({
 	-- size can be a number or function which is passed the current terminal
@@ -62,6 +63,10 @@ require("toggleterm").setup({
 			background = "Normal",
 		},
 	},
+})
+
+local fullTerm = Terminal:new({
+    
 })
 
 

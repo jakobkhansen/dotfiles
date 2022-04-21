@@ -13,7 +13,6 @@ require("mini.surround").setup({
 
 	-- Pattern to match function name in 'function call' surrounding
 	-- By default it is a string of letters, '_' or '.'
-	funname_pattern = "[%w_%.]+",
 
 	-- Module mappings. Use `''` (empty string) to disable one.
 	mappings = {

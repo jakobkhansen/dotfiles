@@ -26,6 +26,7 @@ local get_target_dir = function(finder)
 	return finder.files and finder.path or entry_path
 end
 
+
 local open_in = function(finder, opts)
 	return function(prompt_bufnr)
 		local current_picker = action_state.get_current_picker(prompt_bufnr)
@@ -116,7 +117,14 @@ require("telescope").setup({
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			-- the default case_mode is "smart_case"
 		},
-		file_browser = {},
+		file_browser = {
+            mappings = {
+                n = {
+				["o"] = fb_actions.open
+
+                }
+            }
+        },
 	},
 })
 

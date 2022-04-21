@@ -36,6 +36,7 @@ wk.register({
 		h = { "<CMD>split<CR>", "horizontal-split" },
 		o = { "<CMD>ZoomWinTabToggle<CR>", "maximize-buffer" },
 		m = { "<CMD>WinShift<CR>", "buffer-move" },
+		t = { "<CMD>tabnew<CR>", "tab-new" },
 	},
 
 	-- LSP
