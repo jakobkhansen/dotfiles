@@ -6,6 +6,7 @@ require("packer").startup(function(use)
 	use("nvim-lua/plenary.nvim")
     use("nathom/filetype.nvim")
 
+
 	-- "Multi-functionality"
 	-- Mini provides pairs, surround, commenting and bufremoval functionality
 	use({
@@ -105,6 +106,12 @@ require("packer").startup(function(use)
 			require("plugins.startify-config")
 		end,
 	})
+    use({
+        "rcarriga/nvim-notify",
+        config = function()
+            vim.notify = require("notify")
+        end
+    })
 
 	use({
 		"folke/which-key.nvim",
@@ -197,7 +204,6 @@ require("packer").startup(function(use)
 		config = function()
 			require("plugins.neorg-config")
 		end,
-		requires = "nvim-neorg/neorg-telescope",
 	})
 	use({
 		"ekickx/clipboard-image.nvim",

@@ -26,10 +26,10 @@ local function on_show_document(err, result, ctx, config, params)
 	return result
 end
 
-configs["compila"] = {
+configs["ccdetect"] = {
 	default_config = {
 		cmd = cmd,
-		filetypes = { "cmp" },
+		filetypes = { "ccdetect" },
 		root_dir = function(fname)
 			return util.root_pattern(".git")(fname)
 		end,
@@ -40,4 +40,4 @@ configs["compila"] = {
 	config = {},
 }
 
--- lspconfig["compila"].setup({})
+lspconfig["ccdetect"].setup({})

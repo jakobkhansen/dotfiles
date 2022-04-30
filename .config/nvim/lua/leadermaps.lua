@@ -24,6 +24,7 @@ wk.register({
 		t = { "<CMD>Telescope termfinder find<CR>", "find-termminal" },
 		b = { "<CMD>Telescope buffers<CR>", "find-buffers" },
 		j = { "<CMD>Telescope jumplist<CR>", "find-jump" },
+		n = { "<CMD>Explore<CR>", "find-netrw" },
 	},
 
 	-- Buffer

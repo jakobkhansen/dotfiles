@@ -27,7 +27,6 @@ require("neorg").setup({
                 zen_mode = "zen-mode"
             }
         },
-		["core.integrations.telescope"] = {},
 		["core.gtd.ui"] = {},
 		["core.gtd.queries"] = {},
 		["core.gtd.base"] = {

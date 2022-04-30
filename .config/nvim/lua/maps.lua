@@ -25,7 +25,8 @@ keymap("", "<A-S-j>", "<S-j>", opts)
 keymap("n", "<Tab>", "<CMD>bn<CR>", opts)
 keymap("n", "<S-Tab>", "<CMD>bp<CR>", opts)
 
-keymap("n", "<A-Tab>", "<CMD>tabnext<CR>", opts)
+keymap("n", "<A-l>", "<CMD>tabnext<CR>", opts)
+keymap("n", "<A-h>", "<CMD>tabprevious<CR>", opts)
 
 --  Move to buffer
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -56,7 +57,8 @@ keymap("t", "<C-h>", "<C-\\><C-n><C-w>h", opts)
 keymap("t", "<C-j>", "<C-\\><C-n><C-w>j", opts)
 keymap("t", "<C-k>", "<C-\\><C-n><C-w>k", opts)
 keymap("t", "<C-l>", "<C-\\><C-n><C-w>l", opts)
-keymap("t", "<A-Tab>", "<C-\\><C-n><CMD>tabnext<CR>", opts)
+keymap("t", "<A-l>", "<C-\\><C-n><CMD>tabnext<CR>", opts)
+keymap("t", "<A-h>", "<C-\\><C-n><CMD>tabnext<CR>", opts)
 
 keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>vertical resize-5<CR>i", opts)
 keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>resize-5<CR>i", opts)

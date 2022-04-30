@@ -92,8 +92,3 @@ function _G.updateTermDirectory()
 		command("cd " .. dir)
 	end
 end
-
--- Create default terminal
---local term = terms.Terminal:new({count = i, id = i})
---term:open()
---term:close()
