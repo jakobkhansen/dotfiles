@@ -2,6 +2,9 @@ local command = vim.api.nvim_command
 local vimscript = vim.api.nvim_exec
 local add_command = vim.api.nvim_create_user_command
 
+local Input = require("nui.input")
+local event = require("nui.utils.autocmd").event
+
 local P = {}
 
 function P.CWDgitRoot()
@@ -39,6 +42,42 @@ function P.ToggleThemeMode()
 		P.DarkMode()
 	end
 end
+
+function P.showFloatingPrompt(display_text, on_submit, on_close)
+    local prompt = Input({
+        position = "50%",
+        size = {
+            width = 60,
+            height = 2,
+        },
+        relative = "editor",
+        border = {
+            style = "rounded",
+            text = {
+                top = display_text,
+                top_align = "center"
+            }
+        },
+        win_options = {
+            winhighlight = "Normal:Normal"
+        },
+    }, {
+        prompt = "> ",
+        default_value = "working",
+        on_submit = on_submit,
+        on_close = on_close,
+    })
+
+    prompt:mount()
+
+    -- close the input window by pressing `<Esc>` on normal mode
+    prompt:map("n", "<Esc>", prompt.input_props.on_close, { noremap = true })
+
+    prompt:on(event.BufLeave, function ()
+        prompt:unmount()
+    end)
+end
+
 
 add_command("LightMode", P.LightMode, {})
 add_command("DarkMode", P.DarkMode, {})

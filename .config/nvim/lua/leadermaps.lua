@@ -108,9 +108,10 @@ wk.register({
 		p = { "<CMD>edit $HOME/Documents/gtd/projects.norg<CR>", "projects" },
         t = {
             name = "timetrap",
-            i = {":Timetrap in ", "check-in"},
+            i = {require("plugins.timetrap-config").check_in, "check-in"},
             o = {"<CMD>Timetrap out<CR>", "check-out"},
-            d = {"<CMD>Timetrap d<CR>", "display"}
+            d = {"<CMD>Timetrap d<CR>", "display"},
+            n = {"<CMD>Timetrap now<CR>", "now"}
         }
 	},
 

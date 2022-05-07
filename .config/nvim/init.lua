@@ -215,7 +215,7 @@ require("packer").startup(function(use)
 			"MunifTanjim/nui.nvim",
 		},
 		config = function()
-            require("plugins.timetrap")
+            require("plugins.timetrap-config")
 		end,
 	})
 end)

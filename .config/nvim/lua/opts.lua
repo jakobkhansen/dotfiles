@@ -23,7 +23,7 @@ opt.splitbelow = true
 
 -- Random
 opt.number = true
-opt.mouse = 'a'
+opt.mouse = "a"
 opt.wrap = false
 opt.smartcase = true
 opt.ignorecase = true
@@ -38,7 +38,6 @@ autocmd("FileType", {
 	pattern = "*",
 	command = "setlocal fo-=c fo-=r fo-=o",
 })
-
 
 -- Completion
 opt.completeopt = "menuone,noselect"
@@ -58,7 +57,6 @@ vim.g.tokyonight_italic_keywords = false
 vim.g.tokyonight_italic_comments = false
 vimscript("colorscheme tokyonight", false)
 
-
 -- Persistent undo
 local undoDir = "/tmp/.undodir_" .. vim.env["USER"]
 if not vim.fn.isdirectory(undoDir) then
@@ -73,6 +71,5 @@ opt.swapfile = false
 -- Netrw
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
-vim.g.netrw_list_hide="^\\..*"
+vim.g.netrw_list_hide = "^\\..*"
 vim.g.netrw_hide = 1
-
