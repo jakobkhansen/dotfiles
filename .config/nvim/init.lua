@@ -215,13 +215,6 @@ require("packer").startup(function(use)
 			"MunifTanjim/nui.nvim",
 		},
 		config = function()
-			require("timetrap_nvim").setup({
-				display = {
-					win_type = "float",
-					border = "rounded",
-				},
-				prompts = "float",
-			})
 		end,
 	})
 end)
