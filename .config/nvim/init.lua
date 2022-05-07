@@ -1,11 +1,9 @@
-
 -- Plugins
 require("packer").startup(function(use)
 	-- "Libraries and dependencies"
 	use("wbthomason/packer.nvim")
 	use("nvim-lua/plenary.nvim")
-    use("nathom/filetype.nvim")
-
+	use("nathom/filetype.nvim")
 
 	-- "Multi-functionality"
 	-- Mini provides pairs, surround, commenting and bufremoval functionality
@@ -51,8 +49,7 @@ require("packer").startup(function(use)
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 
-
-    -- Visuals
+	-- Visuals
 	use("jakobkhansen/tokyonight.nvim")
 	use("kyazdani42/nvim-web-devicons")
 
@@ -106,12 +103,12 @@ require("packer").startup(function(use)
 			require("plugins.startify-config")
 		end,
 	})
-    use({
-        "rcarriga/nvim-notify",
-        config = function()
-            vim.notify = require("notify")
-        end
-    })
+	use({
+		"rcarriga/nvim-notify",
+		config = function()
+			vim.notify = require("notify")
+		end,
+	})
 
 	use({
 		"folke/which-key.nvim",
@@ -135,7 +132,7 @@ require("packer").startup(function(use)
 			require("plugins.lsp-servers")
 		end,
 	})
-    use("mfussenegger/nvim-dap")
+	use("mfussenegger/nvim-dap")
 	use("mfussenegger/nvim-jdtls")
 	use("onsails/lspkind-nvim")
 
@@ -172,7 +169,7 @@ require("packer").startup(function(use)
 		end,
 	})
 	use("nvim-treesitter/playground")
-    use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("nvim-treesitter/nvim-treesitter-textobjects")
 
 	-- use("sheerun/vim-polyglot")
 	use("vim-scripts/cup.vim")
@@ -209,6 +206,22 @@ require("packer").startup(function(use)
 		"ekickx/clipboard-image.nvim",
 		config = function()
 			require("plugins.clipboard-image-config")
+		end,
+	})
+
+	use({
+		"andreadev-it/timetrap.nvim",
+		requires = {
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("timetrap_nvim").setup({
+				display = {
+					win_type = "float",
+					border = "rounded",
+				},
+				prompts = "float",
+			})
 		end,
 	})
 end)

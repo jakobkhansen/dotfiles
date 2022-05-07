@@ -227,6 +227,11 @@ nvim_lsp.tsserver.setup({
 ---- Latex
 nvim_lsp.texlab.setup({})
 
+-- Ltex
+require("lspconfig").ltex.setup({
+	filetypes = { "bib", "gitcommit", "org", "plaintex", "rst", "rnoweb", "tex" },
+})
+
 ---- Lua
 USER = vim.fn.expand("$USER")
 
@@ -292,7 +297,6 @@ nvim_lsp.tailwindcss.setup({
 	},
 })
 
--- Ltex
-require("lspconfig").ltex.setup({
-	filetypes = { "bib", "gitcommit", "org", "plaintex", "rst", "rnoweb", "tex" },
-})
+
+-- Kotlin
+nvim_lsp.kotlin_language_server.setup({})

@@ -106,12 +106,12 @@ wk.register({
 		h = { "<CMD>silent! NeorgStart<CR><CMD>Neorg journal custom " .. utils.getFirstDayOfCurrentMonth() .. "<CR>", "hours" },
 		j = { "<CMD>silent! NeorgStart<CR><CMD>Neorg journal today<CR>", "journal" },
 		p = { "<CMD>edit $HOME/Documents/gtd/projects.norg<CR>", "projects" },
-		t = {
-			name = "task",
-			t = { "<CMD>Neorg gtd views<CR>", "task-overview" },
-			c = { "<CMD>Neorg gtd capture<CR>", "task-capture" },
-			e = { "<CMD>Neorg gtd edit<CR>", "task-edit" },
-		},
+        t = {
+            name = "timetrap",
+            i = {":Timetrap in ", "check-in"},
+            o = {"<CMD>Timetrap out<CR>", "check-out"},
+            d = {"<CMD>Timetrap d<CR>", "display"}
+        }
 	},
 
     -- Shortcuts
