@@ -9,9 +9,6 @@ local dap = require("dap")
 local diagnostic = vim.diagnostic
 
 wk.register({
-
-	-- Find x
-
 	f = {
 		name = "find",
 		f = { "<CMD>Telescope find_files<CR>", "find-files" },
@@ -25,6 +22,7 @@ wk.register({
 		b = { "<CMD>Telescope buffers<CR>", "find-buffers" },
 		j = { "<CMD>Telescope jumplist<CR>", "find-jump" },
 		n = { "<CMD>Explore<CR>", "find-netrw" },
+		h = { "<CMD>Telescope heading<CR>", "find-heading" },
 	},
 
 	-- Buffer
@@ -35,7 +33,6 @@ wk.register({
 		x = { "<CMD>close<CR>", "window-close" },
 		v = { "<CMD>vsplit<CR>", "vertical-split" },
 		h = { "<CMD>split<CR>", "horizontal-split" },
-		o = { "<CMD>ZoomWinTabToggle<CR>", "maximize-buffer" },
 		m = { "<CMD>WinShift<CR>", "buffer-move" },
 		t = { "<CMD>tabnew<CR>", "tab-new" },
 	},
@@ -110,6 +107,7 @@ wk.register({
             name = "timetrap",
             i = {require("plugins.timetrap-config").check_in, "check-in"},
             o = {"<CMD>Timetrap out<CR>", "check-out"},
+            r = {"<CMD>Timetrap resume<CR>", "resume"},
             d = {"<CMD>Timetrap d<CR>", "display"},
             n = {"<CMD>Timetrap now<CR>", "now"}
         }

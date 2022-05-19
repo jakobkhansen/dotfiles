@@ -6,7 +6,8 @@ require("neorg").setup({
 				workspaces = {
 					gtd = "~/Documents/gtd",
 				},
-                autochdir = false
+                autochdir = false,
+                open_last_workspace = false
 			},
 		},
 		["core.norg.completion"] = {

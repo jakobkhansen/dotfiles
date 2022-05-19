@@ -3,7 +3,6 @@ local finders = require("telescope.finders")
 local conf = require("telescope.config").values
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
-local command = vim.api.nvim_command
 local fb_actions = require("telescope").extensions.file_browser.actions
 local fb_utils = require("telescope._extensions.file_browser.utils")
 local fb_picker = require("telescope._extensions.file_browser.picker")
@@ -25,7 +24,6 @@ local get_target_dir = function(finder)
 	lastDirectory = finder.files and finder.path or entry_path
 	return finder.files and finder.path or entry_path
 end
-
 
 local open_in = function(finder, opts)
 	return function(prompt_bufnr)
@@ -118,16 +116,42 @@ require("telescope").setup({
 			-- the default case_mode is "smart_case"
 		},
 		file_browser = {
-            mappings = {
-                n = {
-				["o"] = fb_actions.open
-
-                }
-            }
-        },
+			mappings = {
+				n = {
+					["o"] = fb_actions.open,
+				},
+			},
+		},
+        heading = {
+            treesitter = true
+        }
 	},
 })
 
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("termfinder")
 require("telescope").load_extension("file_browser")
+require("telescope").load_extension("heading")
+
+local P = {}
+
+P.genericPicker = function(title, command, on_select, opts)
+    opts = opts or {}
+	return pickers.new(opts, {
+        prompt_title = title,
+        finder = finders.new_oneshot_job(vim.split(command, " "), opts),
+        previewer = conf.file_previewer(opts),
+        sorter = conf.file_sorter(opts),
+        attach_mappings = function(prompt_bufnr, map)
+            actions.select_default:replace(function()
+                actions.cloes(prompt_bufnr)
+                local selection = action_state.get_selected_entry()
+                on_select(selection)
+            end)
+            return true
+        end
+    })
+end
+
+
+return P

@@ -47,8 +47,6 @@ require("lspconfig").jsonls.setup({
 local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
-local function jdtls_on_attach() end
-
 function Find_root_better(markers, bufname)
 	bufname = bufname or vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
 	local dirname = vim.fn.fnamemodify(bufname, ":p:h")
@@ -85,17 +83,16 @@ local function start_jdt()
 	require("jdtls.setup").add_commands()
 	require("jdtls").setup_dap({ hotcodereplace = "auto" })
 
-    -- JDTLS related commands
+	-- JDTLS related commands
 	add_command("JdtDap", function()
 		require("jdtls.dap").setup_dap_main_class_configs()
 	end, {})
 	add_command("JdtClearWorkspace", function()
-		local workspace_dir = vim.env.HOME .. "/.workspaces/" .. project_name
 		command("silent ! rm -r " .. workspace_dir)
 	end, {})
 	add_command("JdtClearAllWorkspaces", function()
 		local workspace_dirs = vim.fn.glob(vim.env.HOME .. "/.workspaces/*")
-		for key, workspace in pairs(vim.split(workspace_dirs, "\n")) do
+		for _, workspace in pairs(vim.split(workspace_dirs, "\n")) do
 			command("silent ! rm -r " .. workspace)
 		end
 	end, {})
@@ -176,7 +173,7 @@ autocmd("FileType", { pattern = "java", callback = start_jdt })
 -- require("null-ls").setup({})
 
 nvim_lsp.tsserver.setup({
-	on_attach = function(client, bufnr)
+	on_attach = function(client, _)
 		local ts_utils = require("nvim-lsp-ts-utils")
 
 		-- defaults
@@ -229,7 +226,7 @@ nvim_lsp.texlab.setup({})
 
 -- Ltex
 require("lspconfig").ltex.setup({
-	filetypes = { "bib", "gitcommit", "org", "plaintex", "rst", "rnoweb", "tex" },
+	filetypes = { "bib", "gitcommit", "plaintex", "rst", "rnoweb", "tex" },
 })
 
 ---- Lua
@@ -296,7 +293,6 @@ nvim_lsp.tailwindcss.setup({
 		},
 	},
 })
-
 
 -- Kotlin
 nvim_lsp.kotlin_language_server.setup({})

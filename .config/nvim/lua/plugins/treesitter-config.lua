@@ -26,10 +26,12 @@ parser_configs.norg_table = {
 	},
 }
 
+
 require("nvim-treesitter.configs").setup({
 	ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 	highlight = {
-		enable = true, -- false will disable the whole extension
+		enable = true,
+        additional_vim_regex_highlighting = {'org'}
 	},
 	indent = {
 		enable = true,

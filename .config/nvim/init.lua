@@ -14,9 +14,6 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	-- "Text manipulation"
-	use("tpope/vim-speeddating")
-
 	--"Movement"
 	use({
 		"karb94/neoscroll.nvim",
@@ -32,7 +29,6 @@ require("packer").startup(function(use)
 	})
 
 	-- "Buffers"
-	use("troydm/zoomwintab.vim")
 	use({
 		"kwkarlwang/bufresize.nvim",
 		config = function()
@@ -132,7 +128,12 @@ require("packer").startup(function(use)
 			require("plugins.lsp-servers")
 		end,
 	})
-	use("mfussenegger/nvim-dap")
+	use({
+		"mfussenegger/nvim-dap",
+		config = function()
+			require("plugins.dap-config")
+		end,
+	})
 	use("mfussenegger/nvim-jdtls")
 	use("onsails/lspkind-nvim")
 
@@ -202,12 +203,14 @@ require("packer").startup(function(use)
 			require("plugins.neorg-config")
 		end,
 	})
+
 	use({
 		"ekickx/clipboard-image.nvim",
 		config = function()
 			require("plugins.clipboard-image-config")
 		end,
 	})
+    use("jakobkhansen/telescope-heading.nvim")
 
 	use({
 		"andreadev-it/timetrap.nvim",
@@ -215,7 +218,7 @@ require("packer").startup(function(use)
 			"MunifTanjim/nui.nvim",
 		},
 		config = function()
-            require("plugins.timetrap-config")
+			require("plugins.timetrap-config")
 		end,
 	})
 end)

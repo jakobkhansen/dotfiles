@@ -21,6 +21,7 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "buffer" },
 		{ name = "latex_symbols", keyword_length = 2 },
+        { name = "orgmode" },
 		{
 			name = "dictionary",
 			keyword_length = 2,
