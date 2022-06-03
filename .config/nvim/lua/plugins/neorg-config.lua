@@ -1,3 +1,9 @@
+local vimscript = vim.api.nvim_exec
+local utils = require("utils")
+local command = vim.api.nvim_command
+local input = vim.api.nvim_input
+local add_command = vim.api.nvim_create_user_command
+
 require("neorg").setup({
 	load = {
 		["core.defaults"] = {}, -- Load all the default modules
@@ -6,8 +12,8 @@ require("neorg").setup({
 				workspaces = {
 					gtd = "~/Documents/gtd",
 				},
-                autochdir = false,
-                open_last_workspace = false
+				autochdir = false,
+				open_last_workspace = false,
 			},
 		},
 		["core.norg.completion"] = {
@@ -15,19 +21,18 @@ require("neorg").setup({
 				engine = "nvim-cmp", -- We current support nvim-compe and nvim-cmp only
 			},
 		},
-		["core.norg.concealer"] = {
-		},
+		["core.norg.concealer"] = {},
 		["core.keybinds"] = { -- Configure core.keybinds
 			config = {
 				default_keybinds = true, -- Generate the default keybinds
 				neorg_leader = "<Leader>o", -- This is the default if unspecified
 			},
 		},
-        ["core.presenter"] = {
-            config = {
-                zen_mode = "zen-mode"
-            }
-        },
+		["core.presenter"] = {
+			config = {
+				zen_mode = "zen-mode",
+			},
+		},
 		["core.gtd.ui"] = {},
 		["core.gtd.queries"] = {},
 		["core.gtd.base"] = {
@@ -45,3 +50,13 @@ require("neorg").setup({
 		},
 	},
 })
+
+
+function format()
+	utils.onEveryLine(function(i)
+        input("i<Esc>j")
+        
+	end)
+end
+
+add_command("NeorgFormat", format, {})

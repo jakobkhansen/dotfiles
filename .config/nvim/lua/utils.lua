@@ -96,6 +96,14 @@ function P.treesitterExecQuery(bufnr, query)
 
 end
 
+function P.onEveryLine(callback)
+    local num_lines = vim.api.nvim_buf_line_count(0)
+    command("0")
+    for i=0,num_lines do
+        callback(i)
+    end
+end
+
 
 add_command("LightMode", P.LightMode, {})
 add_command("DarkMode", P.DarkMode, {})

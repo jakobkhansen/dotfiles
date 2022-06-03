@@ -13,30 +13,6 @@ require("toggleterm").setup({
 			return vim.o.columns * 0.4
 		end
 	end,
-	highlights = {
-		-- highlights which map to a highlight group name and a table of it's values
-		-- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
-		Normal = {
-			guibg = "Normal",
-			guifg = "Normal",
-		},
-		StatusLine = {
-			gui = "NONE",
-			guifg = "Normal",
-			guibg = "Normal",
-		},
-		SignColumn = {
-			guifg = 'Normal',
-			guibg = 'Normal',
-		},
-		NormalFloat = {
-			link = "Normal",
-		},
-		FloatBorder = {
-			guifg = "Normal",
-			guibg = "Normal",
-		},
-	},
 	open_mapping = [[<C-\>]],
 	hide_numbers = false, -- hide the number column in toggleterm buffers
 	shade_filetypes = {},
@@ -65,20 +41,16 @@ require("toggleterm").setup({
 	},
 })
 
-local fullTerm = Terminal:new({
-    
-})
-
+local fullTerm = Terminal:new({})
 
 autocmd("FileType", {
-    pattern = "toggleterm",
-    command = "map <buffer> <Tab> <Nop>"
+	pattern = "toggleterm",
+	command = "map <buffer> <Tab> <Nop>",
 })
 
-
 autocmd("FileType", {
-    pattern = "toggleterm",
-    command = "map <buffer> <Leader>pc <CMD>lua updateTermDirectory()<CR>"
+	pattern = "toggleterm",
+	command = "map <buffer> <Leader>pc <CMD>lua updateTermDirectory()<CR>",
 })
 
 function _G.updateTermDirectory()
