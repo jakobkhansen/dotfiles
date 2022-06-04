@@ -48,6 +48,12 @@ require("packer").startup(function(use)
 	-- Visuals
 	use("jakobkhansen/tokyonight.nvim")
 	use("kyazdani42/nvim-web-devicons")
+	use({
+		"folke/zen-mode.nvim",
+		config = function()
+			require("plugins.zenmode-config")
+		end,
+	})
 
 	-- "Files and git"
 	use({
@@ -93,12 +99,20 @@ require("packer").startup(function(use)
 		end,
 	})
 
+	-- use({
+	-- 	"mhinz/vim-startify",
+	-- 	config = function()
+	-- 		require("plugins.startify-config")
+	-- 	end,
+	-- })
 	use({
-		"mhinz/vim-startify",
+		"goolord/alpha-nvim",
+		requires = { "kyazdani42/nvim-web-devicons" },
 		config = function()
-			require("plugins.startify-config")
+			require("plugins.alpha-nvim-config")
 		end,
 	})
+
 	use({
 		"rcarriga/nvim-notify",
 		config = function()
@@ -210,7 +224,7 @@ require("packer").startup(function(use)
 			require("plugins.clipboard-image-config")
 		end,
 	})
-    use("jakobkhansen/telescope-heading.nvim")
+	use("jakobkhansen/telescope-heading.nvim")
 
 	use({
 		"andreadev-it/timetrap.nvim",

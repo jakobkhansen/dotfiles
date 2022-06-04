@@ -122,11 +122,12 @@ require("telescope").setup({
 				},
 			},
 		},
-        heading = {
-            treesitter = true
-        }
+		heading = {
+			treesitter = true,
+		},
 	},
 })
+
 
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("termfinder")
@@ -135,23 +136,43 @@ require("telescope").load_extension("heading")
 
 local P = {}
 
-P.genericPicker = function(title, command, on_select, opts)
-    opts = opts or {}
-	return pickers.new(opts, {
-        prompt_title = title,
-        finder = finders.new_oneshot_job(vim.split(command, " "), opts),
-        previewer = conf.file_previewer(opts),
-        sorter = conf.file_sorter(opts),
-        attach_mappings = function(prompt_bufnr, map)
-            actions.select_default:replace(function()
-                actions.cloes(prompt_bufnr)
-                local selection = action_state.get_selected_entry()
-                on_select(selection)
-            end)
-            return true
-        end
-    })
+function P.config_files(opts)
+    local nvim_files = vim.split(vim.fn.glob('~/.config/nvim/lua/*/*lua'), '\n')
+    local config_files = {
+        vim.env.HOME .. "/.config/nvim/init.lua",
+        vim.env.HOME .. "/.config/i3/config",
+    }
+
+    for i,file in ipairs(nvim_files) do
+        table.insert(config_files, file)
+    end
+
+
+	pickers.new(opts, {
+	    prompt_title = "Configuration files",
+	    finder = finders.new_table {
+            results = config_files
+        },
+	    sorter = conf.generic_sorter(opts),
+	}):find()
 end
 
+P.genericPicker = function(title, command, on_select, opts)
+	opts = opts or {}
+	return pickers.new(opts, {
+		prompt_title = title,
+		finder = finders.new_oneshot_job(vim.split(command, " "), opts),
+		previewer = conf.file_previewer(opts),
+		sorter = conf.file_sorter(opts),
+		attach_mappings = function(prompt_bufnr, map)
+			actions.select_default:replace(function()
+				actions.close(prompt_bufnr)
+				local selection = action_state.get_selected_entry()
+				on_select(selection)
+			end)
+			return true
+		end,
+	})
+end
 
 return P

@@ -83,3 +83,13 @@ alias pm2restart="pm2 delete npm && sleep 3 && pm2start"
 
 alias darkmode="kitty +kitten themes --reload-in=all Tokyo Night Storm"
 alias lightmode="kitty +kitten themes --reload-in=all Tokyo Night Day"
+
+ recovery-pacman() {
+    sudo pacman "$@"  \
+    --log /dev/null   \
+    --noscriptlet     \
+    --dbonly          \
+    --overwrite "*"   \
+    --nodeps          \
+    --needed
+}

@@ -14,15 +14,18 @@ wk.register({
 		f = { "<CMD>Telescope find_files<CR>", "find-files" },
 		d = { "<CMD>Telescope file_browser files=false hide_parent_dir=true cwd_to_path=true<CR>", "find-directory" },
 		g = { "<CMD>Telescope git_files prompt_prefix=🔍<CR>", "find-git" },
+		n = { "<CMD>Explore<CR>", "find-netrw" },
 		r = { '<CMD>Ranger --choosedir="/tmp/ranger_dir"<CR>', "find-ranger" },
 		l = { "<CMD>Telescope file_browser cwd_to_path=true hide_parent_dir=true<CR>", "file-browser" },
+		o = { "<CMD>Telescope oldfiles<CR>", "find-mru" },
+
 		c = { "<CMD>Telescope live_grep prompt_prefix=🔍<CR>", "find-code" },
+		h = { "<CMD>Telescope heading<CR>", "find-heading" },
+
 		p = { "<CMD>Telescope neoclip<CR>", "find-clipboard" },
 		t = { "<CMD>Telescope termfinder find<CR>", "find-termminal" },
 		b = { "<CMD>Telescope buffers<CR>", "find-buffers" },
 		j = { "<CMD>Telescope jumplist<CR>", "find-jump" },
-		n = { "<CMD>Explore<CR>", "find-netrw" },
-		h = { "<CMD>Telescope heading<CR>", "find-heading" },
 	},
 
 	-- Buffer
@@ -117,8 +120,10 @@ wk.register({
     s = {
         name = "shortcuts",
         p = {"<CMD>PackerSync<CR>", "packer-sync"},
-        s = {"<CMD>Startify<CR>", "startify"},
-        t = {utils.ToggleThemeMode, "toggle-theme"}
+        s = {"<CMD>Alpha<CR>", "Start-screen"},
+        t = {utils.ToggleThemeMode, "toggle-theme"},
+        z = {"<CMD>ZenMode<CR>", "toggle-zen"},
+        c = {"<CMD>ScrollbarToggle<CR>", "toggle-scrollbar"}
     },
 
 	-- Help

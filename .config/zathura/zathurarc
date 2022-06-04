@@ -1,6 +1,8 @@
 set recolor-darkcolor "#DADADA"
 set recolor-lightcolor "#1b1617"
+set recolor-default-bg "\#222222"
 set selection-clipboard clipboard
-# set guioptions none
+set guioptions none
 
 map <C-i> recolor
+set default-bg \#FFFFFF

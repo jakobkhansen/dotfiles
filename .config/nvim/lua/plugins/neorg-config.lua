@@ -53,10 +53,12 @@ require("neorg").setup({
 
 
 function format()
+    local row,col = unpack(vim.api.nvim_win_get_cursor(0))
+    input("m'")
 	utils.onEveryLine(function(i)
         input("i<Esc>j")
-        
 	end)
+    input("<C-o>")
 end
 
 add_command("NeorgFormat", format, {})
