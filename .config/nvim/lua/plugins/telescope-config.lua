@@ -137,7 +137,7 @@ require("telescope").load_extension("heading")
 local P = {}
 
 function P.config_files(opts)
-    local nvim_files = vim.split(vim.fn.glob('~/.config/nvim/lua/*/*lua'), '\n')
+    local nvim_files = vim.split(vim.fn.glob('~/.config/nvim/lua/**/*lua'), '\n')
     local config_files = {
         vim.env.HOME .. "/.config/nvim/init.lua",
         vim.env.HOME .. "/.config/i3/config",
