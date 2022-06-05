@@ -35,7 +35,6 @@ require("packer").startup(function(use)
 			require("bufresize").setup()
 		end,
 	})
-	use("sindrets/winshift.nvim")
 
 	use({
 		"akinsho/bufferline.nvim",
@@ -99,12 +98,6 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	-- use({
-	-- 	"mhinz/vim-startify",
-	-- 	config = function()
-	-- 		require("plugins.startify-config")
-	-- 	end,
-	-- })
 	use({
 		"goolord/alpha-nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
@@ -186,9 +179,6 @@ require("packer").startup(function(use)
 	use("nvim-treesitter/playground")
 	use("nvim-treesitter/nvim-treesitter-textobjects")
 
-	-- use("sheerun/vim-polyglot")
-	use("vim-scripts/cup.vim")
-
 	-- "Snippets"
 	use({
 		"L3MON4D3/LuaSnip",
@@ -199,12 +189,6 @@ require("packer").startup(function(use)
 	use("rafamadriz/friendly-snippets")
 
 	-- "Notes and organization"
-	use({
-		"instant-markdown/vim-instant-markdown",
-		config = function()
-			require("plugins.markdown-config")
-		end,
-	})
 	use({
 		"lervag/vimtex",
 		config = function()
@@ -224,7 +208,7 @@ require("packer").startup(function(use)
 			require("plugins.clipboard-image-config")
 		end,
 	})
-	use("jakobkhansen/telescope-heading.nvim")
+	use("crispgm/telescope-heading.nvim")
 
 	use({
 		"andreadev-it/timetrap.nvim",

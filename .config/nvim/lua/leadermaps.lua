@@ -36,7 +36,6 @@ wk.register({
 		x = { "<CMD>close<CR>", "window-close" },
 		v = { "<CMD>vsplit<CR>", "vertical-split" },
 		h = { "<CMD>split<CR>", "horizontal-split" },
-		m = { "<CMD>WinShift<CR>", "buffer-move" },
 		t = { "<CMD>tabnew<CR>", "tab-new" },
 	},
 
@@ -120,7 +119,7 @@ wk.register({
     s = {
         name = "shortcuts",
         p = {"<CMD>PackerSync<CR>", "packer-sync"},
-        s = {"<CMD>Alpha<CR>", "Start-screen"},
+        s = {"<CMD>Alpha<CR>", "start-screen"},
         t = {utils.ToggleThemeMode, "toggle-theme"},
         z = {"<CMD>ZenMode<CR>", "toggle-zen"},
         c = {"<CMD>ScrollbarToggle<CR>", "toggle-scrollbar"}
