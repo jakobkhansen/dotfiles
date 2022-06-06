@@ -133,6 +133,7 @@ require("telescope").load_extension("fzf")
 require("telescope").load_extension("termfinder")
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("heading")
+require("telescope").load_extension("howdoi")
 
 local P = {}
 

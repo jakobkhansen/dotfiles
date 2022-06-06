@@ -129,7 +129,8 @@ wk.register({
 	h = {
 		name = "help",
 		t = { "<CMD>Telescope help_tags<CR>", "help-tags" },
-		w = { '<CMD>execute "h " . expand("<cword>")<CR>', "help-tags" },
+        w = { '<CMD>execute "h " . expand("<cword>")<CR>', "help-cword" },
+		h = { "<CMD>Telescope howdoi<CR>", "help-howdoi" },
 	},
 
 	-- Uncategorized

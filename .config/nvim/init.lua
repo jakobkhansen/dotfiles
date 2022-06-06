@@ -97,6 +97,7 @@ require("packer").startup(function(use)
 			require("telescope").load_extension("neoclip")
 		end,
 	})
+	use("zane-/howdoi.nvim")
 
 	use({
 		"goolord/alpha-nvim",
