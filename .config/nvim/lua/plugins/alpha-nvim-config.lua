@@ -29,7 +29,7 @@ local default_header = {
 
 local footer = {
     type = "text",
-    val = "",
+    val = require("alpha.fortune")(),
     opts = {
         position = "center",
         hl = "Number",
