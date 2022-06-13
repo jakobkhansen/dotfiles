@@ -1,0 +1,31 @@
+{
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+          "before": ["+"],
+          "after": ["$"]
+        },
+        {
+          "before": ["<Tab>"],
+          "commands": ["workbench.action.nextEditorInGroup"],
+        },
+        {
+          "before": ["<S-Tab>"],
+          "commands": ["workbench.action.previousEditorInGroup"],
+        },
+        {
+          "before": ["J"],
+          "after": ["j", "j", "j", "j", "j", "j", "j", "j", "j", "j"]
+        },
+        {
+          "before": ["K"],
+          "after": ["k", "k", "k", "k", "k", "k", "k", "k", "k", "k"]
+        },
+        {
+          "before": ["<leader>", "b", "d"],
+          "after": ["k", "k", "k", "k", "k", "k", "k", "k", "k", "k"]
+        },
+      ],
+      "vim.leader": "<space>",
+      "keyboard.dispatch": "keyCode",
+      "editor.cursorBlinking": "solid"
+}

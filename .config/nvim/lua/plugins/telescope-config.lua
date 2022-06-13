@@ -133,7 +133,6 @@ require("telescope").load_extension("fzf")
 require("telescope").load_extension("termfinder")
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("heading")
-require("telescope").load_extension("howdoi")
 
 local P = {}
 
@@ -142,6 +141,12 @@ function P.config_files(opts)
     local config_files = {
         vim.env.HOME .. "/.config/nvim/init.lua",
         vim.env.HOME .. "/.config/i3/config",
+        vim.env.HOME .. "/.config/ranger/rc.conf",
+        vim.env.HOME .. "/.config/ranger/rc.conf",
+        vim.env.HOME .. "/.config/zathura/zathurarc",
+        vim.env.HOME .. "/.config/kitty/kitty.conf",
+        vim.env.HOME .. "/.config/polybar/config",
+        vim.env.HOME .. "/.config/compton/compon.conf",
     }
 
     for i,file in ipairs(nvim_files) do

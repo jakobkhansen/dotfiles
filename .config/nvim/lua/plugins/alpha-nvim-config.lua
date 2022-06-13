@@ -79,6 +79,7 @@ local buttons = {
         button("SPC f f", "  Find file"),
         button("SPC f o", "  Recently opened files"),
         button("c", "  Config files", "<CMD>lua require('plugins.telescope-config').config_files()<CR>"),
+        button("p", "⟳  Update plugins", "<CMD>PackerSync<CR>"),
         button("q", "Quit", "<CMD>Alpha<CR>"),
     },
     opts = {
