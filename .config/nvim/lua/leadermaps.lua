@@ -51,7 +51,7 @@ wk.register({
 		l = { "<CMD>e /home/jakob/.cache/nvim/lsp.log<CR>", "lsp-log" },
 		n = { lsp.rename, "rename-symbol" },
 		a = { lsp.code_action, "code-actions" },
-		p = { "<CMD>Neoformat<CR>", "prettier-format" },
+		p = { function() vim.lsp.buf.format{ async = true } end, "prettier-format" },
 		e = {
 			name = "diagnostics",
 			e = { "<CMD>Telescope diagnostics<CR>", "diagnostic-overview" },

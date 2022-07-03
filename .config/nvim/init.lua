@@ -55,13 +55,6 @@ require("packer").startup(function(use)
 	})
 
 	-- "Files and git"
-	use({
-		"Pocco81/AutoSave.nvim",
-		config = function()
-			require("plugins.autosave-config")
-		end,
-	})
-
 	use("tpope/vim-fugitive")
 	use({ "idanarye/vim-merginal", branch = "develop" })
 	use("rhysd/conflict-marker.vim")
