@@ -1,31 +1,94 @@
 {
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-          "before": ["+"],
-          "after": ["$"]
-        },
-        {
-          "before": ["<Tab>"],
-          "commands": ["workbench.action.nextEditorInGroup"],
-        },
-        {
-          "before": ["<S-Tab>"],
-          "commands": ["workbench.action.previousEditorInGroup"],
-        },
-        {
-          "before": ["J"],
-          "after": ["j", "j", "j", "j", "j", "j", "j", "j", "j", "j"]
-        },
-        {
-          "before": ["K"],
-          "after": ["k", "k", "k", "k", "k", "k", "k", "k", "k", "k"]
-        },
-        {
-          "before": ["<leader>", "b", "d"],
-          "after": ["k", "k", "k", "k", "k", "k", "k", "k", "k", "k"]
-        },
-      ],
-      "vim.leader": "<space>",
-      "keyboard.dispatch": "keyCode",
-      "editor.cursorBlinking": "solid"
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["-"],
+      "after": ["$"]
+    },
+    {
+      "before": ["+"],
+      "after": ["$"]
+    },
+    {
+      "before": ["<Tab>"],
+      "commands": ["workbench.action.nextEditorInGroup"]
+    },
+    {
+      "before": ["<S-Tab>"],
+      "commands": ["workbench.action.previousEditorInGroup"]
+    },
+    {
+      "before": ["J"],
+      "after": ["j", "j", "j", "j", "j", "j", "j", "j", "j", "j"]
+    },
+    {
+      "before": ["K"],
+      "after": ["k", "k", "k", "k", "k", "k", "k", "k", "k", "k"]
+    },
+    {
+      "before": ["<leader>", "b", "d"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "b", "v"],
+      "commands": ["workbench.action.splitEditor"]
+    },
+    {
+      "before": ["<leader>", "b", "x"],
+      "commands": ["workbench.action.joinTwoGroups"]
+    },
+    {
+      "before": ["<leader>", "l", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["<leader>", "t", "t"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "f", "p"],
+      "commands": ["workbench.action.showCommands"]
+    },
+    {
+      "before": ["<leader>", "s", "r"],
+      "commands": ["workbench.action.reloadWindow"]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.files.save"]
+    },
+
+    {
+      "before": ["<C-h>"],
+      "after": ["<C-w>", "h"]
+    },
+    {
+      "before": ["<C-j>"],
+      "after": ["<C-w>", "j"]
+    },
+    {
+      "before": ["<C-k>"],
+      "after": ["<C-w>", "k"]
+    },
+    {
+      "before": ["<C-l>"],
+      "after": ["<C-w>", "l"]
+    }
+  ],
+  "vim.leader": "<space>",
+  "keyboard.dispatch": "keyCode",
+  "editor.cursorBlinking": "solid",
+  "editor.smoothScrolling": true,
+  "workbench.startupEditor": "none",
+  "window.zoomLevel": 2,
+  "comments.useRelativeTime": false,
+  "vim.smartRelativeLine": true,
+  "diffEditor.renderSideBySide": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "workbench.colorTheme": "Quiet Light",
+  "editor.renderLineHighlightOnlyWhenFocus": true,
+  "editor.renderLineHighlight": "none"
 }
