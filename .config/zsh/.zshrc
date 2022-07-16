@@ -174,3 +174,5 @@ export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$PATH:$GEM_HOME/bin"
 export GOLVIM="nvim"
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+
+export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
