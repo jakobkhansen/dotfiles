@@ -184,13 +184,6 @@ require("packer").startup(function(use)
 	use("hrsh7th/cmp-calc")
 	use("ray-x/cmp-treesitter")
 
-	use({
-		"sbdchd/neoformat",
-		config = function()
-			require("plugins.neoformat-config")
-		end,
-	})
-
 	-- "Treesitter & Syntax highlighting"
 	use({
 		"nvim-treesitter/nvim-treesitter",
