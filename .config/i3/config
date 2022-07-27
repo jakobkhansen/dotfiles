@@ -180,16 +180,16 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-bindsym $mod+control+Shift+1 move container to workspace number $ws11
-bindsym $mod+control+Shift+2 move container to workspace number $ws12
-bindsym $mod+control+Shift+3 move container to workspace number $ws13
-bindsym $mod+control+Shift+4 move container to workspace number $ws14
-bindsym $mod+control+Shift+5 move container to workspace number $ws15
-bindsym $mod+control+Shift+6 move container to workspace number $ws16
-bindsym $mod+control+Shift+7 move container to workspace number $ws17
-bindsym $mod+control+Shift+8 move container to workspace number $ws18
-bindsym $mod+control+Shift+9 move container to workspace number $ws19
-bindsym $mod+control+Shift+0 move container to workspace number $ws20
+bindsym $mod+$alt+Shift+1 move container to workspace number $ws11
+bindsym $mod+$alt+Shift+2 move container to workspace number $ws12
+bindsym $mod+$alt+Shift+3 move container to workspace number $ws13
+bindsym $mod+$alt+Shift+4 move container to workspace number $ws14
+bindsym $mod+$alt+Shift+5 move container to workspace number $ws15
+bindsym $mod+$alt+Shift+6 move container to workspace number $ws16
+bindsym $mod+$alt+Shift+7 move container to workspace number $ws17
+bindsym $mod+$alt+Shift+8 move container to workspace number $ws18
+bindsym $mod+$alt+Shift+9 move container to workspace number $ws19
+bindsym $mod+$alt+Shift+0 move container to workspace number $ws20
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

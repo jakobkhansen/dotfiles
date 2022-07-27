@@ -17,7 +17,7 @@ wk.register({
         d = { fzf_custom.fzf_dirs, "find-directory" },
         g = { fzf.git_files, "find-git" },
         r = { '<CMD>Ranger --choosedir="/tmp/ranger_dir"<CR>', "find-ranger" },
-        l = { "<CMD>NeoTreeFocusToggle<CR>", "file-browser" },
+        l = { "<CMD>NeoTreeRevealToggle<CR>", "file-browser" },
         o = { "<CMD>Telescope oldfiles<CR>", "find-mru" },
 
         c = { fzf.live_grep, "find-code" },
