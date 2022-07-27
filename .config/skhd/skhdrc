@@ -1,4 +1,4 @@
-# ################################################################ #
+
 # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
 # FOR SIMPLE EXAMPLE MAPPINGS LOOK FURTHER DOWN THIS FILE..        #
 # ################################################################ #
@@ -77,7 +77,6 @@
 # ############################################################### #
 
 cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
-cmd + shift - return : /Applications/Firefox.app/Contents/MacOS/firefox --new-window --single-instance -d ~
 
 # focus window
 cmd - h : yabai -m window --focus west
@@ -91,9 +90,6 @@ cmd + shift - j : yabai -m window --swap south
 cmd + shift - k : yabai -m window --swap north
 cmd + shift - l : yabai -m window --swap east
 
-# move managed window
-shift + cmd - h : yabai -m window --warp east
-
 # balance size of windows
 # shift + cmd - 0 : yabai -m space --balance
 
@@ -103,22 +99,16 @@ shift + cmd - h : yabai -m window --warp east
 # make floating window fill left-half of screen
 # shift + cmd - left   : yabai -m window --grid 1:2:0:0:1:1
 
-# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-shift + cmd - n : yabai -m space --create && \
-                  index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                  yabai -m window --space "${index}" && \
-                  yabai -m space --focus "${index}"
-
 # fast focus desktop
-# cmd - 1 : yabai -m space --focus 1
-# cmd - 2 : yabai -m space --focus 2
-# cmd - 3 : yabai -m space --focus 3
-# cmd - 4 : yabai -m space --focus 4
-# cmd - 5 : yabai -m space --focus 5
-# cmd - 6 : yabai -m space --focus 6
-# cmd - 7 : yabai -m space --focus 7
-# cmd - 8 : yabai -m space --focus 8
-# cmd - 9 : yabai -m space --focus 9
+cmd - 1 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 1)
+cmd - 2 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 2)
+cmd - 3 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 3)
+cmd - 4 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 4)
+cmd - 5 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 5)
+cmd - 6 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 6)
+cmd - 7 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 7)
+cmd - 8 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 8)
+cmd - 9 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 9)
 
 # send window to desktop and follow focus
 shift + cmd - 1 : yabai -m window --space  1
@@ -130,14 +120,15 @@ shift + cmd - 6 : yabai -m window --space  6
 shift + cmd - 7 : yabai -m window --space  7
 shift + cmd - 8 : yabai -m window --space  8
 shift + cmd - 9 : yabai -m window --space  9
+shift + cmd - 0 : yabai -m window --space  10
 
 # focus monitor
-cmd + alt - 2  : yabai -m display --focus 2
-cmd + alt - 1  : yabai -m display --focus 1
+alt - 2  : yabai -m display --focus 2
+alt - 1  : yabai -m display --focus 1
 
 # send window to monitor and follow focus
-cmd + shift + alt - 1  : yabai -m window --display 1
-cmd + shift + alt - 2  : yabai -m window --display 2
+shift + alt - 1  : yabai -m window --display 1
+shift + alt - 2  : yabai -m window --display 2
 
 # move floating window
 # shift + ctrl - a : yabai -m window --move rel:-20:0
@@ -154,17 +145,25 @@ shift + cmd - s : yabai -m window --resize left:20:0
 
 # toggle window zoom
 # cmd - d : yabai -m window --toggle zoom-parent
-cmd+shift - f : yabai -m window --toggle zoom-fullscreen
+ctrl + cmd - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window split type
-cmd - e : yabai -m window --toggle split
+cmd - r : yabai -m window --toggle split
 
 # float / unfloat window and center on screen
 cmd + shift - space: yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
+cmd + ctrl + shift - space: yabai -m space --layout float
+cmd + ctrl + shift - return: yabai -m space --layout bsp
 
 # toggle sticky(+float), topmost, picture-in-picture
 # cmd - p : yabai -m window --toggle sticky;\
 #           yabai -m window --toggle topmost;\
 #           yabai -m window --toggle pip
+
+ctrl + cmd - h : yabai -m window west --resize right:-20:0 2> /dev/null || yabai -m window --resize right:-20:0
+ctrl + cmd - j : yabai -m window north --resize bottom:0:20 2> /dev/null || yabai -m window --resize bottom:0:20
+ctrl + cmd - k : yabai -m window south --resize top:0:-20 2> /dev/null || yabai -m window --resize top:0:-20
+ctrl + cmd - l : yabai -m window east --resize left:20:0 2> /dev/null || yabai -m window --resize left:20:0
+
 

@@ -47,6 +47,8 @@ opt.pumheight = 10
 opt.termguicolors = true
 opt.signcolumn = "yes:1"
 opt.laststatus = 3
+
+-- Statusline
 opt.statusline = "%f %h%w%m%r %=%(%{getcwd()} %)"
 
 vim.g.tokyonight_transparent_sidebar = true

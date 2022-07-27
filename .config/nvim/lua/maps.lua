@@ -11,7 +11,6 @@ keymap("i", "<LeftMouse>", "<Nop>", opts)
 keymap("", "J", "10j", opts)
 keymap("", "K", "10k", opts)
 
-keymap("", ";", ",", opts)
 keymap("", ",", ";", opts)
 
 
