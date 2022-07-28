@@ -3,12 +3,18 @@ require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("nvim-lua/plenary.nvim")
 	use("nathom/filetype.nvim")
-    use {
-        's1n7ax/nvim-window-picker',
-        config = function()
-            require'window-picker'.setup()
-        end,
-    }
+	use({
+		"s1n7ax/nvim-window-picker",
+		config = function()
+			require("window-picker").setup()
+		end,
+	})
+	use({
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup()
+		end,
+	})
 
 	-- "Multi-functionality"
 	-- Mini provides pairs, surround, commenting and bufremoval functionality
@@ -51,6 +57,12 @@ require("packer").startup(function(use)
 
 	-- Visuals
 	use("jakobkhansen/tokyonight.nvim")
+	use({
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("lualine").setup()
+		end,
+	})
 	use("kyazdani42/nvim-web-devicons")
 	use({
 		"folke/zen-mode.nvim",
@@ -61,7 +73,7 @@ require("packer").startup(function(use)
 
 	-- "Files and git"
 	use("tpope/vim-fugitive")
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
 	use("rhysd/conflict-marker.vim")
 	use({
 		"lewis6991/gitsigns.nvim",
@@ -86,12 +98,17 @@ require("packer").startup(function(use)
 			require("plugins.telescope-config")
 		end,
 	})
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	})
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
-    use({
-        "ThePrimeagen/git-worktree.nvim",
-        config = function() require("git-worktree").setup() end
-    })
+	use({
+		"ThePrimeagen/git-worktree.nvim",
+		config = function()
+			require("git-worktree").setup()
+		end,
+	})
 	use({
 		"AckslD/nvim-neoclip.lua",
 		config = function()
@@ -99,14 +116,13 @@ require("packer").startup(function(use)
 			require("telescope").load_extension("neoclip")
 		end,
 	})
-    use { 'ibhagwan/fzf-lua',
-      requires = { 'kyazdani42/nvim-web-devicons' },
-      config = function()
-            require("plugins.fzf-config")
-      end,
-
-    }
-
+	use({
+		"ibhagwan/fzf-lua",
+		requires = { "kyazdani42/nvim-web-devicons" },
+		config = function()
+			require("plugins.fzf-config")
+		end,
+	})
 
 	use({
 		"goolord/alpha-nvim",
@@ -136,18 +152,18 @@ require("packer").startup(function(use)
 			require("plugins.fm-nvim-config")
 		end,
 	})
-    use({
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
-        requires = { 
-          "nvim-lua/plenary.nvim",
-          "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-          "MunifTanjim/nui.nvim",
-        },
-        config = function()
-            require("plugins.neotree-config")
-        end,
-    })
+	use({
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("plugins.neotree-config")
+		end,
+	})
 
 	-- "LSP and languages"
 	use({
@@ -155,6 +171,12 @@ require("packer").startup(function(use)
 		config = function()
 			require("plugins.lsp-config")
 			require("plugins.lsp-servers")
+		end,
+	})
+	use({
+		"williamboman/mason-lspconfig.nvim",
+		config = function()
+			require("mason-lspconfig").setup()
 		end,
 	})
 	use({
@@ -166,7 +188,7 @@ require("packer").startup(function(use)
 	use("mfussenegger/nvim-jdtls")
 	use("onsails/lspkind-nvim")
 
-    use("jose-elias-alvarez/typescript.nvim")
+	use("jose-elias-alvarez/typescript.nvim")
 	use("windwp/nvim-ts-autotag")
 
 	use({
@@ -193,12 +215,12 @@ require("packer").startup(function(use)
 	})
 	use("nvim-treesitter/playground")
 	use("nvim-treesitter/nvim-treesitter-textobjects")
-    use({
-        "jose-elias-alvarez/null-ls.nvim",
+	use({
+		"jose-elias-alvarez/null-ls.nvim",
 		config = function()
 			require("plugins.null-ls-config")
 		end,
-    })
+	})
 
 	-- "Snippets"
 	use({
@@ -240,9 +262,9 @@ require("packer").startup(function(use)
 			require("plugins.timetrap-config")
 		end,
 	})
-  	if packer_bootstrap then
-  	  require('packer').sync()
-  	end
+	if packer_bootstrap then
+		require("packer").sync()
+	end
 end)
 
 -- Load rest of config

@@ -162,21 +162,19 @@ autocmd("FileType", { pattern = "java", callback = start_jdt })
 
 ---- Typescript
 
-
 nvim_lsp.tsserver.setup({
-    root_dir = util.root_pattern('.git', 'packages/'),
+	root_dir = util.root_pattern(".git", "packages/"),
 	on_attach = function(client, _)
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
+		client.resolved_capabilities.document_formatting = false
+		client.resolved_capabilities.document_range_formatting = false
 	end,
 })
 
 nvim_lsp.eslint.setup({
-    on_attach = function(client, _)
-        -- autocmd({ "BufWritePre" }, { command = ":EslintFixAll", pattern = "*.tsx,*.ts,*.jsx,*.js" })
-    end,
+	on_attach = function(client, _)
+		-- autocmd({ "BufWritePre" }, { command = ":EslintFixAll", pattern = "*.tsx,*.ts,*.jsx,*.js" })
+	end,
 })
-
 
 ---- Latex
 nvim_lsp.texlab.setup({})
