@@ -25,7 +25,7 @@ require("lualine").setup({
 		globalstatus = true,
 	},
 	sections = {
-		lualine_a = {},
+		lualine_a = { "branch" },
 		lualine_b = { "filename" },
 		lualine_c = {},
 		lualine_x = {},

@@ -8,7 +8,7 @@ local event = require("nui.utils.autocmd").event
 local P = {}
 
 function P.CWDgitRoot()
-    local cwd = vim.loop.cwd()
+	local cwd = vim.loop.cwd()
 	local git_root = require("lspconfig").util.root_pattern(".git")(cwd)
 
 	if git_root ~= nil then
@@ -24,13 +24,13 @@ function P.getFirstDayOfCurrentMonth()
 end
 
 function P.LightMode()
-    command("silent !kitty +kitten themes --reload-in=all Tokyo Night Day")
+	command("silent !kitty +kitten themes --reload-in=all Tokyo Night Day")
 	vim.o.background = "light"
 	vimscript("colorscheme tokyonight", false)
 end
 
 function P.DarkMode()
-    command("silent !kitty +kitten themes --reload-in=all Tokyo Night Storm")
+	command("silent !kitty +kitten themes --reload-in=all Tokyo Night Storm")
 	vim.o.background = "dark"
 	vimscript("colorscheme tokyonight", false)
 end
@@ -44,66 +44,66 @@ function P.ToggleThemeMode()
 end
 
 function P.showFloatingPrompt(display_text, on_submit, on_close)
-    local prompt = Input({
-        position = "50%",
-        size = {
-            width = 60,
-            height = 2,
-        },
-        relative = "editor",
-        border = {
-            style = "rounded",
-            text = {
-                top = display_text,
-                top_align = "center"
-            }
-        },
-        win_options = {
-            winhighlight = "Normal:Normal"
-        },
-    }, {
-        prompt = "> ",
-        on_submit = on_submit,
-        on_close = on_close,
-    })
+	local prompt = Input({
+		position = "50%",
+		size = {
+			width = 60,
+			height = 2,
+		},
+		relative = "editor",
+		border = {
+			style = "rounded",
+			text = {
+				top = display_text,
+				top_align = "center",
+			},
+		},
+		win_options = {
+			winhighlight = "Normal:Normal",
+		},
+	}, {
+		prompt = "> ",
+		on_submit = on_submit,
+		on_close = on_close,
+	})
 
-    prompt:mount()
+	prompt:mount()
 
-    -- close the input window by pressing `<Esc>` on normal mode
-    prompt:map("n", "<Esc>", prompt.input_props.on_close, { noremap = true })
+	-- close the input window by pressing `<Esc>` on normal mode
+	prompt:map("n", "<Esc>", prompt.input_props.on_close, { noremap = true })
 
-    prompt:on(event.BufLeave, function ()
-        prompt:unmount()
-    end)
+	prompt:on(event.BufLeave, function()
+		prompt:unmount()
+	end)
 end
 
 function P.treesitterExecQuery(bufnr, query)
-    local filetype = vim.bo.ft
-        local ts = vim.treesitter
-    local parsed_query = ts.parse_query(filetype, query)
-    local parser = ts.get_parser(bufnr, filetype)
-    local root = parser:parse()[1]:root()
-    local start_row, _, end_row, _ = root:range()
+	local filetype = vim.bo.ft
+	local ts = vim.treesitter
+	local parsed_query = ts.parse_query(filetype, query)
+	local parser = ts.get_parser(bufnr, filetype)
+	local root = parser:parse()[1]:root()
+	local start_row, _, end_row, _ = root:range()
 
-    local headings = {}
-    for _, node in parsed_query:iter_captures(root, bufnr, start_row, end_row) do
-        local row, _ = node:range()
-        local line = vim.fn.getline(row + 1)
-        print(row)
-
-    end
-    return headings
-
+	local headings = {}
+	for _, node in parsed_query:iter_captures(root, bufnr, start_row, end_row) do
+		local row, _ = node:range()
+		local line = vim.fn.getline(row + 1)
+		print(row)
+	end
+	return headings
 end
 
 function P.onEveryLine(callback)
-    local num_lines = vim.api.nvim_buf_line_count(0)
-    command("0")
-    for i=0,num_lines do
-        callback(i)
-    end
+	local num_lines = vim.api.nvim_buf_line_count(0)
+	command("0")
+	for i = 0, num_lines do
+		callback(i)
+	end
 end
 
+add_command("Session", ":mksession! ~/.local/share/nvim/session.vim<CR>", {})
+add_command("SessionRestore", ":source  ~/.local/share/nvim/session.vim<CR>", {})
 
 add_command("LightMode", P.LightMode, {})
 add_command("DarkMode", P.DarkMode, {})

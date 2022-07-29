@@ -14,14 +14,14 @@ wk.register({
 	f = {
 		name = "find",
 		f = { fzf.files, "find-files" },
-        d = { fzf_custom.fzf_dirs, "find-directory" },
+		d = { fzf_custom.fzf_dirs, "find-directory" },
 		g = { fzf.git_files, "find-git" },
 		n = { "<CMD>Explore<CR>", "find-netrw" },
 		r = { '<CMD>Ranger --choosedir="/tmp/ranger_dir"<CR>', "find-ranger" },
 		l = { "<CMD>NeoTreeRevealToggle<CR>", "file-browser" },
 		o = { "<CMD>Telescope oldfiles<CR>", "find-mru" },
 
-        c = { fzf.live_grep, "find-code" },
+		c = { fzf.live_grep, "find-code" },
 		h = { "<CMD>Telescope heading<CR>", "find-heading" },
 
 		p = { "<CMD>Telescope neoclip<CR>", "find-clipboard" },
@@ -53,22 +53,22 @@ wk.register({
 		l = { "<CMD>e /home/jakob/.cache/nvim/lsp.log<CR>", "lsp-log" },
 		n = { lsp.rename, "rename-symbol" },
 		a = { lsp.code_action, "code-actions" },
-        p = { lsp.formatting, "lsp-format" },
+		p = { lsp.formatting, "lsp-format" },
 		e = {
 			name = "diagnostics",
 			e = { "<CMD>Telescope diagnostics<CR>", "diagnostic-overview" },
 			l = { diagnostic.open_float, "line-diagnostics" },
-            n = { diagnostic.goto_next, "goto-next" },
-            p = { diagnostic.goto_prev, "goto-prev" },
+			n = { diagnostic.goto_next, "goto-next" },
+			p = { diagnostic.goto_prev, "goto-prev" },
 		},
 	},
 
-    -- DAP
-    d = {
-        name = "debug",
-        r = {dap.continue, "run"},
-        b = {dap.toggle_breakpoint, "toggle-breakpoint"}
-    },
+	-- DAP
+	d = {
+		name = "debug",
+		r = { dap.continue, "run" },
+		b = { dap.toggle_breakpoint, "toggle-breakpoint" },
+	},
 
 	-- Terminal
 	t = {
@@ -88,50 +88,61 @@ wk.register({
 		v = { "<CMD>silent !gh repo view --web<CR>", "git-browser" },
 	},
 
-	-- Path, cwd
+	-- Path, cwd, session
 	p = {
-		name = "path",
+		name = "path, cwd, session",
 		h = { "<CMD>cd $HOME<CR>", "path-home" },
 		g = { utils.CWDgitRoot, "path-git-root" },
 		n = { "<CMD>cd $HOME/.config/nvim<CR>", "path-neovim-config" },
 		c = { "<CMD>cd %:p:h<CR>", "path-current-file" },
 		o = { "<CMD>cd $HOME/Documents/gtd<CR>", "path-gtd" },
-		k = { "<CMD>cd $HOME/Documents/Personal/KattisSolutions<CR>", "path-kattis" },
-		s = { "<CMD>cd $HOME/Documents/School<CR>", "path-school" },
+		s = {
+			name = "session",
+			s = {
+				"<CMD>Session<CR>",
+				"session-save",
+			},
+			r = {
+				"<CMD>SessionRestore<CR>",
+				"session-restore",
+			},
+		},
 	},
-
 
 	-- Neorg
 	o = {
 		name = "organize",
-		h = { "<CMD>silent! NeorgStart<CR><CMD>Neorg journal custom " .. utils.getFirstDayOfCurrentMonth() .. "<CR>", "hours" },
+		h = {
+			"<CMD>silent! NeorgStart<CR><CMD>Neorg journal custom " .. utils.getFirstDayOfCurrentMonth() .. "<CR>",
+			"hours",
+		},
 		j = { "<CMD>silent! NeorgStart<CR><CMD>Neorg journal today<CR>", "journal" },
 		p = { "<CMD>edit $HOME/Documents/gtd/projects.norg<CR>", "projects" },
-        t = {
-            name = "timetrap",
-            i = {require("plugins.timetrap-config").check_in, "check-in"},
-            o = {"<CMD>Timetrap out<CR>", "check-out"},
-            r = {"<CMD>Timetrap resume<CR>", "resume"},
-            d = {"<CMD>Timetrap d<CR>", "display"},
-            n = {"<CMD>Timetrap now<CR>", "now"}
-        }
+		t = {
+			name = "timetrap",
+			i = { require("plugins.timetrap-config").check_in, "check-in" },
+			o = { "<CMD>Timetrap out<CR>", "check-out" },
+			r = { "<CMD>Timetrap resume<CR>", "resume" },
+			d = { "<CMD>Timetrap d<CR>", "display" },
+			n = { "<CMD>Timetrap now<CR>", "now" },
+		},
 	},
 
-    -- Shortcuts
-    s = {
-        name = "shortcuts",
-        p = {"<CMD>PackerSync<CR>", "packer-sync"},
-        s = {"<CMD>Alpha<CR>", "start-screen"},
-        t = {utils.ToggleThemeMode, "toggle-theme"},
-        z = {"<CMD>ZenMode<CR>", "toggle-zen"},
-        c = {"<CMD>ScrollbarToggle<CR>", "toggle-scrollbar"}
-    },
+	-- Shortcuts
+	s = {
+		name = "shortcuts",
+		p = { "<CMD>PackerSync<CR>", "packer-sync" },
+		s = { "<CMD>Alpha<CR>", "start-screen" },
+		t = { utils.ToggleThemeMode, "toggle-theme" },
+		z = { "<CMD>ZenMode<CR>", "toggle-zen" },
+		c = { "<CMD>ScrollbarToggle<CR>", "toggle-scrollbar" },
+	},
 
 	-- Help
 	h = {
 		name = "help",
 		t = { "<CMD>Telescope help_tags<CR>", "help-tags" },
-        w = { '<CMD>execute "h " . expand("<cword>")<CR>', "help-cword" },
+		w = { '<CMD>execute "h " . expand("<cword>")<CR>', "help-cword" },
 	},
 
 	-- Uncategorized

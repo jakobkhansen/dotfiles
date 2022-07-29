@@ -1,7 +1,6 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-
 keymap("", "+", "$", opts)
 keymap("", '""', '"+y', opts)
 keymap("", "<LeftMouse>", "<Nop>", opts)
@@ -12,7 +11,6 @@ keymap("", "J", "10j", opts)
 keymap("", "K", "10k", opts)
 
 keymap("", ",", ";", opts)
-
 
 -- Text manipulation
 keymap("", "<A-k>", "<CMD>m-2<CR>", opts)
@@ -32,7 +30,6 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
-
 
 --  Resize buffers
 keymap("n", "<C-m-h>", "<CMD>vertical resize-5<CR>", opts)
@@ -66,7 +63,6 @@ keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>resize+5<CR>i", opts)
 keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>vertical resize+5<CR>i", opts)
 keymap("t", "<C-M-r>", "<C-\\><C-n><C-W>=i", opts)
 
-
 -- Fix range code action
-keymap("n", "<C-q>", '', {callback = vim.lsp.buf.code_action})
+keymap("n", "<C-q>", "", { callback = vim.lsp.buf.code_action })
 keymap("v", "<C-q>", "<Esc>gv<CMD>lua vim.lsp.buf.range_code_action()<CR>", opts)
