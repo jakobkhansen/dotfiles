@@ -22,7 +22,6 @@ wk.register({
 		o = { "<CMD>Telescope oldfiles<CR>", "find-mru" },
 
 		c = { fzf.live_grep, "find-code" },
-		h = { "<CMD>Telescope heading<CR>", "find-heading" },
 
 		p = { "<CMD>Telescope neoclip<CR>", "find-clipboard" },
 		t = { "<CMD>Telescope termfinder find<CR>", "find-termminal" },
@@ -83,9 +82,6 @@ wk.register({
 		s = { "<CMD>Ge :<CR>", "git-status" },
 		c = { fzf.git_commits, "git-commits" },
 		b = { "<CMD>Telescope git_branches<CR>", "git-branches" },
-		h = { "<CMD>Git blame<CR>", "git-blame" },
-		m = { "<CMD>Git mergetool<CR>", "git-mergetool" },
-		v = { "<CMD>silent !gh repo view --web<CR>", "git-browser" },
 	},
 
 	-- Path, cwd, session

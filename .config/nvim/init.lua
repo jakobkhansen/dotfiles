@@ -64,17 +64,9 @@ require("packer").startup(function(use)
 		end,
 	})
 	use("kyazdani42/nvim-web-devicons")
-	use({
-		"folke/zen-mode.nvim",
-		config = function()
-			require("plugins.zenmode-config")
-		end,
-	})
 
 	-- "Files and git"
 	use("tpope/vim-fugitive")
-	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
-	use("rhysd/conflict-marker.vim")
 	use({
 		"lewis6991/gitsigns.nvim",
 		config = function()
@@ -113,7 +105,6 @@ require("packer").startup(function(use)
 		"AckslD/nvim-neoclip.lua",
 		config = function()
 			require("neoclip").setup()
-			require("telescope").load_extension("neoclip")
 		end,
 	})
 	use({
@@ -129,13 +120,6 @@ require("packer").startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons" },
 		config = function()
 			require("plugins.alpha-nvim-config")
-		end,
-	})
-
-	use({
-		"rcarriga/nvim-notify",
-		config = function()
-			vim.notify = require("notify")
 		end,
 	})
 
@@ -251,7 +235,6 @@ require("packer").startup(function(use)
 			require("plugins.clipboard-image-config")
 		end,
 	})
-	use("crispgm/telescope-heading.nvim")
 
 	use({
 		"andreadev-it/timetrap.nvim",

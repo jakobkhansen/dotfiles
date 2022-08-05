@@ -97,7 +97,7 @@ require("telescope").setup({
 				["<A-d>"] = open_file_browser(false),
 				["<A-b>"] = open_file_browser(true),
 				["o"] = open_xdg(),
-                ["p"] = require("telescope.actions.layout").toggle_preview
+				["p"] = require("telescope.actions.layout").toggle_preview,
 			},
 			i = {
 				["<A-f>"] = open_in(builtin.find_files, {}),
@@ -106,7 +106,7 @@ require("telescope").setup({
 				["<A-b>"] = open_file_browser(true),
 			},
 		},
-	    file_ignore_patterns = { "%.class", "%.png", "%.jpg", "%.jpeg", "change", "node_modules", "Caches" },
+		file_ignore_patterns = { "%.class", "%.png", "%.jpg", "%.jpeg", "change", "node_modules", "Caches" },
 	},
 	extensions = {
 		fzf = {
@@ -123,48 +123,45 @@ require("telescope").setup({
 				},
 			},
 		},
-		heading = {
-			treesitter = true,
-		},
 	},
 })
-
 
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("termfinder")
 require("telescope").load_extension("file_browser")
-require("telescope").load_extension("heading")
 require("telescope").load_extension("git_worktree")
+require("telescope").load_extension("neoclip")
 
 local P = {}
 
 function P.config_files(opts)
-    local nvim_files = vim.split(vim.fn.glob('~/.config/nvim/lua/**/*lua'), '\n')
-    local config_files = {
-        vim.env.HOME .. "/.config/nvim/init.lua",
-        vim.env.HOME .. "/.config/i3/config",
-        vim.env.HOME .. "/.config/ranger/rc.conf",
-        vim.env.HOME .. "/.config/ranger/rc.conf",
-        vim.env.HOME .. "/.config/zathura/zathurarc",
-        vim.env.HOME .. "/.config/kitty/kitty.conf",
-        vim.env.HOME .. "/.config/polybar/config",
-        vim.env.HOME .. "/.config/compton/compon.conf",
-        vim.env.HOME .. "/.config/yabai/yabairc",
-        vim.env.HOME .. "/.config/skhd/skhdrc",
-    }
+	local nvim_files = vim.split(vim.fn.glob("~/.config/nvim/lua/**/*lua"), "\n")
+	local config_files = {
+		vim.env.HOME .. "/.config/nvim/init.lua",
+		vim.env.HOME .. "/.config/i3/config",
+		vim.env.HOME .. "/.config/ranger/rc.conf",
+		vim.env.HOME .. "/.config/ranger/rc.conf",
+		vim.env.HOME .. "/.config/zathura/zathurarc",
+		vim.env.HOME .. "/.config/kitty/kitty.conf",
+		vim.env.HOME .. "/.config/polybar/config",
+		vim.env.HOME .. "/.config/compton/compon.conf",
+		vim.env.HOME .. "/.config/yabai/yabairc",
+		vim.env.HOME .. "/.config/skhd/skhdrc",
+	}
 
-    for i,file in ipairs(nvim_files) do
-        table.insert(config_files, file)
-    end
+	for i, file in ipairs(nvim_files) do
+		table.insert(config_files, file)
+	end
 
-
-	pickers.new(opts, {
-	    prompt_title = "Configuration files",
-	    finder = finders.new_table {
-            results = config_files
-        },
-	    sorter = conf.generic_sorter(opts),
-	}):find()
+	pickers
+		.new(opts, {
+			prompt_title = "Configuration files",
+			finder = finders.new_table({
+				results = config_files,
+			}),
+			sorter = conf.generic_sorter(opts),
+		})
+		:find()
 end
 
 P.genericPicker = function(title, command, on_select, opts)

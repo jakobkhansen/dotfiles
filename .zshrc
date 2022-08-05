@@ -127,3 +127,5 @@ export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 KEYTIMEOUT=1
+
+export MIDGARD_BACKFILL_CACHE_DIR=$HOME"/.midgard-build-cache"
