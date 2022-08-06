@@ -73,6 +73,12 @@ require("packer").startup(function(use)
 			require("plugins.gitsigns-config")
 		end,
 	})
+	use({
+		"sindrets/diffview.nvim",
+		config = function()
+			require("diffview").setup()
+		end,
+	})
 
 	-- "Terminal"
 	use({

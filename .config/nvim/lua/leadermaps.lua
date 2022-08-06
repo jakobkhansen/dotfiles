@@ -85,7 +85,7 @@ wk.register({
 	g = {
 		name = "git",
 		s = { "<CMD>Ge :<CR>", "git-status" },
-		c = { fzf.git_commits, "git-commits" },
+		c = { "<CMD>Telescope git_commits<CR>", "git-commits" },
 		b = { "<CMD>Telescope git_branches<CR>", "git-branches" },
 	},
 

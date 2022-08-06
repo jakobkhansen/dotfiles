@@ -108,6 +108,19 @@ require("telescope").setup({
 		path_display = { "truncate" },
 		file_ignore_patterns = { "%.class", "%.png", "%.jpg", "%.jpeg", "change", "node_modules", "Caches" },
 	},
+	pickers = {
+		git_commits = {
+			mappings = {
+				n = {
+					["d"] = function(prompt_bufnr)
+						local selection = action_state.get_selected_entry()
+						local hash = selection.value
+						vim.cmd("DiffviewOpen " .. hash .. "~1.." .. hash)
+					end,
+				},
+			},
+		},
+	},
 	extensions = {
 		fzf = {
 			fuzzy = true, -- false will only do exact matching
