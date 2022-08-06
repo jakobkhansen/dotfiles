@@ -1,17 +1,12 @@
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+
 require("neo-tree").setup({
 	close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 	popup_border_style = "rounded",
 	enable_git_status = false,
 	enable_diagnostics = false,
 	sort_case_insensitive = false, -- used when sorting files and directories in the tree
-	sort_function = nil, -- use a custom function for sorting files and directories in the tree
-	-- sort_function = function (a,b)
-	--       if a.type == b.type then
-	--           return a.path > b.path
-	--       else
-	--           return a.type > b.type
-	--       end
-	--   end , -- this sorts files and directories descendantly
+
 	default_component_configs = {
 		container = {
 			enable_character_fade = true,
@@ -114,7 +109,7 @@ require("neo-tree").setup({
 		filtered_items = {
 			visible = false, -- when true, they will just be displayed differently than normal items
 			hide_dotfiles = true,
-			hide_gitignored = true,
+			hide_gitignored = false,
 			hide_hidden = true, -- only works on Windows for hidden files/directories
 			hide_by_name = {
 				--"node_modules"

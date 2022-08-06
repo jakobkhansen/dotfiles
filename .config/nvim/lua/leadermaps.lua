@@ -18,7 +18,7 @@ wk.register({
 		g = { fzf.git_files, "find-git" },
 		n = { "<CMD>Explore<CR>", "find-netrw" },
 		r = { '<CMD>Ranger --choosedir="/tmp/ranger_dir"<CR>', "find-ranger" },
-		l = { "<CMD>NeoTreeRevealToggle<CR>", "file-browser" },
+		l = { "<CMD>Neotree reveal toggle<CR>", "file-browser" },
 		o = { "<CMD>Telescope oldfiles<CR>", "find-mru" },
 
 		c = {
