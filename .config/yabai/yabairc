@@ -53,14 +53,6 @@ yabai -m config active_window_border_color 0xff4c7899
 yabai -m config normal_window_border_color 0xff555555
 
 yabai -m window --toggle border
-yabai -m rule --add app=Terminal border=off
-
-
-
-# Rules
-yabai -m rule --add app="Übersicht" manage=off
-
-echo "yabai configuration loaded.."
 
 # If no window on the current space is focused after a window is destroyed or
 # minimized, or an application is hidden, focus the window under the cursor.

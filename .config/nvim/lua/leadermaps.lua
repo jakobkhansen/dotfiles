@@ -21,7 +21,12 @@ wk.register({
 		l = { "<CMD>NeoTreeRevealToggle<CR>", "file-browser" },
 		o = { "<CMD>Telescope oldfiles<CR>", "find-mru" },
 
-		c = { fzf.live_grep, "find-code" },
+		c = {
+			function()
+				fzf.live_grep({ previewer = "bat" })
+			end,
+			"find-code",
+		},
 
 		p = { "<CMD>Telescope neoclip<CR>", "find-clipboard" },
 		t = { "<CMD>Telescope termfinder find<CR>", "find-termminal" },

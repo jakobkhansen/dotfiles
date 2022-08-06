@@ -91,7 +91,6 @@ require("telescope").setup({
 					return true
 				end,
 				["<BS>"] = goto_parent_dir_check(),
-
 				["<A-f>"] = open_in(builtin.find_files, {}),
 				["<A-g>"] = open_in(builtin.git_files, {}),
 				["<A-d>"] = open_file_browser(false),
@@ -106,6 +105,7 @@ require("telescope").setup({
 				["<A-b>"] = open_file_browser(true),
 			},
 		},
+		path_display = { "truncate" },
 		file_ignore_patterns = { "%.class", "%.png", "%.jpg", "%.jpeg", "change", "node_modules", "Caches" },
 	},
 	extensions = {
