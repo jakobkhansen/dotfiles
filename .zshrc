@@ -117,6 +117,17 @@ bindkey -a '+' vi-end-of-line
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Create a new widget.
+zle -N backward-kill-space-word
+backward-kill-space-word() {
+  # Inform the line editor that this widget will kill text.
+  zle -f kill
+
+  # Set $WORDCHARS for this command only. 
+  WORDCHARS='*?_-.[]~=/&;!#$%^(){}<>' zle .backward-kill-word
+}
+bindkey   '^W' backward-kill-space-word
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 

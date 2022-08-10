@@ -40,7 +40,6 @@ local open_file_browser = function(files)
 		local current_picker = action_state.get_current_picker(prompt_bufnr)
 		local curr_finder = current_picker.finder
 		local dir = get_target_dir(curr_finder)
-		print(dir)
 		vim.cmd(
 			"Telescope file_browser hide_parent_dir=true, cwd_to_path=true path=" .. dir .. " files=" .. tostring(files)
 		)
@@ -105,7 +104,6 @@ require("telescope").setup({
 				["<A-b>"] = open_file_browser(true),
 			},
 		},
-		path_display = { "truncate" },
 		file_ignore_patterns = { "%.class", "%.png", "%.jpg", "%.jpeg", "change", "node_modules", "Caches" },
 	},
 	pickers = {
@@ -119,6 +117,10 @@ require("telescope").setup({
 					end,
 				},
 			},
+		},
+		lsp_references = {
+			show_path = { "full" },
+			fname_width = 60,
 		},
 	},
 	extensions = {

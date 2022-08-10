@@ -14,10 +14,12 @@ alias ll='ls -a'
 alias la='ls -A'
 alias l='ls'
 alias ff="\$($HOME/Documents/Scripts/fzf_navigate.py)"
+alias ss="\$($HOME/Documents/Scripts/fzf_navigate.py)"
 alias c="clear"
 alias size="du -sh "
 
-alias dagens="/home/jakob/Documents/Personal/Middag-IFI/middag.py"
+
+
 
 alias cd_old="cd"
 alias cd="cs"
@@ -28,68 +30,35 @@ function cs () {
 }
 
 alias h="cd ~"
+alias wjs="cd ~/Documents/WJS"
+
 alias ranger='source ranger'
+
 alias r=ranger
 alias n=nvim
-
-alias kattispy="/home/jakob/Documents/Personal/KattisSolutions/kattis_shell_python.sh"
-alias kattissubmit="/home/jakob/Documents/Scripts/submit.py"
-
-alias kotlinrun="/home/jakob/Documents/Scripts/kotlinrun.py"
-alias absc="java -jar $HOME/Documents/Dev/abs/compiler/absfrontend.jar --erlang"
+alias skhd="~/Documents/Dev/skhd/bin/skhd &; disown"
+alias yabaireboot='launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"'
 
 
-alias dotfiles='/usr/bin/git --git-dir=/home/jakob/.dotfiles/ --work-tree=/home/jakob'
-alias pushdotfiles="dotfiles add -u && dotfiles commit -m 'Updates' && dotfiles push"
-alias pushschool="cd /home/jakob/Documents/School; git add .; git commit -m 'Updates'; git push"
+alias g="git"
 alias gitview="gh repo view --web"
+alias gv=gitview
 alias gitroot="cd \$(git rev-parse --show-toplevel)"
 alias gr=gitroot
+alias gitbranch="git branch"
+alias gb=gitbranch
 
-alias serve="browser-sync start -s -f . "
-
-function gitpush() {
-    git add -u 
-    git commit -m $1
-    git push
-}
-
-alias orphans="yay -Rns \$(yay -Qtdq)"
-
-alias open="echo -ne '\n' | xdg-open $1 > /dev/null 2>&1"
-
-alias latexinit="/home/jakob/Documents/Scripts/latextemplate.sh $1"
-
-
-alias sxiv="sxiv -a"
-
-alias cal="cal -m -y"
-
-alias tlmgr="/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode"
-
-alias anaconda="export PATH=\"$HOME/.config/anaconda3/bin:\$PATH\""
-
-alias drag="dragon-drag-and-drop"
-
-alias monleft="xrandr --auto; xrandr --output HDMI-1 --left-of eDP-1"
-alias monright="xrandr --auto; xrandr --output HDMI-1 --right-of eDP-1"
-alias monup="xrandr --auto; xrandr --output HDMI-1 --above eDP-1"
-alias mondup="xrandr --auto; xrandr --output HDMI-1 --same-as eDP-1"
-alias keyboardoverlay="screenkey -t 2 -s small --opacity 1 --window"
-
-
-alias pm2start="pm2 start npm -- start --restart-delay=3000"
-alias pm2restart="pm2 delete npm && sleep 3 && pm2start"
 
 alias darkmode="kitty +kitten themes --reload-in=all Tokyo Night Storm"
 alias lightmode="kitty +kitten themes --reload-in=all Tokyo Night Day"
 
- recovery-pacman() {
-    sudo pacman "$@"  \
-    --log /dev/null   \
-    --noscriptlet     \
-    --dbonly          \
-    --overwrite "*"   \
-    --nodeps          \
-    --needed
-}
+alias dotfiles='/usr/bin/git --git-dir=/Users/jakobkonradhansen/.dotfiles/ --work-tree=/Users/jakobkonradhansen'
+alias pushdotfiles="yadm add -u && yadm commit -m 'Updates' && yadm push"
+alias dotfilesg="nvim .local/share/yadm/repo.git -c 'Ge :'"
+
+alias monleft="xrandr --auto; xrandr --output HDMI-1 --left-of eDP-1"                                                                               
+alias monright="xrandr --auto; xrandr --output HDMI-1 --right-of eDP-1"                                                                             
+alias monup="xrandr --auto; xrandr --output HDMI-1 --above eDP-1"                                                                                   
+alias mondup="xrandr --auto; xrandr --output HDMI-1 --same-as eDP-1"                                                                                
+
+alias keyboardoverlay="screenkey -t 2 -s small --opacity 1 --window"

@@ -63,6 +63,7 @@ require("packer").startup(function(use)
 			require("plugins.lualine-config")
 		end,
 	})
+	use("nvim-lua/lsp-status.nvim")
 	use("kyazdani42/nvim-web-devicons")
 
 	-- "Files and git"
@@ -194,6 +195,7 @@ require("packer").startup(function(use)
 	use("kdheepak/cmp-latex-symbols")
 	use("uga-rosa/cmp-dictionary")
 	use("hrsh7th/cmp-calc")
+	use("hrsh7th/cmp-cmdline")
 	use("ray-x/cmp-treesitter")
 
 	-- "Treesitter & Syntax highlighting"

@@ -48,10 +48,10 @@ wk.register({
 	-- LSP
 	l = {
 		name = "lsp",
-		d = { lsp.definition, "goto-definition" },
+		d = { "<CMD>Telescope lsp_definitions<CR>", "goto-definition" },
 		h = { lsp.hover, "show-hover" },
 		s = { lsp.signature_help, "show-signature" },
-		r = { lsp.references, "goto-references" },
+		r = { "<CMD>Telescope lsp_references<CR>", "goto-references" },
 		x = { "<CMD>LspRestart<CR>", "lsp-restart" },
 		i = { "<CMD>LspInfo<CR>", "lsp-info" },
 		l = { "<CMD>e /home/jakob/.cache/nvim/lsp.log<CR>", "lsp-log" },
@@ -87,6 +87,12 @@ wk.register({
 		s = { "<CMD>Ge :<CR>", "git-status" },
 		c = { "<CMD>Telescope git_commits<CR>", "git-commits" },
 		b = { "<CMD>Telescope git_branches<CR>", "git-branches" },
+		h = {
+			name = "hunk",
+			p = { "<CMD>Gitsigns preview_hunk<CR>", "hunk-preview" },
+			s = { "<CMD>Gitsigns stage_hunk<CR>", "hunk-stage" },
+			n = { "<CMD>Gitsigns next_hunk<CR>", "hunk-next" },
+		},
 	},
 
 	-- Path, cwd, session

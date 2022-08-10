@@ -21,7 +21,6 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "buffer" },
 		{ name = "latex_symbols", keyword_length = 2 },
-        { name = "orgmode" },
 		{
 			name = "dictionary",
 			keyword_length = 2,
@@ -35,6 +34,13 @@ cmp.setup({
 	},
 	formatting = {
 		format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
+	},
+})
+
+require("cmp").setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "cmdline" },
 	},
 })
 
