@@ -62,3 +62,11 @@ alias monup="xrandr --auto; xrandr --output HDMI-1 --above eDP-1"
 alias mondup="xrandr --auto; xrandr --output HDMI-1 --same-as eDP-1"                                                                                
 
 alias keyboardoverlay="screenkey -t 2 -s small --opacity 1 --window"
+
+# Freebuds, Sony, Trackpad
+function connect() {
+    bluetoothctl connect 68:13:24:9C:40:F6 &
+    bluetoothctl connect 88:C9:E8:37:EB:EB &
+    bluetoothctl connect D4:57:63:5B:91:E7 &
+    disown
+}
