@@ -6,19 +6,9 @@ local autocmd = vim.api.nvim_create_autocmd
 local add_command = vim.api.nvim_create_user_command
 local vimscript = vim.api.nvim_exec
 local command = vim.api.nvim_command
-local lsp_status = require("lsp-status")
-lsp_status.register_progress()
-lsp_status.config({
-	indicator_errors = "E",
-	indicator_warnings = "W",
-	indicator_info = "i",
-	indicator_hint = "?",
-	indicator_ok = "Ok",
-})
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.workspace.configuration = true
-capabilities = vim.tbl_extend("keep", capabilities or {}, lsp_status.capabilities)
 
 -- Python
 nvim_lsp.pyright.setup({
@@ -177,7 +167,6 @@ nvim_lsp.tsserver.setup({
 	on_attach = function(client, _)
 		client.server_capabilities.document_formatting = false
 		client.server_capabilities.document_range_formatting = false
-		lsp_status.on_attach(client)
 	end,
 })
 

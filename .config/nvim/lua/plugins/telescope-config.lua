@@ -162,6 +162,8 @@ function P.config_files(opts)
 		vim.env.HOME .. "/.config/compton/compon.conf",
 		vim.env.HOME .. "/.config/yabai/yabairc",
 		vim.env.HOME .. "/.config/skhd/skhdrc",
+		vim.env.HOME .. "/.zshrc",
+		vim.env.HOME .. "/.bash_aliases",
 	}
 
 	for i, file in ipairs(nvim_files) do

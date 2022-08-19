@@ -28,7 +28,7 @@ require("lualine").setup({
 		lualine_a = { "branch" },
 		lualine_b = { { "filename", path = 1 } },
 		lualine_c = {},
-		lualine_x = { { "require'lsp-status'.status()" } },
+		lualine_x = {},
 		lualine_y = {
 			{
 				truncateDir,

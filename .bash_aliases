@@ -14,7 +14,6 @@ alias ll='ls -a'
 alias la='ls -A'
 alias l='ls'
 alias ff="\$($HOME/Documents/Scripts/fzf_navigate.py)"
-alias ss="\$($HOME/Documents/Scripts/fzf_navigate.py)"
 alias c="clear"
 alias size="du -sh "
 
@@ -30,13 +29,14 @@ function cs () {
 }
 
 alias h="cd ~"
+alias n="nvim"
 alias wjs="cd ~/Documents/WJS"
 
 alias ranger='source ranger'
 
 alias r=ranger
 alias n=nvim
-alias skhd="~/Documents/Dev/skhd/bin/skhd &; disown"
+alias skhd="~/Documents/skhd/bin/skhd &; disown"
 alias yabaireboot='launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"'
 
 

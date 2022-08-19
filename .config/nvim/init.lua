@@ -63,7 +63,12 @@ require("packer").startup(function(use)
 			require("plugins.lualine-config")
 		end,
 	})
-	use("nvim-lua/lsp-status.nvim")
+	use({
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup()
+		end,
+	})
 	use("kyazdani42/nvim-web-devicons")
 
 	-- "Files and git"
