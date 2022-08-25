@@ -52,7 +52,7 @@ alias gb=gitbranch
 alias darkmode="kitty +kitten themes --reload-in=all Tokyo Night Storm"
 alias lightmode="kitty +kitten themes --reload-in=all Tokyo Night Day"
 
-alias dotfiles='/usr/bin/git --git-dir=/Users/jakobkonradhansen/.dotfiles/ --work-tree=/Users/jakobkonradhansen'
+alias dotfiles='yadm'
 alias pushdotfiles="yadm add -u && yadm commit -m 'Updates' && yadm push"
 alias dotfilesg="nvim .local/share/yadm/repo.git -c 'Ge :'"
 

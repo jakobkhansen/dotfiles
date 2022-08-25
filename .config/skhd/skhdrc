@@ -76,7 +76,7 @@
 # A REFERENCE ONLY, WHEN MAKING YOUR OWN CONFIGURATION..          #
 # ############################################################### #
 
-cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
+cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty
 
 # focus window
 cmd - h : yabai -m window --focus west || yabai -m display --focus west

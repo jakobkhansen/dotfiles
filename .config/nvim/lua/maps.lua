@@ -11,12 +11,15 @@ keymap("", "J", "10j", opts)
 keymap("", "K", "10k", opts)
 
 keymap("", ",", ";", opts)
+keymap("", ";", ",", opts)
 
 -- Text manipulation
 keymap("", "<A-k>", "<CMD>m-2<CR>", opts)
 keymap("", "<A-j>", "<CMD>m+<CR>", opts)
 keymap("i", "<C-v>", "<C-r>0", opts)
 keymap("", "<A-S-j>", "<S-j>", opts)
+keymap("", "gj", "J", opts)
+keymap("", "gk", "K", opts)
 
 -- Buffers and tabs
 keymap("n", "<Tab>", "<CMD>bn<CR>", opts)
@@ -42,9 +45,11 @@ keymap("n", "<C-A-r>", "<C-W>=", opts)
 keymap("", "zh", "10zh", opts)
 keymap("", "zl", "10zl", opts)
 
+keymap("", "ZA", "<CMD>wqa<CR>", opts)
+
 --  Delete all buffers to left and right
+keymap("", "<F1>", "<CMD>lua MiniBufremove.wipeout(0, true)<CR>", opts)
 keymap("", "<F2>", "<CMD>bufdo bd<CR>", opts)
-keymap("", "<F3>", "<CMD>bufdo bd<CR>", opts)
 
 -- Terminal
 keymap("t", "<C-q>", "<Esc>", opts)

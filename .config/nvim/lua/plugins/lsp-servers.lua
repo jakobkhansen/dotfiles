@@ -162,12 +162,27 @@ autocmd("FileType", { pattern = "java", callback = start_jdt })
 
 ---- Typescript
 
+local function organize_imports()
+	local params = {
+		command = "_typescript.organizeImports",
+		arguments = { vim.api.nvim_buf_get_name(0) },
+		title = "",
+	}
+	vim.lsp.buf.execute_command(params)
+end
+
 nvim_lsp.tsserver.setup({
 	root_dir = util.root_pattern(".git", "packages/"),
 	on_attach = function(client, _)
 		client.server_capabilities.document_formatting = false
 		client.server_capabilities.document_range_formatting = false
 	end,
+	commands = {
+		OrganizeImports = {
+			organize_imports,
+			description = "Organize Imports",
+		},
+	},
 })
 
 nvim_lsp.eslint.setup({

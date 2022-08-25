@@ -6,7 +6,6 @@ require("bufferline").setup({
 		left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
 		middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
 
-		indicator_icon = "▎",
 		buffer_close_icon = "",
 		modified_icon = "●",
 		close_icon = "",
@@ -26,7 +25,7 @@ require("bufferline").setup({
 		show_buffer_close_icons = false,
 		show_close_icon = false,
 		persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
-        separator_style = {'', ''},
-        always_show_bufferline = false
+		separator_style = { "", "" },
+		always_show_bufferline = false,
 	},
 })

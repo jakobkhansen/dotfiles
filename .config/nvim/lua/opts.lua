@@ -58,6 +58,7 @@ vim.g.tokyonight_colors = {
 }
 vim.g.tokyonight_italic_keywords = false
 vim.g.tokyonight_italic_comments = false
+-- vim.g.tokyonight_style = "day"
 vimscript("colorscheme tokyonight", false)
 
 -- Persistent undo
