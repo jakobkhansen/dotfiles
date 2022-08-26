@@ -241,7 +241,12 @@ require("packer").startup(function(use)
 			require("plugins.neorg-config")
 		end,
 	})
-
+	use({
+		"phaazon/mind.nvim",
+		config = function()
+			require("plugins.mind-config")
+		end,
+	})
 	use({
 		"ekickx/clipboard-image.nvim",
 		config = function()
@@ -258,6 +263,7 @@ require("packer").startup(function(use)
 			require("plugins.timetrap-config")
 		end,
 	})
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
