@@ -88,6 +88,7 @@ wk.register({
 		s = { "<CMD>Ge :<CR>", "git-status" },
 		c = { "<CMD>Telescope git_commits<CR>", "git-commits" },
 		b = { "<CMD>Telescope git_branches<CR>", "git-branches" },
+		d = { "<CMD>DiffviewOpen main...HEAD<CR>", "git-diffview" },
 		h = {
 			name = "hunk",
 			p = { "<CMD>Gitsigns preview_hunk<CR>", "hunk-preview" },

@@ -82,7 +82,7 @@ require("packer").startup(function(use)
 	use({
 		"sindrets/diffview.nvim",
 		config = function()
-			require("diffview").setup()
+			require("plugins.diffview-config")
 		end,
 	})
 
