@@ -184,7 +184,7 @@ bindsym $mod+r mode "resize"
 # Custom additions
 
 # Autostarts
-exec --no-startup-id "compton --config /home/jakob/.config/compton/compton.conf"
+exec --no-startup-id "compton --config ~/.config/compton/compton.conf"
 exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "polybar -r MainBar"
 exec --no-startup-id "polybar -r SecondMonitor"
@@ -198,13 +198,13 @@ exec --no-startup-id autocutsel -fork -selection PRIMARY
 focus_on_window_activation focus
 
 # Workspaces
-bindsym $mod+Tab workspace next_on_output
-bindsym $mod+Shift+Tab workspace prev_on_output
+bindsym Control+$alt+$mod+Shift+l exec --no-startup-id ~/Documents/Scripts/goto_next_workspace.sh
+bindsym Control+$alt+$mod+Shift+h exec --no-startup-id ~/Documents/Scripts/goto_prev_workspace.sh
 
-bindsym $mod+n exec --no-startup-id /home/jakob/Documents/Scripts/empty_workspace.sh
-bindsym $mod+Shift+n exec --no-startup-id /home/jakob/Documents/Scripts/move_to_empty_workspace.sh
+bindsym $mod+n exec --no-startup-id ~/Documents/Scripts/empty_workspace.sh
+bindsym $mod+Shift+n exec --no-startup-id ~/Documents/Scripts/move_to_empty_workspace.sh
 
-bindsym $mod+Shift+t exec --no-startup-id /home/jakob/Documents/Scripts/truncate_workspaces.py
+bindsym $mod+Shift+t exec --no-startup-id ~/Documents/Scripts/truncate_workspaces.py
 
 # Mouse
 focus_follows_mouse no

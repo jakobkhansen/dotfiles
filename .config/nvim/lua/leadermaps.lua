@@ -127,7 +127,7 @@ wk.register({
 			"<CMD>silent! NeorgStart<CR><CMD>Neorg journal custom " .. utils.getFirstDayOfCurrentMonth() .. "<CR>",
 			"hours",
 		},
-		m = { "<CMD>MindOpenProject tasks<CR>", "mind-tasks" },
+		m = { "<CMD>MindOpenMain<CR>", "mind-global" },
 		j = { "<CMD>silent! NeorgStart<CR><CMD>Neorg journal today<CR>", "journal" },
 		p = { "<CMD>edit $HOME/Documents/gtd/projects.norg<CR>", "projects" },
 		t = {

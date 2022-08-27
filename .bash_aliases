@@ -70,3 +70,5 @@ function connect() {
     bluetoothctl connect D4:57:63:5B:91:E7 &
     disown
 }
+
+alias con="connect"
