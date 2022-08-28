@@ -6,18 +6,17 @@ local sysname = vim.loop.os_uname().sysname
 
 local command = vim.api.nvim_command
 
-local JAVA_HOME = os.getenv 'JAVA_HOME'
+local JAVA_HOME = os.getenv("JAVA_HOME")
 
 local function get_java_executable()
-  local executable = JAVA_HOME and util.path.join(JAVA_HOME, 'bin', 'java') or 'java'
+	local executable = JAVA_HOME and util.path.join(JAVA_HOME, "bin", "java") or "java"
 
-  return sysname:match 'Windows' and executable .. '.exe' or executable
+	return sysname:match("Windows") and executable .. ".exe" or executable
 end
 
+local jar = vim.env.HOME .. "/Documents/Dev/LSP/CCDetect-lsp/app/build/libs/app-all.jar"
 
-local jar = vim.env.HOME .. "/Documents/Dev/CCDetect-lsp/app/build/libs/app-all.jar"
-
-local cmd = { get_java_executable(), '-jar', jar }
+local cmd = { get_java_executable(), "-jar", jar }
 
 local function on_show_document(err, result, ctx, config, params)
 	local uri = result.uri

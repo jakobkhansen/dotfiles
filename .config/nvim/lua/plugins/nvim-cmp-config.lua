@@ -21,11 +21,7 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "buffer" },
 		{ name = "latex_symbols", keyword_length = 2 },
-		{
-			name = "dictionary",
-			keyword_length = 2,
-		},
-		{ name = "calc" },
+		{ name = "nvim_lsp_signature_help" },
 	},
 	snippet = {
 		expand = function(args)
@@ -42,16 +38,4 @@ require("cmp").setup.cmdline(":", {
 	sources = {
 		{ name = "cmdline" },
 	},
-})
-
-require("cmp_dictionary").setup({
-	dic = {
-		["norg,markdown,tex"] = { "/usr/share/dict/words" },
-	},
-	-- The following are default values, so you don't need to write them if you don't want to change them
-	exact = 2,
-	first_case_insensitive = false,
-	async = false,
-	capacity = 5,
-	debug = false,
 })
