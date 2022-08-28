@@ -3,13 +3,9 @@ local finders = require("telescope.finders")
 local conf = require("telescope.config").values
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
-local fb_actions = require("telescope").extensions.file_browser.actions
-local fb_utils = require("telescope._extensions.file_browser.utils")
-local fb_picker = require("telescope._extensions.file_browser.picker")
 local action_set = require("telescope.actions.set")
 local state = require("telescope.state")
 local builtin = require("telescope.builtin")
-local fb_finders = require("telescope._extensions.file_browser.finders")
 
 local lastDirectory
 
@@ -32,17 +28,6 @@ local open_in = function(finder, opts)
 		local dir = get_target_dir(curr_finder)
 		opts.cwd = dir
 		finder(opts)
-	end
-end
-
-local open_file_browser = function(files)
-	return function(prompt_bufnr)
-		local current_picker = action_state.get_current_picker(prompt_bufnr)
-		local curr_finder = current_picker.finder
-		local dir = get_target_dir(curr_finder)
-		vim.cmd(
-			"Telescope file_browser hide_parent_dir=true, cwd_to_path=true path=" .. dir .. " files=" .. tostring(files)
-		)
 	end
 end
 
@@ -92,16 +77,12 @@ require("telescope").setup({
 				["<BS>"] = goto_parent_dir_check(),
 				["<A-f>"] = open_in(builtin.find_files, {}),
 				["<A-g>"] = open_in(builtin.git_files, {}),
-				["<A-d>"] = open_file_browser(false),
-				["<A-b>"] = open_file_browser(true),
 				["o"] = open_xdg(),
 				["p"] = require("telescope.actions.layout").toggle_preview,
 			},
 			i = {
 				["<A-f>"] = open_in(builtin.find_files, {}),
 				["<A-g>"] = open_in(builtin.git_files, {}),
-				["<A-d>"] = open_file_browser(false),
-				["<A-b>"] = open_file_browser(true),
 			},
 		},
 		file_ignore_patterns = { "%.class", "%.png", "%.jpg", "%.jpeg", "change", "node_modules", "Caches" },
@@ -131,20 +112,10 @@ require("telescope").setup({
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			-- the default case_mode is "smart_case"
 		},
-		file_browser = {
-			mappings = {
-				n = {
-					["o"] = fb_actions.open,
-				},
-			},
-		},
 	},
 })
 
 require("telescope").load_extension("fzf")
-require("telescope").load_extension("termfinder")
-require("telescope").load_extension("file_browser")
-require("telescope").load_extension("git_worktree")
 require("telescope").load_extension("neoclip")
 
 local P = {}

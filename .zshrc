@@ -140,3 +140,4 @@ export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
 KEYTIMEOUT=1
 
 export MIDGARD_BACKFILL_CACHE_DIR=$HOME"/.midgard-build-cache"
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk

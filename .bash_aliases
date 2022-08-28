@@ -28,9 +28,11 @@ function cs () {
 	builtin cd "$@" && ls
 }
 
+# Shortcuts to dirs
 alias h="cd ~"
 alias n="nvim"
 alias wjs="cd ~/Documents/WJS"
+alias lsp="cd ~/Documents/Dev/LSP/CCDetect-lsp"
 
 alias ranger='source ranger'
 

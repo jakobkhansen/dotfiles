@@ -16,8 +16,6 @@ keymap("", ";", ",", opts)
 -- Text manipulation
 keymap("", "<A-k>", "<CMD>m-2<CR>", opts)
 keymap("", "<A-j>", "<CMD>m+<CR>", opts)
-keymap("i", "<C-v>", "<C-r>0", opts)
-keymap("", "<A-S-j>", "<S-j>", opts)
 keymap("", "gj", "J", opts)
 keymap("", "gk", "K", opts)
 
@@ -27,6 +25,8 @@ keymap("n", "<S-Tab>", "<CMD>bp<CR>", opts)
 
 keymap("n", "<A-l>", "<CMD>tabnext<CR>", opts)
 keymap("n", "<A-h>", "<CMD>tabprevious<CR>", opts)
+
+keymap("", "ZA", "<CMD>wqa<CR>", opts)
 
 --  Move to buffer
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -39,13 +39,11 @@ keymap("n", "<C-m-h>", "<CMD>vertical resize-5<CR>", opts)
 keymap("n", "<C-m-j>", "<CMD>resize-5<CR>", opts)
 keymap("n", "<C-m-k>", "<CMD>resize+5<CR>", opts)
 keymap("n", "<C-m-l>", "<CMD>vertical resize+5<CR>", opts)
-keymap("n", "<C-A-r>", "<C-W>=", opts)
+keymap("n", "<C-m-r>", "<C-W>=", opts)
 
 --  Move horizontally
 keymap("", "zh", "10zh", opts)
 keymap("", "zl", "10zl", opts)
-
-keymap("", "ZA", "<CMD>wqa<CR>", opts)
 
 --  Delete all buffers to left and right
 keymap("", "<F1>", "<CMD>lua MiniBufremove.wipeout(0, true)<CR>", opts)
@@ -68,6 +66,6 @@ keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>resize+5<CR>i", opts)
 keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>vertical resize+5<CR>i", opts)
 keymap("t", "<C-M-r>", "<C-\\><C-n><C-W>=i", opts)
 
--- Fix range code action
+-- Fix range code action for demonstration purposes
 keymap("n", "<C-q>", "", { callback = vim.lsp.buf.code_action })
 keymap("v", "<C-q>", "<Esc>gv<CMD>lua vim.lsp.buf.range_code_action()<CR>", opts)

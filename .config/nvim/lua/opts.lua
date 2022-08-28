@@ -23,21 +23,20 @@ opt.splitbelow = true
 
 -- Random
 opt.number = true
+opt.relativenumber = true
 opt.mouse = "a"
 opt.wrap = false
 opt.smartcase = true
 opt.ignorecase = true
 opt.scrolloff = 5
-opt.relativenumber = true
 opt.timeoutlen = 300
-opt.foldmethod = "indent"
-opt.foldlevel = 99
 
-vimscript("au FileType * setlocal fo-=c fo-=r fo-=o", false)
-autocmd("FileType", {
-	pattern = "*",
-	command = "setlocal fo-=c fo-=r fo-=o",
-})
+-- Don't remember
+-- vimscript("au FileType * setlocal fo-=c fo-=r fo-=o", false)
+-- autocmd("FileType", {
+-- 	pattern = "*",
+-- 	command = "setlocal fo-=c fo-=r fo-=o",
+-- })
 
 -- Completion
 opt.completeopt = "menuone,noselect"

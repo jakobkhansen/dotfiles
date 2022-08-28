@@ -4,13 +4,3 @@ autocmd("FileType", {
 	pattern = { "javascript,javascriptreact,typescript,typescriptreact,json", "norg", "cpp,cmake" },
 	command = "setlocal sts=2 ts=2 sw=2",
 })
-
-autocmd("FileType", {
-	pattern = { "*.cup" },
-	command = "set filetype=cup",
-})
-
-autocmd("FileType", {
-	pattern = { "*.cmp" },
-	command = "set filetype=cmp",
-})

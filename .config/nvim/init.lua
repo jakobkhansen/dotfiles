@@ -93,9 +93,8 @@ require("packer").startup(function(use)
 			require("plugins.toggleterm-config")
 		end,
 	})
-	use({ "tknightz/telescope-termfinder.nvim" })
 
-	-- "IDE"
+	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
 		config = function()
@@ -105,13 +104,6 @@ require("packer").startup(function(use)
 	use({
 		"nvim-telescope/telescope-fzf-native.nvim",
 		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	})
-	use({ "nvim-telescope/telescope-file-browser.nvim" })
-	use({
-		"ThePrimeagen/git-worktree.nvim",
-		config = function()
-			require("git-worktree").setup()
-		end,
 	})
 	use({
 		"AckslD/nvim-neoclip.lua",
@@ -127,6 +119,7 @@ require("packer").startup(function(use)
 		end,
 	})
 
+	-- IDE
 	use({
 		"goolord/alpha-nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
@@ -176,17 +169,19 @@ require("packer").startup(function(use)
 		end,
 	})
 	use({
-		"mfussenegger/nvim-dap",
+		"jose-elias-alvarez/null-ls.nvim",
 		config = function()
-			require("plugins.dap-config")
+			require("plugins.null-ls-config")
 		end,
 	})
-	use("mfussenegger/nvim-jdtls")
+
 	use("onsails/lspkind-nvim")
 
+	use("mfussenegger/nvim-jdtls")
 	use("jose-elias-alvarez/typescript.nvim")
 	use("windwp/nvim-ts-autotag")
 
+	-- nvim-cmp auto-completion
 	use({
 		"hrsh7th/nvim-cmp",
 		config = function()
@@ -211,12 +206,6 @@ require("packer").startup(function(use)
 	})
 	use("nvim-treesitter/playground")
 	use("nvim-treesitter/nvim-treesitter-textobjects")
-	use({
-		"jose-elias-alvarez/null-ls.nvim",
-		config = function()
-			require("plugins.null-ls-config")
-		end,
-	})
 
 	-- "Snippets"
 	use({

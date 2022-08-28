@@ -181,9 +181,6 @@ mode "$mode_gaps" {
     bindsym Escape mode "default"
 }
 
-# Splitting
-bindsym $mod+t split toggle
-
 # Bluetooth
 exec --no-startup-id "blueman-applet"
 bindsym F11 exec --no-startup-id "bluetoothctl connect 68:13:24:9C:40:F6"

@@ -5,7 +5,6 @@ vim.g.mapleader = " "
 local utils = require("utils")
 
 local lsp = vim.lsp.buf
-local dap = require("dap")
 local diagnostic = vim.diagnostic
 local fzf = require("fzf-lua")
 local fzf_custom = require("plugins.fzf-config")
@@ -66,13 +65,6 @@ wk.register({
 			n = { diagnostic.goto_next, "goto-next" },
 			p = { diagnostic.goto_prev, "goto-prev" },
 		},
-	},
-
-	-- DAP
-	d = {
-		name = "debug",
-		r = { dap.continue, "run" },
-		b = { dap.toggle_breakpoint, "toggle-breakpoint" },
 	},
 
 	-- Terminal

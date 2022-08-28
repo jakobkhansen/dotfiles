@@ -2,7 +2,9 @@ local autocmd = vim.api.nvim_create_autocmd
 
 require("null-ls").setup({
 	sources = {
-		require("null-ls").builtins.formatting.prettierd,
+		require("null-ls").builtins.formatting.prettierd.with({
+			extra_filetypes = { "java" },
+		}),
 		require("null-ls").builtins.code_actions.gitsigns,
 		require("null-ls").builtins.formatting.stylua,
 		require("null-ls").builtins.diagnostics.markdownlint.with({
