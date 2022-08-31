@@ -206,6 +206,7 @@ require("packer").startup(function(use)
 	})
 	use("nvim-treesitter/playground")
 	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("RRethy/nvim-treesitter-textsubjects")
 
 	-- "Snippets"
 	use({

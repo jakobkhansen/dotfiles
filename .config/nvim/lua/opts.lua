@@ -31,12 +31,11 @@ opt.ignorecase = true
 opt.scrolloff = 5
 opt.timeoutlen = 300
 
--- Don't remember
--- vimscript("au FileType * setlocal fo-=c fo-=r fo-=o", false)
--- autocmd("FileType", {
--- 	pattern = "*",
--- 	command = "setlocal fo-=c fo-=r fo-=o",
--- })
+-- Don't auto-create comments on new-line
+autocmd("FileType", {
+	pattern = "*",
+	command = "setlocal fo-=c fo-=r fo-=o",
+})
 
 -- Completion
 opt.completeopt = "menuone,noselect"

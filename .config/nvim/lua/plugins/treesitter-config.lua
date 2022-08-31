@@ -24,13 +24,12 @@ parser_configs.norg_table = {
 	},
 }
 
-
 require("nvim-treesitter.configs").setup({
 	ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-    ignore_install = {"phpdoc"},
+	ignore_install = { "phpdoc" },
 	highlight = {
 		enable = true,
-        additional_vim_regex_highlighting = {'org'}
+		additional_vim_regex_highlighting = { "org" },
 	},
 	indent = {
 		enable = true,
@@ -56,6 +55,14 @@ require("nvim-treesitter.configs").setup({
 		},
 		swap = {
 			enable = true,
+		},
+	},
+	textsubjects = {
+		enable = true,
+		keymaps = {
+			["."] = "textsubjects-smart",
+			[";"] = "textsubjects-container-outer",
+			["i;"] = "textsubjects-container-inner",
 		},
 	},
 })
