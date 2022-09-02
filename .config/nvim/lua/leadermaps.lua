@@ -12,18 +12,18 @@ local fzf_custom = require("plugins.fzf-config")
 wk.register({
 	f = {
 		name = "find",
-		f = { fzf.files, "find-files" },
+		-- f = { fzf.files, "find-files" }, Microsoft
+		f = { "<CMD>Telescope find_files<CR>", "find-files" },
 		d = { fzf_custom.fzf_dirs, "find-directory" },
-		g = { fzf.git_files, "find-git" },
+		-- g = { fzf.git_files, "find-git" }, Microsoft
+		g = { "<CMD>Telescope git_files<CR>", "find-git" },
 		n = { "<CMD>Explore<CR>", "find-netrw" },
 		r = { '<CMD>Ranger --choosedir="/tmp/ranger_dir"<CR>', "find-ranger" },
 		l = { "<CMD>Neotree reveal toggle<CR>", "file-browser" },
 		o = { "<CMD>Telescope oldfiles<CR>", "find-mru" },
 
 		c = {
-			function()
-				fzf.live_grep({ previewer = "bat" })
-			end,
+			"<CMD>Telescope live_grep<CR>",
 			"find-code",
 		},
 

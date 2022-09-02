@@ -153,6 +153,8 @@ focus_on_window_activation focus
 # Workspaces
 bindsym Control+$alt+$mod+Shift+l exec --no-startup-id ~/Documents/Scripts/goto_next_workspace.sh
 bindsym Control+$alt+$mod+Shift+h exec --no-startup-id ~/Documents/Scripts/goto_prev_workspace.sh
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+Shift+Tab workspace prev_on_output
 
 bindsym $mod+n exec --no-startup-id ~/Documents/Scripts/empty_workspace.sh
 bindsym $mod+Shift+n exec --no-startup-id ~/Documents/Scripts/move_to_empty_workspace.sh
