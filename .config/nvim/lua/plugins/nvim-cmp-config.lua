@@ -21,7 +21,7 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "buffer" },
 		{ name = "latex_symbols", keyword_length = 2 },
-		{ name = "nvim_lsp_signature_help" },
+		-- { name = "nvim_lsp_signature_help" },
 	},
 	snippet = {
 		expand = function(args)
