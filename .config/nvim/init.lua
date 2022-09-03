@@ -73,13 +73,7 @@ require("packer").startup(function(use)
 
     -- "Files and git"
     use("tpope/vim-fugitive")
-    use({
-        "ldelossa/gh.nvim",
-        requires = { { "ldelossa/litee.nvim" } },
-        config = function()
-            require("plugins.gh-nvim-config")
-        end,
-    })
+    use("pwntester/octo.nvim")
     use({
         "lewis6991/gitsigns.nvim",
         config = function()
