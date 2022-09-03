@@ -24,7 +24,8 @@ bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+q kill
 
 # rofi
-bindsym $mod+space exec --no-startup-id "rofi -combi-modi drun,run -show combi"
+# bindsym $mod+space exec --no-startup-id "rofi -combi-modi drun,run -show combi"
+bindsym $mod+space exec --no-startup-id "~/.config/rofi/scripts/launcher_t2"
 
 # change focus
 bindsym $mod+h focus left
@@ -139,8 +140,8 @@ bindsym $mod+r mode "resize"
 # Autostarts
 exec --no-startup-id "compton --config ~/.config/compton/compton.conf"
 exec --no-startup-id "nitrogen --restore"
-exec --no-startup-id "polybar -r MainBar"
-exec --no-startup-id "polybar -r SecondMonitor"
+exec --no-startup-id "polybar -r PrimaryMonitor"
+exec --no-startup-id "polybar -r SecondaryMonitor"
 exec --no-startup-id "redshift -l 59.91273:10.74609"
 exec --no-startup-id i3-battery-popup -n -L 15 -t 30s -s ~/.config/dunst/light.mp3
 exec --no-startup-id unclutter
@@ -151,8 +152,8 @@ exec --no-startup-id autocutsel -fork -selection PRIMARY
 focus_on_window_activation focus
 
 # Workspaces
-bindsym Control+$alt+$mod+Shift+l exec --no-startup-id ~/Documents/Scripts/goto_next_workspace.sh
-bindsym Control+$alt+$mod+Shift+h exec --no-startup-id ~/Documents/Scripts/goto_prev_workspace.sh
+bindsym $alt+$mod+Shift+l workspace next_on_output
+bindsym $alt+$mod+Shift+h workspace prev_on_output
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 
@@ -216,7 +217,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +10%
 
 # Lock-screen
-bindsym $mod+shift+x exec --no-startup-id betterlockscreen -l blur
+# bindsym $mod+shift+x exec --no-startup-id betterlockscreen -l blur
+bindsym $mod+shift+BackSpace exec --no-startup-id "~/.config/rofi/scripts/powermenu_t1"
 
 # Fix stupid keybinding shit
 #exec --no-startup-id xmodmap -e "keycode 51 = less greater"

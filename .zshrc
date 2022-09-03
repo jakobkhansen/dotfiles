@@ -140,7 +140,9 @@ export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up'
 KEYTIMEOUT=1
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+export PATH=$HOME/.config/rofi/scripts:$PATH
 
 function chpwd() {
     ls
 }
+

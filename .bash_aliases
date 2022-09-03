@@ -62,6 +62,9 @@ alias monright="xrandr --auto; xrandr --output HDMI-1 --right-of eDP-1"
 alias monup="xrandr --auto; xrandr --output HDMI-1 --above eDP-1"                                                                                   
 alias mondup="xrandr --auto; xrandr --output HDMI-1 --same-as eDP-1"                                                                                
 
+alias polyprimary="polybar PrimaryMonitor &; disown"
+alias polysecondary="polybar SecondaryMonitor &; disown"
+
 alias keyboardoverlay="screenkey -t 2 -s small --opacity 1 --window"
 
 # Freebuds, Sony, Trackpad
