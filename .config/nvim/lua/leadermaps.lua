@@ -7,14 +7,14 @@ local utils = require("utils")
 local lsp = vim.lsp.buf
 local diagnostic = vim.diagnostic
 local fzf_custom = require("plugins.fzf-config")
+local telescope_custom = require("plugins.telescope-config")
 
 wk.register({
     f = {
         name = "find",
         -- f = { fzf.files, "find-files" }, Microsoft
         f = { "<CMD>Telescope find_files<CR>", "find-files" },
-        d = { fzf_custom.fzf_dirs, "find-directory" },
-        -- g = { fzf.git_files, "find-git" }, Microsoft
+        d = { telescope_custom.find_any, "find-directory" },
         g = { "<CMD>Telescope git_files<CR>", "find-git" },
         r = { '<CMD>Ranger --choosedir="/tmp/ranger_dir"<CR>', "find-ranger" },
         l = { "<CMD>Neotree reveal toggle<CR>", "file-browser" },
