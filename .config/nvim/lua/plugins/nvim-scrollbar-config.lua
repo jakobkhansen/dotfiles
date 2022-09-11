@@ -16,6 +16,6 @@ require("scrollbar").setup({
         "",
         "prompt",
         "TelescopePrompt",
-        "startify"
+        "startify",
     },
 })

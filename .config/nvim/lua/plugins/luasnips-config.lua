@@ -4,18 +4,18 @@ local opts = { noremap = true, silent = true }
 
 -- Every unspecified option will be set to the default.
 ls.config.set_config({
-	history = true,
-	-- Update more often, :h events for more info.
-	updateevents = "TextChanged,TextChangedI",
+    history = true,
+    -- Update more often, :h events for more info.
+    updateevents = "TextChanged,TextChangedI",
 })
 
 ls.add_snippets("all", {
-	ls.parser.parse_snippet({ trig = "rarr" }, "→"),
+    ls.parser.parse_snippet({ trig = "rarr" }, "→"),
 })
 ls.add_snippets("markdown", {
-	ls.parser.parse_snippet({ trig = "math" }, "\\$$0\\$"),
-	ls.parser.parse_snippet({ trig = "checkempty" }, "[ ]"),
-	ls.parser.parse_snippet({ trig = "checkfull" }, "[x]"),
+    ls.parser.parse_snippet({ trig = "math" }, "\\$$0\\$"),
+    ls.parser.parse_snippet({ trig = "checkempty" }, "[ ]"),
+    ls.parser.parse_snippet({ trig = "checkfull" }, "[x]"),
 })
 
 keymap("s", "<C-k>", '<CMD>lua require("luasnip").jump(1)<CR>', opts)

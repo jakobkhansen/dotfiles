@@ -34,8 +34,8 @@ opt.foldenable = false
 
 -- Don't auto-create comments on new-line
 autocmd("FileType", {
-	pattern = "*",
-	command = "setlocal fo-=c fo-=r fo-=o",
+    pattern = "*",
+    command = "setlocal fo-=c fo-=r fo-=o",
 })
 
 -- Completion
@@ -52,8 +52,8 @@ opt.laststatus = 3
 
 vim.g.tokyonight_transparent_sidebar = true
 vim.g.tokyonight_colors = {
-	info = "#FFFFFF",
-	hint = "#FFFFFF",
+    info = "#FFFFFF",
+    hint = "#FFFFFF",
 }
 vim.g.tokyonight_italic_keywords = false
 vim.g.tokyonight_italic_comments = false
@@ -63,7 +63,7 @@ vimscript("colorscheme tokyonight", false)
 -- Persistent undo
 local undoDir = "/tmp/.undodir_" .. vim.env["USER"]
 if not vim.fn.isdirectory(undoDir) then
-	vim.fn.mkdir(undoDir, "", 0700)
+    vim.fn.mkdir(undoDir, "", 0700)
 end
 opt.undodir = undoDir
 opt.undofile = true

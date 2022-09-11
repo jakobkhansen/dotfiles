@@ -64,7 +64,7 @@ local function start_jdt()
     local bundles = {
         vim.fn.glob(
             vim.env.HOME
-            .. "/.langservers/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
+                .. "/.langservers/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
         ),
     }
     vim.list_extend(
@@ -120,8 +120,7 @@ local function start_jdt()
 
             "-jar",
             vim.env.HOME
-                ..
-                "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+                .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
 
             "-configuration",
             vim.env.HOME .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",
