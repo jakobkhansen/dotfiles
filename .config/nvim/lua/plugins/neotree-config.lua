@@ -152,7 +152,8 @@ require("neo-tree").setup({
 				local path = node:get_id()
 				-- macOs: open file in default application in the background.
 				-- Probably you need to adapt the Linux recipe for manage path with spaces. I don't have a mac to try.
-				vim.api.nvim_command("silent !open -g " .. path)
+				-- vim.api.nvim_command("silent !open -g " .. path)
+				vim.api.nvim_command("silent !xdg-open " .. path)
 			end,
 		},
 	},

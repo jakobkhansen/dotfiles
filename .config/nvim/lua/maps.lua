@@ -61,9 +61,9 @@ keymap("t", "<A-l>", "<C-\\><C-n><CMD>tabnext<CR>", opts)
 keymap("t", "<A-h>", "<C-\\><C-n><CMD>tabnext<CR>", opts)
 
 keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>vertical resize-5<CR>i", opts)
-keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>resize-5<CR>i", opts)
-keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>resize+5<CR>i", opts)
-keymap("t", "<C-M-h>", "<C-\\><C-n><CMD>vertical resize+5<CR>i", opts)
+keymap("t", "<C-M-j>", "<C-\\><C-n><CMD>resize-5<CR>i", opts)
+keymap("t", "<C-M-k>", "<C-\\><C-n><CMD>resize+5<CR>i", opts)
+keymap("t", "<C-M-l>", "<C-\\><C-n><CMD>vertical resize+5<CR>i", opts)
 keymap("t", "<C-M-r>", "<C-\\><C-n><C-W>=i", opts)
 
 -- Fix range code action for demonstration purposes

@@ -145,8 +145,11 @@ exec --no-startup-id "polybar -r SecondaryMonitor"
 exec --no-startup-id "redshift -l 59.91273:10.74609"
 exec --no-startup-id i3-battery-popup -n -L 15 -t 30s -s ~/.config/dunst/light.mp3
 exec --no-startup-id unclutter
-exec --no-startup-id autocutsel -fork -selection CLIPBOARD
-exec --no-startup-id autocutsel -fork -selection PRIMARY
+
+
+# Clipboard stuff
+#exec --no-startup-id autocutsel -fork -selection CLIPBOARD
+#exec --no-startup-id autocutsel -fork -selection PRIMARY
 
 # Windows
 focus_on_window_activation focus
