@@ -123,14 +123,6 @@ wk.register({
         m = { "<CMD>MindOpenMain<CR>", "mind-global" },
         j = { "<CMD>silent! NeorgStart<CR><CMD>Neorg journal today<CR>", "journal" },
         p = { "<CMD>edit $HOME/Documents/gtd/projects.norg<CR>", "projects" },
-        t = {
-            name = "timetrap",
-            i = { require("plugins.timetrap-config").check_in, "check-in" },
-            o = { "<CMD>Timetrap out<CR>", "check-out" },
-            r = { "<CMD>Timetrap resume<CR>", "resume" },
-            d = { "<CMD>Timetrap d<CR>", "display" },
-            n = { "<CMD>Timetrap now<CR>", "now" },
-        },
     },
 
     -- Shortcuts

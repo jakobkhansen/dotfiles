@@ -1,20 +1,21 @@
+-- Bootstrap packer
+local ensure_packer = function()
+    local fn = vim.fn
+    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+        vim.cmd([[packadd packer.nvim]])
+        return true
+    end
+    return false
+end
+
+local packer_bootstrap = ensure_packer()
+
 require("packer").startup(function(use)
     -- "Libraries and dependencies"
     use("wbthomason/packer.nvim")
-    use("nvim-lua/plenary.nvim")
     use("nathom/filetype.nvim")
-    use({
-        "s1n7ax/nvim-window-picker",
-        config = function()
-            require("window-picker").setup()
-        end,
-    })
-    use({
-        "williamboman/mason.nvim",
-        config = function()
-            require("mason").setup()
-        end,
-    })
 
     -- "Multi-functionality"
     -- Mini provides pairs, surround, commenting and bufremoval functionality
@@ -27,12 +28,6 @@ require("packer").startup(function(use)
 
     --"Movement"
     use({
-        "karb94/neoscroll.nvim",
-        config = function()
-            require("plugins.neoscroll-config")
-        end,
-    })
-    use({
         "petertriho/nvim-scrollbar",
         config = function()
             require("plugins.nvim-scrollbar-config")
@@ -40,13 +35,6 @@ require("packer").startup(function(use)
     })
 
     -- "Buffers"
-    use({
-        "kwkarlwang/bufresize.nvim",
-        config = function()
-            require("bufresize").setup()
-        end,
-    })
-
     use({
         "akinsho/bufferline.nvim",
         config = function()
@@ -154,18 +142,30 @@ require("packer").startup(function(use)
             "nvim-lua/plenary.nvim",
             "kyazdani42/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
+            {
+                "s1n7ax/nvim-window-picker",
+                config = function()
+                    require("window-picker").setup()
+                end,
+            },
         },
         config = function()
             require("plugins.neotree-config")
         end,
     })
 
-    -- "LSP and languages"
+    -- "LSP, languages and tools"
     use({
         "neovim/nvim-lspconfig",
         config = function()
             require("plugins.lsp-config")
             require("plugins.lsp-servers")
+        end,
+    })
+    use({
+        "williamboman/mason.nvim",
+        config = function()
+            require("mason").setup()
         end,
     })
     use({
@@ -182,7 +182,6 @@ require("packer").startup(function(use)
     })
 
     use("onsails/lspkind-nvim")
-
     use("mfussenegger/nvim-jdtls")
     use("jose-elias-alvarez/typescript.nvim")
     use("windwp/nvim-ts-autotag")
@@ -198,10 +197,8 @@ require("packer").startup(function(use)
     use("hrsh7th/cmp-nvim-lsp")
     use("saadparwaiz1/cmp_luasnip")
     use("hrsh7th/cmp-path")
-    use("hrsh7th/cmp-nvim-lsp-signature-help")
     use("kdheepak/cmp-latex-symbols")
     use("hrsh7th/cmp-cmdline")
-    use("ray-x/cmp-treesitter")
 
     -- "Treesitter & Syntax highlighting"
     use({
@@ -212,7 +209,6 @@ require("packer").startup(function(use)
     })
     use("nvim-treesitter/playground")
     use("nvim-treesitter/nvim-treesitter-textobjects")
-    use("RRethy/nvim-treesitter-textsubjects")
 
     -- "Snippets"
     use({
@@ -236,28 +232,6 @@ require("packer").startup(function(use)
             require("plugins.neorg-config")
         end,
     })
-    use({
-        "phaazon/mind.nvim",
-        config = function()
-            require("plugins.mind-config")
-        end,
-    })
-    use({
-        "ekickx/clipboard-image.nvim",
-        config = function()
-            require("plugins.clipboard-image-config")
-        end,
-    })
-
-    use({
-        "andreadev-it/timetrap.nvim",
-        requires = {
-            "MunifTanjim/nui.nvim",
-        },
-        config = function()
-            require("plugins.timetrap-config")
-        end,
-    })
 
     if packer_bootstrap then
         require("packer").sync()
@@ -270,6 +244,7 @@ require("maps")
 require("opts")
 require("leadermaps")
 require("language_configs")
+require("smoothscroll")
 
 -- Master thesis work
 require("ccdetect")
