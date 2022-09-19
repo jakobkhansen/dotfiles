@@ -76,3 +76,6 @@ function connect() {
 }
 
 alias con="connect"
+function open() {
+    xdg-open "$1" &; disown
+}

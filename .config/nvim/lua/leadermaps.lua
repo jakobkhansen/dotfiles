@@ -8,6 +8,7 @@ local lsp = vim.lsp.buf
 local diagnostic = vim.diagnostic
 local fzf_custom = require("plugins.fzf-config")
 local telescope_custom = require("plugins.telescope-config")
+local commands = require("commands")
 
 wk.register({
     f = {
@@ -16,7 +17,12 @@ wk.register({
         f = { "<CMD>Telescope find_files<CR>", "find-files" },
         d = { telescope_custom.find_any, "find-directory" },
         g = { "<CMD>Telescope git_files<CR>", "find-git" },
-        r = { '<CMD>Ranger --choosedir="/tmp/ranger_dir"<CR>', "find-ranger" },
+        r = {
+            function()
+                utils.openFloatTerm("ranger")
+            end,
+            "find-ranger",
+        },
         l = { "<CMD>Neotree reveal toggle<CR>", "file-browser" },
         o = { "<CMD>Telescope oldfiles<CR>", "find-mru" },
 
@@ -72,8 +78,8 @@ wk.register({
     -- Terminal
     t = {
         name = "terminal",
-        t = { "<CMD>exe v:count1 . 'ToggleTerm'<CR>", "popup-terminal" },
-        f = { "<CMD>terminal<CR>", "full-terminal" },
+        t = { utils.openPopupTerminal, "popup-terminal" },
+        f = { utils.openFullTerminal, "full-terminal" },
     },
 
     -- Git
@@ -130,7 +136,7 @@ wk.register({
         name = "shortcuts",
         p = { "<CMD>PackerSync<CR>", "packer-sync" },
         s = { "<CMD>Alpha<CR>", "start-screen" },
-        t = { utils.ToggleThemeMode, "toggle-theme" },
+        t = { commands.ToggleThemeMode, "toggle-theme" },
         z = { "<CMD>ZenMode<CR>", "toggle-zen" },
         c = { "<CMD>ScrollbarToggle<CR>", "toggle-scrollbar" },
     },

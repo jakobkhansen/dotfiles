@@ -7,17 +7,12 @@ keymap("", "<LeftMouse>", "<Nop>", opts)
 keymap("i", "<LeftMouse>", "<Nop>", opts)
 
 -- Movement
-keymap("", "J", "10j", opts)
-keymap("", "K", "10k", opts)
-
 keymap("", ",", ";", opts)
 keymap("", ";", ",", opts)
 
 -- Text manipulation
 keymap("", "<A-k>", "<CMD>m-2<CR>", opts)
 keymap("", "<A-j>", "<CMD>m+<CR>", opts)
-keymap("", "gj", "J", opts)
-keymap("", "gk", "K", opts)
 
 -- Buffers and tabs
 keymap("n", "<Tab>", "<CMD>bn<CR>", opts)

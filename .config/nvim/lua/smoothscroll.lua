@@ -32,7 +32,6 @@ end
 function P.smoothScrollCenterCursor()
     local window_height = vim.api.nvim_win_get_height(0)
     local delta = vim.fn.winline() - math.ceil(window_height / 2)
-    print(delta)
     P.smoothScroll(delta)
 end
 

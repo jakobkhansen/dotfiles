@@ -1,6 +1,5 @@
 local command = vim.api.nvim_command
 local vimscript = vim.api.nvim_exec
-local add_command = vim.api.nvim_create_user_command
 
 local P = {}
 
@@ -31,32 +30,65 @@ function P.getFirstDayOfCurrentMonth()
     return os.date("%Y") .. "-" .. os.date("%m") .. "-01"
 end
 
--- Theme
-function P.LightMode()
-    command("silent !kitty +kitten themes --reload-in=all Tokyo Night Day")
-    vim.o.background = "light"
-    vimscript("colorscheme tokyonight", false)
-end
+-- Terminals
+function P.openFullTerminal(cmd)
+    local buf = vim.api.nvim_create_buf(true, false)
+    local win = vim.api.nvim_get_current_win()
+    vim.api.nvim_win_set_buf(win, buf)
 
-function P.DarkMode()
-    command("silent !kitty +kitten themes --reload-in=all Tokyo Night Storm")
-    vim.o.background = "dark"
-    vimscript("colorscheme tokyonight", false)
-end
-
-function P.ToggleThemeMode()
-    if vim.o.background == "dark" then
-        P.LightMode()
-    else
-        P.DarkMode()
+    local on_exit = function()
+        vim.api.nvim_buf_delete(buf, { force = true })
     end
+
+    vim.api.nvim_command("startinsert")
+    vim.fn.termopen(cmd or vim.o.shell, {
+        on_exit = on_exit,
+    })
 end
 
--- Sessions
-add_command("Session", ":mksession! ~/.local/share/nvim/session.vim<CR>", {})
-add_command("SessionRestore", ":source  ~/.local/share/nvim/session.vim<CR>", {})
+function P.openPopupTerminal(cmd)
+    vim.cmd("bot 15sp")
+    local win = vim.api.nvim_get_current_win()
+    local buf = vim.api.nvim_create_buf(true, false)
+    vim.api.nvim_win_set_buf(win, buf)
 
-add_command("LightMode", P.LightMode, {})
-add_command("DarkMode", P.DarkMode, {})
+    local on_exit = function()
+        vim.api.nvim_buf_delete(buf, { force = true })
+        vim.api.nvim_win_close(win, true)
+    end
+
+    vim.api.nvim_command("startinsert")
+    vim.fn.termopen(cmd or vim.o.shell, {
+        on_exit = on_exit,
+    })
+end
+
+function P.openFloatTerm(cmd)
+    local buf = vim.api.nvim_create_buf(false, true)
+    local win_height = math.ceil(vim.api.nvim_get_option("lines") * 0.8 - 4)
+    local win_width = math.ceil(vim.api.nvim_get_option("columns") * 0.8)
+    local col = math.ceil((vim.api.nvim_get_option("columns") - win_width) * 0.5)
+    local row = math.ceil((vim.api.nvim_get_option("lines") - win_height) * 0.5 - 1)
+    local opts = {
+        style = "minimal",
+        relative = "editor",
+        border = "rounded",
+        width = win_width,
+        height = win_height,
+        row = row,
+        col = col,
+    }
+    local win = vim.api.nvim_open_win(buf, true, opts)
+
+    local on_exit = function()
+        vim.api.nvim_win_close(win, true)
+        vim.api.nvim_buf_delete(buf, { force = true })
+    end
+
+    vim.api.nvim_command("startinsert")
+    vim.fn.termopen(cmd or vim.o.shell, {
+        on_exit = on_exit,
+    })
+end
 
 return P

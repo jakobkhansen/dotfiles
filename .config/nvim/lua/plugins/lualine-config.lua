@@ -34,6 +34,6 @@ require("lualine").setup({
                 truncateDir,
             },
         },
-        lualine_z = {},
+        lualine_z = { "progress" },
     },
 })

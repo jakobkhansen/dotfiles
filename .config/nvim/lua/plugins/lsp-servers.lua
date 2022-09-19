@@ -61,24 +61,9 @@ local function start_jdt()
     local project_name = vim.fn.fnamemodify(Find_root_better({ "build.gradle", "pom.xml", "build.xml" }), ":p:h:t")
     local workspace_dir = vim.env.HOME .. "/.workspaces/" .. project_name
 
-    local bundles = {
-        vim.fn.glob(
-            vim.env.HOME
-                .. "/.langservers/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
-        ),
-    }
-    vim.list_extend(
-        bundles,
-        vim.split(vim.fn.glob(vim.env.HOME .. "/.langservers/vscode-java-test/server/*.jar"), "\n")
-    )
-
     require("jdtls.setup").add_commands()
-    require("jdtls").setup_dap({ hotcodereplace = "auto" })
 
     -- JDTLS related commands
-    add_command("JdtDap", function()
-        require("jdtls.dap").setup_dap_main_class_configs()
-    end, {})
     add_command("JdtClearWorkspace", function()
         command("silent ! rm -r " .. workspace_dir)
     end, {})
@@ -92,7 +77,6 @@ local function start_jdt()
     local config = {
         init_options = {
             extendedClientCapabilities = extendedClientCapabilities,
-            bundles = bundles,
         },
         root_dir = Find_root_better({ "build.gradle", "pom.xml", "build.xml" }),
         flags = {
@@ -120,7 +104,8 @@ local function start_jdt()
 
             "-jar",
             vim.env.HOME
-                .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+                ..
+                "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
 
             "-configuration",
             vim.env.HOME .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",

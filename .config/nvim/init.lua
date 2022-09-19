@@ -12,14 +12,6 @@ require("packer").startup(function(use)
         end,
     })
 
-    --"Movement"
-    use({
-        "petertriho/nvim-scrollbar",
-        config = function()
-            require("plugins.nvim-scrollbar-config")
-        end,
-    })
-
     -- "Buffers"
     use({
         "akinsho/bufferline.nvim",
@@ -66,14 +58,6 @@ require("packer").startup(function(use)
         end,
     })
 
-    -- "Terminal"
-    use({
-        "akinsho/toggleterm.nvim",
-        config = function()
-            require("plugins.toggleterm-config")
-        end,
-    })
-
     -- Telescope
     use({
         "nvim-telescope/telescope.nvim",
@@ -115,12 +99,6 @@ require("packer").startup(function(use)
         end,
     })
 
-    use({
-        "is0n/fm-nvim",
-        config = function()
-            require("plugins.fm-nvim-config")
-        end,
-    })
     use({
         "nvim-neo-tree/neo-tree.nvim",
         branch = "main",
@@ -170,6 +148,12 @@ require("packer").startup(function(use)
     use("onsails/lspkind-nvim")
     use("mfussenegger/nvim-jdtls")
     use("jose-elias-alvarez/typescript.nvim")
+    use({
+        "simrat39/rust-tools.nvim",
+        config = function()
+            require("rust-tools").setup()
+        end,
+    })
     use("windwp/nvim-ts-autotag")
 
     -- nvim-cmp auto-completion
@@ -209,7 +193,7 @@ require("packer").startup(function(use)
     use({
         "lervag/vimtex",
         config = function()
-            require("plugins.latex-config")
+            require("plugins.vimtex-config")
         end,
     })
     use({
