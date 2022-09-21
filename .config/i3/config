@@ -24,7 +24,7 @@ bindsym $mod+Return exec --no-startup-id $terminal
 bindsym $mod+q kill
 
 # rofi
-# bindsym $mod+space exec --no-startup-id "rofi -combi-modi drun,run -show combi"
+bindsym $mod+$alt+space exec --no-startup-id "rofi-pass"
 bindsym $mod+space exec --no-startup-id "~/.config/rofi/scripts/launcher_t2"
 
 # change focus
