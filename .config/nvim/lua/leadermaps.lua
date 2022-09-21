@@ -80,6 +80,7 @@ wk.register({
         name = "terminal",
         t = { utils.openPopupTerminal, "popup-terminal" },
         f = { utils.openFullTerminal, "full-terminal" },
+        h = { utils.openFloatTerm, "float-terminal" },
     },
 
     -- Git

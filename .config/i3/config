@@ -172,6 +172,7 @@ focus_follows_mouse no
 gaps outer 1
 gaps inner 1
 for_window [class="^.*"] border pixel 2
+bindsym $mod+b border toggle
 
 workspace_layout stacked
 
