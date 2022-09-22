@@ -110,24 +110,11 @@ bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed 
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 5 px or 5 ppt
         bindsym j resize grow height 5 px or 5 ppt
         bindsym k resize shrink height 5 px or 5 ppt
         bindsym l resize grow width 5 px or 5 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 5 px or 5 ppt
-        bindsym Down resize grow height 5 px or 5 ppt
-        bindsym Up resize shrink height 5 px or 5 ppt
-        bindsym Right resize grow width 5 px or 5 ppt
-
-        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
@@ -140,8 +127,8 @@ bindsym $mod+r mode "resize"
 # Autostarts
 exec --no-startup-id "compton --config ~/.config/compton/compton.conf"
 exec --no-startup-id "nitrogen --restore"
-exec --no-startup-id "polybar -r PrimaryMonitor"
-exec --no-startup-id "polybar -r SecondaryMonitor"
+# exec --no-startup-id "polybar -r PrimaryMonitor"
+# exec --no-startup-id "polybar -r SecondaryMonitor"
 exec --no-startup-id "redshift -l 59.91273:10.74609"
 exec --no-startup-id i3-battery-popup -n -L 15 -t 30s -s ~/.config/dunst/light.mp3
 exec --no-startup-id unclutter
@@ -169,21 +156,17 @@ bindsym $mod+Shift+t exec --no-startup-id ~/Documents/Scripts/truncate_workspace
 focus_follows_mouse no
 
 # Gaps
-gaps outer 1
-gaps inner 1
-for_window [class="^.*"] border pixel 2
-bindsym $mod+b border toggle
+gaps outer 0
+gaps inner 0
+for_window [class="^.*"] border pixel 0
 
 workspace_layout stacked
 
-set $mode_gaps Toggle gaps: (1) off (2) on (3) off no polybar (4) big gaps (5) big gaps no polybar
+set $mode_gaps Toggle gaps: (1) off (2) on
 bindsym $mod+g mode "$mode_gaps"
 mode "$mode_gaps" {
     bindsym 1 [class="^.*"] mode "default", gaps inner all set 1, gaps outer all set 1, exec --no-startup-id polybar-msg cmd show
     bindsym 2 [class="^.*"] mode "default", gaps inner all set 10, gaps outer all set 5, exec --no-startup-id polybar-msg cmd show
-    bindsym 3 [class="^.*"] mode "default", gaps inner all set 1, gaps outer all set 1, exec --no-startup-id polybar-msg cmd hide
-    bindsym 4 [class="^.*"] mode "default", gaps inner all set 20, gaps outer all set 10, exec --no-startup-id polybar-msg cmd show
-    bindsym 5 [class="^.*"] mode "default", gaps inner all set 20, gaps outer all set 10, exec --no-startup-id polybar-msg cmd hide
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -196,10 +179,8 @@ bindsym F12 exec --no-startup-id "playerctl play-pause"
 
 # Application window settings
 for_window [class="Pavucontrol"] floating enable
-for_window [class="net-runelite-launcher-Launcher"] floating enable
 for_window [class="Headset" title="Headset"] floating enable border none
 for_window [class="Headset" title="Headset - Player"] move scratchpad
-for_window [class="Nm-connection-editor"] floating enable
 for_window [class="nmtui"] fullscreen enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Blueman-manager"] resize set 572 248
@@ -210,22 +191,20 @@ for_window [class="sun-awt-X11-XFramePeer"] floating enable
 
 
 # Screenshots
-# Selection screenshot
 bindsym --release Print exec --no-startup-id "scrot -a $(slop -f '%x,%y,%w,%h') /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"
-
-# Entire desktop
-bindsym $mod+Print exec --no-startup-id "scrot /tmp/screenshot.png -e 'xclip -selection clipboard -t image/png -i $f'"
 
 # Brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 10%-
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +10%
 
-# Lock-screen
-# bindsym $mod+shift+x exec --no-startup-id betterlockscreen -l blur
+# Power-menu
 bindsym $mod+shift+BackSpace exec --no-startup-id "~/.config/rofi/scripts/powermenu_t1"
 
-# Fix stupid keybinding shit
-#exec --no-startup-id xmodmap -e "keycode 51 = less greater"
-#exec --no-startup-id xmodmap -e "keycode 248 = apostrophe asterisk apostrophe asterisk dead_doubleacute multiply dead_doubleacute"
-
 bindsym $mod+m exec --no-startup-id xdotool mousemove 0 0
+
+bindsym $mod+b bar mode toggle
+
+bar {
+        status_command i3status
+        tray_output none
+}

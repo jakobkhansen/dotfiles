@@ -100,7 +100,7 @@ function P.config_files(opts)
         vim.env.HOME .. "/.config/zathura/zathurarc",
         vim.env.HOME .. "/.config/kitty/kitty.conf",
         vim.env.HOME .. "/.config/polybar/config",
-        vim.env.HOME .. "/.config/compton/compon.conf",
+        vim.env.HOME .. "/.config/compton/compton.conf",
         vim.env.HOME .. "/.config/yabai/yabairc",
         vim.env.HOME .. "/.config/skhd/skhdrc",
         vim.env.HOME .. "/.zshrc",
