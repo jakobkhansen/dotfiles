@@ -3,7 +3,7 @@ local keymap = vim.api.nvim_set_keymap
 local P = {}
 
 function P.smoothScroll(lines, scroll_cursor, interval)
-    interval = interval or 15
+    interval = interval or 10
     scroll_cursor = scroll_cursor or false
     local timer = vim.loop.new_timer()
     local num_lines = math.abs(lines)

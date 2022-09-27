@@ -212,5 +212,8 @@ require("leadermaps")
 require("language_configs")
 require("smoothscroll")
 
+-- Plugin dev
+require("treesitter-analysis")
+
 -- Master thesis work
 require("ccdetect")

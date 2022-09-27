@@ -28,7 +28,7 @@ end
 configs["ccdetect"] = {
     default_config = {
         cmd = cmd,
-        filetypes = { "ccdetect" },
+        filetypes = { "java" },
         root_dir = function(fname)
             return util.root_pattern(".git")(fname)
         end,

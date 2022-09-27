@@ -205,6 +205,7 @@ bindsym $mod+m exec --no-startup-id xdotool mousemove 0 0
 bindsym $mod+b bar mode toggle
 
 bar {
+        font pango: Fira Mono Nerd Font 8
         status_command i3status
         tray_output none
 }

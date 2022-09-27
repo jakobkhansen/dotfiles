@@ -51,6 +51,7 @@ function P.openPopupTerminal(cmd)
     local win = vim.api.nvim_get_current_win()
     local buf = vim.api.nvim_create_buf(true, false)
     vim.api.nvim_win_set_buf(win, buf)
+    vim.cmd("set nobl")
 
     local on_exit = function()
         vim.api.nvim_buf_delete(buf, { force = true })

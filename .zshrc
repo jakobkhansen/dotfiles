@@ -147,3 +147,6 @@ export PATH=$HOME/.config/rofi/scripts:$PATH
 function chpwd() {
     ls
 }
+
+
+export PATH="$HOME/.cargo/bin:$PATH"
