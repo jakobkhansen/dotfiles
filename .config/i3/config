@@ -127,8 +127,6 @@ bindsym $mod+r mode "resize"
 # Autostarts
 exec --no-startup-id "compton --config ~/.config/compton/compton.conf"
 exec --no-startup-id "nitrogen --restore"
-# exec --no-startup-id "polybar -r PrimaryMonitor"
-# exec --no-startup-id "polybar -r SecondaryMonitor"
 exec --no-startup-id "redshift -l 59.91273:10.74609"
 exec --no-startup-id i3-battery-popup -n -L 15 -t 30s -s ~/.config/dunst/light.mp3
 exec --no-startup-id unclutter
@@ -172,9 +170,6 @@ mode "$mode_gaps" {
 }
 
 # Bluetooth
-exec --no-startup-id "blueman-applet"
-bindsym F11 exec --no-startup-id "bluetoothctl connect 68:13:24:9C:40:F6"
-bindsym F10 exec --no-startup-id "bluetoothctl disconnect 68:13:24:9C:40:F6"
 bindsym F12 exec --no-startup-id "playerctl play-pause"
 
 # Application window settings
@@ -202,10 +197,11 @@ bindsym $mod+shift+BackSpace exec --no-startup-id "~/.config/rofi/scripts/powerm
 
 bindsym $mod+m exec --no-startup-id xdotool mousemove 0 0
 
-bindsym $mod+b bar mode toggle
+bindsym $mod+Shift+b bar mode toggle
+bindsym $mod+b border toggle
 
 bar {
         font pango: Fira Mono Nerd Font 8
-        status_command i3status
+        status_command py3status
         tray_output none
 }
