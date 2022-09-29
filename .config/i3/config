@@ -195,7 +195,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +10%
 # Power-menu
 bindsym $mod+shift+BackSpace exec --no-startup-id "~/.config/rofi/scripts/powermenu_t1"
 
-bindsym $mod+m exec --no-startup-id xdotool mousemove 0 0
+bindsym $mod+m exec --no-startup-id xdotool mousemove 0 1080
 
 bindsym $mod+Shift+b bar mode toggle
 bindsym $mod+b border toggle
