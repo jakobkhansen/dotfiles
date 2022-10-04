@@ -153,6 +153,12 @@ wk.register({
         o = { "<CMD>nohlsearch<CR>", "which_key_ignore" },
     },
     ["<BS>"] = { "<CMD>cd ..<CR>", "which_key_ignore" },
+    ["<CR>"] = {
+        function()
+            term.execInPopupTerminal("!!\n")
+        end,
+        "which_key_ignore",
+    },
 }, { prefix = "<Leader>" })
 
 wk.register({

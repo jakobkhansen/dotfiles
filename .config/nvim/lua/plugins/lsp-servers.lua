@@ -214,24 +214,24 @@ require("lspconfig").sumneko_lua.setup({
 })
 
 ---- C++
-require("lspconfig").ccls.setup({
-    init_options = {
-        compilationDatabaseDirectory = "build",
-        index = {
-            threads = 0,
-        },
-        clang = {
-            excludeArgs = { "-frounding-math" },
-        },
-    },
-    root_dir = util.root_pattern(
-        "compile_commands.json",
-        ".ccls",
-        "compile_flags.txt",
-        ".git",
-        "build/compile_commands.json"
-    ),
-})
+-- require("lspconfig").ccls.setup({
+--     init_options = {
+--         compilationDatabaseDirectory = "build",
+--         index = {
+--             threads = 0,
+--         },
+--         clang = {
+--             excludeArgs = { "-frounding-math" },
+--         },
+--     },
+--     root_dir = util.root_pattern(
+--         "compile_commands.json",
+--         ".ccls",
+--         "compile_flags.txt",
+--         ".git",
+--         "build/compile_commands.json"
+--     ),
+-- })
 
 -- Kotlin
 nvim_lsp.kotlin_language_server.setup({})

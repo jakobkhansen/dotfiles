@@ -23,7 +23,7 @@ end
 
 local jar = vim.env.HOME .. "/Documents/Dev/LSP/CCDetect-lsp/app/build/libs/app-all.jar"
 
-local cmd = { get_java_executable(), "-jar", jar }
+local cmd = { get_java_executable(), "-Xmx8G", "-jar", jar }
 
 local function on_show_document(err, result, ctx, config, params)
     local uri = result.uri
@@ -35,7 +35,7 @@ end
 configs["ccdetect"] = {
     default_config = {
         cmd = cmd,
-        filetypes = { "ccdetect" },
+        filetypes = { "c" },
         root_dir = function(fname)
             return util.root_pattern(".git")(fname)
         end,

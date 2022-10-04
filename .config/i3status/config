@@ -10,6 +10,7 @@ order += "window"
 order += "volume master"
 order += "wireless _first_"
 order += "battery all"
+order += "memory"
 order += "tztime local"
 
 wireless _first_ {
@@ -37,6 +38,11 @@ volume master {
         format = "(%devicename): %volume"
         format_muted = "♪: muted (%volume)"
         device = "default"
+}
+
+memory {
+
+    format = "RAM: %used"
 }
 
 window {
