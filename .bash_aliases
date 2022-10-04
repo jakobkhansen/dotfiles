@@ -49,6 +49,7 @@ alias gr=gitroot
 alias gitbranch="git branch"
 alias gb=gitbranch
 
+alias tt="taskwarrior-tui"
 
 alias darkmode="kitty +kitten themes --reload-in=all Tokyo Night Storm"
 alias lightmode="kitty +kitten themes --reload-in=all Tokyo Night Day"

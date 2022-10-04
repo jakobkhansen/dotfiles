@@ -57,7 +57,6 @@ function Find_root_better(markers, bufname)
 end
 
 local function start_jdt()
-    vimscript("cd %:p:h", false)
     local project_name = vim.fn.fnamemodify(Find_root_better({ "build.gradle", "pom.xml", "build.xml" }), ":p:h:t")
     local workspace_dir = vim.env.HOME .. "/.workspaces/" .. project_name
 

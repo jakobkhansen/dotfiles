@@ -17,7 +17,6 @@ cmp.setup({
     sources = {
         { name = "luasnip" },
         { name = "nvim_lsp" },
-        { name = "treesitter" },
         { name = "path" },
         { name = "buffer" },
         { name = "latex_symbols", keyword_length = 2 },
@@ -36,5 +35,11 @@ require("cmp").setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
         { name = "cmdline" },
+    },
+})
+
+require("cmp").setup.cmdline("/", {
+    sources = {
+        { name = "buffer" },
     },
 })

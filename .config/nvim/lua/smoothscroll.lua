@@ -10,7 +10,9 @@ function P.smoothScroll(lines, scroll_cursor, interval)
     local direction = lines / math.abs(lines)
     local scroll_command
     if scroll_cursor then
-        scroll_command = (direction == 1) and "\\<c-e>j" or "\\<c-y>k"
+        local down = vim.o.wrap and "gj" or "j"
+        local up = vim.o.wrap and "gk" or "k"
+        scroll_command = (direction == 1) and "\\<c-e>" .. down or "\\<c-y>" .. up
     else
         scroll_command = (direction == 1) and "\\<c-e>" or "\\<c-y>"
     end

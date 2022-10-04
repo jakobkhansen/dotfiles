@@ -3,8 +3,15 @@ local configs = require("lspconfig.configs")
 
 local util = lspconfig.util
 local sysname = vim.loop.os_uname().sysname
+local autocmd = vim.api.nvim_create_autocmd
 
 local command = vim.api.nvim_command
+
+-- Sets filetype to ccdetect
+autocmd("BufRead,BufNewFile", {
+    pattern = { "*.ccdetect" },
+    command = "setlocal ft=ccdetect",
+})
 
 local JAVA_HOME = os.getenv("JAVA_HOME")
 
@@ -28,15 +35,17 @@ end
 configs["ccdetect"] = {
     default_config = {
         cmd = cmd,
-        filetypes = { "java" },
+        filetypes = { "ccdetect" },
         root_dir = function(fname)
             return util.root_pattern(".git")(fname)
         end,
         handlers = {
             ["window/showDocument"] = on_show_document,
         },
+        init_options = {
+            language = "c",
+        },
     },
-    config = {},
 }
 
 lspconfig["ccdetect"].setup({})

@@ -75,6 +75,13 @@ require("telescope").setup({
             show_path = { "full" },
             fname_width = 60,
         },
+        buffers = {
+            mappings = {
+                n = {
+                    ["d"] = "delete_buffer",
+                },
+            },
+        },
     },
     extensions = {
         fzf = {

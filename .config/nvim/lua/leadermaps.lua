@@ -3,6 +3,7 @@ local wk = require("which-key")
 vim.g.mapleader = " "
 
 local utils = require("utils")
+local term = require("terminal")
 
 local lsp = vim.lsp.buf
 local diagnostic = vim.diagnostic
@@ -78,9 +79,9 @@ wk.register({
     -- Terminal
     t = {
         name = "terminal",
-        t = { utils.openPopupTerminal, "popup-terminal" },
-        f = { utils.openFullTerminal, "full-terminal" },
-        h = { utils.openFloatTerm, "float-terminal" },
+        t = { term.openPopupTerminal, "popup-terminal" },
+        f = { term.openFullTerminal, "full-terminal" },
+        h = { term.openFloatTerm, "float-terminal" },
     },
 
     -- Git
@@ -127,7 +128,6 @@ wk.register({
             "<CMD>silent! NeorgStart<CR><CMD>Neorg journal custom " .. utils.getFirstDayOfCurrentMonth() .. "<CR>",
             "hours",
         },
-        m = { "<CMD>MindOpenMain<CR>", "mind-global" },
         j = { "<CMD>silent! NeorgStart<CR><CMD>Neorg journal today<CR>", "journal" },
         p = { "<CMD>edit $HOME/Documents/gtd/projects.norg<CR>", "projects" },
     },
@@ -135,11 +135,8 @@ wk.register({
     -- Shortcuts
     s = {
         name = "shortcuts",
-        p = { "<CMD>PackerSync<CR>", "packer-sync" },
         s = { "<CMD>Alpha<CR>", "start-screen" },
         t = { commands.ToggleThemeMode, "toggle-theme" },
-        z = { "<CMD>ZenMode<CR>", "toggle-zen" },
-        c = { "<CMD>ScrollbarToggle<CR>", "toggle-scrollbar" },
     },
 
     -- Help
@@ -156,7 +153,6 @@ wk.register({
         o = { "<CMD>nohlsearch<CR>", "which_key_ignore" },
     },
     ["<BS>"] = { "<CMD>cd ..<CR>", "which_key_ignore" },
-    ["<CR>"] = { "<CMD>TermExec go_back=1 cmd='!!'<CR>", "which_key_ignore" },
 }, { prefix = "<Leader>" })
 
 wk.register({

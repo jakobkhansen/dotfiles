@@ -1,7 +1,7 @@
 require("packer").startup(function(use)
     -- "Libraries and dependencies"
     use("wbthomason/packer.nvim")
-    use("nathom/filetype.nvim")
+    -- use("nathom/filetype.nvim")
 
     -- "Multi-functionality"
     -- Mini provides pairs, surround, commenting and bufremoval functionality
