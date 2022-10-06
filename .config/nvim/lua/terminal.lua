@@ -53,6 +53,12 @@ function P.openPopupTerminal(cmd)
     })
 end
 
+function P.clearPopupTerminal()
+    popUpBuffer = nil
+    popUpWindow = nil
+    popUpJobId = nil
+end
+
 function P.execInTerminal(cmd, job)
     vim.fn.chansend(job, cmd)
 end

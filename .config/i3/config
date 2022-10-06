@@ -157,6 +157,7 @@ focus_follows_mouse no
 gaps outer 0
 gaps inner 0
 for_window [class="^.*"] border pixel 0
+for_window [floating] border pixel 2
 
 workspace_layout stacked
 

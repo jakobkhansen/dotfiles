@@ -42,4 +42,15 @@ function P.windowExists(win)
     return false
 end
 
+function P.bufExists(buf)
+    local bufs = vim.api.nvim_list_bufs()
+    for i, buffer in ipairs(bufs) do
+        if buffer == buf then
+            return true
+        end
+    end
+
+    return false
+end
+
 return P

@@ -1,9 +1,10 @@
 general {
-        colors = false
-        color_good =     '#1dcc9f'  
+        colors = true
+        color_good =     '#FFFFFF'  
         color_degraded = '#27c282'  
         color_bad =      '#aa0e50'
         interval = 1
+        markup = "pango"
 }
 
 order += "window"
@@ -19,30 +20,29 @@ wireless _first_ {
 }
 
 battery all {
-    format = "%status %percentage"
+    format = "%status <span weight='heavy'>%percentage</span>"
 	status_chr = ""
 	status_bat = " "
 	status_full = " "
-	hide_seconds = "true"
 	integer_battery_capacity = "true"
-	low_threshold = "20"
-	threshold_type = "time"
+	low_threshold = "15"
+	threshold_type = "percentage"
 }
 
 
 tztime local {
-        format = "%Y-%m-%d %H:%M"
+        format = " %d-%m-%Y %H:%M"
 }
 
 volume master {
-        format = "(%devicename): %volume"
+        format = "(%devicename): <span weight='heavy'>%volume</span>"
         format_muted = "♪: muted (%volume)"
         device = "default"
 }
 
 memory {
 
-    format = "RAM: %used"
+    format = "RAM: %used / %total"
 }
 
 window {

@@ -45,8 +45,7 @@ keymap("", "<F1>", "<CMD>lua MiniBufremove.wipeout(0, true)<CR>", opts)
 keymap("", "<F2>", "<CMD>bufdo bd<CR>", opts)
 
 -- Terminal
-keymap("t", "<C-q>", "<Esc>", opts)
-keymap("t", "<Esc>", "<C-\\><C-n>", opts)
+keymap("t", "<Esc><Esc>", "<C-\\><C-n>", opts)
 
 keymap("t", "<C-h>", "<C-\\><C-n><C-w>h", opts)
 keymap("t", "<C-j>", "<C-\\><C-n><C-w>j", opts)
