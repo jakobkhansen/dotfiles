@@ -31,6 +31,7 @@ opt.ignorecase = true
 opt.scrolloff = 5
 opt.timeoutlen = 300
 opt.foldenable = false
+-- opt.splitkeep = "screen"
 
 -- Don't auto-create comments on new-line
 autocmd("FileType", {

@@ -1,7 +1,7 @@
 general {
         colors = true
         color_good =     '#FFFFFF'  
-        color_degraded = '#27c282'  
+        color_degraded = '#FFFFFF'  
         color_bad =      '#aa0e50'
         interval = 1
         markup = "pango"

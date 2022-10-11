@@ -150,3 +150,7 @@ function chpwd() {
 
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Vim bindings
+bindkey -M vicmd ";" vi-rev-repeat-find
+bindkey -M vicmd "," vi-repeat-find

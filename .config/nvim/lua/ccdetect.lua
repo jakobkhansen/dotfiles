@@ -35,7 +35,7 @@ end
 configs["ccdetect"] = {
     default_config = {
         cmd = cmd,
-        filetypes = { "javascript" },
+        filetypes = { "c" },
         root_dir = function(fname)
             return util.root_pattern(".git")(fname)
         end,
@@ -43,8 +43,8 @@ configs["ccdetect"] = {
             ["window/showDocument"] = on_show_document,
         },
         init_options = {
-            language = "js",
-            fragment_query = "(function_declaration) @function",
+            language = "c",
+            fragment_query = "(function_definition) @function",
         },
     },
 }
