@@ -20,18 +20,12 @@ alias size="du -sh "
 
 
 
-alias cd_old="cd"
-alias cd="cs"
-
-# Change directory and ls
-function cs () {
-	builtin cd "$@" && ls
-}
-
 # Shortcuts to dirs
 alias h="cd ~"
 alias n="nvim"
 alias lsp="cd ~/Documents/Dev/LSP/CCDetect-lsp"
+alias lsptest="cd ~/Documents/master-thesis/TestCodebases"
+alias thesis="cd ~/Documents/master-thesis/thesis"
 
 alias ranger='source ranger'
 
@@ -77,6 +71,7 @@ function connect() {
 }
 
 alias con="connect"
+alias trackpad="bluetoothctl connect D4:57:63:5B:91:E7"
 function open() {
     xdg-open "$1" &; disown
 }

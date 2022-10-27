@@ -20,7 +20,7 @@ wk.register({
         g = { "<CMD>Telescope git_files<CR>", "find-git" },
         r = {
             function()
-                utils.openFloatTerm("ranger")
+                term.openFloatTerm("ranger")
             end,
             "find-ranger",
         },
@@ -164,6 +164,6 @@ wk.register({
 wk.register({
     l = {
         name = "lsp",
-        a = { "<Esc>gv<CMD>lua vim.lsp.buf.range_code_action()<CR>", "code-actions" },
+        a = { "<CMD>lua vim.lsp.buf.code_action()<CR>", "code-actions" },
     },
 }, { prefix = "<Leader>", mode = "v" })

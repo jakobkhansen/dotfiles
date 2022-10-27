@@ -103,8 +103,7 @@ local function start_jdt()
 
             "-jar",
             vim.env.HOME
-                ..
-                "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+                .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
 
             "-configuration",
             vim.env.HOME .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",
@@ -122,7 +121,7 @@ local function start_jdt()
                         {
                             name = "JavaSE-1.8",
                             path = "/usr/lib/jvm/java-8-openjdk/",
-                            default = true,
+                            -- default = true,
                         },
                         {
                             name = "JavaSE-11",
@@ -142,7 +141,7 @@ local function start_jdt()
     require("jdtls").start_or_attach(config)
 end
 
-autocmd("FileType", { pattern = "java", callback = start_jdt })
+-- autocmd("FileType", { pattern = "java", callback = start_jdt })
 
 ---- Typescript
 

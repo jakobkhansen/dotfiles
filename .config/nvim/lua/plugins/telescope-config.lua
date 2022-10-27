@@ -26,7 +26,7 @@ function P.find_any(opts)
     pickers
         .new(opts, {
             prompt_title = "Find Directory",
-            finder = finders.new_oneshot_job({ "fd" }),
+            finder = finders.new_oneshot_job({ "fd", "--type", "d" }),
             sorter = conf.generic_sorter(opts),
             attach_mappings = function(prompt_bufnr, map)
                 actions.select_default:replace(function()

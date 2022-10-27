@@ -35,7 +35,7 @@ end
 configs["ccdetect"] = {
     default_config = {
         cmd = cmd,
-        filetypes = { "c" },
+        filetypes = { "java" },
         root_dir = function(fname)
             return util.root_pattern(".git")(fname)
         end,
@@ -43,10 +43,11 @@ configs["ccdetect"] = {
             ["window/showDocument"] = on_show_document,
         },
         init_options = {
-            language = "c",
-            fragment_query = "(function_definition) @function",
+            language = "java",
+            fragment_query = "(method_declaration) @method",
+            ignore_nodes = { "comment" },
         },
     },
 }
 
-lspconfig["ccdetect"].setup({})
+-- lspconfig["ccdetect"].setup({})

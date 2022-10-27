@@ -89,5 +89,6 @@
   "security.workspace.trust.untrustedFiles": "open",
   "workbench.colorTheme": "Quiet Light",
   "editor.renderLineHighlightOnlyWhenFocus": true,
-  "editor.renderLineHighlight": "none"
+  "editor.renderLineHighlight": "none",
+  "explorer.confirmDelete": false
 }

@@ -71,3 +71,4 @@ require("nvim-treesitter.configs").setup({
 
 -- Master
 ft_to_parser.ccdetect = "java"
+ft_to_parser.mdx = "markdown"

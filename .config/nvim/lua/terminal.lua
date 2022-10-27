@@ -29,7 +29,7 @@ function P.openPopupTerminal(cmd)
         popUpWindow = vim.api.nvim_get_current_win()
     end
 
-    if popUpBuffer ~= nil then
+    if utils.bufExists(popUpBuffer) then
         vim.api.nvim_set_current_win(popUpWindow)
         vim.api.nvim_win_set_buf(popUpWindow, popUpBuffer)
         return

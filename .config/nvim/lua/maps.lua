@@ -62,4 +62,4 @@ keymap("t", "<C-M-r>", "<C-\\><C-n><C-W>=i", opts)
 
 -- Fix range code action for demonstration purposes
 keymap("n", "<C-q>", "", { callback = vim.lsp.buf.code_action })
-keymap("v", "<C-q>", "<Esc>gv<CMD>lua vim.lsp.buf.range_code_action()<CR>", opts)
+keymap("v", "<C-q>", "<Esc>gv<CMD>lua vim.lsp.buf.code_action()<CR>", opts)
