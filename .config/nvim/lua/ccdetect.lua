@@ -45,9 +45,18 @@ configs["ccdetect"] = {
         init_options = {
             language = "java",
             fragment_query = "(method_declaration) @method",
-            ignore_nodes = { "comment" },
+            clone_token_threshold = 75,
+            extra_nodes = {},
+            ignore_nodes = {},
         },
+        -- init_options = {
+        --     language = "c",
+        --     fragment_query = "(function_definition) @method",
+        --     clone_token_threshold = 75,
+        --     ignore_nodes = { "comment" },
+        --     extra_nodes = { "string_literal" },
+        -- },
     },
 }
 
--- lspconfig["ccdetect"].setup({})
+lspconfig["ccdetect"].setup({})

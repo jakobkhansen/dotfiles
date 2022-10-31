@@ -6,7 +6,6 @@ require("null-ls").setup({
         require("null-ls").builtins.formatting.prettierd.with({
             extra_filetypes = { "java" },
         }),
-        require("null-ls").builtins.code_actions.gitsigns,
         require("null-ls").builtins.formatting.stylua,
         require("null-ls").builtins.formatting.rustfmt,
         require("null-ls").builtins.diagnostics.markdownlint.with({

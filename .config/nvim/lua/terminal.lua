@@ -24,7 +24,7 @@ local popUpJobId = nil
 
 function P.openPopupTerminal(cmd)
     -- Create window if it doesn't exist
-    if not utils.windowExists(popUpWindow) then
+    if not utils.windowExists(popUpWindow) or vim.bo[popUpWindow].buftype ~= "terminal" then
         vim.cmd("bot 15sp")
         popUpWindow = vim.api.nvim_get_current_win()
     end

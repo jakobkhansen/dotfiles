@@ -23,6 +23,7 @@ alias size="du -sh "
 # Shortcuts to dirs
 alias h="cd ~"
 alias n="nvim"
+alias nmaster="nvim -u ~/.config/nvim/masterinit.lua"
 alias lsp="cd ~/Documents/Dev/LSP/CCDetect-lsp"
 alias lsptest="cd ~/Documents/master-thesis/TestCodebases"
 alias thesis="cd ~/Documents/master-thesis/thesis"
@@ -72,6 +73,7 @@ function connect() {
 
 alias con="connect"
 alias trackpad="bluetoothctl connect D4:57:63:5B:91:E7"
+alias headset="bluetoothctl connect 88:C9:E8:37:EB:EB"
 function open() {
     xdg-open "$1" &; disown
 }
