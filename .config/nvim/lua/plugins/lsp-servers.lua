@@ -3,89 +3,36 @@ local nvim_lsp = require("lspconfig")
 local util = require("lspconfig/util")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local autocmd = vim.api.nvim_create_autocmd
-local add_command = vim.api.nvim_create_user_command
-local vimscript = vim.api.nvim_exec
-local command = vim.api.nvim_command
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.workspace.configuration = true
 
--- Python
-nvim_lsp.pyright.setup({
-    capabilities = capabilities,
-})
-
--- HTML
-nvim_lsp.html.setup({
-    capabilities = capabilities,
-    commands = {
-        Format = {
-            function()
-                vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
-            end,
-        },
-    },
-})
-
--- CSS
-nvim_lsp.cssls.setup({
-    capabilities = capabilities,
-})
-
--- JSON
-require("lspconfig").jsonls.setup({})
-
 ---- Java
 local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
-
-function Find_root_better(markers, bufname)
-    bufname = bufname or vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
-    local dirname = vim.fn.fnamemodify(bufname, ":p:h")
-    local getparent = function(p)
-        return vim.fn.fnamemodify(p, ":h")
-    end
-    while not (getparent(dirname) == dirname) do
-        for _, marker in ipairs(markers) do
-            if vim.loop.fs_stat(require("jdtls.path").join(dirname, marker)) then
-                return dirname
-            end
-        end
-        dirname = getparent(dirname)
-    end
-    return vim.fn.getcwd()
+local find_root = function()
+    return require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" })
 end
 
 local function start_jdt()
-    local project_name = vim.fn.fnamemodify(Find_root_better({ "build.gradle", "pom.xml", "build.xml" }), ":p:h:t")
+    local root = find_root()
+    local project_name = vim.fn.fnamemodify(root, ":t")
     local workspace_dir = vim.env.HOME .. "/.workspaces/" .. project_name
 
     require("jdtls.setup").add_commands()
-
-    -- JDTLS related commands
-    add_command("JdtClearWorkspace", function()
-        command("silent ! rm -r " .. workspace_dir)
-    end, {})
-    add_command("JdtClearAllWorkspaces", function()
-        local workspace_dirs = vim.fn.glob(vim.env.HOME .. "/.workspaces/*")
-        for _, workspace in pairs(vim.split(workspace_dirs, "\n")) do
-            command("silent ! rm -r " .. workspace)
-        end
-    end, {})
 
     local config = {
         init_options = {
             extendedClientCapabilities = extendedClientCapabilities,
         },
-        root_dir = Find_root_better({ "build.gradle", "pom.xml", "build.xml" }),
+        root_dir = root,
         flags = {
             allow_incremental_sync = true,
             server_side_fuzzy_completion = true,
         },
         capabilities = capabilities,
         cmd = {
-
-            "/usr/lib/jvm/java-11-openjdk/bin/java", -- or '/path/to/java11_or_newer/bin/java'
+            "java", -- or '/path/to/java11_or_newer/bin/java'
             -- depends on if `java` is in your $PATH env variable and if it points to the right version.
 
             "-Declipse.application=org.eclipse.jdt.ls.core.id1",
@@ -103,7 +50,8 @@ local function start_jdt()
 
             "-jar",
             vim.env.HOME
-                .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+                ..
+                "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
 
             "-configuration",
             vim.env.HOME .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",
@@ -115,23 +63,16 @@ local function start_jdt()
         settings = {
             java = {
                 signatureHelp = { enabled = true },
-                contentProvider = { preferred = "fernflower" },
                 configuration = {
                     runtimes = {
                         {
                             name = "JavaSE-1.8",
                             path = "/usr/lib/jvm/java-8-openjdk/",
-                            -- default = true,
                         },
                         {
                             name = "JavaSE-11",
                             path = "/usr/lib/jvm/java-11-openjdk/",
                         },
-                    },
-                },
-                errors = {
-                    incompleteClasspath = {
-                        severity = "ignore",
                     },
                 },
             },
@@ -170,14 +111,30 @@ nvim_lsp.tsserver.setup({
     },
 })
 
+---- C++
+require("lspconfig").ccls.setup({
+    root_dir = util.root_pattern(
+        "compile_commands.json",
+        ".ccls",
+        "compile_flags.txt",
+        ".git",
+        "build/compile_commands.json"
+    ),
+})
+
+-- HTML
+nvim_lsp.html.setup({})
+
+-- CSS
+nvim_lsp.cssls.setup({})
+
+-- JSON
+require("lspconfig").jsonls.setup({})
+
 -- Tailwind
 nvim_lsp.tailwindcss.setup({})
 
-nvim_lsp.eslint.setup({
-    on_attach = function(client, _)
-        -- autocmd({ "BufWritePre" }, { command = ":EslintFixAll", pattern = "*.tsx,*.ts,*.jsx,*.js" })
-    end,
-})
+nvim_lsp.eslint.setup({})
 
 ---- Latex
 nvim_lsp.texlab.setup({})
@@ -188,8 +145,6 @@ require("lspconfig").ltex.setup({
 })
 
 -- Lua
-USER = vim.fn.expand("$USER")
-
 require("lspconfig").sumneko_lua.setup({
     settings = {
         Lua = {
@@ -214,28 +169,7 @@ require("lspconfig").sumneko_lua.setup({
     },
 })
 
----- C++
-
-if vim.g.javaserveroff == nil then
-    require("lspconfig").ccls.setup({
-        init_options = {
-            compilationDatabaseDirectory = "build",
-            index = {
-                threads = 0,
-            },
-            clang = {
-                excludeArgs = { "-frounding-math" },
-            },
-        },
-        root_dir = util.root_pattern(
-            "compile_commands.json",
-            ".ccls",
-            "compile_flags.txt",
-            ".git",
-            "build/compile_commands.json"
-        ),
-    })
-end
-
--- Kotlin
-nvim_lsp.kotlin_language_server.setup({})
+-- Python
+nvim_lsp.pyright.setup({
+    capabilities = capabilities,
+})

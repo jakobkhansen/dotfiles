@@ -45,7 +45,7 @@ configs["ccdetect"] = {
         init_options = {
             language = "java",
             fragment_query = "(method_declaration) @method",
-            clone_token_threshold = 75,
+            clone_token_threshold = 100,
             extra_nodes = {},
             ignore_nodes = {},
         },
