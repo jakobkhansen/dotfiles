@@ -40,26 +40,15 @@ autocmd("FileType", {
 })
 
 -- Completion
-opt.completeopt = "menuone,noselect"
+opt.completeopt = "menu,menuone,noselect"
 opt.pumheight = 10
 
 -- Visuals
-opt.termguicolors = true
 opt.signcolumn = "yes:1"
 opt.laststatus = 3
 
--- Statusline
--- opt.statusline = "%f %h%w%m%r %=%(%{getcwd()} %)"
-
-vim.g.tokyonight_transparent_sidebar = true
-vim.g.tokyonight_colors = {
-    info = "#FFFFFF",
-    hint = "#FFFFFF",
-}
-vim.g.tokyonight_italic_keywords = false
-vim.g.tokyonight_italic_comments = false
--- vim.g.tokyonight_style = "day"
-vimscript("colorscheme tokyonight", false)
+-- Better diffline
+vimscript("set diffopt+=linematch:60", false)
 
 -- Persistent undo
 local undoDir = "/tmp/.undodir_" .. vim.env["USER"]
