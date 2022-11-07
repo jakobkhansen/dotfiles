@@ -22,7 +22,7 @@ require("packer").startup(function(use)
     })
 
     -- Visuals
-    use("jakobkhansen/tokyonight.nvim")
+    use("folke/tokyonight.nvim")
     use({
         "nvim-lualine/lualine.nvim",
         config = function()
@@ -101,7 +101,6 @@ require("packer").startup(function(use)
 
     use({
         "nvim-neo-tree/neo-tree.nvim",
-        branch = "main",
         requires = {
             "nvim-lua/plenary.nvim",
             "kyazdani42/nvim-web-devicons",
@@ -176,7 +175,6 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.treesitter-config")
         end,
-        commit = "1da61c993a09bf237b0b65a5256577eaa3c677c6",
     })
     use("nvim-treesitter/playground")
     use("nvim-treesitter/nvim-treesitter-textobjects")
