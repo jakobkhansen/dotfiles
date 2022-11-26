@@ -51,12 +51,14 @@ configs["ccdetect"] = {
         },
         -- init_options = {
         --     language = "c",
-        --     fragment_query = "(function_definition) @method",
-        --     clone_token_threshold = 75,
+        --     fragment_query = "(function_definition) @function",
+        --     clone_token_threshold = 100,
         --     ignore_nodes = { "comment" },
         --     extra_nodes = { "string_literal" },
         -- },
     },
 }
 
-lspconfig["ccdetect"].setup({})
+if vim.g.javaserveroff ~= nil then
+    lspconfig["ccdetect"].setup({})
+end

@@ -2,7 +2,13 @@ require("mini.bufremove").setup()
 
 require("mini.comment").setup()
 
-require("mini.pairs").setup()
+require("mini.pairs").setup({
+    mappings = {
+        ["("] = { action = "open", pair = "()", neigh_pattern = ".[^%w]" },
+        ["["] = { action = "open", pair = "[]", neigh_pattern = ".[^%w]" },
+        ["{"] = { action = "open", pair = "{}", neigh_pattern = ".[^%w]" },
+    },
+})
 
 require("mini.surround").setup({
     n_lines = 20,

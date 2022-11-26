@@ -2,6 +2,8 @@ local vimscript = vim.api.nvim_exec
 local utils = require("utils")
 
 local P = {}
+local lastOpenedTerminalJobId = nil
+
 -- Terminals
 function P.openFullTerminal(cmd)
     local buf = vim.api.nvim_create_buf(true, false)
@@ -13,29 +15,17 @@ function P.openFullTerminal(cmd)
     end
 
     vim.api.nvim_command("startinsert")
-    vim.fn.termopen(cmd or vim.o.shell, {
+    lastOpenedTerminalJobId = vim.fn.termopen(cmd or vim.o.shell, {
         on_exit = on_exit,
     })
 end
 
-local popUpBuffer = nil
-local popUpWindow = nil
-local popUpJobId = nil
-
 function P.openPopupTerminal(cmd)
     -- Create window if it doesn't exist
-    if not utils.windowExists(popUpWindow) or vim.bo[popUpWindow].buftype ~= "terminal" then
-        vim.cmd("bot 15sp")
-        popUpWindow = vim.api.nvim_get_current_win()
-    end
+    vim.cmd("bot 15sp")
+    local popUpWindow = vim.api.nvim_get_current_win()
 
-    if utils.bufExists(popUpBuffer) then
-        vim.api.nvim_set_current_win(popUpWindow)
-        vim.api.nvim_win_set_buf(popUpWindow, popUpBuffer)
-        return
-    end
-
-    popUpBuffer = vim.api.nvim_create_buf(true, false)
+    local popUpBuffer = vim.api.nvim_create_buf(true, false)
 
     vim.api.nvim_win_set_buf(popUpWindow, popUpBuffer)
     vim.cmd("set nobl")
@@ -43,20 +33,13 @@ function P.openPopupTerminal(cmd)
     local on_exit = function()
         vim.api.nvim_buf_delete(popUpBuffer, { force = true })
         vim.api.nvim_win_close(popUpWindow, true)
-        popUpBuffer = nil
-        popUpWindow = nil
+        lastOpenedTerminalJobId = nil
     end
 
     vim.api.nvim_command("startinsert")
-    popUpJobId = vim.fn.termopen(cmd or vim.o.shell, {
+    lastOpenedTerminalJobId = vim.fn.termopen(cmd or vim.o.shell, {
         on_exit = on_exit,
     })
-end
-
-function P.clearPopupTerminal()
-    popUpBuffer = nil
-    popUpWindow = nil
-    popUpJobId = nil
 end
 
 function P.execInTerminal(cmd, job)
@@ -64,9 +47,7 @@ function P.execInTerminal(cmd, job)
 end
 
 function P.execInPopupTerminal(cmd)
-    if utils.windowExists(popUpWindow) then
-        vim.fn.chansend(popUpJobId, cmd)
-    end
+    vim.fn.chansend(lastOpenedTerminalJobId, cmd)
 end
 
 function P.openFloatTerm(cmd)
@@ -92,7 +73,7 @@ function P.openFloatTerm(cmd)
     end
 
     vim.api.nvim_command("startinsert")
-    vim.fn.termopen(cmd or vim.o.shell, {
+    lastOpenedTerminalJobId = vim.fn.termopen(cmd or vim.o.shell, {
         on_exit = on_exit,
     })
 end

@@ -112,15 +112,17 @@ nvim_lsp.tsserver.setup({
 })
 
 ---- C++
-require("lspconfig").ccls.setup({
-    root_dir = util.root_pattern(
-        "compile_commands.json",
-        ".ccls",
-        "compile_flags.txt",
-        ".git",
-        "build/compile_commands.json"
-    ),
-})
+if vim.g.javaserveroff == nil then
+    require("lspconfig").ccls.setup({
+        root_dir = util.root_pattern(
+            "compile_commands.json",
+            ".ccls",
+            "compile_flags.txt",
+            ".git",
+            "build/compile_commands.json"
+        ),
+    })
+end
 
 -- HTML
 nvim_lsp.html.setup({})
@@ -173,3 +175,6 @@ require("lspconfig").sumneko_lua.setup({
 nvim_lsp.pyright.setup({
     capabilities = capabilities,
 })
+
+-- Scheme
+require("lspconfig").racket_langserver.setup({})

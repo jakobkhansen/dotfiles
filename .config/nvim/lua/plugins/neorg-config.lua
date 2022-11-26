@@ -1,9 +1,3 @@
-local vimscript = vim.api.nvim_exec
-local utils = require("utils")
-local command = vim.api.nvim_command
-local input = vim.api.nvim_input
-local add_command = vim.api.nvim_create_user_command
-
 require("neorg").setup({
     load = {
         ["core.defaults"] = {}, -- Load all the default modules
