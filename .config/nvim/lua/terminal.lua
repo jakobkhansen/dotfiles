@@ -25,10 +25,9 @@ function P.openPopupTerminal(cmd)
     vim.cmd("bot 15sp")
     local popUpWindow = vim.api.nvim_get_current_win()
 
-    local popUpBuffer = vim.api.nvim_create_buf(true, false)
+    local popUpBuffer = vim.api.nvim_create_buf(false, true)
 
     vim.api.nvim_win_set_buf(popUpWindow, popUpBuffer)
-    vim.cmd("set nobl")
 
     local on_exit = function()
         vim.api.nvim_buf_delete(popUpBuffer, { force = true })

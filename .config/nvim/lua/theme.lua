@@ -31,7 +31,9 @@ require("tokyonight").setup({
             underline = true,
             sp = c.hint,
         }
-        local prompt = "#2d3149"
     end,
 })
 vimscript("colorscheme tokyonight", false)
+
+-- Additional highlight group linking
+vim.api.nvim_set_hl(0, "StatusLine", {})

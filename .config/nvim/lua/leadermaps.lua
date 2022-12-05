@@ -102,6 +102,7 @@ wk.register({
     -- Path, cwd, session
     p = {
         name = "path, cwd, session",
+        p = { "<CMD>pwd<CR>", "pwd" },
         h = { "<CMD>cd $HOME<CR>", "path-home" },
         g = { utils.CWDgitRoot, "path-git-root" },
         n = { "<CMD>cd $HOME/.config/nvim<CR>", "path-neovim-config" },

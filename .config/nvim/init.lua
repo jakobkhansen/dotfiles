@@ -24,9 +24,14 @@ require("packer").startup(function(use)
     -- Visuals
     use("folke/tokyonight.nvim")
     use({
-        "nvim-lualine/lualine.nvim",
+        "utilyre/barbecue.nvim",
+        requires = {
+            "neovim/nvim-lspconfig",
+            "smiteshp/nvim-navic",
+            "kyazdani42/nvim-web-devicons",
+        },
         config = function()
-            require("plugins.lualine-config")
+            require("barbecue").setup()
         end,
     })
     use({
@@ -146,7 +151,12 @@ require("packer").startup(function(use)
 
     use("onsails/lspkind-nvim")
     use("mfussenegger/nvim-jdtls")
-    use("jose-elias-alvarez/typescript.nvim")
+    use({
+        "jose-elias-alvarez/typescript.nvim",
+        config = function()
+            require("typescript").setup({})
+        end,
+    })
     use({
         "simrat39/rust-tools.nvim",
         config = function()

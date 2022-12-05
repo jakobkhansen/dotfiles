@@ -44,7 +44,11 @@ opt.pumheight = 10
 
 -- Visuals
 opt.signcolumn = "yes:1"
-opt.laststatus = 3
+vim.opt.laststatus = 3
+vim.opt.statusline = " "
+vim.opt.cmdheight = 0
+
+-- opt.ruler = false
 
 -- Better diffline
 vimscript("set diffopt+=linematch:60", false)

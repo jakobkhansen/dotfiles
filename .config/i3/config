@@ -159,10 +159,6 @@ gaps inner 0
 for_window [class="^.*"] border pixel 0
 for_window [floating] border pixel 2
 
-# Press alt to see active window, experimental
-bindcode 64 border pixel 1
-bindcode --release 64 border none
-
 workspace_layout stacked
 
 set $mode_gaps Toggle gaps: (1) off (2) on
