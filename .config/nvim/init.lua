@@ -11,19 +11,17 @@ require("packer").startup(function(use)
         end,
     })
 
+    -- "Buffers"
+    use({
+        "akinsho/bufferline.nvim",
+        config = function()
+            require("plugins.bufferline-config")
+        end,
+        requires = "kyazdani42/nvim-web-devicons",
+    })
+
     -- Visuals
     use("folke/tokyonight.nvim")
-    use({
-        "utilyre/barbecue.nvim",
-        requires = {
-            "neovim/nvim-lspconfig",
-            "smiteshp/nvim-navic",
-            "kyazdani42/nvim-web-devicons",
-        },
-        config = function()
-            require("barbecue").setup()
-        end,
-    })
     use({
         "j-hui/fidget.nvim",
         config = function()

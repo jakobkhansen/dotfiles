@@ -15,6 +15,9 @@ keymap("", "<A-k>", "<CMD>m-2<CR>", opts)
 keymap("", "<A-j>", "<CMD>m+<CR>", opts)
 
 -- Buffers and tabs
+keymap("n", "<Tab>", "<CMD>bn<CR>", opts)
+keymap("n", "<S-Tab>", "<CMD>bp<CR>", opts)
+
 keymap("n", "<A-l>", "<CMD>tabnext<CR>", opts)
 keymap("n", "<A-h>", "<CMD>tabprevious<CR>", opts)
 

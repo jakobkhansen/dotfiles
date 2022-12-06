@@ -6,8 +6,9 @@ local lastOpenedTerminalJobId = nil
 
 -- Terminals
 function P.openFullTerminal(cmd)
-    local buf = vim.api.nvim_create_buf(true, false)
+    local buf = vim.api.nvim_create_buf(false, true)
     local win = vim.api.nvim_get_current_win()
+    vim.bo[buf].filetype = "terminal"
     vim.api.nvim_win_set_buf(win, buf)
 
     local on_exit = function()
