@@ -15,21 +15,18 @@ keymap("", "<A-k>", "<CMD>m-2<CR>", opts)
 keymap("", "<A-j>", "<CMD>m+<CR>", opts)
 
 -- Buffers and tabs
-keymap("n", "<Tab>", "<CMD>bn<CR>", opts)
-keymap("n", "<S-Tab>", "<CMD>bp<CR>", opts)
-
 keymap("n", "<A-l>", "<CMD>tabnext<CR>", opts)
 keymap("n", "<A-h>", "<CMD>tabprevious<CR>", opts)
 
 keymap("", "ZA", "<CMD>wqa<CR>", opts)
 
---  Move to buffer
+--  Move to window
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
---  Resize buffers
+--  Resize window
 keymap("n", "<C-m-h>", "<CMD>vertical resize-5<CR>", opts)
 keymap("n", "<C-m-j>", "<CMD>resize-5<CR>", opts)
 keymap("n", "<C-m-k>", "<CMD>resize+5<CR>", opts)

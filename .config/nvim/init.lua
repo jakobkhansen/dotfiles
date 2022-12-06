@@ -1,7 +1,6 @@
 require("packer").startup(function(use)
     -- "Libraries and dependencies"
     use("wbthomason/packer.nvim")
-    -- use("nathom/filetype.nvim")
 
     -- "Multi-functionality"
     -- Mini provides pairs, surround, commenting and bufremoval functionality
@@ -10,15 +9,6 @@ require("packer").startup(function(use)
         config = function()
             require("plugins.mini-config")
         end,
-    })
-
-    -- "Buffers"
-    use({
-        "akinsho/bufferline.nvim",
-        config = function()
-            require("plugins.bufferline-config")
-        end,
-        requires = "kyazdani42/nvim-web-devicons",
     })
 
     -- Visuals

@@ -7,7 +7,7 @@ local term = require("terminal")
 
 local lsp = vim.lsp.buf
 local diagnostic = vim.diagnostic
-local fzf_custom = require("plugins.fzf-config")
+-- local fzf_custom = require("plugins.fzf-config")
 local telescope_custom = require("plugins.telescope-config")
 local commands = require("commands")
 
@@ -103,6 +103,7 @@ wk.register({
     p = {
         name = "path, cwd, session",
         p = { "<CMD>pwd<CR>", "pwd" },
+        f = { "<CMD>echo @%<CR>", "file-path" },
         h = { "<CMD>cd $HOME<CR>", "path-home" },
         g = { utils.CWDgitRoot, "path-git-root" },
         n = { "<CMD>cd $HOME/.config/nvim<CR>", "path-neovim-config" },
@@ -152,7 +153,7 @@ wk.register({
         name = "which_key_ignore",
         o = { "<CMD>nohlsearch<CR>", "which_key_ignore" },
     },
-    ["<BS>"] = { "<CMD>cd ..<CR>", "which_key_ignore" },
+    ["<BS>"] = { "<CMD>cd ..<CR><CMD>pwd<CR>", "which_key_ignore" },
     ["<CR>"] = {
         function()
             term.execInPopupTerminal("!!\n")
