@@ -103,6 +103,22 @@ local config = {
     },
     opts = {
         margin = 5,
+        setup = function()
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "AlphaReady",
+                desc = "disable status and tabline for alpha",
+                callback = function()
+                    vim.opt.showtabline = 0
+                end,
+            })
+            vim.api.nvim_create_autocmd("BufUnload", {
+                buffer = 0,
+                desc = "enable status and tabline after alpha",
+                callback = function()
+                    vim.opt.showtabline = 2
+                end,
+            })
+        end,
     },
 }
 

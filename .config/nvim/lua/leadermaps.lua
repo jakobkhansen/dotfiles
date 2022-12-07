@@ -148,7 +148,7 @@ wk.register({
     },
 
     -- Uncategorized
-    w = { "<CMD>w<CR>", "which_key_ignore" },
+    w = { "<CMD>echo<CR><CMD>silent w<CR>", "which_key_ignore" },
     n = {
         name = "which_key_ignore",
         o = { "<CMD>nohlsearch<CR>", "which_key_ignore" },

@@ -26,6 +26,6 @@ require("bufferline").setup({
         show_close_icon = false,
         persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
         separator_style = { "", "" },
-        always_show_bufferline = false,
+        always_show_bufferline = true,
     },
 })
