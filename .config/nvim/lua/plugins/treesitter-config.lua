@@ -59,14 +59,6 @@ require("nvim-treesitter.configs").setup({
             enable = true,
         },
     },
-    textsubjects = {
-        enable = true,
-        keymaps = {
-            ["."] = "textsubjects-smart",
-            [";"] = "textsubjects-container-outer",
-            ["i;"] = "textsubjects-container-inner",
-        },
-    },
 })
 
 -- Master

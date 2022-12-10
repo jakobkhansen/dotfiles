@@ -166,6 +166,7 @@ require("packer").startup(function(use)
     use("hrsh7th/cmp-path")
     use("kdheepak/cmp-latex-symbols")
     use("hrsh7th/cmp-cmdline")
+    use("hrsh7th/cmp-nvim-lsp-signature-help")
 
     -- "Treesitter & Syntax highlighting"
     use({

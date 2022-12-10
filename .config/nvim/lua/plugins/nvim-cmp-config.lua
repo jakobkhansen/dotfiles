@@ -13,12 +13,12 @@ cmp.setup({
         }),
     },
 
-    -- You should specify your *installed* sources.
     sources = {
         { name = "luasnip" },
         { name = "nvim_lsp" },
         { name = "path" },
         { name = "buffer" },
+        { name = "nvim_lsp_signature_help" },
         { name = "latex_symbols", keyword_length = 2 },
     },
     snippet = {
@@ -29,6 +29,7 @@ cmp.setup({
     formatting = {
         format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
     },
+    preselect = cmp.PreselectMode.None,
 })
 
 require("cmp").setup.cmdline(":", {
