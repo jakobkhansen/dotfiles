@@ -26,6 +26,16 @@ function P.ToggleThemeMode()
     end
 end
 
+function P.ToggleTabLine()
+    if vim.o.showtabline == 2 then
+        vim.o.showtabline = 0
+    else
+        vim.o.showtabline = 2
+    end
+end
+
+add_command("ToggleTabLine", P.ToggleTabLine, {})
+
 -- Sessions
 add_command("Session", ":mksession! ~/.local/share/nvim/session.vim<CR>", {})
 add_command("SessionRestore", ":source  ~/.local/share/nvim/session.vim<CR>", {})

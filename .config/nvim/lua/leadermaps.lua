@@ -138,6 +138,7 @@ wk.register({
         name = "shortcuts",
         s = { "<CMD>Alpha<CR>", "start-screen" },
         t = { commands.ToggleThemeMode, "toggle-theme" },
+        b = { commands.ToggleTabLine, "toggle-tabline" },
     },
 
     -- Help
