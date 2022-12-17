@@ -11,6 +11,8 @@ require("null-ls").setup({
         require("null-ls").builtins.diagnostics.markdownlint.with({
             extra_args = { "--disable", "MD013", "MD024" },
         }),
+        -- require("null-ls").builtins.formatting.gofmt,
+        require("null-ls").builtins.formatting.goimports,
     },
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then

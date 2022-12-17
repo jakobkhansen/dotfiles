@@ -50,8 +50,7 @@ local function start_jdt()
 
             "-jar",
             vim.env.HOME
-                ..
-                "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+                .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
 
             "-configuration",
             vim.env.HOME .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",
@@ -111,7 +110,10 @@ nvim_lsp.tsserver.setup({
     },
 })
 
----- C++
+-- Go
+require("lspconfig").gopls.setup({})
+
+-- C++
 if vim.g.javaserveroff == nil then
     require("lspconfig").ccls.setup({
         root_dir = util.root_pattern(

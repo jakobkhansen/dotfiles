@@ -5,6 +5,7 @@ keymap("", "+", "$", opts)
 keymap("", '""', '"+y', opts)
 keymap("", "<LeftMouse>", "<Nop>", opts)
 keymap("i", "<LeftMouse>", "<Nop>", opts)
+keymap("n", "<Esc>", "<CMD>nohl<CR>", opts)
 
 -- Movement
 keymap("", ",", ";", opts)

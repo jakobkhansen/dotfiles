@@ -107,7 +107,7 @@ wk.register({
         h = { "<CMD>cd $HOME<CR>", "path-home" },
         g = { utils.CWDgitRoot, "path-git-root" },
         n = { "<CMD>cd $HOME/.config/nvim<CR>", "path-neovim-config" },
-        c = { "<CMD>cd %:p:h<CR>", "path-current-file" },
+        c = { "<CMD>cd %:p:h<CR><CMD>pwd<CR>", "path-current-file" },
         o = { "<CMD>cd $HOME/Documents/gtd<CR>", "path-gtd" },
         s = {
             name = "session",
@@ -150,10 +150,6 @@ wk.register({
 
     -- Uncategorized
     w = { "<CMD>echo<CR><CMD>silent w<CR>", "which_key_ignore" },
-    n = {
-        name = "which_key_ignore",
-        o = { "<CMD>nohlsearch<CR>", "which_key_ignore" },
-    },
     ["<BS>"] = { "<CMD>cd ..<CR><CMD>pwd<CR>", "which_key_ignore" },
     ["<CR>"] = {
         function()
