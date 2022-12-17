@@ -122,7 +122,7 @@ wk.register({
         },
     },
 
-    -- Neorg
+    -- Organize
     o = {
         name = "organize",
         h = {

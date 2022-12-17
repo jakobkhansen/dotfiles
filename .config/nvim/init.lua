@@ -33,12 +33,6 @@ require("packer").startup(function(use)
     -- "Files and git"
     use("tpope/vim-fugitive")
     use({
-        "pwntester/octo.nvim",
-        config = function()
-            require("plugins.octo-config")
-        end,
-    })
-    use({
         "lewis6991/gitsigns.nvim",
         config = function()
             require("plugins.gitsigns-config")
@@ -66,13 +60,6 @@ require("packer").startup(function(use)
         "AckslD/nvim-neoclip.lua",
         config = function()
             require("neoclip").setup()
-        end,
-    })
-    use({
-        "ibhagwan/fzf-lua",
-        requires = { "kyazdani42/nvim-web-devicons" },
-        config = function()
-            require("plugins.fzf-config")
         end,
     })
 

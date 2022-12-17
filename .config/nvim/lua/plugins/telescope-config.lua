@@ -33,13 +33,8 @@ function P.find_any(opts)
                     local selection = action_state.get_selected_entry()
                     if selection ~= nil then
                         local path = selection[1]
-                        if utils.isFileOrDir(path) == "directory" then
-                            actions.close(prompt_bufnr)
-                            vim.cmd("cd " .. path)
-                        else
-                            actions.close(prompt_bufnr)
-                            vim.api.nvim_command("e " .. path)
-                        end
+                        actions.close(prompt_bufnr)
+                        vim.cmd("cd " .. path)
                     end
                 end)
                 return true
@@ -63,7 +58,7 @@ require("telescope").setup({
         git_commits = {
             mappings = {
                 n = {
-                    ["d"] = function(prompt_bufnr)
+                    ["d"] = function()
                         local selection = action_state.get_selected_entry()
                         local hash = selection.value
                         vim.cmd("DiffviewOpen " .. hash .. "~1.." .. hash)
@@ -113,7 +108,7 @@ function P.config_files(opts)
         vim.env.HOME .. "/.bash_aliases",
     }
 
-    for i, file in ipairs(nvim_files) do
+    for _, file in ipairs(nvim_files) do
         table.insert(config_files, file)
     end
 
@@ -126,24 +121,6 @@ function P.config_files(opts)
             sorter = conf.generic_sorter(opts),
         })
         :find()
-end
-
-P.genericPicker = function(title, command, on_select, opts)
-    opts = opts or {}
-    return pickers.new(opts, {
-        prompt_title = title,
-        finder = finders.new_oneshot_job(vim.split(command, " "), opts),
-        previewer = conf.file_previewer(opts),
-        sorter = conf.file_sorter(opts),
-        attach_mappings = function(prompt_bufnr, map)
-            actions.select_default:replace(function()
-                actions.close(prompt_bufnr)
-                local selection = action_state.get_selected_entry()
-                on_select(selection)
-            end)
-            return true
-        end,
-    })
 end
 
 return P
