@@ -7,34 +7,39 @@ local autocmd = vim.api.nvim_create_autocmd
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.workspace.configuration = true
 
----- Java
-local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
-extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
-local find_root = function()
-    return require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" })
+-- Show diagnostics and signcolumn icons
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = {
+        severity_limit = "Error",
+        spacing = 4,
+        prefix = "●",
+    },
+
+    signs = true,
+
+    update_in_insert = false,
+})
+
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
+---- Java
 local function start_jdt()
-    local root = find_root()
+    local root = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" })
     local project_name = vim.fn.fnamemodify(root, ":t")
     local workspace_dir = vim.env.HOME .. "/.workspaces/" .. project_name
-
-    require("jdtls.setup").add_commands()
-
     local config = {
         init_options = {
-            extendedClientCapabilities = extendedClientCapabilities,
+            extendedClientCapabilities = require("jdtls").extendedClientCapabilities,
         },
         root_dir = root,
-        flags = {
-            allow_incremental_sync = true,
-            server_side_fuzzy_completion = true,
-        },
         capabilities = capabilities,
         cmd = {
-            "java", -- or '/path/to/java11_or_newer/bin/java'
-            -- depends on if `java` is in your $PATH env variable and if it points to the right version.
-
+            "java",
             "-Declipse.application=org.eclipse.jdt.ls.core.id1",
             "-Dosgi.bundles.defaultStartLevel=4",
             "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -47,21 +52,17 @@ local function start_jdt()
             "java.base/java.util=ALL-UNNAMED",
             "--add-opens",
             "java.base/java.lang=ALL-UNNAMED",
-
             "-jar",
             vim.env.HOME
                 .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
-
             "-configuration",
             vim.env.HOME .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",
-
             "-data",
             workspace_dir,
         },
 
         settings = {
             java = {
-                signatureHelp = { enabled = true },
                 configuration = {
                     runtimes = {
                         {
@@ -77,7 +78,6 @@ local function start_jdt()
             },
         },
     }
-
     require("jdtls").start_or_attach(config)
 end
 
@@ -86,28 +86,11 @@ if vim.g.javaserveroff == nil then
 end
 
 ---- Typescript
-
-local function organize_imports()
-    local params = {
-        command = "_typescript.organizeImports",
-        arguments = { vim.api.nvim_buf_get_name(0) },
-        title = "",
-    }
-    vim.lsp.buf.execute_command(params)
-end
-
 nvim_lsp.tsserver.setup({
-    root_dir = util.root_pattern(".git", "packages/"),
     on_attach = function(client, _)
         client.server_capabilities.document_formatting = false
         client.server_capabilities.document_range_formatting = false
     end,
-    commands = {
-        OrganizeImports = {
-            organize_imports,
-            description = "Organize Imports",
-        },
-    },
 })
 
 -- Go
@@ -138,6 +121,7 @@ require("lspconfig").jsonls.setup({})
 -- Tailwind
 nvim_lsp.tailwindcss.setup({})
 
+-- Eslint
 nvim_lsp.eslint.setup({})
 
 ---- Latex
@@ -177,6 +161,3 @@ require("lspconfig").sumneko_lua.setup({
 nvim_lsp.pyright.setup({
     capabilities = capabilities,
 })
-
--- Scheme
-require("lspconfig").racket_langserver.setup({})
