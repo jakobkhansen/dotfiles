@@ -30,27 +30,4 @@ function P.getFirstDayOfCurrentMonth()
     return os.date("%Y") .. "-" .. os.date("%m") .. "-01"
 end
 
--- Windows, buffers
-function P.windowExists(win)
-    local windows = vim.api.nvim_list_wins()
-    for i, window in ipairs(windows) do
-        if window == win then
-            return true
-        end
-    end
-
-    return false
-end
-
-function P.bufExists(buf)
-    local bufs = vim.api.nvim_list_bufs()
-    for i, buffer in ipairs(bufs) do
-        if buffer == buf then
-            return true
-        end
-    end
-
-    return false
-end
-
 return P
