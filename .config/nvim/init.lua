@@ -24,9 +24,6 @@ require("packer").startup(function(use)
     use("folke/tokyonight.nvim")
     use({
         "j-hui/fidget.nvim",
-        config = function()
-            require("fidget").setup()
-        end,
     })
     use("kyazdani42/nvim-web-devicons")
 

@@ -1,6 +1,4 @@
 local lspconfig = require("lspconfig")
-local configs = require("lspconfig.configs")
-
 local util = lspconfig.util
 local sysname = vim.loop.os_uname().sysname
 local autocmd = vim.api.nvim_create_autocmd
@@ -32,33 +30,31 @@ local function on_show_document(err, result, ctx, config, params)
     return result
 end
 
-configs["ccdetect"] = {
-    default_config = {
-        cmd = cmd,
-        filetypes = { "java" },
-        root_dir = function(fname)
-            return util.root_pattern(".git")(fname)
-        end,
-        handlers = {
-            ["window/showDocument"] = on_show_document,
-        },
-        init_options = {
-            language = "java",
-            fragment_query = "(method_declaration) @method",
-            clone_token_threshold = 100,
-            extra_nodes = {},
-            ignore_nodes = {},
-        },
-        -- init_options = {
-        --     language = "c",
-        --     fragment_query = "(function_definition) @function",
-        --     clone_token_threshold = 100,
-        --     ignore_nodes = { "comment" },
-        --     extra_nodes = { "string_literal" },
-        -- },
-    },
-}
-
-if vim.g.javaserveroff ~= nil then
-    lspconfig["ccdetect"].setup({})
+local function start_ccdetect()
+    if vim.g.javaserveroff ~= nil then
+        vim.lsp.start({
+            cmd = cmd,
+            name = "CCDetect",
+            root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]),
+            handlers = {
+                ["window/showDocument"] = on_show_document,
+            },
+            init_options = {
+                language = "java",
+                fragment_query = "(method_declaration) @method",
+                clone_token_threshold = 100,
+                extra_nodes = {},
+                ignore_nodes = {},
+            },
+            -- init_options = {
+            --     language = "c",
+            --     fragment_query = "(function_definition) @function",
+            --     clone_token_threshold = 100,
+            --     ignore_nodes = { "comment" },
+            --     extra_nodes = { "string_literal" },
+            -- },
+        })
+    end
 end
+
+autocmd("FileType", { pattern = "java", callback = start_ccdetect })
