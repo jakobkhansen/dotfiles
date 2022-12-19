@@ -43,8 +43,8 @@ opt.pumheight = 10
 
 -- Visuals
 opt.signcolumn = "yes:1"
-vim.opt.laststatus = 0
-vim.opt.statusline = "%{repeat('─',winwidth('.'))}"
+vim.opt.laststatus = 3
+vim.opt.statusline = " "
 vim.opt.ruler = false
 
 -- opt.ruler = false

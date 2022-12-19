@@ -31,10 +31,14 @@ require("tokyonight").setup({
             underline = true,
             sp = c.hint,
         }
+        hl.StatusLine = {
+            bg = c.bg_light,
+            fg = c.bg_light,
+        }
+        hl.StatusLineNC = {
+            bg = c.bg_dark,
+            fg = c.bg_dark,
+        }
     end,
 })
 vimscript("colorscheme tokyonight", false)
-
--- Additional highlight group linking
-vim.api.nvim_set_hl(0, "StatusLine", { link = "WinSeparator" })
-vim.api.nvim_set_hl(0, "StatusLineNC", { link = "WinSeparator" })
