@@ -20,6 +20,15 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
     update_in_insert = false,
 })
 
+-- Disable semantic tokens
+autocmd("LspAttach", {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        client.server_capabilities.semanticTokensProvider = nil
+    end,
+})
+
+-- Set signcolumn icons
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
 for type, icon in pairs(signs) do
@@ -27,7 +36,9 @@ for type, icon in pairs(signs) do
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
----- Java
+-- Start servers
+
+-- Java
 local function start_jdt()
     local root = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" })
     local project_name = vim.fn.fnamemodify(root, ":t")
@@ -54,8 +65,7 @@ local function start_jdt()
             "java.base/java.lang=ALL-UNNAMED",
             "-jar",
             vim.env.HOME
-                ..
-                "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+                .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
             "-configuration",
             vim.env.HOME .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",
             "-data",
@@ -86,13 +96,20 @@ if vim.g.javaserveroff == nil then
     autocmd("FileType", { pattern = "java", callback = start_jdt })
 end
 
----- Typescript
+-- Typescript, Webdev
 nvim_lsp.tsserver.setup({
     on_attach = function(client, _)
         client.server_capabilities.document_formatting = false
         client.server_capabilities.document_range_formatting = false
     end,
 })
+
+nvim_lsp.tailwindcss.setup({})
+nvim_lsp.eslint.setup({})
+
+nvim_lsp.html.setup({})
+nvim_lsp.cssls.setup({})
+nvim_lsp.jsonls.setup({})
 
 -- Go
 require("lspconfig").gopls.setup({})
@@ -110,28 +127,14 @@ if vim.g.javaserveroff == nil then
     })
 end
 
--- HTML
-nvim_lsp.html.setup({})
-
--- CSS
-nvim_lsp.cssls.setup({})
-
--- JSON
-require("lspconfig").jsonls.setup({})
-
--- Tailwind
-nvim_lsp.tailwindcss.setup({})
-
--- Eslint
-nvim_lsp.eslint.setup({})
-
----- Latex
+-- Latex
 nvim_lsp.texlab.setup({})
 
 -- Ltex
-require("lspconfig").ltex.setup({
-    filetypes = { "bib", "gitcommit", "plaintex", "rst", "rnoweb", "tex" },
-})
+nvim_lsp.ltex.setup({})
+
+-- Python
+nvim_lsp.pyright.setup({})
 
 -- Lua
 require("lspconfig").sumneko_lua.setup({
@@ -156,9 +159,4 @@ require("lspconfig").sumneko_lua.setup({
             },
         },
     },
-})
-
--- Python
-nvim_lsp.pyright.setup({
-    capabilities = capabilities,
 })

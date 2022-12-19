@@ -1,5 +1,4 @@
 local command = vim.api.nvim_command
-local vimscript = vim.api.nvim_exec
 
 local P = {}
 
@@ -25,9 +24,19 @@ function P.isFileOrDir(path)
     end
 end
 
--- Dates
-function P.getFirstDayOfCurrentMonth()
-    return os.date("%Y") .. "-" .. os.date("%m") .. "-01"
+-- Tables, arrays
+function P.isArray(t)
+    if type(t) ~= "table" then
+        return false
+    end
+    local i = 0
+    for _ in pairs(t) do
+        i = i + 1
+        if t[i] == nil then
+            return false
+        end
+    end
+    return true
 end
 
 return P

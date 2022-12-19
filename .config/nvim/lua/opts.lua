@@ -29,7 +29,6 @@ opt.wrap = false
 opt.smartcase = true
 opt.ignorecase = true
 opt.scrolloff = 5
-opt.timeoutlen = 300
 opt.foldenable = false
 
 -- Don't auto-create comments on new-line

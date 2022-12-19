@@ -1,34 +1,15 @@
-local wk = require("which-key")
 local utils = require("utils")
 local term = require("terminal")
 
 local lsp = vim.lsp.buf
 local diagnostic = vim.diagnostic
--- local fzf_custom = require("plugins.fzf-config")
 local telescope_custom = require("plugins.telescope-config")
 local commands = require("commands")
 
 vim.g.mapleader = " "
 
-wk.setup({
-    window = {
-        border = "single", -- none, single, double, shadow
-        position = "bottom", -- bottom, top
-        margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-        padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-        winblend = 0,
-    },
-    layout = {
-        height = { min = 4, max = 25 }, -- min and max height of the columns
-        width = { min = 20, max = 50 }, -- min and max width of the columns
-        spacing = 3, -- spacing between columns
-        align = "center", -- align columns left, center or right
-    },
-})
-
-wk.register({
+local mappings = {
     f = {
-        name = "find",
         -- f = { fzf.files, "find-files" }, Microsoft
         f = { "<CMD>Telescope find_files<CR>", "find-files" },
         d = { telescope_custom.find_any, "find-directory" },
@@ -54,7 +35,6 @@ wk.register({
 
     -- Buffer
     b = {
-        name = "buffer",
         d = { "<CMD>lua MiniBufremove.wipeout(0, true)<CR>", "buffer-close" },
         e = { "<CMD>enew<CR>", "open-empty-buffer" },
         x = { "<CMD>close<CR>", "window-close" },
@@ -65,24 +45,23 @@ wk.register({
 
     -- LSP
     l = {
-        name = "lsp",
         d = { "<CMD>Telescope lsp_definitions<CR>", "goto-definition" },
         h = { lsp.hover, "show-hover" },
         s = { lsp.signature_help, "show-signature" },
         r = { "<CMD>Telescope lsp_references<CR>", "goto-references" },
         t = { "<CMD>Telescope lsp_type_definitions<CR>", "goto-type-definition" },
         x = { "<CMD>LspRestart<CR>", "lsp-restart" },
+        -- Master thesis stuff
         m = {
-            name = "debug, master",
             i = { "<CMD>LspInfo<CR>", "lsp-info" },
             l = { "<CMD>e ~/.local/state/nvim/lsp.log<CR>", "lsp-log" },
         },
         i = { "<CMD>Telescope lsp_implementations<CR>", "lsp-info" },
         n = { lsp.rename, "rename-symbol" },
         a = { lsp.code_action, "code-actions" },
-        p = { lsp.formatting, "lsp-format" },
+        p = { lsp.format, "lsp-format" },
+        -- Diagnostics
         e = {
-            name = "diagnostics",
             e = { "<CMD>Telescope diagnostics<CR>", "diagnostic-overview" },
             l = { diagnostic.open_float, "line-diagnostics" },
             n = { diagnostic.goto_next, "goto-next" },
@@ -92,7 +71,6 @@ wk.register({
 
     -- Terminal
     t = {
-        name = "terminal",
         t = { term.openPopupTerminal, "popup-terminal" },
         f = { term.openFullTerminal, "full-terminal" },
         h = { term.openFloatTerm, "float-terminal" },
@@ -100,13 +78,12 @@ wk.register({
 
     -- Git
     g = {
-        name = "git",
         s = { "<CMD>Ge :<CR>", "git-status" },
         c = { "<CMD>Telescope git_commits<CR>", "git-commits" },
         b = { "<CMD>Telescope git_branches<CR>", "git-branches" },
         d = { "<CMD>DiffviewOpen main...HEAD<CR>", "git-diffview" },
+        -- Hunks
         h = {
-            name = "hunk",
             p = { "<CMD>Gitsigns preview_hunk<CR>", "hunk-preview" },
             s = { "<CMD>Gitsigns stage_hunk<CR>", "hunk-stage" },
             n = { "<CMD>Gitsigns next_hunk<CR>", "hunk-next" },
@@ -116,7 +93,6 @@ wk.register({
 
     -- Path, cwd, session
     p = {
-        name = "path, cwd, session",
         p = { "<CMD>pwd<CR>", "pwd" },
         f = { "<CMD>echo @%<CR>", "file-path" },
         h = { "<CMD>cd $HOME<CR>", "path-home" },
@@ -124,8 +100,8 @@ wk.register({
         n = { "<CMD>cd $HOME/.config/nvim<CR>", "path-neovim-config" },
         c = { "<CMD>cd %:p:h<CR><CMD>pwd<CR>", "path-current-file" },
         o = { "<CMD>cd $HOME/Documents/gtd<CR>", "path-gtd" },
+        -- Sessions
         s = {
-            name = "session",
             s = {
                 "<CMD>Session<CR>",
                 "session-save",
@@ -137,20 +113,14 @@ wk.register({
         },
     },
 
-    -- Organize
+    -- Organize, notes, etc
     o = {
-        name = "organize",
-        h = {
-            "<CMD>silent! NeorgStart<CR><CMD>Neorg journal custom " .. utils.getFirstDayOfCurrentMonth() .. "<CR>",
-            "hours",
-        },
-        j = { "<CMD>silent! NeorgStart<CR><CMD>Neorg journal today<CR>", "journal" },
+        j = { "<CMD>silent! NeorgStart<CR><CMD>Neorg journal today<CR>", "daily-journal" },
         p = { "<CMD>edit $HOME/Documents/gtd/projects.norg<CR>", "projects" },
     },
 
     -- Shortcuts
     s = {
-        name = "shortcuts",
         s = { "<CMD>Alpha<CR>", "start-screen" },
         t = { commands.ToggleThemeMode, "toggle-theme" },
         b = { commands.ToggleTabLine, "toggle-tabline" },
@@ -158,25 +128,36 @@ wk.register({
 
     -- Help
     h = {
-        name = "help",
         t = { "<CMD>Telescope help_tags<CR>", "help-tags" },
         w = { '<CMD>execute "h " . expand("<cword>")<CR>', "help-cword" },
+        k = { "<CMD>Telescope keymaps<CR>", "help-keymaps" },
     },
 
     -- Uncategorized
-    w = { "<CMD>echo<CR><CMD>silent w<CR>", "which_key_ignore" },
-    ["<BS>"] = { "<CMD>cd ..<CR><CMD>pwd<CR>", "which_key_ignore" },
+    w = { "<CMD>echo<CR><CMD>silent w<CR>", "write" },
+    ["<BS>"] = { "<CMD>cd ..<CR><CMD>pwd<CR>", "cd .." },
     ["<CR>"] = {
         function()
             term.execInPopupTerminal("!!\n")
         end,
-        "which_key_ignore",
+        "Term exec last command",
     },
-}, { prefix = "<Leader>" })
+}
 
-wk.register({
-    l = {
-        name = "lsp",
-        a = { "<CMD>lua vim.lsp.buf.code_action()<CR>", "code-actions" },
-    },
-}, { prefix = "<Leader>", mode = "v" })
+-- Manually register mappings without which-key
+function _G.registerMappings(keymap, rec_mappings)
+    if utils.isArray(rec_mappings) then
+        if type(rec_mappings[1]) == "string" then
+            vim.keymap.set("n", keymap, rec_mappings[1], { desc = rec_mappings[2] })
+        elseif type(rec_mappings[1]) == "function" then
+            vim.keymap.set("n", keymap, "", { desc = rec_mappings[2], callback = rec_mappings[1] })
+        end
+        return
+    end
+
+    for key, _ in pairs(rec_mappings) do
+        registerMappings(keymap .. key, rec_mappings[key])
+    end
+end
+
+registerMappings("<Leader>", mappings)

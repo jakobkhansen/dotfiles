@@ -1,5 +1,4 @@
 require("packer").startup(function(use)
-    -- "Libraries and dependencies"
     use("wbthomason/packer.nvim")
 
     -- "Multi-functionality"
@@ -22,10 +21,6 @@ require("packer").startup(function(use)
 
     -- Visuals
     use("folke/tokyonight.nvim")
-    use({
-        "j-hui/fidget.nvim",
-    })
-    use("kyazdani42/nvim-web-devicons")
 
     -- "Files and git"
     use("tpope/vim-fugitive")
@@ -66,13 +61,6 @@ require("packer").startup(function(use)
         requires = { "kyazdani42/nvim-web-devicons" },
         config = function()
             require("plugins.alpha-nvim-config")
-        end,
-    })
-
-    use({
-        "folke/which-key.nvim",
-        config = function()
-            require("leadermaps")
         end,
     })
 
@@ -119,7 +107,6 @@ require("packer").startup(function(use)
             require("plugins.null-ls-config")
         end,
     })
-
     use("onsails/lspkind-nvim")
     use("mfussenegger/nvim-jdtls")
     use({
@@ -191,6 +178,7 @@ require("maps")
 require("opts")
 require("language_configs")
 require("theme")
+require("leadermaps")
 
 -- Master thesis work
 require("ccdetect")
