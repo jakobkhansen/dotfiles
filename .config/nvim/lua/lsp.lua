@@ -115,17 +115,7 @@ nvim_lsp.jsonls.setup({})
 require("lspconfig").gopls.setup({})
 
 -- C++
-if vim.g.javaserveroff == nil then
-    require("lspconfig").ccls.setup({
-        root_dir = util.root_pattern(
-            "compile_commands.json",
-            ".ccls",
-            "compile_flags.txt",
-            ".git",
-            "build/compile_commands.json"
-        ),
-    })
-end
+require("lspconfig").clangd.setup({})
 
 -- Latex
 nvim_lsp.texlab.setup({})

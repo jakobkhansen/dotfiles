@@ -1,3 +1,6 @@
+-- Ensure colorscheme is already loaded
+require("theme")
+
 require("bufferline").setup({
     options = {
         show_buffer_close_icons = false,

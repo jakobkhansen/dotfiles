@@ -2,43 +2,56 @@
 local home_dir = os.getenv("HOME")
 package.path = home_dir .. "/.config/nvim/after/plugin/?.lua;" .. package.path
 
-require("packer").startup(function(use)
-    use("wbthomason/packer.nvim")
+-- Bootstrap plugin manager
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "--single-branch",
+        "https://github.com/folke/lazy.nvim.git",
+        lazypath,
+    })
+end
+vim.opt.runtimepath:prepend(lazypath)
 
-    -- Mini provides pairs, surround, commenting and bufremoval functionality
-    use("echasnovski/mini.nvim")
+require("lazy").setup({
+    -- Mini provides pairs, surround, commenting and bufremoval functionality,
+    "echasnovski/mini.nvim",
 
-    -- "Buffers"
-    use({
+    -- "Buffers",
+    {
         "akinsho/bufferline.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
-    })
+        dependencies = "kyazdani42/nvim-web-devicons",
+        ft = "*",
+    },
 
-    -- Visuals
-    use("folke/tokyonight.nvim")
+    -- Visuals,
+    "folke/tokyonight.nvim",
 
-    -- "Files and git"
-    use("tpope/vim-fugitive")
-    use("lewis6991/gitsigns.nvim")
-    use("sindrets/diffview.nvim")
+    -- "Files and git",
+    "tpope/vim-fugitive",
+    "lewis6991/gitsigns.nvim",
+    "sindrets/diffview.nvim",
 
-    -- Telescope
-    use("nvim-telescope/telescope.nvim")
-    use({
+    -- Telescope,
+    "nvim-telescope/telescope.nvim",
+    {
         "nvim-telescope/telescope-fzf-native.nvim",
-        run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-    })
-    use("AckslD/nvim-neoclip.lua")
+        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+    },
+    "AckslD/nvim-neoclip.lua",
 
-    -- IDE
-    use({
+    -- IDE,
+    {
         "goolord/alpha-nvim",
-        requires = { "kyazdani42/nvim-web-devicons" },
-    })
+        dependencies = { "kyazdani42/nvim-web-devicons" },
+    },
 
-    use({
+    {
         "nvim-neo-tree/neo-tree.nvim",
-        requires = {
+        dependencies = {
             "nvim-lua/plenary.nvim",
             "kyazdani42/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
@@ -49,70 +62,70 @@ require("packer").startup(function(use)
                 end,
             },
         },
-    })
+    },
 
-    -- "LSP, languages and tools"
-    use("neovim/nvim-lspconfig")
-    use({
+    -- "LSP, languages and tools",
+    "neovim/nvim-lspconfig",
+    {
         "williamboman/mason.nvim",
         config = function()
             require("mason").setup()
         end,
-    })
-    use({
+    },
+    {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup()
         end,
-    })
-    use("jose-elias-alvarez/null-ls.nvim")
-    use("onsails/lspkind-nvim")
-    use("mfussenegger/nvim-jdtls")
-    use({
+    },
+    "jose-elias-alvarez/null-ls.nvim",
+    "onsails/lspkind-nvim",
+    "mfussenegger/nvim-jdtls",
+    {
         "jose-elias-alvarez/typescript.nvim",
         config = function()
             require("typescript").setup({})
         end,
-    })
-    use({
+    },
+    {
         "simrat39/rust-tools.nvim",
         config = function()
             require("rust-tools").setup()
         end,
-    })
-    use("windwp/nvim-ts-autotag")
+    },
+    "windwp/nvim-ts-autotag",
 
-    -- nvim-cmp auto-completion
-    use("hrsh7th/nvim-cmp")
-    use("hrsh7th/cmp-buffer")
-    use("hrsh7th/cmp-nvim-lsp")
-    use("saadparwaiz1/cmp_luasnip")
-    use("hrsh7th/cmp-path")
-    use("kdheepak/cmp-latex-symbols")
-    use("hrsh7th/cmp-cmdline")
-    use("hrsh7th/cmp-nvim-lsp-signature-help")
+    -- nvim-cmp auto-completion,
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-nvim-lsp",
+    "saadparwaiz1/cmp_luasnip",
+    "hrsh7th/cmp-path",
+    "kdheepak/cmp-latex-symbols",
+    "hrsh7th/cmp-cmdline",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
 
-    -- "Treesitter & Syntax highlighting"
-    use("nvim-treesitter/nvim-treesitter")
-    use("nvim-treesitter/playground")
-    use("nvim-treesitter/nvim-treesitter-textobjects")
+    -- "Treesitter & Syntax highlighting",
+    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/playground",
+    "nvim-treesitter/nvim-treesitter-textobjects",
 
-    -- "Snippets"
-    use("L3MON4D3/LuaSnip")
-    use("rafamadriz/friendly-snippets")
+    -- "Snippets",
+    { "L3MON4D3/LuaSnip", lazy = true },
+    "rafamadriz/friendly-snippets",
 
-    -- "Notes and organization"
-    use("lervag/vimtex")
-    use("vhyrro/neorg")
-end)
+    -- "Notes and organization",
+    "lervag/vimtex",
+    { "vhyrro/neorg", ft = "norg" },
+})
 
 -- Load rest of config
 
+require("theme")
 require("maps")
 require("opts")
 require("lsp")
 require("language_configs")
-require("theme")
 require("leadermaps")
 
 -- Master thesis work
