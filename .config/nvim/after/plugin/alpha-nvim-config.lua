@@ -1,5 +1,4 @@
 local if_nil = vim.F.if_nil
-local telescope = require("plugins.telescope-config")
 
 local default_header = {
     type = "text",
@@ -78,7 +77,7 @@ local buttons = {
         button("e", "  New file", "<cmd>ene <CR>"),
         button("SPC f f", "  Find file"),
         button("SPC f o", "  Recently opened files"),
-        button("c", "  Config files", "<CMD>lua require('plugins.telescope-config').config_files()<CR>"),
+        button("c", "  Config files", "<CMD>lua require('telescope-config').config_files()<CR>"),
         button("p", "⟳  Update plugins", "<CMD>PackerSync<CR>"),
         button("q", "Quit", "<CMD>Alpha<CR>"),
     },

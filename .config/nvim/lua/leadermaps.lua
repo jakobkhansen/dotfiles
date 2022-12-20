@@ -3,7 +3,7 @@ local term = require("terminal")
 
 local lsp = vim.lsp.buf
 local diagnostic = vim.diagnostic
-local telescope_custom = require("plugins.telescope-config")
+local telescope_custom = require("telescope-config")
 local commands = require("commands")
 
 vim.g.mapleader = " "

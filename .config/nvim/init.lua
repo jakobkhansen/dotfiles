@@ -1,21 +1,16 @@
+-- Allow after/plugin to be required
+local home_dir = os.getenv("HOME")
+package.path = home_dir .. "/.config/nvim/after/plugin/?.lua;" .. package.path
+
 require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
-    -- "Multi-functionality"
     -- Mini provides pairs, surround, commenting and bufremoval functionality
-    use({
-        "echasnovski/mini.nvim",
-        config = function()
-            require("plugins.mini-config")
-        end,
-    })
+    use("echasnovski/mini.nvim")
 
     -- "Buffers"
     use({
         "akinsho/bufferline.nvim",
-        config = function()
-            require("plugins.bufferline-config")
-        end,
         requires = "kyazdani42/nvim-web-devicons",
     })
 
@@ -24,44 +19,21 @@ require("packer").startup(function(use)
 
     -- "Files and git"
     use("tpope/vim-fugitive")
-    use({
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require("plugins.gitsigns-config")
-        end,
-    })
-    use({
-        "sindrets/diffview.nvim",
-        config = function()
-            require("plugins.diffview-config")
-        end,
-    })
+    use("lewis6991/gitsigns.nvim")
+    use("sindrets/diffview.nvim")
 
     -- Telescope
-    use({
-        "nvim-telescope/telescope.nvim",
-        config = function()
-            require("plugins.telescope-config")
-        end,
-    })
+    use("nvim-telescope/telescope.nvim")
     use({
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     })
-    use({
-        "AckslD/nvim-neoclip.lua",
-        config = function()
-            require("neoclip").setup()
-        end,
-    })
+    use("AckslD/nvim-neoclip.lua")
 
     -- IDE
     use({
         "goolord/alpha-nvim",
         requires = { "kyazdani42/nvim-web-devicons" },
-        config = function()
-            require("plugins.alpha-nvim-config")
-        end,
     })
 
     use({
@@ -77,18 +49,10 @@ require("packer").startup(function(use)
                 end,
             },
         },
-        config = function()
-            require("plugins.neotree-config")
-        end,
     })
 
     -- "LSP, languages and tools"
-    use({
-        "neovim/nvim-lspconfig",
-        config = function()
-            require("lsp")
-        end,
-    })
+    use("neovim/nvim-lspconfig")
     use({
         "williamboman/mason.nvim",
         config = function()
@@ -101,12 +65,7 @@ require("packer").startup(function(use)
             require("mason-lspconfig").setup()
         end,
     })
-    use({
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-            require("plugins.null-ls-config")
-        end,
-    })
+    use("jose-elias-alvarez/null-ls.nvim")
     use("onsails/lspkind-nvim")
     use("mfussenegger/nvim-jdtls")
     use({
@@ -124,12 +83,7 @@ require("packer").startup(function(use)
     use("windwp/nvim-ts-autotag")
 
     -- nvim-cmp auto-completion
-    use({
-        "hrsh7th/nvim-cmp",
-        config = function()
-            require("plugins.nvim-cmp-config")
-        end,
-    })
+    use("hrsh7th/nvim-cmp")
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-nvim-lsp")
     use("saadparwaiz1/cmp_luasnip")
@@ -139,43 +93,24 @@ require("packer").startup(function(use)
     use("hrsh7th/cmp-nvim-lsp-signature-help")
 
     -- "Treesitter & Syntax highlighting"
-    use({
-        "nvim-treesitter/nvim-treesitter",
-        config = function()
-            require("plugins.treesitter-config")
-        end,
-    })
+    use("nvim-treesitter/nvim-treesitter")
     use("nvim-treesitter/playground")
     use("nvim-treesitter/nvim-treesitter-textobjects")
 
     -- "Snippets"
-    use({
-        "L3MON4D3/LuaSnip",
-        config = function()
-            require("plugins.luasnips-config")
-        end,
-    })
+    use("L3MON4D3/LuaSnip")
     use("rafamadriz/friendly-snippets")
 
     -- "Notes and organization"
-    use({
-        "lervag/vimtex",
-        config = function()
-            require("plugins.vimtex-config")
-        end,
-    })
-    use({
-        "vhyrro/neorg",
-        config = function()
-            require("plugins.neorg-config")
-        end,
-    })
+    use("lervag/vimtex")
+    use("vhyrro/neorg")
 end)
 
 -- Load rest of config
 
 require("maps")
 require("opts")
+require("lsp")
 require("language_configs")
 require("theme")
 require("leadermaps")

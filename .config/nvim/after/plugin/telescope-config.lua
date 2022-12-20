@@ -94,6 +94,7 @@ require("telescope").load_extension("neoclip")
 
 function P.config_files(opts)
     local nvim_files = vim.split(vim.fn.glob("~/.config/nvim/lua/**/*lua"), "\n")
+    local plugin_files = vim.split(vim.fn.glob("~/.config/nvim/after/**/*lua"), "\n")
     local config_files = {
         vim.env.HOME .. "/.config/nvim/init.lua",
         vim.env.HOME .. "/.config/i3/config",
@@ -109,6 +110,10 @@ function P.config_files(opts)
     }
 
     for _, file in ipairs(nvim_files) do
+        table.insert(config_files, file)
+    end
+
+    for _, file in ipairs(plugin_files) do
         table.insert(config_files, file)
     end
 
