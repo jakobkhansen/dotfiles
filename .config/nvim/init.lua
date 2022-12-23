@@ -24,7 +24,6 @@ require("lazy").setup({
     {
         "akinsho/bufferline.nvim",
         dependencies = "kyazdani42/nvim-web-devicons",
-        ft = "*",
     },
 
     -- Visuals,
@@ -41,7 +40,12 @@ require("lazy").setup({
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     },
-    "AckslD/nvim-neoclip.lua",
+    {
+        "AckslD/nvim-neoclip.lua",
+        config = function()
+            require("neoclip").setup()
+        end,
+    },
 
     -- IDE,
     {
@@ -111,12 +115,12 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter-textobjects",
 
     -- "Snippets",
-    { "L3MON4D3/LuaSnip", lazy = true },
+    "L3MON4D3/LuaSnip",
     "rafamadriz/friendly-snippets",
 
     -- "Notes and organization",
     "lervag/vimtex",
-    { "vhyrro/neorg", ft = "norg" },
+    "vhyrro/neorg",
 })
 
 -- Load rest of config
