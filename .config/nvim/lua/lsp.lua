@@ -50,7 +50,7 @@ local function start_jdt()
         root_dir = root,
         capabilities = capabilities,
         cmd = {
-            "java",
+            "/usr/lib/jvm/java-19-openjdk/bin/java",
             "-Declipse.application=org.eclipse.jdt.ls.core.id1",
             "-Dosgi.bundles.defaultStartLevel=4",
             "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -65,7 +65,8 @@ local function start_jdt()
             "java.base/java.lang=ALL-UNNAMED",
             "-jar",
             vim.env.HOME
-                .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+                ..
+                "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
             "-configuration",
             vim.env.HOME .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",
             "-data",

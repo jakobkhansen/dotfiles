@@ -86,6 +86,15 @@ require("lazy").setup({
     "onsails/lspkind-nvim",
     "mfussenegger/nvim-jdtls",
     {
+        "j-hui/fidget.nvim",
+        enabled = function()
+            return false
+        end,
+        config = function()
+            require("fidget").setup()
+        end,
+    },
+    {
         "jose-elias-alvarez/typescript.nvim",
         config = function()
             require("typescript").setup({})

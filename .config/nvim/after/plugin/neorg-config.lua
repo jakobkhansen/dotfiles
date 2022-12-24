@@ -27,16 +27,6 @@ require("neorg").setup({
                 zen_mode = "zen-mode",
             },
         },
-        ["core.gtd.ui"] = {},
-        ["core.gtd.queries"] = {},
-        ["core.gtd.base"] = {
-            config = {
-                workspace = "gtd",
-                exclude = {
-                    "journal",
-                },
-            },
-        },
         ["core.norg.journal"] = {
             config = {
                 workspace = "gtd",

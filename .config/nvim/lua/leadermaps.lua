@@ -50,6 +50,7 @@ local mappings = {
         s = { lsp.signature_help, "show-signature" },
         r = { "<CMD>Telescope lsp_references<CR>", "goto-references" },
         t = { "<CMD>Telescope lsp_type_definitions<CR>", "goto-type-definition" },
+        w = { "<CMD>Telescope lsp_workspace_symbols<CR>", "workspace-symbols" },
         x = { "<CMD>LspRestart<CR>", "lsp-restart" },
         -- Master thesis stuff
         m = {
