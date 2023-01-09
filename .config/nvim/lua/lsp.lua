@@ -20,14 +20,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
     update_in_insert = false,
 })
 
--- Disable semantic tokens
-autocmd("LspAttach", {
-    callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        client.server_capabilities.semanticTokensProvider = nil
-    end,
-})
-
 -- Set signcolumn icons
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
@@ -35,6 +27,14 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
+
+-- Disable semantic tokens
+autocmd("LspAttach", {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        client.server_capabilities.semanticTokensProvider = nil
+    end,
+})
 
 -- Start servers
 
