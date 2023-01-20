@@ -150,8 +150,10 @@ function _G.registerMappings(keymap, rec_mappings)
     if utils.isArray(rec_mappings) then
         if type(rec_mappings[1]) == "string" then
             vim.keymap.set("n", keymap, rec_mappings[1], { desc = rec_mappings[2] })
+            vim.keymap.set("v", keymap, rec_mappings[1], { desc = rec_mappings[2] })
         elseif type(rec_mappings[1]) == "function" then
             vim.keymap.set("n", keymap, "", { desc = rec_mappings[2], callback = rec_mappings[1] })
+            vim.keymap.set("v", keymap, "", { desc = rec_mappings[2], callback = rec_mappings[1] })
         end
         return
     end

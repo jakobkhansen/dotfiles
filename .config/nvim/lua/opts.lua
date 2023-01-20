@@ -69,3 +69,6 @@ vim.g.netrw_liststyle = 3
 vim.g.netrw_list_hide = "^\\..*"
 vim.g.netrw_hide = 1
 vim.g.netrw_keepdir = 0
+
+-- statuscolumn
+vim.o.statuscolumn = "%s%r"

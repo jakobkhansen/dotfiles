@@ -15,6 +15,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
         prefix = "●",
     },
 
+    severity_sort = { reverse = true },
+
     signs = true,
 
     update_in_insert = false,

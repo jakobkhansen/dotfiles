@@ -47,7 +47,7 @@ require("lazy").setup({
         end,
     },
 
-    -- IDE,
+    -- IDE, UI
     {
         "goolord/alpha-nvim",
         dependencies = { "kyazdani42/nvim-web-devicons" },
@@ -117,6 +117,7 @@ require("lazy").setup({
     "kdheepak/cmp-latex-symbols",
     "hrsh7th/cmp-cmdline",
     "hrsh7th/cmp-nvim-lsp-signature-help",
+    "hrsh7th/cmp-calc",
 
     -- "Treesitter & Syntax highlighting",
     "nvim-treesitter/nvim-treesitter",

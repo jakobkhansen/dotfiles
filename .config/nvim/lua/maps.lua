@@ -22,7 +22,7 @@ keymap("n", "<S-Tab>", "<CMD>bp<CR>", opts)
 keymap("n", "<A-l>", "<CMD>tabnext<CR>", opts)
 keymap("n", "<A-h>", "<CMD>tabprevious<CR>", opts)
 
-keymap("", "ZA", "<CMD>wqa<CR>", opts)
+keymap("", "ZA", "<CMD>wqa!<CR>", opts)
 
 --  Move to window
 keymap("n", "<C-h>", "<C-w>h", opts)
