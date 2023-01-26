@@ -7,5 +7,10 @@ require("bufferline").setup({
         show_close_icon = false,
         separator_style = { "", "" },
         always_show_bufferline = true,
+        diagnostics = "nvim_lsp",
+        diagnostics_indicator = function(count, level)
+            local icon = level:match("error") and (" " .. count) or ""
+            return "" .. icon
+        end,
     },
 })

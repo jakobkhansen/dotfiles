@@ -47,13 +47,16 @@ local function start_ccdetect()
                 ignore_nodes = {},
                 dynamic_detection = true,
                 update_on_save = true,
+                evaluate = true,
             },
             -- init_options = {
             --     language = "c",
             --     fragment_query = "(function_definition) @function",
             --     clone_token_threshold = 100,
-            --     ignore_nodes = { "comment" },
             --     extra_nodes = { "string_literal" },
+            --     ignore_nodes = { "comment" },
+            --     dynamic_detection = true,
+            --     update_on_save = true,
             -- },
         })
     end

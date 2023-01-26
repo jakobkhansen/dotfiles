@@ -135,7 +135,7 @@ local mappings = {
     },
 
     -- Uncategorized
-    w = { "<CMD>echo<CR><CMD>silent w<CR>", "write" },
+    w = { "<CMD><CR><CMD>silent w<CR>", "write" },
     ["<BS>"] = { "<CMD>cd ..<CR><CMD>pwd<CR>", "cd .." },
     ["<CR>"] = {
         function()
@@ -145,22 +145,28 @@ local mappings = {
     },
 }
 
+local visual_mappings = {
+    p = { '"_dP', "Paste without register overwrite" },
+    l = {
+        a = { lsp.code_action, "code-actions" },
+    },
+}
+
 -- Manually register mappings without which-key
-function _G.registerMappings(keymap, rec_mappings)
+function _G.registerMappings(keymap, rec_mappings, mode)
     if utils.isArray(rec_mappings) then
         if type(rec_mappings[1]) == "string" then
-            vim.keymap.set("n", keymap, rec_mappings[1], { desc = rec_mappings[2] })
-            vim.keymap.set("v", keymap, rec_mappings[1], { desc = rec_mappings[2] })
+            vim.keymap.set(mode, keymap, rec_mappings[1], { desc = rec_mappings[2] })
         elseif type(rec_mappings[1]) == "function" then
-            vim.keymap.set("n", keymap, "", { desc = rec_mappings[2], callback = rec_mappings[1] })
-            vim.keymap.set("v", keymap, "", { desc = rec_mappings[2], callback = rec_mappings[1] })
+            vim.keymap.set(mode, keymap, "", { desc = rec_mappings[2], callback = rec_mappings[1] })
         end
         return
     end
 
     for key, _ in pairs(rec_mappings) do
-        registerMappings(keymap .. key, rec_mappings[key])
+        registerMappings(keymap .. key, rec_mappings[key], mode)
     end
 end
 
-registerMappings("<Leader>", mappings)
+registerMappings("<Leader>", mappings, "n")
+registerMappings("<Leader>", visual_mappings, "v")
