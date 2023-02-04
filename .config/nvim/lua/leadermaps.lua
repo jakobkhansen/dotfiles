@@ -139,6 +139,7 @@ local mappings = {
     ["<BS>"] = { "<CMD>cd ..<CR><CMD>pwd<CR>", "cd .." },
     ["<CR>"] = {
         function()
+            vim.cmd("wa")
             term.execInPopupTerminal("!!\n")
         end,
         "Term exec last command",
