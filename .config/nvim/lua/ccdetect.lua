@@ -30,6 +30,9 @@ local function on_show_document(err, result, ctx, config, params)
     return result
 end
 
+local cap = vim.lsp.protocol.make_client_capabilities()
+cap.workspace.didChangeWatchedFiles.dynamicRegistration = true
+
 local function start_ccdetect()
     if vim.g.javaserveroff ~= nil then
         vim.lsp.start({
@@ -39,15 +42,17 @@ local function start_ccdetect()
             handlers = {
                 ["window/showDocument"] = on_show_document,
             },
+            capabilities = cap,
             init_options = {
                 language = "java",
-                fragment_query = "(method_declaration) @method",
+                fragment_query = "(method_declaration) @method (constructor_declaration) @constructor",
                 clone_token_threshold = 100,
                 extra_nodes = {},
                 ignore_nodes = {},
                 dynamic_detection = true,
                 update_on_save = true,
                 evaluate = true,
+                excludeContainedClones = true,
             },
             -- init_options = {
             --     language = "c",

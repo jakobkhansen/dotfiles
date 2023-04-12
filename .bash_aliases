@@ -13,7 +13,8 @@ fi
 alias ll='ls -a'
 alias la='ls -A'
 alias l='ls'
-alias ff="\$($HOME/Documents/Scripts/fzf_navigate.py)"
+# alias ff="\$($HOME/Documents/Scripts/fzf_navigate.py)"
+alias ff="cd \$(fd . --type d | fuzz)"
 alias c="clear"
 alias size="du -sh "
 
@@ -25,8 +26,8 @@ alias h="cd ~"
 alias n="nvim"
 alias nmaster="nvim -u ~/.config/nvim/masterinit.lua"
 alias lsp="cd ~/Documents/Dev/LSP/CCDetect-lsp"
-alias lsptest="cd ~/Documents/master-thesis/TestCodebases"
-alias thesis="cd ~/Documents/master-thesis/thesis"
+alias lsptest="cd ~/Documents/master-thesis/notes/TestCodebases"
+alias thesis="cd ~/Documents/master-thesis/thesis; n thesis.tex"
 
 alias ranger='source ranger'
 

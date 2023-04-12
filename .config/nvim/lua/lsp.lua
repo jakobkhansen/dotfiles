@@ -7,6 +7,8 @@ local autocmd = vim.api.nvim_create_autocmd
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.workspace.configuration = true
 
+capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+
 -- Show diagnostics and signcolumn icons
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = {
@@ -14,11 +16,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
         spacing = 4,
         prefix = "●",
     },
-
     severity_sort = { reverse = true },
-
     signs = true,
-
     update_in_insert = false,
 })
 
@@ -52,7 +51,7 @@ local function start_jdt()
         root_dir = root,
         capabilities = capabilities,
         cmd = {
-            "/usr/lib/jvm/java-19-openjdk/bin/java",
+            "/usr/lib/jvm/java-17-openjdk/bin/java",
             "-Declipse.application=org.eclipse.jdt.ls.core.id1",
             "-Dosgi.bundles.defaultStartLevel=4",
             "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -67,14 +66,12 @@ local function start_jdt()
             "java.base/java.lang=ALL-UNNAMED",
             "-jar",
             vim.env.HOME
-                ..
-                "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+                .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
             "-configuration",
             vim.env.HOME .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",
             "-data",
             workspace_dir,
         },
-
         settings = {
             java = {
                 configuration = {
@@ -86,6 +83,7 @@ local function start_jdt()
                         {
                             name = "JavaSE-11",
                             path = "/usr/lib/jvm/java-11-openjdk/",
+                            default = true,
                         },
                     },
                 },
@@ -130,7 +128,7 @@ nvim_lsp.ltex.setup({})
 nvim_lsp.pyright.setup({})
 
 -- Lua
-require("lspconfig").sumneko_lua.setup({
+require("lspconfig").lua_ls.setup({
     settings = {
         Lua = {
             runtime = {

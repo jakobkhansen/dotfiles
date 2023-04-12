@@ -121,7 +121,6 @@ require("lazy").setup({
 
     -- "Treesitter & Syntax highlighting",
     "nvim-treesitter/nvim-treesitter",
-    "nvim-treesitter/playground",
     "nvim-treesitter/nvim-treesitter-textobjects",
 
     -- "Snippets",

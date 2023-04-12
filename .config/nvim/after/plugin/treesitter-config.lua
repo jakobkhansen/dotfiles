@@ -6,10 +6,11 @@ require("nvim-treesitter.configs").setup({
     ignore_install = { "phpdoc" },
     highlight = {
         enable = true,
+        disable = { "latex" },
     },
     indent = {
         enable = true,
-        disable = { "python", "cpp", "lex", "java" },
+        disable = { "python", "cpp", "lex", "java", "tex" },
     },
     autotag = {
         enable = true,
