@@ -1,7 +1,7 @@
 require("neorg").setup({
     load = {
         ["core.defaults"] = {}, -- Load all the default modules
-        ["core.norg.dirman"] = { -- Manage your directories with Neorg
+        ["core.dirman"] = { -- Manage your directories with Neorg
             config = {
                 workspaces = {
                     gtd = "~/Documents/gtd",
@@ -10,24 +10,19 @@ require("neorg").setup({
                 open_last_workspace = false,
             },
         },
-        ["core.norg.completion"] = {
+        ["core.completion"] = {
             config = {
                 engine = "nvim-cmp", -- We current support nvim-compe and nvim-cmp only
             },
         },
-        ["core.norg.concealer"] = {},
-        ["core.keybinds"] = { -- Configure core.keybinds
+        ["core.concealer"] = {},
+        ["core.keybinds"] = { -- Configure keybinds
             config = {
                 default_keybinds = true, -- Generate the default keybinds
                 neorg_leader = "<Leader>o", -- This is the default if unspecified
             },
         },
-        ["core.presenter"] = {
-            config = {
-                zen_mode = "zen-mode",
-            },
-        },
-        ["core.norg.journal"] = {
+        ["core.journal"] = {
             config = {
                 workspace = "gtd",
             },

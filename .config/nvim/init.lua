@@ -107,6 +107,7 @@ require("lazy").setup({
         end,
     },
     "windwp/nvim-ts-autotag",
+    "codethread/qmk.nvim",
 
     -- nvim-cmp auto-completion,
     "hrsh7th/nvim-cmp",

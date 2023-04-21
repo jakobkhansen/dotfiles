@@ -49,9 +49,9 @@ local function start_ccdetect()
                 clone_token_threshold = 100,
                 extra_nodes = {},
                 ignore_nodes = {},
-                dynamic_detection = true,
+                dynamic_detection = false,
                 update_on_save = true,
-                evaluate = true,
+                evaluate = false,
                 excludeContainedClones = true,
             },
             -- init_options = {
