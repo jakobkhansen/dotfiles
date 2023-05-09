@@ -45,11 +45,11 @@ local function start_ccdetect()
             capabilities = cap,
             init_options = {
                 language = "java",
-                fragment_query = "(method_declaration) @method (constructor_declaration) @constructor",
+                fragment_query = "(method_declaration) @function",
                 clone_token_threshold = 100,
                 extra_nodes = {},
                 ignore_nodes = {},
-                dynamic_detection = false,
+                dynamic_detection = true,
                 update_on_save = true,
                 evaluate = false,
                 excludeContainedClones = true,

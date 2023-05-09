@@ -1,6 +1,12 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+local ok, res = pcall(require, 'null-ls')
+
+if not ok then
+    return
+end
+
 require("null-ls").setup({
     sources = {
         require("null-ls").builtins.formatting.prettierd.with({

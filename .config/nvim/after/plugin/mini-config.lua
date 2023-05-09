@@ -7,6 +7,9 @@ require("mini.pairs").setup({
         ["("] = { action = "open", pair = "()", neigh_pattern = ".[^%w]" },
         ["["] = { action = "open", pair = "[]", neigh_pattern = ".[^%w]" },
         ["{"] = { action = "open", pair = "{}", neigh_pattern = ".[^%w]" },
+
+        -- I think this could be changed to only run for Rust with MiniPairs.map_buf or MiniPairs.map
+        ["'"] = { action = "open", pair = "''", neigh_pattern = "[^&|<]." },
     },
 })
 
