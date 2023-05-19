@@ -32,7 +32,6 @@ local mappings = {
         b = { "<CMD>Telescope buffers<CR>", "find-buffers" },
         j = { "<CMD>Telescope jumplist<CR>", "find-jump" },
     },
-
     -- Buffer
     b = {
         d = { "<CMD>lua MiniBufremove.wipeout(0, true)<CR>", "buffer-close" },
@@ -41,8 +40,8 @@ local mappings = {
         v = { "<CMD>vsplit<CR>", "vertical-split" },
         h = { "<CMD>split<CR>", "horizontal-split" },
         t = { "<CMD>tabnew<CR>", "tab-new" },
+        a = { "<CMD>e#<CR>", "alternative-file" },
     },
-
     -- LSP
     l = {
         d = { "<CMD>Telescope lsp_definitions<CR>", "goto-definition" },
@@ -69,14 +68,12 @@ local mappings = {
             p = { diagnostic.goto_prev, "goto-prev" },
         },
     },
-
     -- Terminal
     t = {
         t = { term.openPopupTerminal, "popup-terminal" },
         f = { term.openFullTerminal, "full-terminal" },
         h = { term.openFloatTerm, "float-terminal" },
     },
-
     -- Git
     g = {
         s = { "<CMD>Ge :<CR>", "git-status" },
@@ -91,7 +88,6 @@ local mappings = {
             r = { "<CMD>Gitsigns reset_hunk<CR>", "hunk-reset" },
         },
     },
-
     -- Path, cwd, session
     p = {
         p = { "<CMD>pwd<CR>", "pwd" },
@@ -113,27 +109,23 @@ local mappings = {
             },
         },
     },
-
     -- Organize, notes, etc
     o = {
         j = { "<CMD>silent! NeorgStart<CR><CMD>Neorg journal today<CR>", "daily-journal" },
         p = { "<CMD>edit $HOME/Documents/gtd/projects.norg<CR>", "projects" },
     },
-
     -- Shortcuts
     s = {
         s = { "<CMD>Alpha<CR>", "start-screen" },
         t = { commands.ToggleThemeMode, "toggle-theme" },
         b = { commands.ToggleTabLine, "toggle-tabline" },
     },
-
     -- Help
     h = {
         t = { "<CMD>Telescope help_tags<CR>", "help-tags" },
         w = { '<CMD>execute "h " . expand("<cword>")<CR>', "help-cword" },
         k = { "<CMD>Telescope keymaps<CR>", "help-keymaps" },
     },
-
     -- Uncategorized
     w = { "<CMD><CR><CMD>silent w<CR>", "write" },
     ["<BS>"] = { "<CMD>cd ..<CR><CMD>pwd<CR>", "cd .." },

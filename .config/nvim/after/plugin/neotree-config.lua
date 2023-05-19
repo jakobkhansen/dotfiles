@@ -6,7 +6,6 @@ require("neo-tree").setup({
     enable_git_status = false,
     enable_diagnostics = false,
     sort_case_insensitive = false, -- used when sorting files and directories in the tree
-
     window = {
         mappings = {
             ["<space>"] = "none",

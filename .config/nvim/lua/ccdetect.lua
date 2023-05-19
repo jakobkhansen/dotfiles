@@ -45,26 +45,35 @@ local function start_ccdetect()
             capabilities = cap,
             init_options = {
                 language = "java",
-                fragment_query = "(method_declaration) @function",
+                -- fragment_query = "(function_item) @function",
+                fragment_query = "(method_declaration) @method (constructor_declaration) @constructor",
                 clone_token_threshold = 100,
                 extra_nodes = {},
                 ignore_nodes = {},
+                blind_nodes = {
+                    "name",
+                    "identifier",
+                    "string_literal",
+                    "decimal_integer_literal",
+                    "decimal_floating_point_literal",
+                    "type_identifier",
+                },
                 dynamic_detection = true,
                 update_on_save = true,
                 evaluate = false,
-                excludeContainedClones = true,
             },
-            -- init_options = {
-            --     language = "c",
-            --     fragment_query = "(function_definition) @function",
-            --     clone_token_threshold = 100,
-            --     extra_nodes = { "string_literal" },
-            --     ignore_nodes = { "comment" },
-            --     dynamic_detection = true,
-            --     update_on_save = true,
-            -- },
         })
     end
 end
 
 autocmd("FileType", { pattern = "java", callback = start_ccdetect })
+
+-- Set signcolumn icons
+local function lspSymbol(name, icon)
+    vim.fn.sign_define("DiagnosticSign" .. name, { text = icon, texthl = "DiagnosticSign" .. name })
+end
+lspSymbol("Error", " ")
+lspSymbol("Info", " ")
+lspSymbol("Hint", " ")
+lspSymbol("Info", " ")
+lspSymbol("Warn", " ")

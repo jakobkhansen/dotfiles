@@ -3,6 +3,7 @@ local nvim_lsp = require("lspconfig")
 local util = require("lspconfig/util")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local autocmd = vim.api.nvim_create_autocmd
+local vimscript = vim.api.nvim_create_autocmd
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.workspace.configuration = true
@@ -22,12 +23,17 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 })
 
 -- Set signcolumn icons
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-
-for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+local function lspSymbol(name, icon)
+    vim.fn.sign_define(
+        "DiagnosticSign" .. name,
+        { text = icon, texthl = "DiagnosticSign" .. name }
+    )
 end
+lspSymbol("Error", " ")
+lspSymbol("Info", " ")
+lspSymbol("Hint", " ")
+lspSymbol("Info", " ")
+lspSymbol("Warn", " ")
 
 -- Disable semantic tokens
 autocmd("LspAttach", {
