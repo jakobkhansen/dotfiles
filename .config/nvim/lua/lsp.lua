@@ -24,10 +24,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 
 -- Set signcolumn icons
 local function lspSymbol(name, icon)
-    vim.fn.sign_define(
-        "DiagnosticSign" .. name,
-        { text = icon, texthl = "DiagnosticSign" .. name }
-    )
+    vim.fn.sign_define("DiagnosticSign" .. name, { text = icon, texthl = "DiagnosticSign" .. name })
 end
 lspSymbol("Error", " ")
 lspSymbol("Info", " ")
@@ -72,7 +69,8 @@ local function start_jdt()
             "java.base/java.lang=ALL-UNNAMED",
             "-jar",
             vim.env.HOME
-                .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+            ..
+            "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
             "-configuration",
             vim.env.HOME .. "/.langservers/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux",
             "-data",
@@ -99,9 +97,7 @@ local function start_jdt()
     require("jdtls").start_or_attach(config)
 end
 
-if vim.g.javaserveroff == nil then
-    autocmd("FileType", { pattern = "java", callback = start_jdt })
-end
+autocmd("FileType", { pattern = "java", callback = start_jdt })
 
 -- Typescript, Webdev
 nvim_lsp.tsserver.setup({
@@ -157,3 +153,5 @@ require("lspconfig").lua_ls.setup({
         },
     },
 })
+
+nvim_lsp.zls.setup({})

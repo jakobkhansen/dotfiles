@@ -38,7 +38,8 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     {
         "nvim-telescope/telescope-fzf-native.nvim",
-        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+        build =
+        "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     },
     {
         "AckslD/nvim-neoclip.lua",
@@ -142,4 +143,4 @@ require("language_configs")
 require("leadermaps")
 
 -- Master thesis work
-require("ccdetect")
+-- require("ccdetect")

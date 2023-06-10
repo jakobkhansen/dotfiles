@@ -24,10 +24,14 @@ alias size="du -sh "
 # Shortcuts to dirs
 alias h="cd ~"
 alias n="nvim"
+
+# Master
 alias nmaster="nvim -u ~/.config/nvim/masterinit.lua"
 alias lsp="cd ~/Documents/Dev/LSP/CCDetect-lsp"
 alias lsptest="cd ~/Documents/master-thesis/notes/TestCodebases"
 alias thesis="cd ~/Documents/master-thesis/thesis; n thesis.tex"
+alias defense="cd ~/Documents/master-thesis/defense; n defense.tex"
+alias demo1="lsptest; cd WorldWindJava/; nmaster src/gov/nasa/worldwind/render/AbstractSurfaceShape.java -c '425'"
 
 alias ranger='source ranger'
 
@@ -75,6 +79,9 @@ function connect() {
 alias con="connect"
 alias trackpad="bluetoothctl connect D4:57:63:5B:91:E7"
 alias headset="bluetoothctl connect 88:C9:E8:37:EB:EB"
+alias tp="trackpad"
+alias hs="headset"
+
 function open() {
     xdg-open "$1" &; disown
 }

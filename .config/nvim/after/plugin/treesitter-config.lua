@@ -1,5 +1,4 @@
 local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
 
 require("nvim-treesitter.configs").setup({
     ensure_installed = "all",
@@ -36,6 +35,3 @@ require("nvim-treesitter.configs").setup({
         },
     },
 })
-
--- Master
-ft_to_parser.mdx = "markdown"
