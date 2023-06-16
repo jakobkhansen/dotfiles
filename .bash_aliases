@@ -25,21 +25,11 @@ alias size="du -sh "
 alias h="cd ~"
 alias n="nvim"
 
-# Master
-alias nmaster="nvim -u ~/.config/nvim/masterinit.lua"
-alias lsp="cd ~/Documents/Dev/LSP/CCDetect-lsp"
-alias lsptest="cd ~/Documents/master-thesis/notes/TestCodebases"
-alias thesis="cd ~/Documents/master-thesis/thesis; n thesis.tex"
-alias defense="cd ~/Documents/master-thesis/defense; n defense.tex"
-alias demo1="lsptest; cd WorldWindJava/; nmaster src/gov/nasa/worldwind/render/AbstractSurfaceShape.java -c '425'"
-
 alias ranger='source ranger'
-
 alias r=ranger
 alias n=nvim
 alias skhd="~/Documents/skhd/bin/skhd &; disown"
 alias yabaireboot='launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"'
-
 
 alias g="git"
 alias gitview="gh repo view --web"
@@ -48,8 +38,6 @@ alias gitroot="cd \$(git rev-parse --show-toplevel)"
 alias gr=gitroot
 alias gitbranch="git branch"
 alias gb=gitbranch
-
-alias tt="taskwarrior-tui"
 
 alias darkmode="kitty +kitten themes --reload-in=all Tokyo Night Storm"
 alias lightmode="kitty +kitten themes --reload-in=all Tokyo Night Day"
@@ -62,19 +50,6 @@ alias monleft="xrandr --auto; xrandr --output HDMI-1 --left-of eDP-1"
 alias monright="xrandr --auto; xrandr --output HDMI-1 --right-of eDP-1"                                                                             
 alias monup="xrandr --auto; xrandr --output HDMI-1 --above eDP-1"                                                                                   
 alias mondup="xrandr --auto; xrandr --output HDMI-1 --same-as eDP-1"                                                                                
-
-alias polyprimary="polybar PrimaryMonitor &; disown"
-alias polysecondary="polybar SecondaryMonitor &; disown"
-
-alias keyboardoverlay="screenkey -t 2 -s small --opacity 1 --window"
-
-# Freebuds, Sony, Trackpad
-function connect() {
-    bluetoothctl connect 68:13:24:9C:40:F6 &
-    bluetoothctl connect 88:C9:E8:37:EB:EB &
-    bluetoothctl connect D4:57:63:5B:91:E7 &
-    disown
-}
 
 alias con="connect"
 alias trackpad="bluetoothctl connect D4:57:63:5B:91:E7"

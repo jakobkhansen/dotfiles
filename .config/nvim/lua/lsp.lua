@@ -97,7 +97,7 @@ local function start_jdt()
     require("jdtls").start_or_attach(config)
 end
 
-autocmd("FileType", { pattern = "java", callback = start_jdt })
+-- autocmd("FileType", { pattern = "java", callback = start_jdt })
 
 -- Typescript, Webdev
 nvim_lsp.tsserver.setup({

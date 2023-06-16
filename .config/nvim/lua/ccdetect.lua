@@ -34,6 +34,7 @@ local cap = vim.lsp.protocol.make_client_capabilities()
 cap.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
 local function start_ccdetect()
+    print("Launching CCDetect")
     vim.lsp.start({
         cmd = cmd,
         name = "CCDetect",
@@ -59,19 +60,9 @@ local function start_ccdetect()
             },
             dynamic_detection = true,
             update_on_save = true,
-            evaluate = false,
         },
     })
 end
 
+print("autocmd CCDetect")
 autocmd("FileType", { pattern = "java", callback = start_ccdetect })
-
--- Set signcolumn icons
-local function lspSymbol(name, icon)
-    vim.fn.sign_define("DiagnosticSign" .. name, { text = icon, texthl = "DiagnosticSign" .. name })
-end
-lspSymbol("Error", " ")
-lspSymbol("Info", " ")
-lspSymbol("Hint", " ")
-lspSymbol("Info", " ")
-lspSymbol("Warn", " ")

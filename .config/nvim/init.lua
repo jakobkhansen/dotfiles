@@ -88,9 +88,7 @@ require("lazy").setup({
     "mfussenegger/nvim-jdtls",
     {
         "j-hui/fidget.nvim",
-        enabled = function()
-            return false
-        end,
+        tag = "legacy",
         config = function()
             require("fidget").setup()
         end,
@@ -143,4 +141,4 @@ require("language_configs")
 require("leadermaps")
 
 -- Master thesis work
--- require("ccdetect")
+require("ccdetect")
