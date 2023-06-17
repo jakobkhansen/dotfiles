@@ -98,6 +98,7 @@ function P.config_files(opts)
     local config_files = {
         vim.env.HOME .. "/.config/nvim/init.lua",
         vim.env.HOME .. "/.config/i3/config",
+        vim.env.HOME .. "/.config/sway/config",
         vim.env.HOME .. "/.config/i3status/config",
         vim.env.HOME .. "/.config/ranger/rc.conf",
         vim.env.HOME .. "/.config/zathura/zathurarc",

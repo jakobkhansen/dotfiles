@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="/usr/share/oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -164,3 +164,5 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 
 export GOPATH=$HOME/Documents/Dev/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export VISUAL=nvim
+export EDITOR=nvim
