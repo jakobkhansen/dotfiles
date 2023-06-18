@@ -166,3 +166,4 @@ export GOPATH=$HOME/Documents/Dev/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export VISUAL=nvim
 export EDITOR=nvim
+export MOZ_ENABLE_WAYLAND=1
