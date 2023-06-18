@@ -19,7 +19,7 @@ exec --no-startup-id xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as es
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/Documents/Wallpapers/catfish.png fill
 
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
@@ -182,8 +182,9 @@ bindsym $mod+r mode "resize"
 # Gaps
 gaps outer 0
 gaps inner 0
-for_window [class="^.*"] border pixel 1
-hide_edge_borders --i3 both
+for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 0
+hide_edge_borders --i3 smart_no_gaps
 
 set $mode_gaps Toggle gaps: (1) off (2) on
 bindsym $mod+g mode "$mode_gaps"

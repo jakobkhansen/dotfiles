@@ -85,7 +85,6 @@ require("lazy").setup({
     },
     "jose-elias-alvarez/null-ls.nvim",
     "onsails/lspkind-nvim",
-    "mfussenegger/nvim-jdtls",
     {
         "j-hui/fidget.nvim",
         tag = "legacy",

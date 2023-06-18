@@ -74,12 +74,12 @@ end
 local buttons = {
     type = "group",
     val = {
-        button("e", "  New file", "<cmd>ene <CR>"),
-        button("SPC f f", "  Find file"),
-        button("SPC f o", "  Recently opened files"),
-        button("c", "  Config files", "<CMD>lua require('telescope-config').config_files()<CR>"),
-        button("p", "⟳  Plugins", "<CMD>Lazy<CR>"),
-        button("q", "Quit", "<CMD>Alpha<CR>"),
+        button("e", "  New file", "<cmd>ene <CR>", {}),
+        button("SPC f f", "󰱼  Find file", "", {}),
+        button("SPC f o", "󰱼  MRU", "", {}),
+        button("c", "  Config files", "<CMD>lua require('telescope-config').config_files()<CR>"),
+        button("p", "⟳  Plugins", "<CMD>Lazy<CR>", {}),
+        button("q", "Quit", "<CMD>Alpha<CR>", {}),
     },
     opts = {
         spacing = 1,
