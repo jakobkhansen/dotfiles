@@ -93,10 +93,9 @@ require("lazy").setup({
         end,
     },
     {
-        "jose-elias-alvarez/typescript.nvim",
-        config = function()
-            require("typescript").setup({})
-        end,
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        opts = {},
     },
     {
         "simrat39/rust-tools.nvim",
@@ -126,7 +125,6 @@ require("lazy").setup({
     "rafamadriz/friendly-snippets",
 
     -- "Notes and organization",
-    "lervag/vimtex",
     "vhyrro/neorg",
 })
 

@@ -5,11 +5,6 @@ local autocmd = vim.api.nvim_create_autocmd
 
 local command = vim.api.nvim_command
 
--- Sets filetype to ccdetect
-autocmd("BufRead,BufNewFile", {
-    pattern = { "*.ccdetect" },
-    command = "setlocal ft=ccdetect",
-})
 
 local JAVA_HOME = os.getenv("JAVA_HOME")
 

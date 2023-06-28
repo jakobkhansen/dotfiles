@@ -43,14 +43,4 @@ add_command("SessionRestore", ":source  ~/.local/share/nvim/session.vim<CR>", {}
 add_command("LightMode", P.LightMode, {})
 add_command("DarkMode", P.DarkMode, {})
 
--- Correcting assignments / writing mode
-function P.Retting()
-    vim.o.wrap = true
-    vim.o.tw = 0
-    keymap("", "j", "gj", keymap_opts)
-    keymap("", "k", "gk", keymap_opts)
-end
-
-add_command("Retting", P.Retting, {})
-
 return P

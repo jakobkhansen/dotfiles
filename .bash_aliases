@@ -46,16 +46,13 @@ alias dotfiles='yadm'
 alias pushdotfiles="yadm add -u && yadm commit -m 'Updates' && yadm push"
 alias dotfilesg="nvim .local/share/yadm/repo.git -c 'Ge :'"
 
-alias monleft="xrandr --auto; xrandr --output HDMI-1 --left-of eDP-1"                                                                               
-alias monright="xrandr --auto; xrandr --output HDMI-1 --right-of eDP-1"                                                                             
-alias monup="xrandr --auto; xrandr --output HDMI-1 --above eDP-1"                                                                                   
-alias mondup="xrandr --auto; xrandr --output HDMI-1 --same-as eDP-1"                                                                                
-
 alias con="connect"
 alias trackpad="bluetoothctl connect D4:57:63:5B:91:E7"
 alias headset="bluetoothctl connect 88:C9:E8:37:EB:EB"
 alias tp="trackpad"
 alias hs="headset"
+
+alias kattissubmit="~/Documents/Scripts/submit.py"
 
 function open() {
     xdg-open "$1" &; disown

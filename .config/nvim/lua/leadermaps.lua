@@ -12,7 +12,7 @@ local mappings = {
     f = {
         -- f = { fzf.files, "find-files" }, Microsoft
         f = { "<CMD>Telescope find_files<CR>", "find-files" },
-        d = { telescope_custom.find_any, "find-directory" },
+        d = { telescope_custom.find_dir, "find-directory" },
         g = { "<CMD>Telescope git_files<CR>", "find-git" },
         r = {
             function()

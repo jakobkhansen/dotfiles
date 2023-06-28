@@ -39,14 +39,15 @@ autocmd("LspAttach", {
 
 -- Start servers
 
-
 -- Typescript, Webdev
-nvim_lsp.tsserver.setup({
-    on_attach = function(client, _)
-        client.server_capabilities.document_formatting = false
-        client.server_capabilities.document_range_formatting = false
-    end,
-})
+-- nvim_lsp.tsserver.setup({
+--     on_attach = function(client, _)
+--         client.server_capabilities.document_formatting = false
+--         client.server_capabilities.document_range_formatting = false
+--     end,
+-- })
+
+nvim_lsp.jdtls.setup({})
 
 nvim_lsp.tailwindcss.setup({})
 nvim_lsp.eslint.setup({})
@@ -60,12 +61,6 @@ require("lspconfig").gopls.setup({})
 
 -- C++
 require("lspconfig").clangd.setup({})
-
--- Latex
-nvim_lsp.texlab.setup({})
-
--- Ltex
-nvim_lsp.ltex.setup({})
 
 -- Python
 nvim_lsp.pyright.setup({})

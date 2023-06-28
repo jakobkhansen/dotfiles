@@ -141,7 +141,7 @@ KEYTIMEOUT=1
 
 unsetopt histverify
 
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-20-openjdk
 export PATH=$HOME/.config/rofi/scripts:$PATH
 
 function chpwd() {

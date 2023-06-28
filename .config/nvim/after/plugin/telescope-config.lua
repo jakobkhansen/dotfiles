@@ -22,7 +22,7 @@ local open_xdg = function()
     end
 end
 
-function P.find_any(opts)
+function P.find_dir(opts)
     pickers
         .new(opts, {
             prompt_title = "Find Directory",
@@ -52,7 +52,7 @@ require("telescope").setup({
             },
             i = {},
         },
-        file_ignore_patterns = { "%.class", "%.png", "%.jpg", "%.jpeg", "change", "node_modules", "Caches" },
+        file_ignore_patterns = { "%.class", "change", "node_modules", "Caches" },
     },
     pickers = {
         git_commits = {
@@ -89,8 +89,7 @@ require("telescope").setup({
     },
 })
 
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("neoclip")
+
 
 function P.config_files(opts)
     local nvim_files = vim.split(vim.fn.glob("~/.config/nvim/lua/**/*lua"), "\n")
@@ -128,5 +127,8 @@ function P.config_files(opts)
         })
         :find()
 end
+
+require("telescope").load_extension("fzf")
+require("telescope").load_extension("neoclip")
 
 return P
