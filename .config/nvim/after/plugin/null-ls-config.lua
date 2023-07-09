@@ -1,7 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-local ok, res = pcall(require, 'null-ls')
+local ok, res = pcall(require, "null-ls")
 
 if not ok then
     return
@@ -19,6 +19,7 @@ require("null-ls").setup({
         }),
         -- require("null-ls").builtins.formatting.gofmt,
         require("null-ls").builtins.formatting.goimports,
+        require("null-ls").builtins.formatting.clang_format,
     },
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then

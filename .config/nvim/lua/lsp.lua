@@ -46,6 +46,12 @@ autocmd("LspAttach", {
 --         client.server_capabilities.document_range_formatting = false
 --     end,
 -- })
+require("typescript-tools").setup({
+    on_attach = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+    end,
+})
 
 nvim_lsp.jdtls.setup({})
 
