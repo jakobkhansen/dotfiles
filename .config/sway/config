@@ -51,6 +51,7 @@ bindsym $mod+Shift+r reload
 # Moving around:
 
 focus_follows_mouse no
+mouse_warping none
 
 # Move your focus around
 bindsym $mod+$left focus left
@@ -191,14 +192,11 @@ bar {
 
 # Application window settings
 for_window [app_id="pavucontrol"] floating enable
-for_window [app_id="Headset" title="Headset"] floating enable border none
-for_window [app_id="Headset" title="Headset - Player"] move scratchpad
-for_window [app_id="Electron"] floating enable
-for_window [app_id="Electron"] move position 1112 50
 for_window [shell="xwayland"] title_format "%title [XWayland]"
 
 # Hide cursor
 seat * hide_cursor 4000
+seat * hide_cursor when-typing enable
 
 # Lock screen
 exec swayidle -w timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'

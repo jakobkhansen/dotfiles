@@ -69,4 +69,9 @@ require("neo-tree").setup({
             end,
         },
     },
+    default_component_configs = {
+        icon = {
+            folder_empty = "",
+        },
+    },
 })
