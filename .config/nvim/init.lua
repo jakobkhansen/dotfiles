@@ -138,4 +138,4 @@ require("language_configs")
 require("leadermaps")
 
 -- Master thesis work
-require("ccdetect")
+-- require("ccdetect")

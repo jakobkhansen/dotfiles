@@ -6,7 +6,11 @@ local autocmd = vim.api.nvim_create_autocmd
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.workspace.configuration = true
 
-capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+-- print(vim.inspect(capabilities))
+capabilities.workspace.didChangeWatchedFiles = {
+    dynamicRegistration = true,
+    relativePatternSupport = true,
+}
 
 -- Show diagnostics and signcolumn icons
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -46,14 +50,31 @@ autocmd("LspAttach", {
 --         client.server_capabilities.document_range_formatting = false
 --     end,
 -- })
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup("TSServerFormatting", { clear = true })
+
 require("typescript-tools").setup({
+    on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            autocmd({ "BufWritePre" }, {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                    vim.lsp.buf.format({ bufnr = bufnr })
+                end,
+            })
+        end
+    end,
+})
+
+nvim_lsp.jdtls.setup({
+
     on_attach = function(client)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
     end,
 })
-
-nvim_lsp.jdtls.setup({})
 
 nvim_lsp.tailwindcss.setup({})
 nvim_lsp.eslint.setup({})

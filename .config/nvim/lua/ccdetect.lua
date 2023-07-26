@@ -5,7 +5,6 @@ local autocmd = vim.api.nvim_create_autocmd
 
 local command = vim.api.nvim_command
 
-
 local JAVA_HOME = os.getenv("JAVA_HOME")
 
 local function get_java_executable()
@@ -14,7 +13,7 @@ local function get_java_executable()
     return sysname:match("Windows") and executable .. ".exe" or executable
 end
 
-local jar = vim.env.HOME .. "/Documents/Dev/LSP/CCDetect-lsp/app/build/libs/app-all.jar"
+local jar = vim.env.HOME .. "/Documents/Dev/CCDetect-lsp/app/build/libs/app-all.jar"
 
 local cmd = { get_java_executable(), "-Xmx8G", "-jar", jar }
 
@@ -46,12 +45,12 @@ local function start_ccdetect()
             extra_nodes = {},
             ignore_nodes = {},
             blind_nodes = {
-                "name",
-                "identifier",
-                "string_literal",
-                "decimal_integer_literal",
-                "decimal_floating_point_literal",
-                "type_identifier",
+                -- "name",
+                -- "identifier",
+                -- "string_literal",
+                -- "decimal_integer_literal",
+                -- "decimal_floating_point_literal",
+                -- "type_identifier",
             },
             dynamic_detection = true,
             update_on_save = true,

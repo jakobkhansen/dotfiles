@@ -51,7 +51,6 @@ bindsym $mod+Shift+r reload
 # Moving around:
 
 focus_follows_mouse no
-mouse_warping none
 
 # Move your focus around
 bindsym $mod+$left focus left
@@ -75,17 +74,27 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Workspaces:
-workspace 1 output eDP-1
-workspace 2 output eDP-1
-workspace 3 output eDP-1
-workspace 4 output eDP-1
-workspace 5 output eDP-1
-workspace 6 output HDMI-A-1
-workspace 7 output HDMI-A-1
-workspace 8 output HDMI-A-1
-workspace 9 output HDMI-A-1
-workspace 10 output HDMI-A-1
+# Workspaces and monitors:
+bindswitch lid:on output eDP-1 disable
+bindswitch lid:off output eDP-1 enable
+
+output eDP-1 pos 0 0
+output HDMI-A-1 pos 1920 0
+# output DP-1 pos 1920 0
+output DP-1 pos 3840 0
+
+workspace 1 output eDP-1 HDMI-A-1
+workspace 2 output eDP-1 HDMI-A-1
+workspace 3 output eDP-1 HDMI-A-1
+workspace 4 output eDP-1 HDMI-A-1
+workspace 5 output eDP-1 HDMI-A-1
+workspace 6 output DP-1 HDMI-A-1
+workspace 7 output DP-1 HDMI-A-1
+workspace 8 output DP-1 HDMI-A-1
+workspace 9 output DP-1 HDMI-A-1
+workspace 10 output DP-1 HDMI-A-1
+
+
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -96,7 +105,6 @@ bindsym $mod+6 workspace number 6
 bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
 
 
 # Move focused container to workspace
