@@ -2,6 +2,7 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 keymap("", "+", "$", opts)
+keymap("", "-", "$", opts)
 keymap("", '""', '"+y', opts)
 keymap("", "<LeftMouse>", "<Nop>", opts)
 keymap("i", "<LeftMouse>", "<Nop>", opts)
