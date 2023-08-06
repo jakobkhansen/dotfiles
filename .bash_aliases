@@ -57,3 +57,6 @@ alias kattissubmit="~/Documents/Scripts/submit.py"
 function open() {
     xdg-open "$1" &; disown
 }
+
+# MS
+alias 1js="cd ~/Documents/1JS.git/checkouts"

@@ -55,16 +55,8 @@ local augroup = vim.api.nvim_create_augroup("TSServerFormatting", { clear = true
 
 require("typescript-tools").setup({
     on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            autocmd({ "BufWritePre" }, {
-                group = augroup,
-                buffer = bufnr,
-                callback = function()
-                    vim.lsp.buf.format({ bufnr = bufnr })
-                end,
-            })
-        end
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
     end,
 })
 
@@ -76,7 +68,6 @@ nvim_lsp.jdtls.setup({
     end,
 })
 
-nvim_lsp.tailwindcss.setup({})
 nvim_lsp.eslint.setup({})
 
 nvim_lsp.html.setup({})

@@ -167,3 +167,12 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export VISUAL=nvim
 export EDITOR=nvim
 export MOZ_ENABLE_WAYLAND=1
+
+# MS
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export DISPLAY=127.0.0.1:0
+export LIBGL_ALWAYS_INDIRECT=1
+export GCM_CREDENTIAL_STORE=gpg
