@@ -59,4 +59,4 @@ function open() {
 }
 
 # MS
-alias 1js="cd ~/Documents/1JS.git/checkouts"
+alias js="cd ~/Documents/1JS.git/checkouts"

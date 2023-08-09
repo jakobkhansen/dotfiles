@@ -68,7 +68,7 @@ nvim_lsp.jdtls.setup({
     end,
 })
 
-nvim_lsp.eslint.setup({})
+-- nvim_lsp.eslint.setup({})
 
 nvim_lsp.html.setup({})
 nvim_lsp.cssls.setup({})

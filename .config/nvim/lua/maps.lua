@@ -17,7 +17,6 @@ keymap("", "<A-k>", "<CMD>m-2<CR>", opts)
 keymap("", "<A-j>", "<CMD>m+<CR>", opts)
 
 -- Buffers and tabs
-keymap("n", "<C-i>", "<Tab>", opts)
 keymap("n", "<Tab>", "<CMD>Telescope buffers<CR>", opts)
 
 keymap("n", "<A-l>", "<CMD>tabnext<CR>", opts)

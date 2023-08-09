@@ -113,6 +113,7 @@ local mappings = {
     o = {
         j = { "<CMD>silent! NeorgStart<CR><CMD>Neorg journal today<CR>", "daily-journal" },
         p = { "<CMD>edit $HOME/Documents/gtd/projects.norg<CR>", "projects" },
+        w = { "<CMD>silent! Neorg journal custom " .. utils.lastMonday() .. "<CR>" }
     },
     -- Shortcuts
     s = {

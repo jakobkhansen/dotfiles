@@ -39,4 +39,8 @@ function P.isArray(t)
     return true
 end
 
+function P.lastMonday()
+    return io.popen("date -dlast-monday +%Y-%m-%d"):read()
+end
+
 return P

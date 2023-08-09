@@ -3,6 +3,7 @@ require("theme")
 
 require("bufferline").setup({
     options = {
+        max_name_length = 33,
         show_buffer_close_icons = false,
         show_close_icon = false,
         separator_style = { "", "" },

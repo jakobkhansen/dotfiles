@@ -176,3 +176,4 @@ export NVM_DIR="$HOME/.nvm"
 export DISPLAY=127.0.0.1:0
 export LIBGL_ALWAYS_INDIRECT=1
 export GCM_CREDENTIAL_STORE=gpg
+export TSC_WATCHFILE="UseFsEventsWithFallbackDynamicPolling"
