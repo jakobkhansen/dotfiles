@@ -42,6 +42,15 @@ require("lazy").setup({
         "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     },
     {
+        "ibhagwan/fzf-lua",
+        -- optional for icon support
+        config = function()
+            -- calling `setup` is optional for customization
+            require("fzf-lua").setup({})
+        end
+    },
+
+    {
         "AckslD/nvim-neoclip.lua",
         config = function()
             require("neoclip").setup()
@@ -56,6 +65,7 @@ require("lazy").setup({
 
     {
         "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "kyazdani42/nvim-web-devicons",
@@ -117,10 +127,12 @@ require("lazy").setup({
     "hrsh7th/cmp-calc",
 
     -- "Treesitter & Syntax highlighting",
-    {"nvim-treesitter/nvim-treesitter",
-    config = function()
+    {
+        "nvim-treesitter/nvim-treesitter",
+        config = function()
             require("nvim-treesitter.install").compilers = { "gcc-13" }
-        end},
+        end
+    },
     "nvim-treesitter/nvim-treesitter-textobjects",
 
     -- "Snippets",

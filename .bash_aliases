@@ -54,4 +54,7 @@ alias hs="headset"
 alias kattissubmit="~/Documents/Scripts/submit.py"
 
 # MS
-alias js="cd ~/Documents/1JS.git/checkouts"
+alias js="cd ~/Documents/1JS/checkouts"
+wt() {
+    cd ~/Documents/1JS/checkouts && git worktree add -b user/jakobhansen/$1 $1 && cd $1/midgard && yarn fast org-explorer-app-v2
+}

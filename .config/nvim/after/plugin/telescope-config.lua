@@ -52,10 +52,21 @@ require("telescope").setup({
             },
             i = {},
         },
-        file_ignore_patterns = { "%.class", "change", "node_modules", "Caches" },
+        file_ignore_patterns = { "%.class", "change", "node_modules", "Caches", "docs", "1js-wiki" },
     },
     pickers = {
         git_commits = {
+            mappings = {
+                n = {
+                    ["d"] = function()
+                        local selection = action_state.get_selected_entry()
+                        local hash = selection.value
+                        vim.cmd("DiffviewOpen " .. hash .. "~1.." .. hash)
+                    end,
+                },
+            },
+        },
+        git_files = {
             mappings = {
                 n = {
                     ["d"] = function()

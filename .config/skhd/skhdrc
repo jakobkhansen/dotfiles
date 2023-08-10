@@ -76,10 +76,10 @@
 # A REFERENCE ONLY, WHEN MAKING YOUR OWN CONFIGURATION..          #
 # ############################################################### #
 
-cmd - return : open -n /Applications/kitty.app
+cmd - return : open -n /Applications/kitty.app --args
 
 # focus window
-cmd - h : yabai -m window --focus west || yabai -m display --focus west
+cmd - h : (yabai -m window --focus west || yabai -m display --focus west)
 cmd - j : yabai -m window --focus south || yabai -m display --focus south
 cmd - k : yabai -m window --focus north || yabai -m display --focus north
 cmd - l : yabai -m window --focus east || yabai -m display --focus east
@@ -130,7 +130,7 @@ shift + alt - 2  : yabai -m window --display 2
 ctrl + cmd - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window split type
-cmd - r : yabai -m window --toggle split
+# cmd - r : yabai -m window --toggle split
 
 # float / unfloat window and center on screen
 cmd + shift - space: yabai -m window --toggle float;\

@@ -180,3 +180,5 @@ export TSC_WATCHFILE="UseFsEventsWithFallbackDynamicPolling"
 
 export PATH="${PATH}:/Users/jakobhansen/.azureauth/0.8.2"
 export GPG_TTY=$(tty)
+export MIDGARD_BACKFILL_CACHE_DIR="/Users/jakobhansen/.midgard-build-cache"
+

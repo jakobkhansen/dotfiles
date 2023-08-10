@@ -13,7 +13,10 @@ local mappings = {
         -- f = { fzf.files, "find-files" }, Microsoft
         f = { "<CMD>Telescope find_files<CR>", "find-files" },
         d = { telescope_custom.find_dir, "find-directory" },
-        g = { "<CMD>Telescope git_files<CR>", "find-git" },
+        g = {
+            function() require("telescope.builtin").git_files({
+                    git_command = { "git", "ls-files", "--sparse", "--cached" } }) end,
+            "find-git" },
         r = {
             function()
                 term.openFloatTerm("ranger")
