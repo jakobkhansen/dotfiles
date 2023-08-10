@@ -117,7 +117,10 @@ require("lazy").setup({
     "hrsh7th/cmp-calc",
 
     -- "Treesitter & Syntax highlighting",
-    "nvim-treesitter/nvim-treesitter",
+    {"nvim-treesitter/nvim-treesitter",
+    config = function()
+            require("nvim-treesitter.install").compilers = { "gcc-13" }
+        end},
     "nvim-treesitter/nvim-treesitter-textobjects",
 
     -- "Snippets",

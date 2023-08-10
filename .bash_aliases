@@ -28,7 +28,6 @@ alias n="nvim"
 alias ranger='source ranger'
 alias r=ranger
 alias n=nvim
-alias skhd="~/Documents/skhd/bin/skhd &; disown"
 alias yabaireboot='launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"'
 
 alias g="git"
@@ -53,10 +52,6 @@ alias tp="trackpad"
 alias hs="headset"
 
 alias kattissubmit="~/Documents/Scripts/submit.py"
-
-function open() {
-    xdg-open "$1" &; disown
-}
 
 # MS
 alias js="cd ~/Documents/1JS.git/checkouts"

@@ -76,8 +76,7 @@
 # A REFERENCE ONLY, WHEN MAKING YOUR OWN CONFIGURATION..          #
 # ############################################################### #
 
-cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty
-cmd + alt + ctrl - f : open -a firefox -n
+cmd - return : open -n /Applications/kitty.app
 
 # focus window
 cmd - h : yabai -m window --focus west || yabai -m display --focus west
@@ -86,10 +85,10 @@ cmd - k : yabai -m window --focus north || yabai -m display --focus north
 cmd - l : yabai -m window --focus east || yabai -m display --focus east
 
 # swap managed window
-cmd + shift - h : yabai -m window --swap west || yabai -m window --display west
-cmd + shift - j : yabai -m window --swap south || yabai -m window --display south
-cmd + shift - k : yabai -m window --swap north || yabai -m window --display north
-cmd + shift - l : yabai -m window --swap east || yabai -m window --display east
+cmd + shift - h : yabai -m window --swap west || (yabai -m window --display west && yabai -m display --focus west)
+cmd + shift - j : yabai -m window --swap south || (yabai -m window --display south && yabai -m display --focus south)
+cmd + shift - k : yabai -m window --swap north || (yabai -m window --display north && yabai -m display --focus north)
+cmd + shift - l : yabai -m window --swap east || (yabai -m window --display east && yabai -m display --focus east)
 
 # balance size of windows
 # shift + cmd - 0 : yabai -m space --balance
@@ -99,17 +98,6 @@ cmd + shift - l : yabai -m window --swap east || yabai -m window --display east
 
 # make floating window fill left-half of screen
 # shift + cmd - left   : yabai -m window --grid 1:2:0:0:1:1
-
-# fast focus desktop
-cmd - 1 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 1)
-cmd - 2 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 2)
-cmd - 3 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 3)
-cmd - 4 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 4)
-cmd - 5 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 5)
-cmd - 6 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 6)
-cmd - 7 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 7)
-cmd - 8 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 8)
-cmd - 9 ->: yabai -m display --focus $(~/.config/skhd/scripts/display_of_space.sh 9)
 
 # send window to desktop and follow focus
 shift + cmd - 1 : yabai -m window --space  1
@@ -164,5 +152,3 @@ ctrl + cmd + shift - h : yabai -m window --move rel:-20:0
 ctrl + cmd + shift - j : yabai -m window --move rel:0:20
 ctrl + cmd + shift - k : yabai -m window --move rel:0:-20
 ctrl + cmd + shift - l : yabai -m window --move rel:20:0
-
-

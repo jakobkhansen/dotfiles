@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/usr/share/oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -175,5 +175,8 @@ export NVM_DIR="$HOME/.nvm"
 
 export DISPLAY=127.0.0.1:0
 export LIBGL_ALWAYS_INDIRECT=1
-export GCM_CREDENTIAL_STORE=gpg
+export GCM_CREDENTIAL_STORE=keychain
 export TSC_WATCHFILE="UseFsEventsWithFallbackDynamicPolling"
+
+export PATH="${PATH}:/Users/jakobhansen/.azureauth/0.8.2"
+export GPG_TTY=$(tty)

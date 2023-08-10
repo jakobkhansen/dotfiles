@@ -40,7 +40,7 @@ function P.isArray(t)
 end
 
 function P.lastMonday()
-    return io.popen("date -dlast-monday +%Y-%m-%d"):read()
+    return io.popen("date -v-monday +%Y-%m-%d"):read()
 end
 
 return P
