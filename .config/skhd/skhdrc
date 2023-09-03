@@ -130,7 +130,7 @@ shift + alt - 2  : yabai -m window --display 2
 ctrl + cmd - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window split type
-# cmd - r : yabai -m window --toggle split
+cmd + shift - r : yabai -m window --toggle split
 
 # float / unfloat window and center on screen
 cmd + shift - space: yabai -m window --toggle float;\

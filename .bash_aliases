@@ -14,7 +14,7 @@ alias ll='ls -a'
 alias la='ls -A'
 alias l='ls'
 # alias ff="\$($HOME/Documents/Scripts/fzf_navigate.py)"
-alias ff="cd \$(fd . --type d | fuzz)"
+alias ff="cd \$(fd . --type d --max-results 100000 | fuzz)"
 alias c="clear"
 alias size="du -sh "
 
@@ -56,5 +56,11 @@ alias kattissubmit="~/Documents/Scripts/submit.py"
 # MS
 alias js="cd ~/Documents/1JS/checkouts"
 wt() {
-    cd ~/Documents/1JS/checkouts && git worktree add -b user/jakobhansen/$1 $1 && cd $1/midgard && yarn fast org-explorer-app-v2
+    cd ~/Documents/1JS/
+    git pull origin main
+    git sparse-checkout init --cone
+    cd checkouts
+    git worktree add -b user/jakobhansen/$1 $1
+    cd $1/midgard 
+    yarn fast org-explorer-app-v2
 }

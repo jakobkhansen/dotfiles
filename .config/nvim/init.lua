@@ -41,14 +41,8 @@ require("lazy").setup({
         build =
         "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     },
-    {
-        "ibhagwan/fzf-lua",
-        -- optional for icon support
-        config = function()
-            -- calling `setup` is optional for customization
-            require("fzf-lua").setup({})
-        end
-    },
+    "nvim-pack/nvim-spectre",
+
 
     {
         "AckslD/nvim-neoclip.lua",
@@ -114,6 +108,9 @@ require("lazy").setup({
         end,
     },
     "windwp/nvim-ts-autotag",
+    {
+        "zbirenbaum/copilot.lua",
+    },
 
     -- nvim-cmp auto-completion,
     "hrsh7th/nvim-cmp",

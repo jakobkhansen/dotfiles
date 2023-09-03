@@ -45,6 +45,7 @@ end
 
 require("telescope").setup({
     defaults = {
+        previewer = false,
         mappings = {
             n = {
                 ["o"] = open_xdg(),
@@ -52,7 +53,7 @@ require("telescope").setup({
             },
             i = {},
         },
-        file_ignore_patterns = { "%.class", "change", "node_modules", "Caches", "docs", "1js-wiki" },
+        file_ignore_patterns = { "%.class", "node_modules", "Caches" },
     },
     pickers = {
         git_commits = {

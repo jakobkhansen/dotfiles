@@ -11,11 +11,15 @@ vim.g.mapleader = " "
 local mappings = {
     f = {
         -- f = { fzf.files, "find-files" }, Microsoft
-        f = { "<CMD>Telescope find_files<CR>", "find-files" },
+        f = { "<CMD>Telescope find_files previewer=false<CR>", "find-files" },
         d = { telescope_custom.find_dir, "find-directory" },
         g = {
-            function() require("telescope.builtin").git_files({
-                    git_command = { "git", "ls-files", "--sparse", "--cached" } }) end,
+            function()
+                require("telescope.builtin").git_files({
+                    git_command = { "git", "ls-files", "--sparse", "--cached", "[^ooui]*" },
+                    previewer = false
+                })
+            end,
             "find-git" },
         r = {
             function()
@@ -24,7 +28,7 @@ local mappings = {
             "find-ranger",
         },
         l = { "<CMD>Neotree reveal toggle<CR>", "file-browser" },
-        o = { "<CMD>Telescope oldfiles<CR>", "find-mru" },
+        o = { "<CMD>Telescope oldfiles previewer=false<CR>", "find-mru" },
 
         c = {
             "<CMD>Telescope live_grep<CR>",
@@ -32,7 +36,6 @@ local mappings = {
         },
 
         p = { "<CMD>Telescope neoclip<CR>", "find-clipboard" },
-        b = { "<CMD>Telescope buffers<CR>", "find-buffers" },
         j = { "<CMD>Telescope jumplist<CR>", "find-jump" },
     },
     -- Buffer

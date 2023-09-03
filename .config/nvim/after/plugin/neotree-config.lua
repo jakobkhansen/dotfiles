@@ -7,6 +7,7 @@ require("neo-tree").setup({
     enable_diagnostics = false,
     sort_case_insensitive = false, -- used when sorting files and directories in the tree
     window = {
+        width = 50,
         mappings = {
             ["<space>"] = "none",
             ["l"] = "open_with_window_picker",
@@ -96,5 +97,15 @@ require("neo-tree").setup({
         icon = {
             folder_empty = "",
         },
+    },
+    event_handlers = {
+        {
+            event = "neo_tree_buffer_enter",
+            handler = function(arg)
+                vim.cmd [[
+          setlocal relativenumber
+        ]]
+            end,
+        }
     },
 })
