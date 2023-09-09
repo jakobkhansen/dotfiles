@@ -15,6 +15,7 @@ keymap("", ";", ",", opts)
 
 -- Buffers and tabs
 keymap("n", "<Tab>", "<CMD>Telescope buffers previewer=false<CR>", opts)
+keymap("n", "<S-Tab>", "<CMD>tabnext<CR>", opts)
 
 keymap("", "ZA", "<CMD>wqa!<CR>", opts)
 

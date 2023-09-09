@@ -31,6 +31,7 @@ alias n=nvim
 alias yabaireboot='launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"'
 
 alias g="git"
+alias gs="git status"
 alias gitview="gh repo view --web"
 alias gv=gitview
 alias gitroot="cd \$(git rev-parse --show-toplevel)"
@@ -56,11 +57,12 @@ alias kattissubmit="~/Documents/Scripts/submit.py"
 # MS
 alias js="cd ~/Documents/1JS/checkouts"
 wt() {
-    cd ~/Documents/1JS/
+    cd ~/Documents/1JS/checkouts/main
     git pull origin main
     git sparse-checkout init --cone
-    cd checkouts
+    cd ..
     git worktree add -b user/jakobhansen/$1 $1
     cd $1/midgard 
     yarn fast org-explorer-app-v2
+    yarn build-scope org-explorer-app-v2
 }

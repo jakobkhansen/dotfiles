@@ -29,7 +29,6 @@ require("diffview").setup({
             ["<c-b>"] = actions.scroll_view(-0.25), -- Scroll the view up
             ["<c-f>"] = actions.scroll_view(0.25), -- Scroll the view down
             ["<tab>"] = actions.select_next_entry,
-            ["<s-tab>"] = actions.select_prev_entry,
             ["gf"] = actions.goto_file_edit,
             ["<C-w><C-f>"] = actions.goto_file_split,
             ["<C-w>gf"] = actions.goto_file_tab,
