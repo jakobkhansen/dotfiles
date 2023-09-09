@@ -94,6 +94,14 @@ local mappings = {
             r = { "<CMD>Gitsigns reset_hunk<CR>", "hunk-reset" },
         },
     },
+
+    -- Debug / test
+    d = {
+        f = { "<CMD>Neotest run file<CR>", "test-file" },
+        t = { require("neotest").run.run, "test-nearest" },
+        s = { "<CMD>Neotest summary<CR>", "test-summary" },
+        o = { "<CMD>Neotest output<CR>", "test-output" },
+    },
     -- Path, cwd, session
     p = {
         p = { "<CMD>pwd<CR>", "pwd" },

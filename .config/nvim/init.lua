@@ -102,7 +102,7 @@ require("lazy").setup({
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
             "antoinemadec/FixCursorHold.nvim",
-            'haydenmeade/neotest-jest',
+            'jakobkhansen/neotest-jest',
         }
     },
     {
