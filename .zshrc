@@ -10,7 +10,12 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/usr/share/oh-my-zsh"
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        export ZSH="/usr/share/oh-my-zsh"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    export ZSH="$HOME/.oh-my-zsh"
+fi
+
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set name of the theme to load --- if set to "random", it will
