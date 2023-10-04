@@ -40,7 +40,10 @@ function P.isArray(t)
 end
 
 function P.lastMonday()
-    return io.popen("date -v-monday +%Y-%m-%d"):read()
+    if vim.fn.has("macunix") == 1 then
+        return io.popen("date -v-monday +%Y-%m-%d"):read()
+    end
+    return io.popen("date -dlast-monday +%Y-%m-%d"):read()
 end
 
 return P

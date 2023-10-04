@@ -17,10 +17,11 @@ local mappings = {
             function()
                 require("telescope.builtin").git_files({
                     git_command = { "git", "ls-files", "--sparse", "--cached", "[^ooui]*" },
-                    previewer = false
+                    previewer = false,
                 })
             end,
-            "find-git" },
+            "find-git",
+        },
         r = {
             function()
                 term.openFloatTerm("ranger")
@@ -127,7 +128,7 @@ local mappings = {
     o = {
         j = { "<CMD>silent! NeorgStart<CR><CMD>Neorg journal today<CR>", "daily-journal" },
         p = { "<CMD>edit $HOME/Documents/gtd/projects.norg<CR>", "projects" },
-        w = { "<CMD>silent! Neorg journal custom " .. utils.lastMonday() .. "<CR>" }
+        w = { "<CMD>silent! Neorg journal custom " .. utils.lastMonday() .. "<CR>" },
     },
     -- Shortcuts
     s = {
