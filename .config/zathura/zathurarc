@@ -1,0 +1,11 @@
+set recolor-darkcolor "#DADADA"
+set recolor-lightcolor "#24283b"
+set recolor-default-bg "#24283b"
+set selection-clipboard clipboard
+set guioptions none
+
+map <C-i> recolor
+set default-bg \#24283b
+
+set highlight-active-color "#ffffff"
+set highlight-active-transparency 0

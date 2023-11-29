@@ -1,0 +1,51 @@
+general {
+        colors = true
+        color_good =     '#FFFFFF'  
+        color_degraded = '#FFFFFF'  
+        color_bad =      '#aa0e50'
+        interval = 1
+        markup = "pango"
+}
+
+order += "window"
+order += "volume master"
+order += "wireless _first_"
+order += "battery all"
+order += "memory"
+order += "tztime local"
+
+wireless _first_ {
+        format_up = "%essid"
+        format_down = "W: down"
+}
+
+battery all {
+    format = "%status <span weight='heavy'>%percentage</span>"
+	status_chr = ""
+	status_bat = " "
+	status_full = " "
+	integer_battery_capacity = "true"
+    last_full_capacity = "true"
+	low_threshold = "15"
+	threshold_type = "percentage"
+}
+
+
+tztime local {
+        format = " %d-%m-%Y %H:%M"
+}
+
+volume master {
+        format = "(%devicename): <span weight='heavy'>%volume</span>"
+        format_muted = "♪: muted (%volume)"
+        device = "default"
+}
+
+memory {
+
+    format = "RAM: %used / %total"
+}
+
+window {
+		format = "  \[{class}\]"
+}
