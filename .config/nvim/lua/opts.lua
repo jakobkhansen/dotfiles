@@ -53,7 +53,7 @@ vim.opt.ruler = false
 vimscript("set diffopt+=linematch:60", false)
 
 -- Persistent undo
-local undoDir = "/tmp/.undodir_" .. vim.env["USER"]
+local undoDir = "/tmp/.vim_undodir"
 if not vim.fn.isdirectory(undoDir) then
     vim.fn.mkdir(undoDir, "", 0700)
 end
