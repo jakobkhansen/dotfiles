@@ -197,7 +197,9 @@ source ~/.torusrc
 export PATH="$PATH:/Users/jakobhansen/.dotnet/tools"
 
 
-export PATH="${PATH}:/Users/jakobhansen/.azureauth/0.8.4"
 
 export ONEDRIVE_NPM_AUTH_TOKEN=$(printf "protocol=https\nhost=onedrive.visualstudio.com\npath=DefaultCollection/ODSP-Web/_git/_optimized/odsp-web" | git credential fill | sed -n "/^password=/s/password=//p" | tr -d \\n | base64)
 
+
+
+export PATH="${PATH}:/Users/jakobhansen/.azureauth/0.8.4"

@@ -1,6 +1,6 @@
 -- Allow after/plugin to be required
-local home_dir = os.getenv("HOME")
-package.path = home_dir .. "/.config/nvim/after/plugin/?.lua;" .. package.path
+local conf_dir = vim.fn.stdpath("config")
+package.path = conf_dir .. "/after/plugin/?.lua;" .. package.path
 
 -- Bootstrap plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

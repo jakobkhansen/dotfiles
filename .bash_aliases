@@ -44,7 +44,8 @@ alias lightmode="kitty +kitten themes --reload-in=all Tokyo Night Day"
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias pushdotfiles="dotfiles add -u && dotfiles commit -m 'Updates' && dotfiles push"
-alias dotfilesg="nvim .local/share/yadm/repo.git -c 'Ge :'"
+alias dotfilesg="nvim ~/.dotfiles -c 'Ge :'"
+alias dotfilesg="GIT_DIR=$HOME/.dotfiles GIT_WORK_TREE=$HOME nvim ~/.dotfiles -c 'Ge :'"
 
 alias con="connect"
 alias trackpad="bluetoothctl connect D4:57:63:5B:91:E7"
