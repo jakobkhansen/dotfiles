@@ -137,7 +137,9 @@ require("lazy").setup({
     {
         "nvim-treesitter/nvim-treesitter",
         config = function()
-            require("nvim-treesitter.install").compilers = { "gcc-13" }
+            if vim.uv.os_uname().sysname == "Darwin" then
+                require("nvim-treesitter.install").compilers = { "gcc-13" }
+            end
         end
     },
     "nvim-treesitter/nvim-treesitter-textobjects",
