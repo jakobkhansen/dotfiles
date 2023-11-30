@@ -45,7 +45,11 @@
     {
         "defaults": 
         {
-            "colorScheme": "Tokyo Night Storm"
+            "colorScheme": "Tokyo Night Storm",
+            "font": 
+            {
+                "face": "FiraMono Nerd Font Mono"
+            }
         },
         "list": 
         [
@@ -68,7 +72,7 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "elevate": true,
+                "elevate": false,
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
@@ -93,16 +97,19 @@
                 "source": "VSDebugConsole"
             },
             {
-                "guid": "{fbafa3e2-9f09-591b-9042-22bf3ad392a0}",
-                "hidden": true,
-                "name": "Developer Command Prompt for VS 2017",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
                 "guid": "{4913b95a-7ae3-538a-aa4b-f499ff8a12b8}",
                 "hidden": false,
                 "name": "Merlin",
                 "source": "Merlin"
+            },
+            {
+                "commandline": "\"C:\\Users\\jakobhansen\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe\"",
+                "elevate": true,
+                "guid": "{0e66d69f-f6c1-482a-b731-2756eb941bd4}",
+                "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/pwsh.png",
+                "name": "PowerShell Administrator",
+                "startingDirectory": "%USERPROFILE%"
             }
         ]
     },
