@@ -2,17 +2,21 @@ local dap = require("dap")
 dap.adapters.coreclr = {
     type = 'executable',
     command =
-    'C:\\Users\\jakobhansen\\Documents\\netcoredbg\\netcoredbg.exeC:\\Users\\jakobhansen\\Documents\\netcoredbg',
+    'C:\\Users\\jakobhansen\\Documents\\netcoredbg\\netcoredbg.exe',
     args = { '--interpreter=vscode' }
 }
 
 dap.configurations.cs = {
     {
         type = "coreclr",
-        name = "launch - netcoredbg",
-        request = "launch",
-        program = function()
-            return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-        end,
+        name = "attach - netcoredbg",
+        request = "attach",
+        processId = function()
+            return require("dap.utils").pick_process({
+                filter = function(process)
+                    return process.name == "Microsoft.Loki.Service.exe"
+                end
+            })
+        end
     },
 }
