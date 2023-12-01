@@ -101,6 +101,7 @@ require("lazy").setup({
             'jakobkhansen/neotest-jest',
         }
     },
+    "mfussenegger/nvim-dap",
     {
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },

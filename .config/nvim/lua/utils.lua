@@ -46,4 +46,13 @@ function P.lastMonday()
     return io.popen("date -dlast-monday +%Y-%m-%d"):read()
 end
 
+-- OS handling
+function P.isUnix()
+    return vim.fn.has("macunix")
+end
+
+function P.isWindows()
+    return vim.fn.has("win32")
+end
+
 return P

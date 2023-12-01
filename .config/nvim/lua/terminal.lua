@@ -37,6 +37,9 @@ function P.openPopupTerminal(cmd)
     end
 
     vim.api.nvim_command("startinsert")
+    print("here")
+    print(cmd)
+    print(vim.o.shell)
     lastOpenedTerminalJobId = vim.fn.termopen(cmd or vim.o.shell, {
         on_exit = on_exit,
     })

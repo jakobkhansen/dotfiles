@@ -1,6 +1,7 @@
 local opt = vim.opt
 local vimscript = vim.api.nvim_exec
 local autocmd = vim.api.nvim_create_autocmd
+local utils = require("utils")
 
 -- Vim options
 opt.smartindent = true
@@ -69,3 +70,14 @@ vim.g.netrw_liststyle = 3
 vim.g.netrw_list_hide = "^\\..*"
 vim.g.netrw_hide = 1
 vim.g.netrw_keepdir = 0
+
+-- Terminal
+if utils.isWindows() then
+    vim.o.shell = "pwsh"
+    vim.o.shellcmdflag =
+    '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[\'Out-File:Encoding\']=\'utf8\';Remove-Alias -Force -ErrorAction SilentlyContinue tee;'
+    vim.o.shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+    vim.o.shellpipe = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode'
+end
+vim.o.shellquote = ""
+vim.o.shellxquote = ""
