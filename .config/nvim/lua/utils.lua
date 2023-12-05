@@ -48,11 +48,11 @@ end
 
 -- OS handling
 function P.isUnix()
-    return vim.fn.has("macunix")
+    return vim.fn.has("macunix") ~= 0
 end
 
 function P.isWindows()
-    return vim.fn.has("win32")
+    return vim.fn.has("win32") ~= 0
 end
 
 return P
