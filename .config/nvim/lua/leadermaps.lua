@@ -5,6 +5,8 @@ local lsp = vim.lsp.buf
 local diagnostic = vim.diagnostic
 local telescope_custom = require("telescope-config")
 local commands = require("commands")
+local dap = require("dap")
+local dapwidgets = require("dap.ui.widgets")
 
 vim.g.mapleader = " "
 
@@ -102,6 +104,10 @@ local mappings = {
         t = { require("neotest").run.run, "test-nearest" },
         s = { "<CMD>Neotest summary<CR>", "test-summary" },
         o = { "<CMD>Neotest output<CR>", "test-output" },
+        b = { dap.toggle_breakpoint, "toggle-breakpoint" },
+        h = { dapwidgets.hover, "debug-hover" },
+        c = { dap.continue, "debug-continue" },
+        n = { dap.step_over, "debug-continue" },
     },
     -- Path, cwd, session
     p = {
@@ -178,4 +184,5 @@ function _G.registerMappings(keymap, rec_mappings, mode)
 end
 
 registerMappings("<Leader>", mappings, "n")
+registerMappings("<Leader>", visual_mappings, "v")
 registerMappings("<Leader>", visual_mappings, "v")
