@@ -198,7 +198,7 @@ export PATH="$PATH:/Users/jakobhansen/.dotnet/tools"
 
 
 
-export ONEDRIVE_NPM_AUTH_TOKEN=$(printf "protocol=https\nhost=onedrive.visualstudio.com\npath=DefaultCollection/ODSP-Web/_git/_optimized/odsp-web" | git credential fill | sed -n "/^password=/s/password=//p" | tr -d \\n | base64)
+# export ONEDRIVE_NPM_AUTH_TOKEN=$(printf "protocol=https\nhost=onedrive.visualstudio.com\npath=DefaultCollection/ODSP-Web/_git/_optimized/odsp-web" | git credential fill | sed -n "/^password=/s/password=//p" | tr -d \\n | base64)
 
 
 

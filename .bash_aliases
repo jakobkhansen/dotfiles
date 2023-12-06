@@ -77,7 +77,7 @@ review() {
     yarn fast org-explorer-app-v2
 }
 
-alias jsr="cd ~/Documents/1JS"
+alias jsr="cd ~/Documents/1JS/checkouts"
 alias oe="cd midgard/packages/org-explorer-app-v2"
 
 js() {
