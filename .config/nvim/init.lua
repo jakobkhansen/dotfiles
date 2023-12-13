@@ -84,7 +84,7 @@ require("lazy").setup({
             require("mason-lspconfig").setup()
         end,
     },
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     "onsails/lspkind-nvim",
     {
         "j-hui/fidget.nvim",

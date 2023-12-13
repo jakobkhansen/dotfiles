@@ -15,7 +15,7 @@ end
 
 local jar = vim.env.HOME .. "/Documents/OpenSource/CCDetect-lsp/app/build/libs/app-all.jar"
 
-local cmd = { get_java_executable(), "-Xmx8G", "-jar", jar }
+local cmd = { get_java_executable(), "-Xmx16G", "-jar", jar }
 
 local function on_show_document(err, result, ctx, config, params)
     local uri = result.uri
@@ -47,8 +47,6 @@ local function start_ccdetect()
                 "identifier",
                 "string",
                 "number",
-                -- "decimal_integer_literal",
-                -- "decimal_floating_point_literal",
                 "type_annotation",
             },
             dynamic_detection = false,

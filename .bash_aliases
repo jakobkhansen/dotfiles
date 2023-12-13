@@ -84,7 +84,7 @@ js() {
     cd ~/Documents/1JS/
     worktree=$(git worktree list | grep -v "(bare)" | tail -r | fzf | awk '{print $1}')
     cd $worktree/midgard/packages
-    packages="org-explorer-app-v2\n.. (midgard)\n... (1js)\n${$(ls | grep -v "org-explorer-app-v2")}"
+    packages="org-explorer-app-v2\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app-v2")}"
     cd $(echo $packages | fzf | awk '{print $1;}')
 }
 

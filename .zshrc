@@ -147,7 +147,8 @@ KEYTIMEOUT=1
 
 unsetopt histverify
 
-export JAVA_HOME=/usr/lib/jvm/java-20-openjdk
+# export JAVA_HOME=/usr/lib/jvm/java-20-openjdk
+# export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 export PATH=$HOME/.config/rofi/scripts:$PATH
 
 function chpwd() {
@@ -198,8 +199,7 @@ export PATH="$PATH:/Users/jakobhansen/.dotnet/tools"
 
 
 
-# export ONEDRIVE_NPM_AUTH_TOKEN=$(printf "protocol=https\nhost=onedrive.visualstudio.com\npath=DefaultCollection/ODSP-Web/_git/_optimized/odsp-web" | git credential fill | sed -n "/^password=/s/password=//p" | tr -d \\n | base64)
-
-
-
 export PATH="${PATH}:/Users/jakobhansen/.azureauth/0.8.4"
+
+# export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

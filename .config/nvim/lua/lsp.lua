@@ -64,9 +64,15 @@ nvim_lsp.jdtls.setup({
     end,
 })
 
-nvim_lsp.html.setup({})
-nvim_lsp.cssls.setup({})
-nvim_lsp.jsonls.setup({})
+nvim_lsp.html.setup({
+    capabilities = capabilities,
+})
+nvim_lsp.cssls.setup({
+    capabilities = capabilities,
+})
+nvim_lsp.jsonls.setup({
+    capabilities = capabilities,
+})
 
 -- Go
 require("lspconfig").gopls.setup({})
