@@ -185,4 +185,3 @@ end
 
 registerMappings("<Leader>", mappings, "n")
 registerMappings("<Leader>", visual_mappings, "v")
-registerMappings("<Leader>", visual_mappings, "v")
