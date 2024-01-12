@@ -31,7 +31,7 @@ local function start_ccdetect()
     vim.lsp.start({
         cmd = cmd,
         name = "CCDetect",
-        root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]),
+        root_dir = ".",
         handlers = {
             ["window/showDocument"] = on_show_document,
         },
@@ -49,7 +49,7 @@ local function start_ccdetect()
                 "number",
                 "type_annotation",
             },
-            dynamic_detection = false,
+            dynamic_detection = true,
             update_on_save = true,
         },
     })

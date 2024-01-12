@@ -33,6 +33,7 @@ map alt+shift+tab previous_tab
 map ctrl+plus change_font_size all +2.0
 map ctrl+minus change_font_size all -2.0
 map ctrl+shift+t launch --type=tab --cwd=current
+map cmd+t launch --type=tab --cwd=current
 map ctrl+shift+space detach_tab
 
 # Unmaps
@@ -46,7 +47,7 @@ map ctrl+shift+r no_op
 
 
 # BEGIN_KITTY_THEME
-# Tokyo Night Day
+# Tokyo Night Storm
 include current-theme.conf
 # END_KITTY_THEME
 
