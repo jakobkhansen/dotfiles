@@ -52,7 +52,7 @@ require("typescript-tools").setup({
 
 require("roslyn").setup({
     dotnet_cmd = "dotnet",
-    roslyn_version = "4.8.0-3.23475.7",
+    roslyn_version = "4.9.0-3.23604.10",
     on_attach = function() end,
 })
 
