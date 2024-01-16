@@ -6,6 +6,13 @@ dap.adapters.coreclr = {
     args = { '--interpreter=vscode' }
 }
 
+dap.adapters.netcoredbg = {
+    type = 'executable',
+    command =
+    'C:\\Users\\jakobhansen\\Documents\\netcoredbg\\netcoredbg.exe',
+    args = { '--interpreter=vscode' }
+}
+
 dap.configurations.cs = {
     {
         type = "coreclr",

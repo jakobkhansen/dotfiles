@@ -5,6 +5,9 @@ require("neotest").setup({
             cwd = function(path)
                 return vim.fn.getcwd()
             end,
+        }),
+        require("neotest-dotnet")({
+            discovery_root = "solution"
         })
     },
 })

@@ -98,7 +98,8 @@ require("lazy").setup({
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
             "antoinemadec/FixCursorHold.nvim",
-            'jakobkhansen/neotest-jest',
+            'Issafalcon/neotest-dotnet',
+            'jakobkhansen/neotest-jest'
         }
     },
     "mfussenegger/nvim-dap",

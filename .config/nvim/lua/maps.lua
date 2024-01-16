@@ -32,6 +32,14 @@ keymap("n", "<C-S-k>", "<CMD>resize+5<CR>", opts)
 keymap("n", "<C-S-l>", "<CMD>vertical resize+5<CR>", opts)
 keymap("n", "<C-S-r>", "<C-W>=", opts)
 
+
+keymap("n", "<A-h>", "<CMD>vertical resize-5<CR>", opts)
+keymap("n", "<A-j>", "<CMD>resize-5<CR>", opts)
+keymap("n", "<A-k>", "<CMD>resize+5<CR>", opts)
+keymap("n", "<A-l>", "<CMD>vertical resize+5<CR>", opts)
+keymap("n", "<A-r>", "<C-W>=", opts)
+
+
 --  Move horizontally
 keymap("", "zh", "10zh", opts)
 keymap("", "zl", "10zl", opts)
@@ -53,3 +61,10 @@ keymap("t", "<C-S-j>", "<C-\\><C-n><CMD>resize-5<CR>i", opts)
 keymap("t", "<C-S-k>", "<C-\\><C-n><CMD>resize+5<CR>i", opts)
 keymap("t", "<C-S-l>", "<C-\\><C-n><CMD>vertical resize+5<CR>i", opts)
 keymap("t", "<C-S-r>", "<C-\\><C-n><C-W>=i", opts)
+
+
+keymap("t", "<A-h>", "<C-\\><C-n><CMD>vertical resize-5<CR>i", opts)
+keymap("t", "<A-j>", "<C-\\><C-n><CMD>resize-5<CR>i", opts)
+keymap("t", "<A-k>", "<C-\\><C-n><CMD>resize+5<CR>i", opts)
+keymap("t", "<A-l>", "<C-\\><C-n><CMD>vertical resize+5<CR>i", opts)
+keymap("t", "<A-r>", "<C-\\><C-n><C-W>=i", opts)
