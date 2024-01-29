@@ -97,7 +97,6 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
-            "antoinemadec/FixCursorHold.nvim",
             'Issafalcon/neotest-dotnet',
             'jakobkhansen/neotest-jest'
         }
