@@ -14,7 +14,7 @@ alias ll='ls -a'
 alias la='ls -A'
 alias l='ls'
 # alias ff="\$($HOME/Documents/Scripts/fzf_navigate.py)"
-alias ff="cd \$(fd . --type d --max-results 100000 | fuzz)"
+alias ff="cd \$(fd . --type d --max-results 10000 | fuzz)"
 alias c="clear"
 alias size="du -sh "
 
@@ -90,4 +90,18 @@ js() {
 
 asg() {
     cd ~/Documents/Asgard/
+}
+
+xcleanupx() {
+    cd ~/Documents/1JS/
+    worktrees=$(git worktree list | grep -v "(bare)" | grep -v "main" | cut -f 1 -d " ")
+    worktreelist=$(echo $worktrees | tr "\n" "\n")
+    echo $worktreelist
+    while IFS= read -r line; do
+        echo "Deleting worktree $line"
+        git worktree remove $line -f
+    done <<< "$worktrees"
+    git branch | grep -v "main" | xargs git branch -D
+    git worktree prune
+    git gc
 }
