@@ -14,7 +14,7 @@ alias ll='ls -a'
 alias la='ls -A'
 alias l='ls'
 # alias ff="\$($HOME/Documents/Scripts/fzf_navigate.py)"
-alias ff="cd \$(fd . --type d --max-results 10000 | fuzz)"
+alias ff="cd \$(fd . --type d --max-results 10000 | fzf)"
 alias c="clear"
 alias size="du -sh "
 
