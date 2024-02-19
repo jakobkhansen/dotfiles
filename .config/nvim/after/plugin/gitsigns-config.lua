@@ -1,4 +1,5 @@
 require("gitsigns").setup({
+    debug_mode = true,
     signs = {
         add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
         change = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
@@ -7,19 +8,8 @@ require("gitsigns").setup({
         changedelete = { hl = "GitSignsDelete", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
         untracked = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
     },
-    numhl = false,
-    linehl = false,
 
-    watch_gitdir = {
-        interval = 1000,
-        follow_files = true,
-    },
-
-    sign_priority = 6,
-    update_debounce = 100,
-    status_formatter = nil, -- Use default
-    word_diff = false,
     yadm = {
-        enable = true,
-    },
+        enable = vim.fn.executable("yadm") == 1
+    }
 })
