@@ -8,8 +8,4 @@ require("gitsigns").setup({
         changedelete = { hl = "GitSignsDelete", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
         untracked = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
     },
-
-    yadm = {
-        enable = vim.fn.executable("yadm") == 1
-    }
 })
