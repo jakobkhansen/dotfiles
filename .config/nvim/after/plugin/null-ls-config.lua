@@ -15,7 +15,6 @@ require("null-ls").setup({
             }
         ),
         require("null-ls").builtins.formatting.stylua,
-        require("null-ls").builtins.formatting.rustfmt,
         require("null-ls").builtins.diagnostics.markdownlint.with({
             extra_args = { "--disable", "MD013", "MD024" },
         }),
