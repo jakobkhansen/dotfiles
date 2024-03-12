@@ -7,7 +7,7 @@ require("neotest").setup({
             end,
         }),
         require("neotest-dotnet")({
-            discovery_root = "solution"
+            discovery_root = "solution",
         })
     },
 })

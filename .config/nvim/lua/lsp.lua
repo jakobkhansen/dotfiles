@@ -50,10 +50,11 @@ require("typescript-tools").setup({
 })
 
 
-require("roslyn").setup({
-    dotnet_cmd = "dotnet",
-    roslyn_version = "4.9.0-3.23604.10",
-    on_attach = function() end,
+nvim_lsp.csharp_ls.setup({
+    handlers = {
+        ["textDocument/definition"] = require('csharpls_extended').handler,
+        ["textDocument/typeDefinition"] = require('csharpls_extended').handler,
+    },
 })
 
 nvim_lsp.jdtls.setup({

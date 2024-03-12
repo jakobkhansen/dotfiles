@@ -97,7 +97,7 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
-            'Issafalcon/neotest-dotnet',
+            { 'Issafalcon/neotest-dotnet', commit = "1532f6123207dcfe36263e7f3182609f68588da8" },
             'jakobkhansen/neotest-jest'
         }
     },
@@ -113,11 +113,7 @@ require("lazy").setup({
             require("rust-tools").setup()
         end,
     },
-    {
-        "jmederosalvarado/roslyn.nvim",
-        config = function()
-        end,
-    },
+    "Decodetalkers/csharpls-extended-lsp.nvim",
     "windwp/nvim-ts-autotag",
     {
         "zbirenbaum/copilot.lua",
