@@ -113,7 +113,7 @@ require("lazy").setup({
             require("rust-tools").setup()
         end,
     },
-    "Decodetalkers/csharpls-extended-lsp.nvim",
+    "jmederosalvarado/roslyn.nvim",
     "windwp/nvim-ts-autotag",
     {
         "zbirenbaum/copilot.lua",

@@ -1,6 +1,7 @@
 -- Setup
 local nvim_lsp = require("lspconfig")
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(),
+    require("cmp_nvim_lsp").default_capabilities())
 local autocmd = vim.api.nvim_create_autocmd
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -50,12 +51,19 @@ require("typescript-tools").setup({
 })
 
 
-nvim_lsp.csharp_ls.setup({
-    handlers = {
-        ["textDocument/definition"] = require('csharpls_extended').handler,
-        ["textDocument/typeDefinition"] = require('csharpls_extended').handler,
-    },
+require("roslyn").setup({
+    dotnet_cmd = "dotnet",
+    roslyn_version = "4.9.0-3.23604.10",
+    on_attach = function() end,
+    capabilities = capabilities
 })
+-- nvim_lsp.csharp_ls.setup({
+--     handlers = {
+--         -- ["textDocument/completion"] = function(err, result, ctx, config) print("hello world " + vim.inspect(result)) end
+--         -- ["completionItem/resolve"] = function(result) print("here" + vim.inspect(result)) end
+--     },
+-- capabilities = capabilities
+-- })
 
 nvim_lsp.jdtls.setup({
 
@@ -110,3 +118,5 @@ require("lspconfig").lua_ls.setup({
 })
 
 nvim_lsp.zls.setup({})
+
+require 'lspconfig'.fsautocomplete.setup {}
