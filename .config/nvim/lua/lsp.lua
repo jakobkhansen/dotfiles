@@ -51,19 +51,19 @@ require("typescript-tools").setup({
 })
 
 
-require("roslyn").setup({
-    dotnet_cmd = "dotnet",
-    roslyn_version = "4.9.0-3.23604.10",
-    on_attach = function() end,
+-- require("roslyn").setup({
+--     dotnet_cmd = "dotnet",
+--     roslyn_version = "4.9.0-3.23604.10",
+--     on_attach = function() end,
+--     capabilities = capabilities
+-- })
+nvim_lsp.csharp_ls.setup({
+    handlers = {
+        -- ["textDocument/completion"] = function(err, result, ctx, config) print("hello world " + vim.inspect(result)) end
+        -- ["completionItem/resolve"] = function(result) print("here" + vim.inspect(result)) end
+    },
     capabilities = capabilities
 })
--- nvim_lsp.csharp_ls.setup({
---     handlers = {
---         -- ["textDocument/completion"] = function(err, result, ctx, config) print("hello world " + vim.inspect(result)) end
---         -- ["completionItem/resolve"] = function(result) print("here" + vim.inspect(result)) end
---     },
--- capabilities = capabilities
--- })
 
 nvim_lsp.jdtls.setup({
 

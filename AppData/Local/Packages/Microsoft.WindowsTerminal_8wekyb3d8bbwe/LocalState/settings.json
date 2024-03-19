@@ -12,6 +12,18 @@
             "keys": "ctrl+c"
         },
         {
+            "command": "unbound",
+            "keys": "ctrl+v"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+shift+tab"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+tab"
+        },
+        {
             "command": "paste"
         },
         {
@@ -28,8 +40,18 @@
             "keys": "alt+shift+d"
         },
         {
-            "command": "unbound",
-            "keys": "ctrl+v"
+            "command": 
+            {
+                "action": "prevTab"
+            },
+            "keys": "ctrl+shift+left"
+        },
+        {
+            "command": 
+            {
+                "action": "nextTab"
+            },
+            "keys": "ctrl+shift+right"
         }
     ],
     "copyFormatting": "none",

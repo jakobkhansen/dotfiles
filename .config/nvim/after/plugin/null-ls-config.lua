@@ -14,13 +14,13 @@ require("null-ls").setup({
                 extra_filetypes = { "graphql" }
             }
         ),
+        require("null-ls").builtins.formatting.clang_format,
         require("null-ls").builtins.formatting.stylua,
         require("null-ls").builtins.diagnostics.markdownlint.with({
             extra_args = { "--disable", "MD013", "MD024" },
         }),
         require("null-ls").builtins.formatting.gofmt,
         require("null-ls").builtins.formatting.goimports,
-        require("null-ls").builtins.formatting.clang_format,
     },
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
