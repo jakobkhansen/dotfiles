@@ -98,7 +98,8 @@ require("lazy").setup({
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
             { 'Issafalcon/neotest-dotnet', commit = "1532f6123207dcfe36263e7f3182609f68588da8" },
-            'jakobkhansen/neotest-jest'
+            'jakobkhansen/neotest-jest',
+            "nvim-neotest/nvim-nio",
         }
     },
     "mfussenegger/nvim-dap",
