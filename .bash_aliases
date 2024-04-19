@@ -65,8 +65,8 @@ wt() {
     cd ..
     git worktree add -b user/jakobhansen/$1 $1
     cd $1/midgard 
-    yarn fast org-explorer-app-v2
-    yarn build-scope org-explorer-app-v2
+    yarn fast org-explorer-app
+    yarn build-scope org-explorer-app
 }
 
 review() {
@@ -74,17 +74,17 @@ review() {
     git fetch origin $1:$1
     git worktree add $1 $1
     cd $1/midgard 
-    yarn fast org-explorer-app-v2
+    yarn fast org-explorer-app
 }
 
 alias jsr="cd ~/Documents/1JS/checkouts"
-alias oe="cd midgard/packages/org-explorer-app-v2"
+alias oe="cd midgard/packages/org-explorer-app"
 
 js() {
     cd ~/Documents/1JS/
     worktree=$(git worktree list | grep -v "(bare)" | tail -r | fzf | awk '{print $1}')
     cd $worktree/midgard/packages
-    packages="org-explorer-app-v2\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app-v2")}"
+    packages="org-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app")}"
     cd $(echo $packages | fzf | awk '{print $1;}')
 }
 

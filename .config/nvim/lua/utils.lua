@@ -39,13 +39,6 @@ function P.isArray(t)
     return true
 end
 
-function P.lastMonday()
-    if vim.fn.has("macunix") == 1 then
-        return io.popen("date -v-monday +%Y-%m-%d"):read()
-    end
-    return io.popen("date -dlast-monday +%Y-%m-%d"):read()
-end
-
 -- OS handling
 function P.isUnix()
     return vim.fn.has("macunix") ~= 0

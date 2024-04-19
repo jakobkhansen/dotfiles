@@ -35,12 +35,12 @@ lspSymbol("Hint", "󰌶 ")
 lspSymbol("Warn", " ")
 
 -- Disable semantic tokens
-autocmd("LspAttach", {
-    callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        client.server_capabilities.semanticTokensProvider = nil
-    end,
-})
+-- autocmd("LspAttach", {
+--     callback = function(args)
+--         local client = vim.lsp.get_client_by_id(args.data.client_id)
+--         client.server_capabilities.semanticTokensProvider = nil
+--     end,
+-- })
 
 -- Start servers
 require("typescript-tools").setup({
@@ -49,6 +49,8 @@ require("typescript-tools").setup({
         client.server_capabilities.documentRangeFormattingProvider = false
     end,
 })
+
+nvim_lsp.relay_lsp.setup({})
 
 
 -- require("roslyn").setup({
