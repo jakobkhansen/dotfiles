@@ -1,6 +1,6 @@
-cmd - return : open -n /Applications/kitty.app --args
+cmd - return : open -n /Applications/kitty.app --args --single-instance
 
-cmd - q : kill $(yabai -m query --windows --window | jq .pid) && yabai -m window --focus first
+# cmd - q : kill $(yabai -m query --windows --window | jq .pid) && yabai -m window --focus first
 
 # focus window
 # cmd - 1 : yabai -m window --space 1; skhd -k "cmd - 1"
