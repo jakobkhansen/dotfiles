@@ -12,7 +12,6 @@ vim.g.mapleader = " "
 
 local mappings = {
     f = {
-        -- f = { fzf.files, "find-files" }, Microsoft
         f = { "<CMD>Telescope find_files previewer=false<CR>", "find-files" },
         d = { telescope_custom.find_dir, "find-directory" },
         g = {

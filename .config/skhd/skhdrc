@@ -1,6 +1,6 @@
 cmd - return : open -n /Applications/kitty.app --args --single-instance
 
-# cmd - q : kill $(yabai -m query --windows --window | jq .pid) && yabai -m window --focus first
+# cmd - q : kill $(yabai -m window --focus first
 
 # focus window
 # cmd - 1 : yabai -m window --space 1; skhd -k "cmd - 1"
@@ -11,10 +11,11 @@ cmd - return : open -n /Applications/kitty.app --args --single-instance
 # cmd - 4 : yabai -m window --focus east || yabai -m display --focus east
 
 # focus window
-cmd - h : yabai -m window --focus west || yabai -m display --focus west
-cmd - j : yabai -m window --focus south || yabai -m display --focus south
-cmd - k : yabai -m window --focus north || yabai -m display --focus north
-cmd - l : yabai -m window --focus east || yabai -m display --focus east
+cmd - h : yabai -m window --focus west || yabai -m display --focus west || yabai -m window --focus first
+cmd - j : yabai -m window --focus south || yabai -m display --focus south || yabai -m window --focus first
+cmd - k : yabai -m window --focus north || yabai -m display --focus north || yabai -m window --focus first
+cmd - l : yabai -m window --focus east || yabai -m display --focus east || yabai -m window --focus first
+
 
 # swap managed window or move to next monitor
 cmd + shift - h : WIN_ID=$(yabai -m query --windows --window | jq '.id'); yabai -m window --swap west; [[ ! $? == 0 ]] && (yabai -m display --focus west; yabai -m window last --insert east; yabai -m window --focus $WIN_ID; yabai -m window --display prev; yabai -m window --focus $WIN_ID);
