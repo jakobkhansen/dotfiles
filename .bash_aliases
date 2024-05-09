@@ -92,7 +92,7 @@ asg() {
     cd ~/Documents/Asgard/
 }
 
-xcleanupx() {
+xcleanworktreesx() {
     cd ~/Documents/1JS/
     worktrees=$(git worktree list | grep -v "(bare)" | grep -v "main" | cut -f 1 -d " ")
     worktreelist=$(echo $worktrees | tr "\n" "\n")
@@ -104,4 +104,8 @@ xcleanupx() {
     git branch | grep -v "main" | xargs git branch -D
     git worktree prune
     git gc
+}
+
+xcleanunusedbranchesx() {
+    git branch | grep -v "+" | grep -v "*" | xargs git branch -D
 }

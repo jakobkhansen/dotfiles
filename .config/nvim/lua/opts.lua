@@ -39,7 +39,6 @@ autocmd("FileType", {
 })
 
 -- Completion
-opt.completeopt = "menu,menuone,noselect"
 opt.pumheight = 10
 
 -- Visuals

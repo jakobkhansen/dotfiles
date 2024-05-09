@@ -130,9 +130,9 @@ local mappings = {
         },
     },
     -- Organize, notes, etc
-    o = {
-        j = { "<CMD>Journal<CR>", "daily-journal" },
-        w = { "<CMD>Journal week monday<CR>", "weekly-journal" },
+    j = {
+        d = { "<CMD>Journal<CR>", "daily-journal" },
+        w = { "<CMD>Journal week<CR>", "weekly-journal" },
     },
     -- Shortcuts
     s = {

@@ -50,6 +50,8 @@ require("typescript-tools").setup({
     end,
 })
 
+nvim_lsp.relay_lsp.setup({})
+
 
 -- require("roslyn").setup({
 --     dotnet_cmd = "dotnet",
