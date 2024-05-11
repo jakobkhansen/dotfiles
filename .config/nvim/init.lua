@@ -86,12 +86,12 @@ require("lazy").setup({
     },
     "nvimtools/none-ls.nvim",
     "onsails/lspkind-nvim",
-    {
-        "j-hui/fidget.nvim",
-        config = function()
-            require("fidget").setup()
-        end,
-    },
+    -- {
+    --     "j-hui/fidget.nvim",
+    --     config = function()
+    --         require("fidget").setup()
+    --     end,
+    -- },
     {
         "nvim-neotest/neotest",
         dependencies = {
