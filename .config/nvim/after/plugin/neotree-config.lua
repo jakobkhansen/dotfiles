@@ -7,7 +7,7 @@ require("neo-tree").setup({
     enable_diagnostics = false,
     sort_case_insensitive = false, -- used when sorting files and directories in the tree
     window = {
-        width = 33,
+        width = 50,
         mappings = {
             ["<space>"] = "none",
             ["l"] = "open_with_window_picker",
@@ -48,10 +48,6 @@ require("neo-tree").setup({
     },
     nesting_rules = {},
     filesystem = {
-        follow_current_file = {
-            enabled = true,          -- This will find and focus the file in the active buffer every time
-            leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
-        },
         filtered_items = {
             visible = false, -- when true, they will just be displayed differently than normal items
             hide_dotfiles = true,

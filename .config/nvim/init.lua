@@ -86,12 +86,12 @@ require("lazy").setup({
     },
     "nvimtools/none-ls.nvim",
     "onsails/lspkind-nvim",
-    -- {
-    --     "j-hui/fidget.nvim",
-    --     config = function()
-    --         require("fidget").setup()
-    --     end,
-    -- },
+    {
+        "j-hui/fidget.nvim",
+        config = function()
+            require("fidget").setup()
+        end,
+    },
     {
         "nvim-neotest/neotest",
         dependencies = {
@@ -147,9 +147,10 @@ require("lazy").setup({
     "rafamadriz/friendly-snippets",
 
     -- "Notes and organization",
-    {
-        dir = '/Users/jakobhansen/Documents/OpenSource/journal.nvim',
-    }
+    -- {
+    --     dir = '/Users/jakobhansen/Documents/OpenSource/journal.nvim',
+    -- }
+    "jakobkhansen/journal.nvim"
 })
 
 -- Load rest of config
