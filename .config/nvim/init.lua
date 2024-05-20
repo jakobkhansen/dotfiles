@@ -147,10 +147,10 @@ require("lazy").setup({
     "rafamadriz/friendly-snippets",
 
     -- "Notes and organization",
-    -- {
-    --     dir = '/Users/jakobhansen/Documents/OpenSource/journal.nvim',
-    -- }
-    "jakobkhansen/journal.nvim"
+    {
+        dir = '/Users/jakobhansen/Documents/OpenSource/journal.nvim',
+    }
+    -- "jakobkhansen/journal.nvim"
 })
 
 -- Load rest of config

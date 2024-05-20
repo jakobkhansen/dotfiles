@@ -25,22 +25,16 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
     update_in_insert = false,
 })
 
--- Set signcolumn icons
-local function lspSymbol(name, icon)
-    vim.fn.sign_define("DiagnosticSign" .. name, { text = icon, texthl = "DiagnosticSign" .. name })
-end
-lspSymbol("Error", " ")
-lspSymbol("Info", " ")
-lspSymbol("Hint", "󰌶 ")
-lspSymbol("Warn", " ")
-
--- Disable semantic tokens
--- autocmd("LspAttach", {
---     callback = function(args)
---         local client = vim.lsp.get_client_by_id(args.data.client_id)
---         client.server_capabilities.semanticTokensProvider = nil
---     end,
--- })
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.INFO] = " ",
+            [vim.diagnostic.severity.HINT] = "󰌶 ",
+            [vim.diagnostic.severity.WARN] = " "
+        }
+    }
+})
 
 -- Start servers
 require("typescript-tools").setup({
@@ -53,26 +47,8 @@ require("typescript-tools").setup({
 nvim_lsp.relay_lsp.setup({})
 
 
--- require("roslyn").setup({
---     dotnet_cmd = "dotnet",
---     roslyn_version = "4.9.0-3.23604.10",
---     on_attach = function() end,
---     capabilities = capabilities
--- })
 nvim_lsp.csharp_ls.setup({
-    handlers = {
-        -- ["textDocument/completion"] = function(err, result, ctx, config) print("hello world " + vim.inspect(result)) end
-        -- ["completionItem/resolve"] = function(result) print("here" + vim.inspect(result)) end
-    },
     capabilities = capabilities
-})
-
-nvim_lsp.jdtls.setup({
-
-    on_attach = function(client)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-    end,
 })
 
 nvim_lsp.html.setup({
@@ -117,7 +93,3 @@ require("lspconfig").lua_ls.setup({
         },
     },
 })
-
-nvim_lsp.zls.setup({})
-
-require 'lspconfig'.fsautocomplete.setup {}
