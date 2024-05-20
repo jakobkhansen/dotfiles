@@ -72,18 +72,6 @@ require("lazy").setup({
 
     -- "LSP, languages and tools",
     "neovim/nvim-lspconfig",
-    {
-        "williamboman/mason.nvim",
-        config = function()
-            require("mason").setup()
-        end,
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        config = function()
-            require("mason-lspconfig").setup()
-        end,
-    },
     "nvimtools/none-ls.nvim",
     "onsails/lspkind-nvim",
     {
@@ -104,9 +92,10 @@ require("lazy").setup({
     },
     "mfussenegger/nvim-dap",
     {
-        "pmizio/typescript-tools.nvim",
+        "notomo/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         opts = {},
+        branch = "fix-deprecated"
     },
     {
         "simrat39/rust-tools.nvim",
@@ -114,7 +103,6 @@ require("lazy").setup({
             require("rust-tools").setup()
         end,
     },
-    "jmederosalvarado/roslyn.nvim",
     "windwp/nvim-ts-autotag",
     {
         "zbirenbaum/copilot.lua",
@@ -126,10 +114,8 @@ require("lazy").setup({
     "hrsh7th/cmp-nvim-lsp",
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-path",
-    "kdheepak/cmp-latex-symbols",
     "hrsh7th/cmp-cmdline",
     "hrsh7th/cmp-nvim-lsp-signature-help",
-    "hrsh7th/cmp-calc",
 
     -- "Treesitter & Syntax highlighting",
     {
@@ -147,20 +133,16 @@ require("lazy").setup({
     "rafamadriz/friendly-snippets",
 
     -- "Notes and organization",
-    {
-        dir = '/Users/jakobhansen/Documents/OpenSource/journal.nvim',
-    }
-    -- "jakobkhansen/journal.nvim"
+    -- {
+    --     dir = '/Users/jakobhansen/Documents/OpenSource/journal.nvim',
+    -- }
+    "jakobkhansen/journal.nvim"
 })
 
 -- Load rest of config
-
 require("theme")
 require("maps")
 require("opts")
 require("lsp")
 require("language_configs")
 require("leadermaps")
-
--- Master thesis work
--- require("ccdetect")
