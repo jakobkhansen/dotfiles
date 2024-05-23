@@ -1,4 +1,6 @@
 local dap = require("dap")
+local autocmd = vim.api.nvim_create_autocmd
+
 dap.adapters.coreclr = {
     type = 'executable',
     command =
@@ -27,3 +29,8 @@ dap.configurations.cs = {
         end
     },
 }
+
+autocmd("FileType", {
+    pattern = { "dap-float" },
+    command = "setlocal relativenumber"
+})
