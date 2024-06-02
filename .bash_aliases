@@ -13,7 +13,6 @@ fi
 alias ll='ls -a'
 alias la='ls -A'
 alias l='ls'
-# alias ff="\$($HOME/Documents/Scripts/fzf_navigate.py)"
 alias ff="cd \$(fd . --type d --max-results 10000 | fzf)"
 alias c="clear"
 alias size="du -sh "
@@ -38,6 +37,8 @@ alias gitroot="cd \$(git rev-parse --show-toplevel)"
 alias gr=gitroot
 alias gitbranch="git branch"
 alias gb=gitbranch
+alias gp="git pull"
+alias gwt="git worktree"
 
 alias darkmode="kitty +kitten themes --reload-in=all Tokyo Night Storm"
 alias lightmode="kitty +kitten themes --reload-in=all Tokyo Night Day"
@@ -59,6 +60,18 @@ alias dotnet-csharpier="dotnet csharpier"
 # MS
 alias learn="cd ~/Documents/Learning"
 
+alias yf="yarn fast"
+alias ys="yarn start"
+alias yb="yarn build"
+alias ybs="yarn build-scope"
+alias yt="yarn test"
+alias yg="yarn generate"
+
+yfbs() {
+    yarn fast $1
+    yarn build-scope $1
+}
+
 wt() {
     cd ~/Documents/1JS/checkouts/main
     git pull origin main
@@ -78,13 +91,12 @@ review() {
 }
 
 alias jsr="cd ~/Documents/1JS/checkouts"
-alias oe="cd midgard/packages/org-explorer-app"
 
 js() {
     cd ~/Documents/1JS/
     worktree=$(git worktree list | grep -v "(bare)" | tail -r | fzf | awk '{print $1}')
     cd $worktree/midgard/packages
-    packages="org-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app")}"
+    packages="org-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app$")}"
     cd $(echo $packages | fzf | awk '{print $1;}')
 }
 
