@@ -39,6 +39,7 @@ alias gitbranch="git branch"
 alias gb=gitbranch
 alias gp="git pull"
 alias gwt="git worktree"
+alias gbc="git checkout -b"
 
 alias darkmode="kitty +kitten themes --reload-in=all Tokyo Night Storm"
 alias lightmode="kitty +kitten themes --reload-in=all Tokyo Night Day"
