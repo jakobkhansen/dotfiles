@@ -23,6 +23,7 @@ alias size="du -sh "
 # Shortcuts to dirs
 alias h="cd ~"
 alias n="nvim"
+alias xdg-open="open"
 
 alias ranger='source ranger'
 alias r=ranger
@@ -40,6 +41,10 @@ alias gb=gitbranch
 alias gp="git pull"
 alias gwt="git worktree"
 alias gbc="git checkout -b"
+
+gwta() {
+    git worktree add $1 user/jakobhansen/$1
+}
 
 alias darkmode="kitty +kitten themes --reload-in=all Tokyo Night Storm"
 alias lightmode="kitty +kitten themes --reload-in=all Tokyo Night Day"
@@ -61,6 +66,7 @@ alias dotnet-csharpier="dotnet csharpier"
 # MS
 alias learn="cd ~/Documents/Learning"
 
+alias y="yarn"
 alias yf="yarn fast"
 alias ys="yarn start"
 alias yb="yarn build"

@@ -31,8 +31,8 @@ require("lazy").setup({
 
     -- "Files and git",
     "tpope/vim-fugitive",
+    "pabloariasal/webify.nvim",
     "lewis6991/gitsigns.nvim",
-    "sindrets/diffview.nvim",
 
     -- Telescope,
     "nvim-telescope/telescope.nvim",
@@ -92,10 +92,9 @@ require("lazy").setup({
     },
     "mfussenegger/nvim-dap",
     {
-        "notomo/typescript-tools.nvim",
+        "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         opts = {},
-        branch = "fix-deprecated"
     },
     {
         "simrat39/rust-tools.nvim",
