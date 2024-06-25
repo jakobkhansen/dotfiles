@@ -39,7 +39,7 @@ local function start_ccdetect()
         init_options = {
             language = "tsx",
             -- fragment_query = "(function_item) @function",
-            fragment_query = "(function_declaration) @function (arrow_function) @arrow",
+            fragment_query = "(program) @program",
             clone_token_threshold = 100,
             extra_nodes = {},
             ignore_nodes = {},

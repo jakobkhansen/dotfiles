@@ -80,10 +80,13 @@ yfbs() {
 }
 
 wt() {
-    cd ~/Documents/1JS/checkouts/main
-    git pull origin main
-    cd ..
-    git worktree add -b user/jakobhansen/$1 $1
+    root=$(git rev-parse --show-toplevel 2>/dev/null || eval echo "~/Documents/1JS/checkouts/main")
+    echo "Checkout branch: $root"
+    cd $root > /dev/null
+    git pull
+    git branch user/jakobhansen/$1
+    cd ~/Documents/1JS/checkouts
+    git worktree add $1 user/jakobhansen/$1
     cd $1/midgard 
     yarn fast org-explorer-app
     yarn build-scope org-explorer-app
@@ -103,6 +106,14 @@ js() {
     cd ~/Documents/1JS/
     worktree=$(git worktree list | grep -v "(bare)" | tail -r | fzf | awk '{print $1}')
     cd $worktree/midgard/packages
+    packages="org-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app$")}"
+    cd $(echo $packages | fzf | awk '{print $1;}')
+}
+
+jsp() {
+    root=$(git rev-parse --show-toplevel 2>/dev/null || eval echo "~/Documents/1JS/checkouts/main")
+    echo $root
+    cd $root/midgard/packages
     packages="org-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app$")}"
     cd $(echo $packages | fzf | awk '{print $1;}')
 }

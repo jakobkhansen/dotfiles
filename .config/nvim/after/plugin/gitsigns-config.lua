@@ -11,7 +11,7 @@ require("gitsigns").setup({
         change       = { text = '┃' },
         delete       = { text = '┃' },
         topdelete    = { text = '┃' },
-        changedelete = { text = '~' },
+        changedelete = { text = '┃' },
         untracked    = { text = '┆' },
     },
 })
