@@ -31,7 +31,6 @@ require("lazy").setup({
 
     -- "Files and git",
     "tpope/vim-fugitive",
-    "pabloariasal/webify.nvim",
     "lewis6991/gitsigns.nvim",
 
     -- Telescope,
