@@ -2,7 +2,6 @@ local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
 
 require("nvim-treesitter.configs").setup({
     ensure_installed = "all",
-    ignore_install = { "ocaml", "ocaml_interface" },
     highlight = {
         enable = true,
         disable = { "latex" },

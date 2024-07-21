@@ -40,7 +40,7 @@ local function start_ccdetect()
             language = "tsx",
             -- fragment_query = "(function_item) @function",
             fragment_query = "(program) @program",
-            clone_token_threshold = 100,
+            clone_token_threshold = 50,
             extra_nodes = {},
             ignore_nodes = {},
             blind_nodes = {
@@ -55,4 +55,4 @@ local function start_ccdetect()
     })
 end
 
-autocmd("FileType", { pattern = "typescriptreact", callback = start_ccdetect })
+autocmd("FileType", { pattern = "typescriptreact,typescript", callback = start_ccdetect })

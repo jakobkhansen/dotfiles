@@ -117,14 +117,7 @@ require("lazy").setup({
     "hrsh7th/cmp-nvim-lsp-signature-help",
 
     -- "Treesitter & Syntax highlighting",
-    {
-        "nvim-treesitter/nvim-treesitter",
-        config = function()
-            if vim.uv.os_uname().sysname == "Darwin" then
-                require("nvim-treesitter.install").compilers = { "gcc-13" }
-            end
-        end
-    },
+    "nvim-treesitter/nvim-treesitter",
     "nvim-treesitter/nvim-treesitter-textobjects",
 
     -- "Snippets",
@@ -145,3 +138,4 @@ require("opts")
 require("lsp")
 require("language_configs")
 require("leadermaps")
+-- require("ccdetect")
