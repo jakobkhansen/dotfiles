@@ -2,6 +2,7 @@ local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
 
 require("nvim-treesitter.configs").setup({
     ensure_installed = "all",
+    ignore_install = { "systemverilog" },
     highlight = {
         enable = true,
         disable = { "latex" },
