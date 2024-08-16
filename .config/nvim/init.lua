@@ -95,12 +95,7 @@ require("lazy").setup({
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         opts = {},
     },
-    {
-        "simrat39/rust-tools.nvim",
-        config = function()
-            require("rust-tools").setup()
-        end,
-    },
+    "mrcjkb/rustaceanvim",
     "windwp/nvim-ts-autotag",
     {
         "zbirenbaum/copilot.lua",

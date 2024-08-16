@@ -74,10 +74,41 @@ alias ybs="yarn build-scope"
 alias yt="yarn test"
 alias yg="yarn generate"
 
+# package root
+pr() {
+    count=`ls -1 package.json 2>/dev/null | wc -l`
+    while [ $count -eq 0 ] && [ $(pwd) != "/" ]
+    do
+        cd ..
+        count=`ls -1 package.json 2>/dev/null | wc -l`
+    done
+}
+
+# Run yarn command for current package
+yp() {
+    cwd=$(pwd)
+    pr
+    package=$(basename "$PWD")
+    cd .. > /dev/null
+    yarn $1 $package
+    cd $cwd > /dev/null
+}
+
+# yarn fast for current package
+yfp() {
+    yp "fast"
+}
+
+# yarn build-scope for current package
+ybp() {
+    yp "build-scope"
+}
+
 yfbs() {
     yarn fast $1
     yarn build-scope $1
 }
+
 
 wt() {
     root=$(git rev-parse --show-toplevel 2>/dev/null || eval echo "~/Documents/1JS/checkouts/main")
