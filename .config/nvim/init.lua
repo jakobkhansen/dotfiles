@@ -97,9 +97,7 @@ require("lazy").setup({
     },
     "mrcjkb/rustaceanvim",
     "windwp/nvim-ts-autotag",
-    {
-        "zbirenbaum/copilot.lua",
-    },
+    "zbirenbaum/copilot.lua",
 
     -- nvim-cmp auto-completion,
     "hrsh7th/nvim-cmp",
@@ -119,10 +117,7 @@ require("lazy").setup({
     "rafamadriz/friendly-snippets",
 
     -- "Notes and organization",
-    -- {
-    --     dir = '/Users/jakobhansen/Documents/OpenSource/journal.nvim',
-    -- }
-    "jakobkhansen/journal.nvim"
+    "jakobkhansen/journal.nvim",
 })
 
 -- Load rest of config
