@@ -148,6 +148,8 @@ local mappings = {
     },
     -- Uncategorized
     w = { "<CMD><CR><CMD>silent w<CR>", "write" },
+    z = { "ZZ" },
+    q = { "<CMD>q<CR>" },
     ["<BS>"] = { "<CMD>cd ..<CR><CMD>pwd<CR>", "cd .." },
     ["<CR>"] = {
         function()

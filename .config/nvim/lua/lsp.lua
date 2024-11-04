@@ -44,7 +44,9 @@ require("typescript-tools").setup({
     end,
 })
 
-nvim_lsp.relay_lsp.setup({})
+nvim_lsp.relay_lsp.setup({
+    trace = "off"
+})
 
 
 nvim_lsp.csharp_ls.setup({
