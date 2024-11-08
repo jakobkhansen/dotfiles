@@ -88,6 +88,7 @@ local mappings = {
         c = { "<CMD>Telescope git_commits<CR>", "git-commits" },
         b = { "<CMD>Telescope git_branches<CR>", "git-branches" },
         d = { "<CMD>DiffviewOpen main...HEAD<CR>", "git-diffview" },
+        o = { "<CMD>silent !gitopen %<CR>", "git-open" },
         -- Hunks
         h = {
             p = { "<CMD>Gitsigns preview_hunk<CR>", "hunk-preview" },

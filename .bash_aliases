@@ -153,6 +153,27 @@ asg() {
     cd ~/Documents/Asgard/
 }
 
+gitopen() {
+    remote=$(git remote -v | grep fetch | awk '{print $2}')
+    file=$(git ls-files --full-name $1)
+
+    branch="main"
+    # branch=$(git branch --show-current)
+
+    # gh repo view --web $1
+    if [[ $remote == *"github.com"* ]]; then
+        repo=$(echo $remote | sed -e 's/.*:\(.*\)\.git.*/\1/')
+        url="https://www.github.com/$repo/tree/$branch/$file"
+        xdg-open $url
+    elif [[ $remote == *"azure.com"* ]]; then
+        repo=$(echo $remote | sed 's/@dev.azure/.visualstudio/g')
+        url="$repo?path=/$file&version=GB$branch"
+        xdg-open $url
+    else
+        echo "Unknown repo type"
+    fi
+}
+
 xcleanworktreesx() {
     cd ~/Documents/1JS/
     worktrees=$(git worktree list | grep -v "(bare)" | grep -v "main" | cut -f 1 -d " ")

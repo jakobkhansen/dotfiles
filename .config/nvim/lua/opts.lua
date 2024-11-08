@@ -70,6 +70,8 @@ vim.g.netrw_list_hide = "^\\..*"
 vim.g.netrw_hide = 1
 vim.g.netrw_keepdir = 0
 
+vim.o.shellcmdflag = "-ic"
+
 -- Terminal
 if utils.isWindows() then
     vim.o.shell = "pwsh"
