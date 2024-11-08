@@ -17,9 +17,6 @@ require("null-ls").setup({
         ),
         require("null-ls").builtins.formatting.clang_format,
         require("null-ls").builtins.formatting.stylua,
-        require("null-ls").builtins.diagnostics.markdownlint.with({
-            extra_args = { "--disable", "MD013", "MD024", "MD033" },
-        }),
         require("null-ls").builtins.formatting.gofmt,
         require("null-ls").builtins.formatting.goimports,
     },

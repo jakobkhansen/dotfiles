@@ -38,6 +38,14 @@ require("journal").setup({
                 template = "# %Y\n",
                 frequency = { year = 1 }
             },
+            document = {
+                format = function(date)
+                    vim.ui.input({ prompt = 'Title: ' }, function(input) title = input end)
+                    return "documents/%Y/" .. title
+                end,
+                template = "# Notes\n",
+                frequency = { day = 1 }
+            }
         },
     }
 })
