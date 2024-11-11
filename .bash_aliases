@@ -155,20 +155,25 @@ asg() {
 
 gitopen() {
     remote=$(git remote -v | grep fetch | awk '{print $2}')
-    file=$(git ls-files --full-name $1)
+    gitroot=$(git rev-parse --show-toplevel 2>/dev/null);
+    if [ $# -eq 0 ]
+    then
+        file=$(echo $(pwd) | sed "s~$gitroot~~g")
+    else
+        file=$(echo $(realpath $1) | sed "s~$gitroot/~~g")
+    fi
 
+    # Replace with branch=$(git branch --show-current) if you want current branch
     branch="main"
-    # branch=$(git branch --show-current)
 
-    # gh repo view --web $1
     if [[ $remote == *"github.com"* ]]; then
         repo=$(echo $remote | sed -e 's/.*:\(.*\)\.git.*/\1/')
         url="https://www.github.com/$repo/tree/$branch/$file"
-        xdg-open $url
+        open $url
     elif [[ $remote == *"azure.com"* ]]; then
         repo=$(echo $remote | sed 's/@dev.azure/.visualstudio/g')
-        url="$repo?path=/$file&version=GB$branch"
-        xdg-open $url
+        url="$repo?path=$file&version=GB$branch"
+        open $url
     else
         echo "Unknown repo type"
     fi
