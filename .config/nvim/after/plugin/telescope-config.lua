@@ -119,6 +119,7 @@ function P.config_files(opts)
         vim.env.HOME .. "/.config/skhd/skhdrc",
         vim.env.HOME .. "/.zshrc",
         vim.env.HOME .. "/.bash_aliases",
+        vim.env.HOME .. "/.aerospace.toml",
     }
 
     for _, file in ipairs(nvim_files) do
