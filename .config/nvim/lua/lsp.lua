@@ -48,11 +48,6 @@ nvim_lsp.relay_lsp.setup({
     trace = "off"
 })
 
-
-nvim_lsp.csharp_ls.setup({
-    capabilities = capabilities
-})
-
 nvim_lsp.html.setup({
     capabilities = capabilities,
 })
