@@ -25,7 +25,8 @@
             "keys": "ctrl+c"
         },
         {
-            "command": "paste"
+            "command": "paste",
+            "id": "User.paste"
         },
         {
             "command": "find",
