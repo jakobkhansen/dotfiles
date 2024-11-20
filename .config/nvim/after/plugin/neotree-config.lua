@@ -94,6 +94,9 @@ require("neo-tree").setup({
         },
     },
     default_component_configs = {
+        container = {
+            enable_character_fade = false
+        },
         icon = {
             folder_empty = "",
         },
