@@ -13,6 +13,15 @@ capabilities.workspace.didChangeWatchedFiles = {
     relativePatternSupport = true,
 }
 
+-- Format on save
+autocmd({ "BufWritePre" },
+    {
+        callback = function()
+            vim.lsp.buf.format()
+        end
+    }
+)
+
 -- Show diagnostics and signcolumn icons
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = {
@@ -56,6 +65,18 @@ nvim_lsp.cssls.setup({
 })
 nvim_lsp.jsonls.setup({
     capabilities = capabilities,
+})
+
+nvim_lsp.tailwindcss.setup({
+    settings = {
+        tailwindCSS = {
+            experimental = {
+                classRegex = {
+                    "tailwind\\('([^)]*)\\')", "'([^']*)'"
+                },
+            },
+        },
+    },
 })
 
 -- Go

@@ -31,15 +31,11 @@ function P.openPopupTerminal(cmd)
     vim.api.nvim_win_set_buf(popUpWindow, popUpBuffer)
 
     local on_exit = function()
-        vim.api.nvim_buf_delete(popUpBuffer, { force = true })
         vim.api.nvim_win_close(popUpWindow, true)
         lastOpenedTerminalJobId = nil
     end
 
     vim.api.nvim_command("startinsert")
-    print("here")
-    print(cmd)
-    print(vim.o.shell)
     lastOpenedTerminalJobId = vim.fn.termopen(cmd or vim.o.shell, {
         on_exit = on_exit,
     })
