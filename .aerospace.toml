@@ -135,11 +135,15 @@ cmd-j = 'focus down --boundaries all-monitors-outer-frame'
 cmd-k = 'focus up --boundaries all-monitors-outer-frame'
 cmd-l = 'focus right --boundaries all-monitors-outer-frame'
 
+cmd-o = 'focus right --boundaries all-monitors-outer-frame'
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 cmd-shift-h = 'move left'
 cmd-shift-j = 'move down'
 cmd-shift-k = 'move up'
 cmd-shift-l = 'move right'
+
+cmd-shift-o = 'move right'
 
 cmd-shift-alt-h = 'move-node-to-monitor left --focus-follows-window'
 cmd-shift-alt-j = 'move-node-to-monitor down --focus-follows-window'
