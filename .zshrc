@@ -141,7 +141,7 @@ bindkey   '^W' backward-kill-space-word
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-KEYTIMEOUT=1
+KEYTIMEOUT=50
 
 unsetopt histverify
 
@@ -159,6 +159,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Vim bindings
 bindkey -M vicmd ";" vi-rev-repeat-find
 bindkey -M vicmd "," vi-repeat-find
+bindkey -M viins 'kj' vi-cmd-mode
 
 # FZF theme
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
