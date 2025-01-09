@@ -46,6 +46,7 @@ local mappings = {
         e = { "<CMD>enew<CR>", "open-empty-buffer" },
         x = { "<CMD>close<CR>", "window-close" },
         v = { "<CMD>vsplit<CR>", "vertical-split" },
+        s = { "<CMD>vsplit<CR>", "vertical-split" },
         h = { "<CMD>split<CR>", "horizontal-split" },
         t = { "<CMD>tabnew<CR>", "tab-new" },
         a = { "<CMD>e#<CR>", "alternative-file" },
