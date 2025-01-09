@@ -42,9 +42,9 @@ local mappings = {
     },
     -- Buffer
     b = {
-        d = { "<CMD>lua MiniBufremove.wipeout(0, true)<CR>", "buffer-close" },
+        x = { "<CMD>lua MiniBufremove.wipeout(0, true)<CR>", "buffer-close" },
         e = { "<CMD>enew<CR>", "open-empty-buffer" },
-        x = { "<CMD>close<CR>", "window-close" },
+        q = { "<CMD>close<CR>", "window-close" },
         v = { "<CMD>vsplit<CR>", "vertical-split" },
         s = { "<CMD>vsplit<CR>", "vertical-split" },
         h = { "<CMD>split<CR>", "horizontal-split" },
