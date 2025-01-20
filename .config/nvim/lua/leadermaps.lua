@@ -42,14 +42,13 @@ local mappings = {
     },
     -- Buffer
     b = {
-        x = { "<CMD>lua MiniBufremove.wipeout(0, true)<CR>", "buffer-close" },
+        b = { "<CMD>lua MiniBufremove.wipeout(0, true)<CR>", "buffer-close" },
         e = { "<CMD>enew<CR>", "open-empty-buffer" },
         q = { "<CMD>close<CR>", "window-close" },
         v = { "<CMD>vsplit<CR>", "vertical-split" },
         s = { "<CMD>vsplit<CR>", "vertical-split" },
         h = { "<CMD>split<CR>", "horizontal-split" },
         t = { "<CMD>tabnew<CR>", "tab-new" },
-        a = { "<CMD>e#<CR>", "alternative-file" },
     },
     -- LSP
     l = {
@@ -60,22 +59,18 @@ local mappings = {
         t = { "<CMD>Telescope lsp_type_definitions<CR>", "goto-type-definition" },
         w = { "<CMD>Telescope lsp_workspace_symbols<CR>", "workspace-symbols" },
         x = { "<CMD>LspRestart<CR>", "lsp-restart" },
-        -- Master thesis stuff
-        m = {
-            i = { "<CMD>LspInfo<CR>", "lsp-info" },
-            l = { "<CMD>e ~/.local/state/nvim/lsp.log<CR>", "lsp-log" },
-        },
         i = { "<CMD>Telescope lsp_implementations<CR>", "lsp-info" },
         n = { lsp.rename, "rename-symbol" },
         a = { lsp.code_action, "code-actions" },
         p = { lsp.format, "lsp-format" },
         -- Diagnostics
-        e = {
-            e = { "<CMD>Telescope diagnostics<CR>", "diagnostic-overview" },
-            l = { diagnostic.open_float, "line-diagnostics" },
-            n = { diagnostic.goto_next, "goto-next" },
-            p = { diagnostic.goto_prev, "goto-prev" },
-        },
+    },
+    -- Diagnostics
+    e = {
+        e = { "<CMD>Telescope diagnostics<CR>", "diagnostic-overview" },
+        l = { diagnostic.open_float, "line-diagnostics" },
+        n = { diagnostic.goto_next, "goto-next" },
+        p = { diagnostic.goto_prev, "goto-prev" },
     },
     -- Terminal
     t = {

@@ -8,6 +8,7 @@ keymap("", "<LeftMouse>", "<Nop>", opts)
 keymap("i", "<LeftMouse>", "<Nop>", opts)
 keymap("n", "<Esc>", "<CMD>nohl<CR>", opts)
 keymap("i", "kj", "<Esc>", opts)
+keymap("i", "kj", "<Esc>", opts)
 
 -- Movement
 keymap("", ",", ";", opts)
