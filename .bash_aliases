@@ -119,8 +119,8 @@ wt() {
     cd ~/Documents/1JS/checkouts
     git worktree add $1 user/jakobhansen/$1
     cd $1/midgard 
-    yarn fast org-explorer-app
-    yarn build-scope org-explorer-app
+    yarn fast lpc-outlook-web
+    yarn build-scope lpc-outlook-web
 }
 
 review() {
@@ -128,7 +128,7 @@ review() {
     git fetch origin $1:$1
     git worktree add $1 $1
     cd $1/midgard 
-    yarn fast org-explorer-app
+    yarn fast lpc-outlook-web
 }
 
 alias jsr="cd ~/Documents/1JS/checkouts"
@@ -137,7 +137,7 @@ js() {
     cd ~/Documents/1JS/
     worktree=$(git worktree list | grep -v "(bare)" | tail -r | fzf | awk '{print $1}')
     cd $worktree/midgard/packages
-    packages="org-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app$")}"
+    packages="lpc-copilot-tab\norg-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app$")}"
     cd $(echo $packages | fzf | awk '{print $1;}')
 }
 
@@ -145,7 +145,7 @@ jsp() {
     root=$(git rev-parse --show-toplevel 2>/dev/null || eval echo "~/Documents/1JS/checkouts/main")
     echo $root
     cd $root/midgard/packages
-    packages="org-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app$")}"
+    packages="lpc-copilot-tab\norg-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app$")}"
     cd $(echo $packages | fzf | awk '{print $1;}')
 }
 
