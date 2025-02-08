@@ -73,6 +73,8 @@ alias yb="yarn build"
 alias ybs="yarn build-scope"
 alias yt="yarn test"
 alias yg="yarn generate"
+alias ygr="yarn generate:relay"
+alias ypr="yarn prepare"
 
 # package root
 pr() {
@@ -137,7 +139,7 @@ js() {
     cd ~/Documents/1JS/
     worktree=$(git worktree list | grep -v "(bare)" | tail -r | fzf | awk '{print $1}')
     cd $worktree/midgard/packages
-    packages="lpc-copilot-tab\norg-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app$")}"
+    packages="lpc-copilot-tab\nconversation-recap-nova\nlpc-outlook-web\norg-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app$")}"
     cd $(echo $packages | fzf | awk '{print $1;}')
 }
 
@@ -145,7 +147,7 @@ jsp() {
     root=$(git rev-parse --show-toplevel 2>/dev/null || eval echo "~/Documents/1JS/checkouts/main")
     echo $root
     cd $root/midgard/packages
-    packages="lpc-copilot-tab\norg-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app$")}"
+    packages="lpc-copilot-tab\nconversation-recap-nova\nlpc-outlook-web\norg-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app$")}"
     cd $(echo $packages | fzf | awk '{print $1;}')
 }
 

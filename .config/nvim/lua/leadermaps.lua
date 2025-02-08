@@ -29,7 +29,7 @@ local mappings = {
             end,
             "find-ranger",
         },
-        l = { "<CMD>Neotree reveal toggle<CR>", "file-browser" },
+        t = { "<CMD>Neotree reveal toggle<CR>", "file-browser" },
         o = { "<CMD>Telescope oldfiles previewer=false<CR>", "find-mru" },
 
         c = {
