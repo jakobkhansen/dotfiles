@@ -53,9 +53,7 @@ require("typescript-tools").setup({
     end,
 })
 
-nvim_lsp.relay_lsp.setup({
-    auto_start_compiler = true,
-})
+nvim_lsp.relay_lsp.setup({})
 
 nvim_lsp.html.setup({
     capabilities = capabilities,
