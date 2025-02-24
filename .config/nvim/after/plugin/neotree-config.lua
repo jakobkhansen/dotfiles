@@ -1,3 +1,9 @@
+local events = require("neo-tree.events")
+
+local function on_move(data)
+    Snacks.rename.on_rename_file(data.source, data.destination)
+end
+
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
 require("neo-tree").setup({
@@ -109,6 +115,8 @@ require("neo-tree").setup({
           setlocal relativenumber
         ]]
             end,
-        }
+        },
+        { event = events.FILE_MOVED,   handler = on_move },
+        { event = events.FILE_RENAMED, handler = on_move },
     },
 })

@@ -19,6 +19,17 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup({
     -- Mini provides pairs, surround, commenting and bufremoval functionality,
     "echasnovski/mini.nvim",
+    {
+        "folke/snacks.nvim",
+        lazy = false,
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+            bigfile = { enabled = true },
+            rename = { enabled = true },
+        }
+    },
 
     -- "Buffers",
     {
