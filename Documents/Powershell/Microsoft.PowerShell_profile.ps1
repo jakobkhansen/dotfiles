@@ -22,3 +22,4 @@ Set-Alias g git
 Set-Alias l Ls
 Set-Alias ff FuzzDir
 Set-Alias dotfiles Dfiles -Option AllScope
+Set-Alias r yazi
