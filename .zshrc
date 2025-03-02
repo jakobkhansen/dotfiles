@@ -125,7 +125,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Vim bindings
 bindkey -M vicmd ";" vi-rev-repeat-find
 bindkey -M vicmd "," vi-repeat-find
-bindkey -M viins 'kj' vi-cmd-mode
+# bindkey -M viins 'kj' vi-cmd-mode
 
 # FZF theme
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
