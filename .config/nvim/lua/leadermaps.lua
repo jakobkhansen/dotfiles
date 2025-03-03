@@ -63,6 +63,7 @@ local mappings = {
         n = { lsp.rename, "rename-symbol" },
         a = { lsp.code_action, "code-actions" },
         p = { lsp.format, "lsp-format" },
+        o = { require("rustowl").rustowl_cursor, "rustowl" }
         -- Diagnostics
     },
     -- Diagnostics

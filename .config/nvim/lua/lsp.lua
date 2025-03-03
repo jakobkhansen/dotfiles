@@ -1,5 +1,6 @@
 -- Setup
 local nvim_lsp = require("lspconfig")
+local keymap = vim.keymap.set
 local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(),
     require("cmp_nvim_lsp").default_capabilities())
 local autocmd = vim.api.nvim_create_autocmd
@@ -75,6 +76,13 @@ nvim_lsp.tailwindcss.setup({
             },
         },
     },
+})
+
+-- Rust
+nvim_lsp.rustowl.setup({
+    trigger = {
+        hover = false,
+    }
 })
 
 -- Go
