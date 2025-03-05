@@ -13,7 +13,7 @@ fi
 alias ll='ls -a'
 alias la='ls -A'
 alias l='ls'
-alias ff="cd \$(fd . --type d --max-results 10000 | fzf)"
+alias ff="cd \$(fd . --type d | fzf)"
 alias c="clear"
 alias size="du -sh "
 

@@ -13,7 +13,7 @@ function P.LightMode()
 end
 
 function P.DarkMode()
-    command("silent !kitty +kitten themes --reload-in=all Tokyo Night Storm")
+    command("silent !kitty +kitten themes --reload-in=all Tokyo Night Moon")
     vim.o.background = "dark"
     vimscript("colorscheme tokyonight", false)
 end
