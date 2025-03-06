@@ -22,13 +22,6 @@ require("lazy").setup({
     {
         "folke/snacks.nvim",
         lazy = false,
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-            bigfile = { enabled = true },
-            rename = { enabled = true },
-        }
     },
 
     -- "Buffers",
@@ -43,28 +36,6 @@ require("lazy").setup({
     -- "Files and git",
     "tpope/vim-fugitive",
     "lewis6991/gitsigns.nvim",
-
-    -- Telescope,
-    "nvim-telescope/telescope.nvim",
-    {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build =
-        "make",
-    },
-    {
-        "AckslD/nvim-neoclip.lua",
-        config = function()
-            require("neoclip").setup()
-        end,
-    },
-    {
-        "ibhagwan/fzf-lua",
-        -- optional for icon support
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        -- or if using mini.icons/mini.nvim
-        -- dependencies = { "echasnovski/mini.icons" },
-        opts = {}
-    },
 
     -- IDE, UI
     {

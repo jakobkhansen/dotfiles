@@ -3,7 +3,6 @@ local term = require("terminal")
 
 local lsp = vim.lsp.buf
 local diagnostic = vim.diagnostic
-local telescope_custom = require("telescope-config")
 local commands = require("commands")
 local dap = require("dap")
 local dapwidgets = require("dap.ui.widgets")
@@ -12,15 +11,10 @@ vim.g.mapleader = " "
 
 local mappings = {
     f = {
-        f = { "<CMD>Telescope find_files previewer=false<CR>", "find-files" },
-        d = { telescope_custom.find_dir, "find-directory" },
+        f = { Snacks.picker.files, "find-files" },
+        s = { Snacks.picker.smart, "find-smart" },
         g = {
-            function()
-                require("telescope.builtin").git_files({
-                    git_command = { "git", "ls-files", "--sparse", "--cached", "[^ooui]*" },
-                    previewer = false,
-                })
-            end,
+            Snacks.picker.git_files,
             "find-git",
         },
         r = {
@@ -30,15 +24,11 @@ local mappings = {
             "find-ranger",
         },
         t = { "<CMD>Neotree reveal toggle<CR>", "file-browser" },
-        o = { "<CMD>Telescope oldfiles previewer=false<CR>", "find-mru" },
-
+        o = { Snacks.picker.recent, "find-mru" },
         c = {
-            "<CMD>Telescope live_grep<CR>",
+            Snacks.picker.grep,
             "find-code",
         },
-
-        p = { "<CMD>Telescope neoclip<CR>", "find-clipboard" },
-        j = { "<CMD>Telescope jumplist<CR>", "find-jump" },
     },
     -- Buffer
     b = {
@@ -52,23 +42,23 @@ local mappings = {
     },
     -- LSP
     l = {
-        d = { "<CMD>Telescope lsp_definitions<CR>", "goto-definition" },
-        h = { lsp.hover, "show-hover" },
-        s = { lsp.signature_help, "show-signature" },
-        r = { "<CMD>Telescope lsp_references<CR>", "goto-references" },
-        t = { "<CMD>Telescope lsp_type_definitions<CR>", "goto-type-definition" },
-        w = { "<CMD>Telescope lsp_workspace_symbols<CR>", "workspace-symbols" },
-        x = { "<CMD>LspRestart<CR>", "lsp-restart" },
-        i = { "<CMD>Telescope lsp_implementations<CR>", "lsp-info" },
+        d = { Snacks.picker.lsp_definitions, "goto-definition" },
+        r = { Snacks.picker.lsp_references, "goto-references" },
+        t = { Snacks.picker.lsp_type_definitions, "goto-type-definition" },
+        w = { Snacks.picker.lsp_workspace_symbols, "workspace-symbols" },
+        i = { Snacks.picker.lsp_implementations, "lsp-info" },
         n = { lsp.rename, "rename-symbol" },
         a = { lsp.code_action, "code-actions" },
         p = { lsp.format, "lsp-format" },
+        h = { lsp.hover, "show-hover" },
+        s = { lsp.signature_help, "show-signature" },
+        x = { "<CMD>LspRestart<CR>", "lsp-restart" },
         o = { require("rustowl").rustowl_cursor, "rustowl" }
         -- Diagnostics
     },
     -- Diagnostics
     e = {
-        e = { "<CMD>Telescope diagnostics<CR>", "diagnostic-overview" },
+        e = { Snacks.picker.diagnostics, "diagnostic-overview" },
         l = { diagnostic.open_float, "line-diagnostics" },
         n = { diagnostic.goto_next, "goto-next" },
         p = { diagnostic.goto_prev, "goto-prev" },
@@ -82,8 +72,8 @@ local mappings = {
     -- Git
     g = {
         s = { "<CMD>Ge :<CR>", "git-status" },
-        c = { "<CMD>Telescope git_commits<CR>", "git-commits" },
-        b = { "<CMD>Telescope git_branches<CR>", "git-branches" },
+        c = { Snacks.picker.git_log, "git-commits" },
+        b = { Snacks.picker.git_branches, "git-branches" },
         d = { "<CMD>DiffviewOpen main...HEAD<CR>", "git-diffview" },
         o = { "<CMD>silent !gitopen %<CR>", "git-open" },
         -- Hunks
@@ -140,9 +130,9 @@ local mappings = {
     },
     -- Help
     h = {
-        t = { "<CMD>Telescope help_tags<CR>", "help-tags" },
+        t = { Snacks.picker.help, "help-tags" },
         w = { '<CMD>execute "h " . expand("<cword>")<CR>', "help-cword" },
-        k = { "<CMD>Telescope keymaps<CR>", "help-keymaps" },
+        k = { Snacks.picker.keymaps, "help-keymaps" },
     },
     -- Uncategorized
     w = { "<CMD><CR><CMD>silent w<CR>", "write" },
