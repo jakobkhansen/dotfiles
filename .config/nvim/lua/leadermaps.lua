@@ -135,6 +135,7 @@ local mappings = {
         k = { Snacks.picker.keymaps, "help-keymaps" },
     },
     -- Uncategorized
+    y = { "<CMD>Lazy show<CR>", "lazy" },
     w = { "<CMD><CR><CMD>silent w<CR>", "write" },
     z = { "ZZ" },
     q = { "<CMD>q<CR>" },

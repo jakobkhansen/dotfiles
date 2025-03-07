@@ -39,11 +39,6 @@ require("lazy").setup({
 
     -- IDE, UI
     {
-        "goolord/alpha-nvim",
-        dependencies = { "kyazdani42/nvim-web-devicons" },
-    },
-
-    {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
         dependencies = {
