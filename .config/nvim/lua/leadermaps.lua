@@ -29,14 +29,18 @@ local mappings = {
             Snacks.picker.grep,
             "find-code",
         },
+        p = {
+            Snacks.picker.projects,
+            "find-project"
+        }
     },
     -- Buffer
     b = {
-        b = { "<CMD>lua MiniBufremove.wipeout(0, true)<CR>", "buffer-close" },
+        b = { "<CMD>vsplit<CR>", "vertical-split" },
+        d = { "<CMD>lua MiniBufremove.wipeout(0, true)<CR>", "buffer-close" },
         e = { "<CMD>enew<CR>", "open-empty-buffer" },
         q = { "<CMD>close<CR>", "window-close" },
         v = { "<CMD>vsplit<CR>", "vertical-split" },
-        s = { "<CMD>vsplit<CR>", "vertical-split" },
         h = { "<CMD>split<CR>", "horizontal-split" },
         t = { "<CMD>tabnew<CR>", "tab-new" },
     },

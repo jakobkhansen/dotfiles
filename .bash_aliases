@@ -18,16 +18,22 @@ alias c="clear"
 alias size="du -sh "
 
 
+function n() {
+    if [ $# -eq 0 ]
+    then
+        nvim -c 'lua Snacks.picker.smart({on_show = function() vim.cmd("stopinsert") end})'
+    else
+        nvim "$@"
+    fi
+}
 
 
 # Shortcuts to dirs
 alias h="cd ~"
-alias n="nvim"
 alias xdg-open="open"
 
 alias ranger='source ranger'
 alias r=ranger
-alias n=nvim
 alias yabaireboot='launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"'
 
 alias g="git"

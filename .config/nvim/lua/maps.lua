@@ -17,7 +17,7 @@ keymap("", ";", ",", opts)
 
 -- Buffers and tabs
 keymap("n", "<C-i>", "<C-i>", opts)
-vim.keymap.set("n", "<Tab>", Snacks.picker.buffers )
+vim.keymap.set("n", "<Tab>", Snacks.picker.buffers)
 
 keymap("n", "<S-Tab>", "<CMD>tabnext<CR>", opts)
 
@@ -30,19 +30,10 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 --  Resize window
-keymap("n", "<C-S-h>", "<CMD>vertical resize-5<CR>", opts)
-keymap("n", "<C-S-j>", "<CMD>resize-5<CR>", opts)
-keymap("n", "<C-S-k>", "<CMD>resize+5<CR>", opts)
-keymap("n", "<C-S-l>", "<CMD>vertical resize+5<CR>", opts)
-keymap("n", "<C-S-r>", "<C-W>=", opts)
-
-
-keymap("n", "<A-h>", "<CMD>vertical resize-5<CR>", opts)
-keymap("n", "<A-j>", "<CMD>resize-5<CR>", opts)
-keymap("n", "<A-k>", "<CMD>resize+5<CR>", opts)
-keymap("n", "<A-l>", "<CMD>vertical resize+5<CR>", opts)
-keymap("n", "<A-r>", "<C-W>=", opts)
-
+keymap("n", "<C-Left>", "<CMD>vertical resize-5<CR>", opts)
+keymap("n", "<C-Down>", "<CMD>resize-5<CR>", opts)
+keymap("n", "<C-Up>", "<CMD>resize+5<CR>", opts)
+keymap("n", "<C-Right>", "<CMD>vertical resize+5<CR>", opts)
 
 --  Move horizontally
 keymap("", "zh", "10zh", opts)
