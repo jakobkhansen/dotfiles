@@ -37,6 +37,6 @@ require("snacks").setup({
             file = {
                 truncate = 120
             }
-        }
+        },
     },
 })
