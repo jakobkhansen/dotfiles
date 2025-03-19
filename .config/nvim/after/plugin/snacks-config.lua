@@ -6,7 +6,8 @@ require("snacks").setup({
         win = {
             input = {
                 keys = {
-                    ["<C-p>"] = { "toggle_preview", mode = { "i", "n" } }
+                    ["<C-p>"] = { "toggle_preview", mode = { "i", "n" } },
+                    ["s"] = { "edit_vsplit", mode = { "n" } },
                 }
             }
         },

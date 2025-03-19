@@ -37,7 +37,6 @@ local mappings = {
     -- Buffer
     b = {
         b = { "<CMD>vsplit<CR>", "vertical-split" },
-        d = { "<CMD>lua MiniBufremove.wipeout(0, true)<CR>", "buffer-close" },
         e = { "<CMD>enew<CR>", "open-empty-buffer" },
         q = { "<CMD>close<CR>", "window-close" },
         v = { "<CMD>vsplit<CR>", "vertical-split" },
@@ -141,6 +140,7 @@ local mappings = {
     -- Uncategorized
     y = { "<CMD>Lazy show<CR>", "lazy" },
     w = { "<CMD><CR><CMD>silent w<CR>", "write" },
+    x = { "<CMD>lua MiniBufremove.wipeout(0, true)<CR>", "buffer-close" },
     z = { "ZZ" },
     q = { "<CMD>q<CR>" },
     ["<BS>"] = { "<CMD>cd ..<CR><CMD>pwd<CR>", "cd .." },

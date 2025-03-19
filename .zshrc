@@ -139,6 +139,7 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export VISUAL=nvim
 export EDITOR=nvim
 export MOZ_ENABLE_WAYLAND=1
+export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 
 # MS
 # export NVM_DIR="$HOME/.nvm"
