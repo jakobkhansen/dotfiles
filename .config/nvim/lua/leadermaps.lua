@@ -12,7 +12,13 @@ vim.g.mapleader = " "
 local mappings = {
     f = {
         f = { Snacks.picker.files, "find-files" },
-        s = { function() Snacks.picker.smart({ hidden = true }) end, "find-smart" },
+        s = { function()
+            Snacks.picker.smart({
+                hidden = true,
+                args = { "--type", "d" }
+            })
+        end, "find-smart"
+        },
         g = {
             Snacks.picker.git_files,
             "find-git",

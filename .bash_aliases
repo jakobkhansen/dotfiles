@@ -9,23 +9,10 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Custom alias list
-
-alias ll='ls -a'
-alias la='ls -A'
 alias l='ls'
 alias ff="cd \$(fd . --type d | fzf)"
 alias c="clear"
-alias size="du -sh "
-
-
-function n() {
-    if [ $# -eq 0 ]
-    then
-        nvim -c 'lua Snacks.picker.smart({on_show = function() vim.cmd("stopinsert") end, hidden = true})'
-    else
-        nvim "$@"
-    fi
-}
+alias n="nvim"
 
 
 # Shortcuts to dirs

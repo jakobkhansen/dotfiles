@@ -35,6 +35,11 @@ keymap("n", "<C-Down>", "<CMD>resize-5<CR>", opts)
 keymap("n", "<C-Up>", "<CMD>resize+5<CR>", opts)
 keymap("n", "<C-Right>", "<CMD>vertical resize+5<CR>", opts)
 
+keymap("n", "<C-S-h>", "<CMD>vertical resize-5<CR>", opts)
+keymap("n", "<C-S-j>", "<CMD>resize-5<CR>", opts)
+keymap("n", "<C-S-k>", "<CMD>resize+5<CR>", opts)
+keymap("n", "<C-S-l>", "<CMD>vertical resize+5<CR>", opts)
+
 --  Move horizontally
 keymap("", "zh", "10zh", opts)
 keymap("", "zl", "10zl", opts)
