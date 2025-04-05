@@ -11,16 +11,56 @@ vim.g.mapleader = " "
 
 local mappings = {
     f = {
-        f = { Snacks.picker.files, "find-files" },
-        s = { function()
-            Snacks.picker.smart({
-                hidden = true,
-                args = { "--type", "d" }
+        f = { function()
+            Snacks.picker.files({
+                transform = function(item)
+                    if (string.match(item.file, '_strings.json')) then
+                        return false
+                    end
+                    return true
+                end
             })
-        end, "find-smart"
+        end, "find-files" },
+        s = {
+            function()
+                Snacks.picker.smart({
+                    hidden = true,
+                    args = { "--type", "d" },
+                    transform = function(item)
+                        if (string.match(item.file, '_strings.json')) then
+                            return false
+                        end
+                        return true
+                    end
+
+                })
+            end, "find-smart",
+        },
+        d = {
+            function()
+                Snacks.picker.files({
+                    args = { "--type", "d" },
+                    transform = function(item)
+                        if (string.match(item.file, '^.+/$')) then
+                            return true
+                        end
+                        return false
+                    end
+                })
+            end, "find-smart"
         },
         g = {
-            Snacks.picker.git_files,
+            function()
+                Snacks.picker.git_files({
+
+                    transform = function(item)
+                        if (string.match(item.file, '_strings.json')) then
+                            return false
+                        end
+                        return true
+                    end
+                })
+            end,
             "find-git",
         },
         r = {
@@ -62,7 +102,6 @@ local mappings = {
         h = { lsp.hover, "show-hover" },
         s = { lsp.signature_help, "show-signature" },
         x = { "<CMD>LspRestart<CR>", "lsp-restart" },
-        o = { require("rustowl").rustowl_cursor, "rustowl" }
         -- Diagnostics
     },
     -- Diagnostics

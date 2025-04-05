@@ -88,7 +88,7 @@ require("lazy").setup({
         opts = {}
     },
     "windwp/nvim-ts-autotag",
-    "zbirenbaum/copilot.lua",
+    -- "zbirenbaum/copilot.lua",
 
     -- nvim-cmp auto-completion,
     "hrsh7th/nvim-cmp",

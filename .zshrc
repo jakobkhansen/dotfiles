@@ -156,9 +156,6 @@ export TSC_WATCHFILE="UseFsEventsWithFallbackDynamicPolling"
 export GPG_TTY=$(tty)
 export MIDGARD_BACKFILL_CACHE_DIR="/Users/jakobhansen/.midgard-build-cache"
 export USE_PRETTIER_ORGANIZE_IMPORTS=1
-  export DOMOREEXP_NPM_AUTH_TOKEN=$(printf "protocol=https
-host=domoreexp.visualstudio.com
-path=DefaultCollection/teamspace/_git/_optimized/teams-modular-packages" | git credential fill | sed -n "/^password=/s/password=//p" | tr -d \n | base64)
 
 
 source ~/.torusrc
@@ -175,3 +172,10 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
+
+
+teamsAuth() {
+export DOMOREEXP_NPM_AUTH_TOKEN=$(printf "protocol=https
+host=domoreexp.visualstudio.com
+path=DefaultCollection/teamspace/_git/_optimized/teams-modular-packages" | git credential fill | sed -n "/^password=/s/password=//p" | tr -d \n | base64)
+}

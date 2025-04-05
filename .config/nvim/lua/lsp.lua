@@ -78,13 +78,6 @@ nvim_lsp.tailwindcss.setup({
     },
 })
 
--- Rust
-nvim_lsp.rustowl.setup({
-    trigger = {
-        hover = false,
-    }
-})
-
 -- Go
 require("lspconfig").gopls.setup({})
 
