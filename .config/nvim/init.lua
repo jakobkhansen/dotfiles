@@ -81,7 +81,6 @@ require("lazy").setup({
         opts = {},
     },
     "mrcjkb/rustaceanvim",
-    { "cordx56/rustowl", dependencies = { "neovim/nvim-lspconfig" } },
     {
         "seblj/roslyn.nvim",
         ft = "cs",
