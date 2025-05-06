@@ -35,6 +35,7 @@ require("lazy").setup({
 
     -- "Files and git",
     "tpope/vim-fugitive",
+    "NeogitOrg/neogit",
     "lewis6991/gitsigns.nvim",
 
     -- IDE, UI

@@ -45,9 +45,8 @@ map ctrl+shift+l no_op
 map ctrl+shift+r no_op
 
 
-
 # BEGIN_KITTY_THEME
-# Tokyo Night Day
+# Tokyo Night Moon
 include current-theme.conf
 # END_KITTY_THEME
 

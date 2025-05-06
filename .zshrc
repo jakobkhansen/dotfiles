@@ -102,7 +102,7 @@ bindkey -v
 bindkey '^[[Z'  forward-char
 
 bindkey -a '+' vi-end-of-line
-bindkey '^W' vi-backward-kill-word
+bindkey '^W' backward-kill-word
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -116,6 +116,7 @@ wt() {
     cd $1/midgard 
     yarn fast lpc-outlook-web
     yarn build-scope lpc-outlook-web
+    cd packages/lpc-outlook-web
 }
 
 review() {

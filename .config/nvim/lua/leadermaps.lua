@@ -119,7 +119,7 @@ local mappings = {
     },
     -- Git
     g = {
-        s = { "<CMD>Ge :<CR>", "git-status" },
+        s = { "<CMD>Neogit kind=replace<CR>", "git-status" },
         c = { Snacks.picker.git_log, "git-commits" },
         b = { Snacks.picker.git_branches, "git-branches" },
         d = { "<CMD>DiffviewOpen main...HEAD<CR>", "git-diffview" },
@@ -172,9 +172,7 @@ local mappings = {
     },
     -- Shortcuts
     s = {
-        s = { "<CMD>Alpha<CR>", "start-screen" },
         t = { commands.ToggleThemeMode, "toggle-theme" },
-        b = { commands.ToggleTabLine, "toggle-tabline" },
     },
     -- Help
     h = {
