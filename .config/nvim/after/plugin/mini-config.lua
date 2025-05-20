@@ -4,12 +4,7 @@ require("mini.comment").setup()
 
 require("mini.pairs").setup({
     mappings = {
-        ["("] = { action = "open", pair = "()", neigh_pattern = ".[^%w]" },
-        ["["] = { action = "open", pair = "[]", neigh_pattern = ".[^%w]" },
-        ["{"] = { action = "open", pair = "{}", neigh_pattern = ".[^%w]" },
-
-        -- I think this could be changed to only run for Rust with MiniPairs.map_buf or MiniPairs.map
-        ["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[^&|<]." },
+        ["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[^%a\\|<|&]." },
     },
 })
 
@@ -20,7 +15,7 @@ require("mini.surround").setup({
         find = "",
         find_left = "",
         highlight = "",
-        replace = "cs", -- Replace surrounding
+        replace = "cs",      -- Replace surrounding
         update_n_lines = "", -- Update `n_lines`
     },
 })

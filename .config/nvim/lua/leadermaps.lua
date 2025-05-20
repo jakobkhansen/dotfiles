@@ -119,7 +119,7 @@ local mappings = {
     },
     -- Git
     g = {
-        s = { "<CMD>Neogit kind=replace<CR>", "git-status" },
+        s = { "<CMD>Neogit<CR>", "git-status" },
         c = { Snacks.picker.git_log, "git-commits" },
         b = { Snacks.picker.git_branches, "git-branches" },
         d = { "<CMD>DiffviewOpen main...HEAD<CR>", "git-diffview" },
