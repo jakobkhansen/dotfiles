@@ -69,7 +69,7 @@ local mappings = {
             end,
             "find-ranger",
         },
-        t = { "<CMD>Neotree reveal toggle<CR>", "file-browser" },
+        t = { "<CMD>Neotree reveal toggle reveal_force_cwd<CR>", "file-browser" },
         o = { Snacks.picker.recent, "find-mru" },
         c = {
             Snacks.picker.grep,
@@ -153,17 +153,6 @@ local mappings = {
         n = { "<CMD>cd $HOME/.config/nvim<CR>", "path-neovim-config" },
         c = { "<CMD>cd %:p:h<CR><CMD>pwd<CR>", "path-current-file" },
         o = { "<CMD>cd $HOME/Documents/gtd<CR>", "path-gtd" },
-        -- Sessions
-        s = {
-            s = {
-                "<CMD>Session<CR>",
-                "session-save",
-            },
-            r = {
-                "<CMD>SessionRestore<CR>",
-                "session-restore",
-            },
-        },
     },
     -- Organize, notes, etc
     j = {

@@ -179,3 +179,8 @@ export DOMOREEXP_NPM_AUTH_TOKEN=$(printf "protocol=https
 host=domoreexp.visualstudio.com
 path=DefaultCollection/teamspace/_git/_optimized/teams-modular-packages" | git credential fill | sed -n "/^password=/s/password=//p" | tr -d \n | base64)
 }
+
+export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/node@18/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/node@18/include"
+export PATH="${HOME}/.pyenv/shims:${PATH}"
