@@ -85,7 +85,8 @@ require("lazy").setup({
     {
         "seblj/roslyn.nvim",
         ft = "cs",
-        opts = {}
+        opts = {
+        }
     },
     "windwp/nvim-ts-autotag",
     -- "zbirenbaum/copilot.lua",
