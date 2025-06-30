@@ -87,7 +87,6 @@ local mappings = {
         q = { "<CMD>close<CR>", "window-close" },
         v = { "<CMD>vsplit<CR>", "vertical-split" },
         h = { "<CMD>split<CR>", "horizontal-split" },
-        t = { "<CMD>tabnew<CR>", "tab-new" },
     },
     -- LSP
     l = {
@@ -111,11 +110,15 @@ local mappings = {
         n = { diagnostic.goto_next, "goto-next" },
         p = { diagnostic.goto_prev, "goto-prev" },
     },
-    -- Terminal
+    -- Terminal and tabs
     t = {
         t = { term.openPopupTerminal, "popup-terminal" },
         f = { term.openFullTerminal, "full-terminal" },
         h = { term.openFloatTerm, "float-terminal" },
+        n = { "<CMD>tabnew<CR>", "tab-new" },
+        x = { ":1tabnext<CR>", "tab-1" },
+        c = { ":2tabnext<CR>", "tab-2" },
+        d = { ":3tabnext<CR>", "tab-3" },
     },
     -- Git
     g = {

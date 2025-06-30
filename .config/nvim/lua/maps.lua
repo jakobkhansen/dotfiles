@@ -18,8 +18,6 @@ keymap("", ";", ",", opts)
 -- Buffers and tabs
 keymap("n", "<C-i>", "<C-i>", opts)
 vim.keymap.set("n", "<Tab>", Snacks.picker.buffers)
--- keymap("n", "J", "<CMD>bprev<CR>", opts)
--- keymap("n", "K", "<CMD>bnext<CR>", opts)
 
 keymap("", "ZA", "<CMD>wqa!<CR>", opts)
 
