@@ -119,4 +119,22 @@ vim.lsp.config("roslyn", {
         "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
         "--stdio"
     },
+    init_options = {
+        formattingOptions = {
+            enableEditorConfigSupport = true,
+            organizeImportsOnFormat = true,
+            tabSize = 4,
+            insertSpaces = true,
+        },
+    },
+    settings = {
+        ["csharp|formatting"] = {
+            dotnet_organize_imports_on_format = true,
+        },
+    },
+    on_attach = function(client, bufnr)
+        -- make sure Neovim knows this server can format
+        client.server_capabilities.documentFormattingProvider = true
+        client.server_capabilities.documentRangeFormattingProvider = true
+    end,
 })

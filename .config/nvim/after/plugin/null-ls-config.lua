@@ -15,7 +15,6 @@ require("null-ls").setup({
                 disabled_filetypes = { "markdown" },
             }
         ),
-        require("null-ls").builtins.formatting.clang_format,
         require("null-ls").builtins.formatting.stylua,
         require("null-ls").builtins.formatting.gofmt,
         require("null-ls").builtins.formatting.goimports,
