@@ -78,6 +78,10 @@ local mappings = {
         p = {
             Snacks.picker.projects,
             "find-project"
+        },
+        w = {
+            utils.grepWordUnderCursor,
+            "find-cword"
         }
     },
     -- Buffer

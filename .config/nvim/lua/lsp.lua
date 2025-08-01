@@ -47,11 +47,29 @@ vim.diagnostic.config({
 })
 
 -- Start servers
-require("typescript-tools").setup({
-    on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-    end,
+-- require("typescript-tools").setup({
+--     on_attach = function(client, bufnr)
+--         client.server_capabilities.documentFormattingProvider = false
+--         client.server_capabilities.documentRangeFormattingProvider = false
+--         client.server_capabilities.semanticTokensProvider = nil
+--     end,
+--     settings = {
+--         tsserver_log = "verbose",   -- log level: "off", "normal", "terse", or "verbose"
+--         tsserver_trace = "verbose", -- if supported: "off", "messages", or "verbose"
+--         -- to actually persist logs:
+--         tsserver_enableTracing = true,
+--         separate_diagnostic_server = true,
+--     },
+-- })
+
+require("lspconfig").vtsls.setup({
+    settings = {
+        typescript = {
+            tsserver = {
+                maxTsServerMemory = 8192
+            }
+        }
+    }
 })
 
 nvim_lsp.relay_lsp.setup({})

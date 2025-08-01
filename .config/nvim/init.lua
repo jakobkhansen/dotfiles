@@ -76,11 +76,12 @@ require("lazy").setup({
         }
     },
     "mfussenegger/nvim-dap",
-    {
-        "pmizio/typescript-tools.nvim",
-        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-        opts = {},
-    },
+    -- {
+    --     "pmizio/typescript-tools.nvim",
+    --     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    --     opts = {},
+    -- },
+    "yioneko/nvim-vtsls",
     "mrcjkb/rustaceanvim",
     {
         "seblj/roslyn.nvim",

@@ -48,4 +48,9 @@ function P.isWindows()
     return vim.fn.has("win32") ~= 0
 end
 
+function P.grepWordUnderCursor()
+    local word = vim.fn.expand("<cword>")
+    Snacks.picker.grep({ search = word })
+end
+
 return P

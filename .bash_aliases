@@ -104,19 +104,21 @@ yfbs() {
     yarn build-scope $1
 }
 
+default_package="m365-blaze-loader"
 
 wt() {
     root=$(git rev-parse --show-toplevel 2>/dev/null || eval echo "~/Documents/1JS/checkouts/main")
     echo "Checkout branch: $root"
+    echo "Building package: $default_package"
     cd $root > /dev/null
     git pull
     git branch user/jakobhansen/$1
     cd ~/Documents/1JS/checkouts
     git worktree add $1 user/jakobhansen/$1
     cd $1/midgard 
-    yarn fast lpc-outlook-web
-    yarn build-scope lpc-outlook-web
-    cd packages/lpc-outlook-web
+    yarn fast 
+    yarn build-scope $default_package
+    cd packages/$default_package
 }
 
 review() {
@@ -124,16 +126,17 @@ review() {
     git fetch origin $1:$1
     git worktree add $1 $1
     cd $1/midgard 
-    yarn fast lpc-outlook-web
+    yarn fast $default_package
 }
 
 alias jsr="cd ~/Documents/1JS/checkouts"
 
+default_fzf_order="m365-chat-people-agent\npeople-agent\nm365-chat-components\norg-explorer-app\n.. (midgard)\n../.. (1js)\n"
 js() {
     cd ~/Documents/1JS/
     worktree=$(git worktree list | grep -v "(bare)" | tail -r | fzf | awk '{print $1}')
     cd $worktree/midgard/packages
-    packages="conversation-recap-nova\nlpc-copilot-tab\nlpc-outlook-web\norg-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app$")}"
+    packages="$default_fzf_order${$(ls | grep -v "org-explorer-app$")}"
     cd $(echo $packages | fzf | awk '{print $1;}')
 }
 
@@ -141,7 +144,7 @@ jsp() {
     root=$(git rev-parse --show-toplevel 2>/dev/null || eval echo "~/Documents/1JS/checkouts/main")
     echo $root
     cd $root/midgard/packages
-    packages="conversation-recap-nova\nlpc-copilot-tab\nlpc-outlook-web\norg-explorer-app\n.. (midgard)\n../.. (1js)\n${$(ls | grep -v "org-explorer-app$")}"
+    packages="$default_fzf_order${$(ls | grep -v "org-explorer-app$")}"
     cd $(echo $packages | fzf | awk '{print $1;}')
 }
 
