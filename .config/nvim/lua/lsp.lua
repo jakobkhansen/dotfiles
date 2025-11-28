@@ -1,5 +1,5 @@
 -- Setup
-local nvim_lsp = require("lspconfig")
+local nvim_lsp = vim.lsp.config
 local keymap = vim.keymap.set
 local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(),
     require("cmp_nvim_lsp").default_capabilities())
@@ -62,7 +62,7 @@ vim.diagnostic.config({
 --     },
 -- })
 
-require("lspconfig").vtsls.setup({
+vim.lsp.config("vtsls", {
     settings = {
         typescript = {
             tsserver = {
@@ -72,19 +72,19 @@ require("lspconfig").vtsls.setup({
     }
 })
 
-nvim_lsp.relay_lsp.setup({})
+vim.lsp.config("relay_lsp", {})
 
-nvim_lsp.html.setup({
+vim.lsp.config("html", {
     capabilities = capabilities,
 })
-nvim_lsp.cssls.setup({
+vim.lsp.config("cssls", {
     capabilities = capabilities,
 })
-nvim_lsp.jsonls.setup({
+vim.lsp.config("jsonls", {
     capabilities = capabilities,
 })
 
-nvim_lsp.tailwindcss.setup({
+vim.lsp.config("tailwindcss", {
     settings = {
         tailwindCSS = {
             experimental = {
@@ -97,16 +97,16 @@ nvim_lsp.tailwindcss.setup({
 })
 
 -- Go
-require("lspconfig").gopls.setup({})
+vim.lsp.config("gopls", {})
 
 -- C++
-require("lspconfig").clangd.setup({})
+vim.lsp.config("clangd", {})
 
 -- Python
-nvim_lsp.pyright.setup({})
+vim.lsp.config("pyright", {})
 
 -- Lua
-require("lspconfig").lua_ls.setup({
+vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
             runtime = {
