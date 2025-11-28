@@ -132,7 +132,7 @@ vim.lsp.config("lua_ls", {
 vim.lsp.config("roslyn", {
     cmd = {
         "dotnet",
-        "C:\\Users\\jakobhansen\\Documents\\Roslyn\\Microsoft.CodeAnalysis.LanguageServer.win-arm64.5.0.0-1.25317.15\\content\\LanguageServer\\win-arm64\\Microsoft.CodeAnalysis.LanguageServer.dll",
+        "C:\\Users\\jakobhansen\\Documents\\Roslyn\\content\\LanguageServer\\win-arm64\\Microsoft.CodeAnalysis.LanguageServer.dll",
         "--logLevel=Information",
         "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
         "--stdio"
