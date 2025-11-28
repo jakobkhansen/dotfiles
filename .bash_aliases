@@ -116,7 +116,7 @@ wt() {
     cd ~/Documents/1JS/checkouts
     git worktree add $1 user/jakobhansen/$1
     cd $1/midgard 
-    yarn fast 
+    yarn fast $default_package
     yarn build-scope $default_package
     cd packages/$default_package
 }
