@@ -1,5 +1,4 @@
 Remove-Item Alias:r
-
 function GoHome {
     cd ~
 }
