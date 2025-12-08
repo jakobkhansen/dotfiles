@@ -1,3 +1,4 @@
+Import-Module PSReadline
 Remove-Item Alias:r
 
 # For keeping CWD when duplicating tab
@@ -12,7 +13,20 @@ function prompt {
   return $out
 }
 
-Set-PSReadlineKeyHandler -Key Tab -Function Complete
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+
+# enable up/down arrows for navigating through the history
+
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+
+# moves the cursor to the end of the autocompleted command (remove if you want the cursor to remain where the completion started from)
+
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+
+# enable zsh autocompletion like auto completion
+
+Set-PSReadlineOption -PredictionSource History
 
 function GoHome {
     cd ~
