@@ -12,6 +12,8 @@ function prompt {
   return $out
 }
 
+Set-PSReadlineKeyHandler -Key Tab -Function Complete
+
 function GoHome {
     cd ~
 }

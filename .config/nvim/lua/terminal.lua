@@ -1,6 +1,5 @@
 local vimscript = vim.api.nvim_exec
 local utils = require("utils")
-
 local P = {}
 local lastOpenedTerminalJobId = nil
 
