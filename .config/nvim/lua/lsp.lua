@@ -62,6 +62,7 @@ vim.diagnostic.config({
 --     },
 -- })
 
+vim.lsp.enable("vtsls")
 vim.lsp.config("vtsls", {
     settings = {
         typescript = {
@@ -69,7 +70,10 @@ vim.lsp.config("vtsls", {
                 maxTsServerMemory = 8192
             }
         }
-    }
+    },
+    on_attach = function()
+        print("attach")
+    end
 })
 
 vim.lsp.config("relay_lsp", {})

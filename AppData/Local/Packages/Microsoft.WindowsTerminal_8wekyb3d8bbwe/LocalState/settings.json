@@ -73,12 +73,16 @@
             "keys": "ctrl+shift+d"
         },
         {
-            "id": "User.prevTab.0",
-            "keys": "ctrl+shift+left"
+            "id": null,
+            "keys": "ctrl+shift+k"
         },
         {
             "id": "User.splitPane.A6751878",
             "keys": "alt+shift+d"
+        },
+        {
+            "id": "User.prevTab.0",
+            "keys": "ctrl+shift+left"
         },
         {
             "id": "User.nextTab.0",
@@ -87,6 +91,18 @@
         {
             "id": "Terminal.DuplicateTab",
             "keys": "ctrl+shift+t"
+        },
+        {
+            "id": null,
+            "keys": "alt+f4"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+w"
+        },
+        {
+            "id": "Terminal.ClosePane",
+            "keys": "ctrl+q"
         }
     ],
     "newTabMenu": 
