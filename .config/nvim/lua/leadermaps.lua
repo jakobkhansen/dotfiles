@@ -82,6 +82,28 @@ local mappings = {
         w = {
             utils.grepWordUnderCursor,
             "find-cword"
+        },
+        q = {
+            function() Snacks.picker.files({
+              title = "Select file glob",
+              confirm = function(picker)
+                local glob = picker.input.filter.pattern
+                picker:close()
+
+                if not glob or glob == "" then
+                  return
+                end
+                Snacks.picker.grep({
+                  title = "Grep in " .. glob,
+                  args = { "--glob", glob },
+                  confirm = function(picker)
+                      print(vim.inspect(picker))
+                  end
+                })
+              end
+              })
+            end,
+            "find-then-grep"
         }
     },
     -- Buffer
