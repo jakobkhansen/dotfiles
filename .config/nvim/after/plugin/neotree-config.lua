@@ -13,7 +13,7 @@ require("neo-tree").setup({
     enable_diagnostics = false,
     sort_case_insensitive = false, -- used when sorting files and directories in the tree
     window = {
-        width = 50,
+        width = 75,
         mappings = {
             ["<space>"] = "none",
             ["l"] = "open_with_window_picker",
