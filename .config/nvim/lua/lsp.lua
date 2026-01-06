@@ -1,18 +1,5 @@
--- Setup
-local nvim_lsp = vim.lsp.config
-local keymap = vim.keymap.set
-local capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(),
-    require("cmp_nvim_lsp").default_capabilities())
 local autocmd = vim.api.nvim_create_autocmd
-
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.workspace.configuration = true
-
--- print(vim.inspect(capabilities))
-capabilities.workspace.didChangeWatchedFiles = {
-    dynamicRegistration = true,
-    relativePatternSupport = true,
-}
+local home = vim.loop.os_homedir()
 
 -- Format on save
 autocmd({ "BufWritePre" },
@@ -22,18 +9,6 @@ autocmd({ "BufWritePre" },
         end
     }
 )
-
--- Show diagnostics and signcolumn icons
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-        min = "Error",
-        spacing = 4,
-        prefix = "●",
-    },
-    severity_sort = { reverse = true },
-    signs = true,
-    update_in_insert = false,
-})
 
 vim.diagnostic.config({
     signs = {
@@ -46,22 +21,15 @@ vim.diagnostic.config({
     }
 })
 
--- Start servers
--- require("typescript-tools").setup({
---     on_attach = function(client, bufnr)
---         client.server_capabilities.documentFormattingProvider = false
---         client.server_capabilities.documentRangeFormattingProvider = false
---         client.server_capabilities.semanticTokensProvider = nil
---     end,
---     settings = {
---         tsserver_log = "verbose",   -- log level: "off", "normal", "terse", or "verbose"
---         tsserver_trace = "verbose", -- if supported: "off", "messages", or "verbose"
---         -- to actually persist logs:
---         tsserver_enableTracing = true,
---         separate_diagnostic_server = true,
---     },
--- })
+-- No config servers
+vim.lsp.enable("jsonls")
+vim.lsp.enable("html")
+vim.lsp.enable("cssls")
+vim.lsp.enable("gopls")
+vim.lsp.enable("clangd")
+vim.lsp.enable("pyright")
 
+-- Typescript
 vim.lsp.enable("vtsls")
 vim.lsp.config("vtsls", {
     settings = {
@@ -71,45 +39,10 @@ vim.lsp.config("vtsls", {
             }
         }
     },
-    on_attach = function()
-        print("attach")
-    end
 })
-
-vim.lsp.config("relay_lsp", {})
-
-vim.lsp.config("html", {
-    capabilities = capabilities,
-})
-vim.lsp.config("cssls", {
-    capabilities = capabilities,
-})
-vim.lsp.config("jsonls", {
-    capabilities = capabilities,
-})
-
-vim.lsp.config("tailwindcss", {
-    settings = {
-        tailwindCSS = {
-            experimental = {
-                classRegex = {
-                    "tailwind\\('([^)]*)\\')", "'([^']*)'"
-                },
-            },
-        },
-    },
-})
-
--- Go
-vim.lsp.config("gopls", {})
-
--- C++
-vim.lsp.config("clangd", {})
-
--- Python
-vim.lsp.config("pyright", {})
 
 -- Lua
+vim.lsp.enable("lua_ls")
 vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
@@ -133,30 +66,28 @@ vim.lsp.config("lua_ls", {
     },
 })
 
+-- C# / Roslyn
+local roslyn_path = home
+    .. "/Documents/Roslyn/Microsoft.CodeAnalysis.LanguageServer.dll"
+
+-- Windows uses backslashes and .exe-style paths, but dotnet itself is the same
+if vim.loop.os_uname().sysname == "Windows_NT" then
+    roslyn_path = home
+        .. "\\Documents\\Roslyn\\Microsoft.CodeAnalysis.LanguageServer.dll"
+end
+
+
 vim.lsp.config("roslyn", {
     cmd = {
         "dotnet",
-        "C:\\Users\\jakobhansen\\Documents\\Roslyn\\Microsoft.CodeAnalysis.LanguageServer.dll",
+        roslyn_path,
         "--logLevel=Information",
-        "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
+        '--extensionLogDirectory', vim.fs.joinpath(vim.uv.os_tmpdir(), 'roslyn_ls/logs'),
         "--stdio"
-    },
-    init_options = {
-        formattingOptions = {
-            enableEditorConfigSupport = true,
-            organizeImportsOnFormat = true,
-            tabSize = 4,
-            insertSpaces = true,
-        },
     },
     settings = {
         ["csharp|formatting"] = {
             dotnet_organize_imports_on_format = true,
         },
     },
-    on_attach = function(client, bufnr)
-        -- make sure Neovim knows this server can format
-        client.server_capabilities.documentFormattingProvider = true
-        client.server_capabilities.documentRangeFormattingProvider = true
-    end,
 })

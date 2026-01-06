@@ -163,7 +163,6 @@ source ~/.torusrc
 # Add .NET Core SDK tools
 export PATH="$PATH:/Users/jakobhansen/.dotnet/tools"
 
-export PATH="${PATH}:/Users/jakobhansen/.azureauth/0.8.4"
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
@@ -184,3 +183,5 @@ path=DefaultCollection/teamspace/_git/_optimized/teams-modular-packages" | git c
 export LDFLAGS="-L/opt/homebrew/opt/node@18/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/node@18/include"
 export PATH="${HOME}/.pyenv/shims:${PATH}"
+
+export PATH="${PATH}:/Users/jakobhansen/.azureauth/0.9.2"

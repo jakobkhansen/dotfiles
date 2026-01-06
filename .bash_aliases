@@ -13,6 +13,7 @@ alias l='ls'
 alias ff="cd \$(fd . --type d | fzf)"
 alias c="clear"
 alias n="nvim"
+alias keeb="KANATA_TRAY_CONFIG_DIR=~/Documents/colemak-jkl/kanata/ sudo -E ~/Documents/kanata-tray/kanata-tray-macos"
 
 
 # Shortcuts to dirs
