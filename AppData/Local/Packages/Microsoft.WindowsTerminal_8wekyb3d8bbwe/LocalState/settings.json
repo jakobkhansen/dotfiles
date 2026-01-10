@@ -49,20 +49,20 @@
     "keybindings": 
     [
         {
-            "id": null,
-            "keys": "ctrl+v"
-        },
-        {
             "id": "User.find",
             "keys": "ctrl+shift+f"
         },
         {
             "id": null,
-            "keys": "ctrl+tab"
+            "keys": "ctrl+v"
         },
         {
             "id": null,
-            "keys": "ctrl+shift+tab"
+            "keys": "ctrl+shift+k"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+d"
         },
         {
             "id": "User.copy.644BA8F2",
@@ -70,11 +70,11 @@
         },
         {
             "id": null,
-            "keys": "ctrl+shift+d"
+            "keys": "ctrl+shift+tab"
         },
         {
             "id": null,
-            "keys": "ctrl+shift+k"
+            "keys": "ctrl+tab"
         },
         {
             "id": "User.splitPane.A6751878",

@@ -23,7 +23,7 @@ dap.configurations.cs = {
         processId = function()
             return require("dap.utils").pick_process({
                 filter = function(process)
-                    return process.name == "Microsoft.Loki.Service.exe"
+                    return true
                 end
             })
         end
