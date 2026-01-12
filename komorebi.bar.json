@@ -15,7 +15,7 @@
           "hide_empty_workspaces": false
         },
         "layout": {
-          "enable": true
+          "enable": false
         },
         "focused_window": {
           "enable": true,
@@ -36,20 +36,10 @@
       }
     },
     {
-      "Storage": {
-        "enable": true
-      }
-    },
-    {
-      "Memory": {
-        "enable": true
-      }
-    },
-    {
       "Network": {
         "enable": true,
-        "show_activity": true,
-        "show_total_activity": true
+        "show_activity": false,
+        "show_total_activity": false
       }
     },
     {

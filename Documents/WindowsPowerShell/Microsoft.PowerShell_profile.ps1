@@ -44,6 +44,12 @@ function FuzzDir {
     cd $(fzf --walker=dir)
 }
 
+function pushdotfiles {
+    dotfiles add -u
+    dotfiles commit -m "Updates"
+    dotfiles push
+}
+
 function r {
     $tmp = (New-TemporaryFile).FullName
     yazi $args --cwd-file="$tmp"
@@ -53,6 +59,12 @@ function r {
     }
     Remove-Item -Path $tmp
 }
+
+function keeb {
+    & "$HOME\Documents\Kanata\kanata_windows_gui_winIOv2_cmd_allowed_arm64.exe" `
+      -c "$HOME\Documents\colemak-jkl\kanata\kanata.kbd"
+}
+
 $env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
 
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete

@@ -18,32 +18,40 @@
     {
       "workspaces": [
         {
-          "name": "I",
+          "name": "1",
           "layout": "BSP"
         },
         {
-          "name": "II",
-          "layout": "VerticalStack"
+          "name": "2",
+          "layout": "BSP"
         },
         {
-          "name": "III",
-          "layout": "HorizontalStack"
+          "name": "3",
+          "layout": "BSP"
         },
         {
-          "name": "IV",
-          "layout": "UltrawideVerticalStack"
+          "name": "4",
+          "layout": "BSP"
         },
         {
-          "name": "V",
-          "layout": "Rows"
+          "name": "5",
+          "layout": "BSP"
         },
         {
-          "name": "VI",
-          "layout": "Grid"
+          "name": "6",
+          "layout": "BSP"
         },
         {
-          "name": "VII",
-          "layout": "RightMainVerticalStack"
+          "name": "7",
+          "layout": "BSP"
+        },
+        {
+          "name": "8",
+          "layout": "BSP"
+        },
+        {
+          "name": "9",
+          "layout": "BSP"
         }
       ]
     }
