@@ -51,23 +51,23 @@ alt + oem_6             : komorebic cycle-stack next # oem_6 is ]
 # alt + p                 : komorebic toggle-pause
 
 # Workspaces
-alt + 1                 : komorebic focus-workspace 0
-alt + 2                 : komorebic focus-workspace 1
-alt + 3                 : komorebic focus-workspace 2
-alt + 4                 : komorebic focus-workspace 3
-alt + 5                 : komorebic focus-workspace 4
-alt + 6                 : komorebic focus-workspace 5
-alt + 7                 : komorebic focus-workspace 6
-alt + 8                 : komorebic focus-workspace 7
-alt + 9                 : komorebic focus-workspace 7
+alt + 1                 : komorebic focus-monitor-workspace 2 0
+alt + 2                 : komorebic focus-monitor-workspace 2 1
+alt + 3                 : komorebic focus-monitor-workspace 2 2
+alt + 4                 : komorebic focus-monitor-workspace 1 0
+alt + 5                 : komorebic focus-monitor-workspace 1 1
+alt + 6                 : komorebic focus-monitor-workspace 1 2
+alt + 7                 : komorebic focus-monitor-workspace 0 0
+alt + 8                 : komorebic focus-monitor-workspace 0 1
+alt + 9                 : komorebic focus-monitor-workspace 0 2
 
 # Move windows across workspaces
-alt + shift + 1         : komorebic move-to-workspace 0
-alt + shift + 2         : komorebic move-to-workspace 1
-alt + shift + 3         : komorebic move-to-workspace 2
-alt + shift + 4         : komorebic move-to-workspace 3
-alt + shift + 5         : komorebic move-to-workspace 4
-alt + shift + 6         : komorebic move-to-workspace 5
-alt + shift + 7         : komorebic move-to-workspace 6
-alt + shift + 8         : komorebic move-to-workspace 8
-alt + shift + 9         : komorebic move-to-workspace 9
+alt + shift + 1         : komorebic move-to-named-workspace 1
+alt + shift + 2         : komorebic move-to-named-workspace 2
+alt + shift + 3         : komorebic move-to-named-workspace 3
+alt + shift + 4         : komorebic move-to-named-workspace 4
+alt + shift + 5         : komorebic move-to-named-workspace 5
+alt + shift + 6         : komorebic move-to-named-workspace 6
+alt + shift + 7         : komorebic move-to-named-workspace 7
+alt + shift + 8         : komorebic move-to-named-workspace 8
+alt + shift + 9         : komorebic move-to-named-workspace 9

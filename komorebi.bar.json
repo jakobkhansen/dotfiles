@@ -26,23 +26,6 @@
   ],
   "right_widgets": [
     {
-      "Update": {
-        "enable": true
-      }
-    },
-    {
-      "Media": {
-        "enable": true
-      }
-    },
-    {
-      "Network": {
-        "enable": true,
-        "show_activity": false,
-        "show_total_activity": false
-      }
-    },
-    {
       "Date": {
         "enable": true,
         "format": "DayDateMonthYear"

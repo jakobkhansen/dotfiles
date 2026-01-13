@@ -13,6 +13,8 @@ function prompt {
   return $out
 }
 
+Set-PSReadLineKeyHandler -Key Ctrl+d -Function ViExit
+
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 # enable up/down arrows for navigating through the history

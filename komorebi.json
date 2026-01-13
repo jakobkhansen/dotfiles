@@ -14,7 +14,44 @@
     "unfocused_border": "Base03",
     "bar_accent": "Base0D"
   },
+  "bar_configurations": [
+    "C:/Users/jakobhansen/komorebi.bar.json",
+    "C:/Users/jakobhansen/komorebi.bar2.json",
+    "C:/Users/jakobhansen/komorebi.bar3.json"
+  ],
   "monitors": [
+    {
+      "workspaces": [
+        {
+          "name": "7",
+          "layout": "BSP"
+        },
+        {
+          "name": "8",
+          "layout": "BSP"
+        },
+        {
+          "name": "9",
+          "layout": "BSP"
+        }
+      ]
+    },
+    {
+      "workspaces": [
+        {
+          "name": "4",
+          "layout": "BSP"
+        },
+        {
+          "name": "5",
+          "layout": "BSP"
+        },
+        {
+          "name": "6",
+          "layout": "BSP"
+        }
+      ]
+    },
     {
       "workspaces": [
         {
@@ -27,30 +64,6 @@
         },
         {
           "name": "3",
-          "layout": "BSP"
-        },
-        {
-          "name": "4",
-          "layout": "BSP"
-        },
-        {
-          "name": "5",
-          "layout": "BSP"
-        },
-        {
-          "name": "6",
-          "layout": "BSP"
-        },
-        {
-          "name": "7",
-          "layout": "BSP"
-        },
-        {
-          "name": "8",
-          "layout": "BSP"
-        },
-        {
-          "name": "9",
           "layout": "BSP"
         }
       ]
