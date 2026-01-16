@@ -77,3 +77,80 @@ Set-Alias g git
 Set-Alias l Ls
 Set-Alias ff FuzzDir
 Set-Alias dotfiles Dfiles -Option AllScope
+
+
+# MS stuff
+
+function cr {
+    cd ~/Documents/Copilot-Dash/checkouts
+}
+
+$default_fzf_order = ".. (root)`n"
+
+function cf {
+    Set-Location "$HOME\Documents\Copilot-Dash"
+
+    $worktree = git worktree list |
+        Where-Object { $_ -notmatch "\(bare\)" } |
+        fzf |
+        ForEach-Object { ($_ -split '\s+')[0] }
+
+    if (-not $worktree) { return }
+
+    Set-Location (Join-Path $worktree "sources")
+
+    $packages = $default_fzf_order + (
+        Get-ChildItem |
+        Select-Object -ExpandProperty Name |
+        Out-String
+    )
+
+    $choice = $packages | fzf
+    if (-not $choice) { return }
+
+    # Match bash behavior: cd ".." when ".. (root)" is selected
+    if ($choice -like "..*") {
+        Set-Location ..
+    } else {
+        Set-Location $choice
+    }
+}
+
+function wt {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$Name
+    )
+    $root = git rev-parse --show-toplevel 2>$null
+    if ($LASTEXITCODE -ne 0 -or -not $root) {
+        $root = "$HOME\Documents\Copilot-Dash\checkouts\master"
+    }
+
+    Write-Host "Checkout branch: $root"
+
+    Set-Location $root
+    git pull
+
+    git branch "user/jakobhansen/$Name"
+
+    Set-Location "$HOME\Documents\Copilot-Dash\checkouts"
+    git worktree add $Name "user/jakobhansen/$Name"
+
+    Set-Location (Join-Path $Name "sources")
+
+    $packages = $default_fzf_order + (
+        Get-ChildItem |
+        Select-Object -ExpandProperty Name |
+        Out-String
+    )
+
+    $choice = $packages | fzf
+    if (-not $choice) { return }
+
+    if ($choice -like "..*") {
+        Set-Location ..
+    } else {
+        Set-Location $choice
+    }
+}
+

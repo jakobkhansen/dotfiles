@@ -105,21 +105,18 @@ yfbs() {
     yarn build-scope $1
 }
 
-default_package="m365-blaze-loader"
 
 wt() {
-    root=$(git rev-parse --show-toplevel 2>/dev/null || eval echo "~/Documents/1JS/checkouts/main")
+    root=$(git rev-parse --show-toplevel 2>/dev/null || eval echo "~/Documents/Copilot-Dash/checkouts/master")
     echo "Checkout branch: $root"
-    echo "Building package: $default_package"
     cd $root > /dev/null
     git pull
     git branch user/jakobhansen/$1
     cd ~/Documents/1JS/checkouts
     git worktree add $1 user/jakobhansen/$1
-    cd $1/midgard 
-    yarn fast $default_package
-    yarn build-scope $default_package
-    cd packages/$default_package
+    cd $1/sources 
+    packages="$default_fzf_order${$(ls)}"
+    cd $(echo $packages | fzf | awk '{print $1;}')
 }
 
 review() {
@@ -132,12 +129,12 @@ review() {
 
 alias jsr="cd ~/Documents/1JS/checkouts"
 
-default_fzf_order="m365-chat-people-agent\npeople-agent\nm365-chat-components\norg-explorer-app\n.. (midgard)\n../.. (1js)\n"
+default_fzf_order=".. (root)\n"
 js() {
-    cd ~/Documents/1JS/
+    cd ~/Documents/Copilot-Dash/
     worktree=$(git worktree list | grep -v "(bare)" | tail -r | fzf | awk '{print $1}')
-    cd $worktree/midgard/packages
-    packages="$default_fzf_order${$(ls | grep -v "org-explorer-app$")}"
+    cd $worktree/sources
+    packages="$default_fzf_order${$(ls)}"
     cd $(echo $packages | fzf | awk '{print $1;}')
 }
 
