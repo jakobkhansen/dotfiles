@@ -9,6 +9,17 @@
                 "action": "closeTab"
             },
             "id": "User.closeTab.0"
+        },
+        {
+            "command": 
+            {
+                "action": "newTab"
+            },
+            "id": "User.newTab.5DEADB41"
+        },
+        {
+            "command": "duplicateTab",
+            "id": "User.duplicateTab"
         }
     ],
     "copyFormatting": "none",
@@ -81,7 +92,7 @@
             "keys": "ctrl+tab"
         },
         {
-            "id": "Terminal.OpenNewTabProfile0",
+            "id": "User.duplicateTab",
             "keys": "ctrl+t"
         },
         {

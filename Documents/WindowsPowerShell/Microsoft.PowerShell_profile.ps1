@@ -1,7 +1,6 @@
 Import-Module PSReadline
 Remove-Item Alias:r
 
-# For keeping CWD when duplicating tab
 function prompt {
   $loc = $executionContext.SessionState.Path.CurrentLocation;
 

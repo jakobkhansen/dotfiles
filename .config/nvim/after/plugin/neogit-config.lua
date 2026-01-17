@@ -12,7 +12,7 @@ require("neogit").setup({
         status = {
             ["<tab>"] = false,
             ["ZZ"] = "Close",
-            ["="] = "Toggle",
+            ["l"] = "Toggle",
         }
 
     },

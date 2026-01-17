@@ -405,6 +405,7 @@ For more information about configuration options, please visit the Wiki https://
 }
 .home-widget .icon {
     color: var(--lavender);
+    padding: 0 4px 0 0px;
 }
 .home-widget .icon:hover {
     color: var(--text1);
