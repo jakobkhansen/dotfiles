@@ -121,14 +121,23 @@ window_behavior:
 
 workspaces:
   - name: '1'
+    bind_to_monitor: 0
   - name: '2'
+    bind_to_monitor: 0
   - name: '3'
+    bind_to_monitor: 0
   - name: '4'
+    bind_to_monitor: 1
   - name: '5'
+    bind_to_monitor: 1
   - name: '6'
+    bind_to_monitor: 1
   - name: '7'
+    bind_to_monitor: 2
   - name: '8'
+    bind_to_monitor: 2
   - name: '9'
+    bind_to_monitor: 2
 
 window_rules:
   - commands: ['ignore']
@@ -168,13 +177,13 @@ keybindings:
 
   # Move focused window in a given direction.
   - commands: ['move --direction left']
-    bindings: ['alt+shift+h', 'alt+shift+left']
+    bindings: ['lwin+alt+h', 'alt+shift+left']
   - commands: ['move --direction right']
-    bindings: ['alt+shift+l', 'alt+shift+right']
+    bindings: ['lwin+alt+l', 'alt+shift+right']
   - commands: ['move --direction up']
-    bindings: ['alt+shift+k', 'alt+shift+up']
+    bindings: ['lwin+alt+k', 'alt+shift+up']
   - commands: ['move --direction down']
-    bindings: ['alt+shift+j', 'alt+shift+down']
+    bindings: ['lwin+alt+j', 'alt+shift+down']
 
   # Change the focused window to be floating.
   - commands: ['toggle-floating --centered']
