@@ -2,6 +2,10 @@ watch_stylesheet: true
 watch_config: true
 debug: false
 update_check: true
+glazewm:
+  start_command: "glazewm.exe start"
+  stop_command: "taskkill /IM glazewm.exe /F"
+  reload_command: "taskkill /IM glazewm.exe /F; glazewm.exe start"
 bars:
   primary-bar:
     enabled: true
