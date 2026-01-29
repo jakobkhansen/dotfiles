@@ -29,19 +29,15 @@
     [
         {
             "id": null,
+            "keys": "ctrl+v"
+        },
+        {
+            "id": null,
             "keys": "ctrl+shift+f"
         },
         {
             "id": null,
-            "keys": "ctrl+v"
-        },
-        {
-            "id": "Terminal.PrevTab",
-            "keys": "ctrl+shift+tab"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+shift+k"
+            "keys": "ctrl+c"
         },
         {
             "id": null,
@@ -49,7 +45,11 @@
         },
         {
             "id": null,
-            "keys": "ctrl+c"
+            "keys": "ctrl+shift+k"
+        },
+        {
+            "id": "Terminal.PrevTab",
+            "keys": "ctrl+shift+tab"
         },
         {
             "id": null,
@@ -113,8 +113,11 @@
             "colorScheme": "Tokyo Night Storm",
             "font": 
             {
-                "face": "FiraMono Nerd Font Mono"
-            }
+                "face": "FiraMono Nerd Font Mono",
+                "size": 11
+            },
+            "padding": "0",
+            "scrollbarState": "hidden"
         },
         "list": 
         [
@@ -199,6 +202,18 @@
                 "hidden": true,
                 "name": "Ubuntu",
                 "source": "Windows.Terminal.Wsl"
+            },
+            {
+                "guid": "{895e65dd-7d90-5101-b0ca-18e4a6887c89}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 18 (2)",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{fc258729-4e90-5077-afa4-c10674b509e3}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 18 (2)",
+                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },
