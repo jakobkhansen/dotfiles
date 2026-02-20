@@ -4,8 +4,37 @@ require("mini.comment").setup()
 
 require("mini.pairs").setup({
     mappings = {
-        ["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[^%a\\|<|&]." },
+    ['('] = {
+      action = 'open',
+      pair = '()',
+      neigh_pattern = '[^\\][^%w]',
     },
+    ['['] = {
+      action = 'open',
+      pair = '[]',
+      neigh_pattern = '[^\\][^%w]',
+    },
+    ['{'] = {
+      action = 'open',
+      pair = '{}',
+      neigh_pattern = '[^\\][^%w]',
+    },
+    ['"'] = {
+      action = 'open',
+      pair = '""',
+      neigh_pattern = '[^\\][^%w]',
+    },
+    ["'"] = {
+      action = 'open',
+      pair = "''",
+      neigh_pattern = '[^\\][^%w]',
+    },
+    ['`'] = {
+      action = 'open',
+      pair = '``',
+      neigh_pattern = '[^\\][^%w]',
+    },
+  },
 })
 
 require("mini.surround").setup({

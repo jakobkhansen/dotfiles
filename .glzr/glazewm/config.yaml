@@ -6,7 +6,7 @@ general:
 
   # Commands to run just before the WM is shutdown.
   # Example: The below command kills Zebar.
-  shutdown_commands: ['shell-exec taskkill /IM zebar.exe /F']
+  shutdown_commands: ["shell-exec taskkill /IM zebar.exe /F"]
 
   # Commands to run after the WM config is reloaded.
   config_reload_commands: []
@@ -25,13 +25,13 @@ general:
     # Trigger for cursor jump:
     # - 'monitor_focus': Jump when focus changes between monitors.
     # - 'window_focus': Jump when focus changes between windows.
-    trigger: 'monitor_focus'
+    trigger: "monitor_focus"
 
   # How windows should be hidden when switching workspaces.
   # - 'cloak': Recommended. Hides windows with no animation.
   # - 'hide': Legacy method (v3.5 and earlier) that has a brief animation,
   # but has stability issues with some apps.
-  hide_method: 'cloak'
+  hide_method: "cloak"
 
   # Affects which windows get shown in the native Windows taskbar. Has no
   # effect if `hide_method: 'hide'`.
@@ -44,14 +44,14 @@ gaps:
   scale_with_dpi: true
 
   # Gap between adjacent windows.
-  inner_gap: '0px'
+  inner_gap: "0px"
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: '5px'
-    right: '5px'
-    bottom: '0px'
-    left: '5px'
+    top: "5px"
+    right: "5px"
+    bottom: "0px"
+    left: "5px"
 
 window_effects:
   # Visual effects to apply to the focused window.
@@ -60,7 +60,7 @@ window_effects:
     # ** Exclusive to Windows 11 due to API limitations.
     border:
       enabled: false
-      color: '#8dbcff'
+      color: "#8dbcff"
 
     # Remove the title bar from the window's frame. Note that this can
     # cause rendering issues for some applications.
@@ -72,33 +72,33 @@ window_effects:
     corner_style:
       enabled: false
       # Allowed values: 'square', 'rounded', 'small_rounded'.
-      style: 'square'
+      style: "square"
 
     # Change the transparency of the window.
     transparency:
       enabled: false
       # Can be something like '95%' or '0.95' for slightly transparent windows.
       # '0' or '0%' is fully transparent (and, by consequence, unfocusable).
-      opacity: '95%'
+      opacity: "95%"
 
   # Visual effects to apply to non-focused windows.
   other_windows:
     border:
       enabled: true
-      color: '#a1a1a1'
+      color: "#a1a1a1"
     hide_title_bar:
       enabled: false
     corner_style:
       enabled: false
-      style: 'square'
+      style: "square"
     transparency:
       enabled: false
-      opacity: '0%'
+      opacity: "0%"
 
 window_behavior:
   # New windows are created in this state whenever possible.
   # Allowed values: 'tiling', 'floating'.
-  initial_state: 'tiling'
+  initial_state: "tiling"
 
   # Sets the default options for when a new window is created. This also
   # changes the defaults for when the state change commands, like
@@ -120,139 +120,141 @@ window_behavior:
       shown_on_top: false
 
 workspaces:
-  - name: '1'
+  - name: "1"
     bind_to_monitor: 0
-  - name: '2'
+  - name: "2"
     bind_to_monitor: 0
-  - name: '3'
+  - name: "3"
     bind_to_monitor: 0
-  - name: '4'
+  - name: "4"
     bind_to_monitor: 1
-  - name: '5'
+  - name: "5"
     bind_to_monitor: 1
-  - name: '6'
+  - name: "6"
     bind_to_monitor: 1
-  - name: '7'
+  - name: "7"
     bind_to_monitor: 2
-  - name: '8'
+  - name: "8"
     bind_to_monitor: 2
-  - name: '9'
+  - name: "9"
     bind_to_monitor: 2
 
 window_rules:
-  - commands: ['ignore']
+  - commands: ["ignore"]
     match:
       # Ignores any Zebar windows.
-      - window_process: { equals: 'zebar' }
+      - window_process: { equals: "zebar" }
 
       # Ignores picture-in-picture windows for browsers.
-      - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
-        window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
+      - window_title: { regex: "[Pp]icture.in.[Pp]icture" }
+        window_class: { regex: "Chrome_WidgetWin_1|MozillaDialogClass" }
 
       # Ignore rules for various 3rd-party apps.
-      - window_process: { equals: 'PowerToys' }
+      - window_process: { equals: "PowerToys" }
         window_class: { regex: 'HwndWrapper\[PowerToys\.PowerAccent.*?\]' }
-      - window_process: { equals: 'PowerToys' }
-        window_title: { regex: '.*? - Peek' }
-      - window_process: { equals: 'Lively' }
-        window_class: { regex: 'HwndWrapper' }
-      - window_process: { equals: 'EXCEL' }
-        window_class: { not_regex: 'XLMAIN' }
-      - window_process: { equals: 'WINWORD' }
-        window_class: { not_regex: 'OpusApp' }
-      - window_process: { equals: 'POWERPNT' }
-        window_class: { not_regex: 'PPTFrameClass' }
-
+      - window_process: { equals: "PowerToys" }
+        window_title: { regex: ".*? - Peek" }
+      - window_process: { equals: "Lively" }
+        window_class: { regex: "HwndWrapper" }
+      - window_process: { equals: "EXCEL" }
+        window_class: { not_regex: "XLMAIN" }
+      - window_process: { equals: "WINWORD" }
+        window_class: { not_regex: "OpusApp" }
+      - window_process: { equals: "POWERPNT" }
+        window_class: { not_regex: "PPTFrameClass" }
 
 keybindings:
   # Shift focus in a given direction.
-  - commands: ['focus --direction left']
-    bindings: ['alt+h', 'alt+left']
-  - commands: ['focus --direction right']
-    bindings: ['alt+l']
-  - commands: ['focus --direction up']
-    bindings: ['alt+k', 'alt+up']
-  - commands: ['focus --direction down']
-    bindings: ['alt+j', 'alt+down']
+  - commands: ["focus --direction left"]
+    bindings: ["alt+h", "alt+left"]
+  - commands: ["focus --direction right"]
+    bindings: ["alt+l"]
+  - commands: ["focus --direction up"]
+    bindings: ["alt+k", "alt+up"]
+  - commands: ["focus --direction down"]
+    bindings: ["alt+j", "alt+down"]
 
   # Move focused window in a given direction.
-  - commands: ['move --direction left']
-    bindings: ['lwin+alt+h', 'alt+shift+left']
-  - commands: ['move --direction right']
-    bindings: ['lwin+alt+l', 'alt+shift+right']
-  - commands: ['move --direction up']
-    bindings: ['lwin+alt+k', 'alt+shift+up']
-  - commands: ['move --direction down']
-    bindings: ['lwin+alt+j', 'alt+shift+down']
+  - commands: ["move --direction left"]
+    bindings: ["lwin+alt+h", "alt+shift+left"]
+  - commands: ["move --direction right"]
+    bindings: ["lwin+alt+l", "alt+shift+right"]
+  - commands: ["move --direction up"]
+    bindings: ["lwin+alt+k", "alt+shift+up"]
+  - commands: ["move --direction down"]
+    bindings: ["lwin+alt+j", "alt+shift+down"]
 
   # Change the focused window to be floating.
-  - commands: ['toggle-floating --centered']
-    bindings: ['alt+shift+space']
+  - commands: ["toggle-floating --centered"]
+    bindings: ["alt+shift+space"]
 
   # Close focused window.
-  - commands: ['close']
-    bindings: ['alt+q']
+  - commands: ["close"]
+    bindings: ["alt+q"]
 
   # Re-evaluate configuration file.
-  - commands: ['wm-reload-config']
-    bindings: ['alt+shift+r']
+  - commands: ["wm-reload-config"]
+    bindings: ["alt+shift+r"]
 
   # Redraw all windows.
-  - commands: ['wm-redraw']
-    bindings: ['alt+shift+w']
+  - commands: ["wm-redraw"]
+    bindings: ["alt+shift+w"]
 
   # Launch CMD terminal. Alternatively, use `shell-exec wt` or
   # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
   # Terminal and Git Bash respectively.
-  - commands: ['shell-exec wt']
-    bindings: ['alt+enter']
+  - commands: ["shell-exec wt"]
+    bindings: ["alt+enter"]
   - commands:
-    - 'shell-exec --hide-window powershell "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait(''å'')"'
-    bindings: ['alt+a']
+      - 'shell-exec --hide-window powershell "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait(''å'')"'
+    bindings: ["alt+a"]
   - commands:
-    - 'shell-exec --hide-window powershell "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait(''æ'')"'
-    bindings: ['alt+e']
+      - 'shell-exec --hide-window powershell "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait(''æ'')"'
+    bindings: ["alt+e"]
   - commands:
-    - 'shell-exec --hide-window powershell "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait(''ø'')"'
-    bindings: ['alt+o']
-
+      - 'shell-exec --hide-window powershell "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait(''ø'')"'
+    bindings: ["alt+o"]
 
   # Change focus to a workspace defined in `workspaces` config.
-  - commands: ['focus --workspace 1']
-    bindings: ['alt+1']
-  - commands: ['focus --workspace 2']
-    bindings: ['alt+2']
-  - commands: ['focus --workspace 3']
-    bindings: ['alt+3']
-  - commands: ['focus --workspace 4']
-    bindings: ['alt+4']
-  - commands: ['focus --workspace 5']
-    bindings: ['alt+5']
-  - commands: ['focus --workspace 6']
-    bindings: ['alt+6']
-  - commands: ['focus --workspace 7']
-    bindings: ['alt+7']
-  - commands: ['focus --workspace 8']
-    bindings: ['alt+8']
-  - commands: ['focus --workspace 9']
-    bindings: ['alt+9']
+  - commands: ["focus --workspace 1"]
+    bindings: ["alt+1"]
+  - commands: ["focus --workspace 2"]
+    bindings: ["alt+2"]
+  - commands: ["focus --workspace 3"]
+    bindings: ["alt+3"]
+  - commands: ["focus --workspace 4"]
+    bindings: ["alt+4"]
+  - commands: ["focus --workspace 5"]
+    bindings: ["alt+5"]
+  - commands: ["focus --workspace 6"]
+    bindings: ["alt+6"]
+  - commands: ["focus --workspace 7"]
+    bindings: ["alt+7"]
+  - commands: ["focus --workspace 8"]
+    bindings: ["alt+8"]
+  - commands: ["focus --workspace 9"]
+    bindings: ["alt+9"]
 
   # Move focused window to a workspace defined in `workspaces` config.
-  - commands: ['move --workspace 1', 'focus --workspace 1']
-    bindings: ['lwin+alt+1']
-  - commands: ['move --workspace 2', 'focus --workspace 2']
-    bindings: ['lwin+alt+2']
-  - commands: ['move --workspace 3', 'focus --workspace 3']
-    bindings: ['lwin+alt+3']
-  - commands: ['move --workspace 4', 'focus --workspace 4']
-    bindings: ['lwin+alt+4']
-  - commands: ['move --workspace 5', 'focus --workspace 5']
-    bindings: ['lwin+alt+5']
-  - commands: ['move --workspace 6', 'focus --workspace 6']
-    bindings: ['lwin+alt+6']
-  - commands: ['move --workspace 7', 'focus --workspace 7']
-    bindings: ['lwin+alt+7']
-  - commands: ['move --workspace 8', 'focus --workspace 8']
-    bindings: ['lwin+alt+8']
-  - commands: ['move --workspace 9', 'focus --workspace 9']
-    bindings: ['lwin+alt+9']
+  - commands: ["move --workspace 1", "focus --workspace 1"]
+    bindings: ["lwin+alt+1"]
+  - commands: ["move --workspace 2", "focus --workspace 2"]
+    bindings: ["lwin+alt+2"]
+  - commands: ["move --workspace 3", "focus --workspace 3"]
+    bindings: ["lwin+alt+3"]
+  - commands: ["move --workspace 4", "focus --workspace 4"]
+    bindings: ["lwin+alt+4"]
+  - commands: ["move --workspace 5", "focus --workspace 5"]
+    bindings: ["lwin+alt+5"]
+  - commands: ["move --workspace 6", "focus --workspace 6"]
+    bindings: ["lwin+alt+6"]
+  - commands: ["move --workspace 7", "focus --workspace 7"]
+    bindings: ["lwin+alt+7"]
+  - commands: ["move --workspace 8", "focus --workspace 8"]
+    bindings: ["lwin+alt+8"]
+  - commands: ["move --workspace 9", "focus --workspace 9"]
+    bindings: ["lwin+alt+9"]
+
+  # Misc
+  - commands: ["shell-exec --hide-window yasbc toggle-bar"]
+    bindings: ["lwin+alt+;"]

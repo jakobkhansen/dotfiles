@@ -1,23 +1,16 @@
 local dap = require("dap")
 local autocmd = vim.api.nvim_create_autocmd
 
-dap.adapters.coreclr = {
-    type = 'executable',
-    command =
-    'C:\\Users\\jakobhansen\\Documents\\netcoredbg\\netcoredbg.exe',
-    args = { '--interpreter=vscode' }
-}
-
 dap.adapters.netcoredbg = {
     type = 'executable',
     command =
     'C:\\Users\\jakobhansen\\Documents\\netcoredbg\\netcoredbg.exe',
-    args = { '--interpreter=vscode' }
+    args = { '--interpreter=vscode', '--log=file', '--engineLogging=./engineLog.txt' }
 }
 
 dap.configurations.cs = {
     {
-        type = "coreclr",
+        type = "netcoredbg",
         name = "attach - netcoredbg",
         request = "attach",
         processId = function()

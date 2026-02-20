@@ -39,7 +39,7 @@ bars:
       left:
       - "home"
       - "glazewm_workspaces"
-      center:
+      center: []
       right:
       - "bluetooth"
       - "volume"

@@ -29,15 +29,19 @@
     [
         {
             "id": null,
-            "keys": "ctrl+v"
-        },
-        {
-            "id": null,
             "keys": "ctrl+shift+f"
         },
         {
             "id": null,
-            "keys": "ctrl+c"
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "Terminal.PrevTab",
+            "keys": "ctrl+shift+tab"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+k"
         },
         {
             "id": null,
@@ -45,11 +49,7 @@
         },
         {
             "id": null,
-            "keys": "ctrl+shift+k"
-        },
-        {
-            "id": "Terminal.PrevTab",
-            "keys": "ctrl+shift+tab"
+            "keys": "ctrl+c"
         },
         {
             "id": null,
@@ -214,6 +214,27 @@
                 "hidden": false,
                 "name": "Developer PowerShell for VS 18 (2)",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{80e8e8a5-3996-5ac4-8702-d56943a4dbe2}",
+                "hidden": false,
+                "name": "QMK",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{db1d8c35-5f1f-5c6e-bf9b-ade86c5c16c4}",
+                "hidden": false,
+                "name": "QMK MSYS",
+                "source": "QMK"
+            },
+            {
+                "commandline": "pwsh.exe -NoExit -Command \"&{Import-Module \"\"\"C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll\"\"\"; Enter-VsDevShell ff5bf3ab -SkipAutomaticLocation -DevCmdArguments \"\"\"-arch=arm64 -host_arch=\"arm64 \"\"\"}\"",
+                "elevate": true,
+                "guid": "{eef88c39-cc4b-44c1-9956-b98d25078e67}",
+                "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/vs-powershell.png",
+                "name": "Developer PowerShell for VS 18 (Copy)",
+                "startingDirectory": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community"
             }
         ]
     },

@@ -37,6 +37,9 @@ function Ls {
     ls
 }
 
+# Only once in your profile
+$OriginalSetLocation = Get-Command Set-Location
+
 function Dfiles {
     git --git-dir=C:\Users\jakobhansen\.dotfiles --work-tree=C:\Users\jakobhansen $args
 }
@@ -153,3 +156,6 @@ function wt {
     }
 }
 
+function wh {
+    cd \\wsl$\Ubuntu\home\jakob
+}
