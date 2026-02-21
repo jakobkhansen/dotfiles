@@ -1,10 +1,11 @@
 local dap = require("dap")
 local autocmd = vim.api.nvim_create_autocmd
+local home = vim.loop.os_homedir()
 
 dap.adapters.netcoredbg = {
     type = 'executable',
     command =
-    'C:\\Users\\jakobhansen\\Documents\\netcoredbg\\netcoredbg.exe',
+        vim.fs.joinpath(home, 'Documents', 'netcoredbg', 'netcoredbg'),
     args = { '--interpreter=vscode', '--log=file', '--engineLogging=./engineLog.txt' }
 }
 
