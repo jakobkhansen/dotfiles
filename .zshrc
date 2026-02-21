@@ -139,18 +139,24 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export VISUAL=nvim
 export EDITOR=nvim
 export MOZ_ENABLE_WAYLAND=1
-export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+fi
 
 # MS
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh --no-use"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-#
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . $NVM_DIR/nvm.sh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 export RUSH_PNPM_STORE_PATH="$HOME/.odsp-build-cache"
 
 export DISPLAY=127.0.0.1:0
 export LIBGL_ALWAYS_INDIRECT=1
-export GCM_CREDENTIAL_STORE=keychain
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export GCM_CREDENTIAL_STORE=keychain
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    export GCM_CREDENTIAL_STORE=manager.core
+fi
 export TSC_WATCHFILE="UseFsEventsWithFallbackDynamicPolling"
 
 export GPG_TTY=$(tty)
@@ -158,7 +164,9 @@ export MIDGARD_BACKFILL_CACHE_DIR="/Users/jakobhansen/.midgard-build-cache"
 export USE_PRETTIER_ORGANIZE_IMPORTS=1
 
 
-source ~/.torusrc
+if [ -f "~/.torusrc" ]; then
+    source ~/.torusrc
+fi
 
 # Add .NET Core SDK tools
 export PATH="$PATH:/Users/jakobhansen/.dotnet/tools"
@@ -185,3 +193,7 @@ export CPPFLAGS="-I/opt/homebrew/opt/node@18/include"
 export PATH="${HOME}/.pyenv/shims:${PATH}"
 
 export PATH="${PATH}:/Users/jakobhansen/.azureauth/0.9.2"
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+export PATH="{$PATH}:/mnt/c/Program Files/Git/clangarm64/bin/"
+export PATH="$HOME/.local/bin:$PATH"

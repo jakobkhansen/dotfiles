@@ -74,6 +74,11 @@ vim.lsp.config("lua_ls", {
 local roslyn_path = home
     .. "/Documents/Roslyn/Microsoft.CodeAnalysis.LanguageServer.dll"
 
+if vim.loop.os_uname().sysname == "Linux" then
+    roslyn_path = home
+        .. "/Documents/Roslyn/content/LanguageServer/linux-arm64/Microsoft.CodeAnalysis.LanguageServer.dll"
+end
+
 -- Windows uses backslashes and .exe-style paths, but dotnet itself is the same
 if vim.loop.os_uname().sysname == "Windows_NT" then
     roslyn_path = home

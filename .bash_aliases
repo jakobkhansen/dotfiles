@@ -10,6 +10,7 @@ fi
 
 # Custom alias list
 alias l='ls'
+alias fd=fdfind
 alias ff="cd \$(fd . --type d | fzf)"
 alias c="clear"
 alias n="nvim"
@@ -131,7 +132,7 @@ alias jsr="cd ~/Documents/1JS/checkouts"
 
 default_fzf_order=".. (root)\n"
 js() {
-    cd ~/Documents/Copilot-Dash/
+    cd /mnt/c/Users/jakobhansen/Documents/Copilot-Dash/
     worktree=$(git worktree list | grep -v "(bare)" | tail -r | fzf | awk '{print $1}')
     cd $worktree/sources
     packages="$default_fzf_order${$(ls)}"
@@ -177,15 +178,16 @@ gitopen() {
 }
 
 xcleanworktreesx() {
-    cd ~/Documents/1JS/
-    worktrees=$(git worktree list | grep -v "(bare)" | grep -v "main" | cut -f 1 -d " ")
+    cd /mnt/c/Users/jakobhansen/Documents/Copilot-Dash/
+    worktrees=$(git worktree list | grep -v "(bare)" | grep -v "master" | cut -f 1 -d " ")
+    echo $worktrees
     worktreelist=$(echo $worktrees | tr "\n" "\n")
     echo $worktreelist
     while IFS= read -r line; do
         echo "Deleting worktree $line"
         git worktree remove $line -f
     done <<< "$worktrees"
-    git branch | grep -v "main" | xargs git branch -D
+    git branch | grep -v "master" | xargs git branch -D
     git worktree prune
     git gc
 }
@@ -193,3 +195,6 @@ xcleanworktreesx() {
 xcleanunusedbranchesx() {
     git branch | grep -v "+" | grep -v "*" | xargs git branch -D
 }
+
+alias wh="cd /mnt/c/Users/jakobhansen/"
+alias git-credential-manager="/mnt/c/Program\ Files/Git/clangarm64/bin/git-credential-manager.exe"
