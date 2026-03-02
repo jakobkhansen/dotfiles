@@ -159,3 +159,4 @@ function wt {
 function wh {
     cd \\wsl$\Ubuntu\home\jakob
 }
+

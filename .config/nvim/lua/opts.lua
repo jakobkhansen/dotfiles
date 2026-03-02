@@ -47,8 +47,6 @@ vim.opt.laststatus = 3
 vim.opt.statusline = " "
 vim.opt.ruler = false
 
--- opt.ruler = false
-
 -- Better diffline
 vimscript("set diffopt+=linematch:60", false)
 

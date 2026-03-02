@@ -17,14 +17,14 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup({
-    -- Mini provides pairs, surround, commenting and bufremoval functionality,
+    -- Mini provides pairs, surround, commenting and bufremoval functionality
     "echasnovski/mini.nvim",
     {
         "folke/snacks.nvim",
         lazy = false,
     },
 
-    -- "Buffers",
+    -- "Buffers"
     {
         "akinsho/bufferline.nvim",
         dependencies = "kyazdani42/nvim-web-devicons",
@@ -33,8 +33,7 @@ require("lazy").setup({
     -- Visuals,
     "folke/tokyonight.nvim",
 
-    -- "Files and git",
-    "tpope/vim-fugitive",
+    -- "Files and git"
     "NeogitOrg/neogit",
     "lewis6991/gitsigns.nvim",
 
@@ -55,7 +54,7 @@ require("lazy").setup({
         },
     },
 
-    -- "LSP, languages and tools",
+    -- "LSP, languages and tools"
     "neovim/nvim-lspconfig",
     "nvimtools/none-ls.nvim",
     "onsails/lspkind-nvim",
@@ -76,23 +75,15 @@ require("lazy").setup({
         }
     },
     "mfussenegger/nvim-dap",
-    -- {
-    --     "pmizio/typescript-tools.nvim",
-    --     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    --     opts = {},
-    -- },
     "yioneko/nvim-vtsls",
     "mrcjkb/rustaceanvim",
     {
         "seblj/roslyn.nvim",
         ft = "cs",
-        opts = {
-        }
     },
     "windwp/nvim-ts-autotag",
-    -- "zbirenbaum/copilot.lua",
 
-    -- nvim-cmp auto-completion,
+    -- nvim-cmp auto-completion
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lsp",
@@ -105,10 +96,10 @@ require("lazy").setup({
     { "nvim-treesitter/nvim-treesitter", branch = "main" },
     {"nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
 
-    -- "Snippets",
+    -- "Snippets"
     {
         "L3MON4D3/LuaSnip",
-        build = "make install_jsregexp"
+        -- build = "make install_jsregexp"
     },
     "rafamadriz/friendly-snippets",
 
@@ -123,4 +114,3 @@ require("opts")
 require("lsp")
 require("language_configs")
 require("leadermaps")
--- require("ccdetect")
