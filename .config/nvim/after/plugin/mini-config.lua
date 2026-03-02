@@ -19,21 +19,21 @@ require("mini.pairs").setup({
       pair = '{}',
       neigh_pattern = '[^\\][^%w]',
     },
-    ['"'] = {
-      action = 'open',
-      pair = '""',
-      neigh_pattern = '[^\\][^%w]',
-    },
-    ["'"] = {
-      action = 'open',
-      pair = "''",
-      neigh_pattern = '[^\\][^%w]',
-    },
-    ['`'] = {
-      action = 'open',
-      pair = '``',
-      neigh_pattern = '[^\\][^%w]',
-    },
+    -- ['"'] = {
+    --   action = 'open',
+    --   pair = '""',
+    --   neigh_pattern = '[^\\][^%w]',
+    -- },
+    -- ["'"] = {
+    --   action = 'open',
+    --   pair = "''",
+    --   neigh_pattern = '[^\\][^%w]',
+    -- },
+    -- ['`'] = {
+    --   action = 'open',
+    --   pair = '``',
+    --   neigh_pattern = '[^\\][^%w]',
+    -- },
   },
 })
 

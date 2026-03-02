@@ -17,8 +17,8 @@ require("snacks").setup({
             layout = {
                 box = "horizontal",
                 backdrop = true,
-                width = 0.8,
-                height = 0.9,
+                width = 0.95,
+                height = 0.95,
                 border = "none",
                 {
                     box = "vertical",
@@ -28,7 +28,7 @@ require("snacks").setup({
                 {
                     win = "preview",
                     title = "{preview:Preview}",
-                    width = 0.45,
+                    width = 0.5,
                     border = "rounded",
                     title_pos = "center",
                 },
