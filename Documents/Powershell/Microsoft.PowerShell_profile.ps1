@@ -87,7 +87,7 @@ function cr {
     cd ~/Documents/Copilot-Dash/checkouts
 }
 
-$default_fzf_order = ".. (root)`n"
+$default_fzf_order = ".. (root)`nDashPortal\DashPortal`n"
 
 function cf {
     Set-Location "$HOME\Documents\Copilot-Dash"
@@ -106,6 +106,8 @@ function cf {
         Select-Object -ExpandProperty Name |
         Out-String
     )
+    $packages = echo $packages | grep -v "^DashPortal$"
+    echo $packages
 
     $choice = $packages | fzf
     if (-not $choice) { return }
