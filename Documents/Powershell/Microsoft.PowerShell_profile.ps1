@@ -162,3 +162,5 @@ function wh {
     cd \\wsl$\Ubuntu\home\jakob
 }
 
+
+oh-my-posh init pwsh --config '~/.config/oh-my-posh/config.json' | Invoke-Expression
