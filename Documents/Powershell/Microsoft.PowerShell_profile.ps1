@@ -147,6 +147,7 @@ function wt {
         Select-Object -ExpandProperty Name |
         Out-String
     )
+    $packages = echo $packages | grep -v "^DashPortal$"
 
     $choice = $packages | fzf
     if (-not $choice) { return }
