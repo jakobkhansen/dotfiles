@@ -70,6 +70,12 @@ vim.g.netrw_keepdir = 0
 
 vim.o.shellcmdflag = "-ic"
 
+-- cmdline
+opt.cmdheight = 0
+require("vim._core.ui2").enable({
+    enable = true
+})
+
 -- Terminal
 if utils.isWindows() then
     vim.o.shell = "pwsh"
