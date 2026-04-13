@@ -159,6 +159,24 @@ function wt {
     }
 }
 
+function xcleanworktreesx {
+    Set-Location "$HOME\Documents\Copilot-Dash"
+
+    $worktrees = git worktree list |
+        Where-Object { $_ -notmatch "\(bare\)" -and $_ -notmatch "master" -and $_ -notmatch "main" } |
+        ForEach-Object { ($_ -split '\s+')[0] }
+
+    foreach ($wt in $worktrees) {
+        if (-not $wt) { continue }
+        Write-Host "Deleting worktree $wt"
+        git worktree remove $wt --force --force
+    }
+
+    git branch | Where-Object { $_ -notmatch "master" -and $_ -notmatch "main" } | ForEach-Object { git branch -D $_.Trim() }
+    git worktree prune
+    git gc
+}
+
 function wh {
     cd \\wsl$\Ubuntu\home\jakob
 }
