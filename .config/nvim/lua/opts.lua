@@ -31,6 +31,7 @@ opt.smartcase = true
 opt.ignorecase = true
 opt.scrolloff = 5
 opt.foldenable = false
+opt.updatetime = 2000
 
 -- Don't auto-create comments on new-line
 autocmd("FileType", {
@@ -74,6 +75,13 @@ vim.o.shellcmdflag = "-ic"
 opt.cmdheight = 0
 require("vim._core.ui2").enable({
     enable = true
+})
+
+-- Enable autoread and set up checking triggers
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = "*",
 })
 
 -- Terminal

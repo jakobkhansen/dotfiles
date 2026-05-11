@@ -18,6 +18,14 @@
             "id": "User.newTab.5DEADB41"
         },
         {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b\r"
+            },
+            "id": "User.sendInput.8F63D3A9"
+        },
+        {
             "command": "duplicateTab",
             "id": "User.duplicateTab"
         }
@@ -27,6 +35,14 @@
     "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
     "keybindings": 
     [
+        {
+            "id": null,
+            "keys": "ctrl+shift+left"
+        },
+        {
+            "id": "User.sendInput.8F63D3A9",
+            "keys": "shift+enter"
+        },
         {
             "id": null,
             "keys": "ctrl+shift+f"
@@ -54,10 +70,6 @@
         {
             "id": null,
             "keys": "ctrl+shift+right"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+shift+left"
         },
         {
             "id": null,
@@ -239,6 +251,12 @@
                 "icon": "ms-appx:///ProfileIcons/vs-powershell.png",
                 "name": "Developer PowerShell for VS 18 (Copy)",
                 "startingDirectory": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community"
+            },
+            {
+                "guid": "{ccf177d0-85da-57b4-800b-607ee0ee008b}",
+                "hidden": false,
+                "name": "QMK",
+                "source": "Microsoft.WSL"
             }
         ]
     },

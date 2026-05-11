@@ -7,7 +7,7 @@ dap.adapters.netcoredbg = {
     type = 'executable',
     command =
         vim.fs.joinpath(home, 'Documents', 'netcoredbg', utils.isWindows() and 'netcoredbg.exe' or 'netcoredbg'),
-    args = { '--interpreter=vscode', '--log=file', '--engineLogging=./engineLog.txt' }
+    args = { '--interpreter=vscode' }
 }
 
 dap.configurations.cs = {

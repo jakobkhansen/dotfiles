@@ -3,6 +3,7 @@ local vimscript = vim.api.nvim_exec
 local command = vim.api.nvim_command
 local keymap = vim.api.nvim_set_keymap
 local keymap_opts = { noremap = true, silent = true }
+local term = require("terminal")
 local P = {}
 
 -- Theme
@@ -34,6 +35,11 @@ function P.ToggleTabLine()
     end
 end
 
+function P.Claude()
+    vim.cmd("vsplit")
+    term.openFullTerminal("claude")
+end
+
 add_command("ToggleTabLine", P.ToggleTabLine, {})
 
 -- Sessions
@@ -42,5 +48,7 @@ add_command("SessionRestore", ":source  ~/.local/share/nvim/session.vim<CR>", {}
 
 add_command("LightMode", P.LightMode, {})
 add_command("DarkMode", P.DarkMode, {})
+
+add_command("Claude", P.Claude, {})
 
 return P

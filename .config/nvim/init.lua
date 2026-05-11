@@ -93,8 +93,8 @@ require("lazy").setup({
     "hrsh7th/cmp-nvim-lsp-signature-help",
 
     -- "Treesitter & Syntax highlighting",
-    { "nvim-treesitter/nvim-treesitter", branch = "main" },
-    {"nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
+    { "nvim-treesitter/nvim-treesitter",             branch = "main" },
+    { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
 
     -- "Snippets"
     {
