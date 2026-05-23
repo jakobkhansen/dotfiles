@@ -17,6 +17,7 @@ opt.shiftwidth = 4
 opt.softtabstop = 4
 
 opt.textwidth = 90
+opt.numberwidth = 1
 
 -- Buffers
 opt.splitright = true
@@ -80,8 +81,8 @@ require("vim._core.ui2").enable({
 -- Enable autoread and set up checking triggers
 vim.o.autoread = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
-  command = "if mode() != 'c' | checktime | endif",
-  pattern = "*",
+    command = "if mode() != 'c' | checktime | endif",
+    pattern = "*",
 })
 
 -- Terminal
