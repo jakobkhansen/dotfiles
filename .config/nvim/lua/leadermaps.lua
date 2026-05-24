@@ -218,7 +218,8 @@ local mappings = {
         p = { require("agentic").open, "ai-prompt" },
         a = { require("agentic").permission_allow_once, "ai-allow" },
         t = { require("agentic").permission_allow_always, "ai-allow-always" },
-        r = { require("agentic").permission_reject, "ai-reject" }
+        r = { require("agentic").permission_reject, "ai-reject" },
+        s = { require("agentic").restore_session, "ai-sessions" }
     }
 }
 

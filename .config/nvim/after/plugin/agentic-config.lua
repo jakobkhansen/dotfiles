@@ -21,6 +21,20 @@ require("agentic").setup({
         center_on_navigate_hunks = true,
     },
     settings = {
-        move_cursor_to_chat_on_submit = false,
+        cursor_on_submit = "editor",
     },
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "AgenticChat",
+    callback = function(ev)
+        vim.treesitter.start(ev.buf, "markdown")
+    end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "AgenticInput",
+    callback = function()
+        vim.opt.tw = 0
+    end,
 })
