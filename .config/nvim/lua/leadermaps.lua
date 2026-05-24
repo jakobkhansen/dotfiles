@@ -84,24 +84,25 @@ local mappings = {
             "find-cword"
         },
         q = {
-            function() Snacks.picker.files({
-              title = "Select file glob",
-              confirm = function(picker)
-                local glob = picker.input.filter.pattern
-                picker:close()
+            function()
+                Snacks.picker.files({
+                    title = "Select file glob",
+                    confirm = function(picker)
+                        local glob = picker.input.filter.pattern
+                        picker:close()
 
-                if not glob or glob == "" then
-                  return
-                end
-                Snacks.picker.grep({
-                  title = "Grep in " .. glob,
-                  args = { "--glob", glob },
-                  confirm = function(picker)
-                      print(vim.inspect(picker))
-                  end
+                        if not glob or glob == "" then
+                            return
+                        end
+                        Snacks.picker.grep({
+                            title = "Grep in " .. glob,
+                            args = { "--glob", glob },
+                            confirm = function(picker)
+                                print(vim.inspect(picker))
+                            end
+                        })
+                    end
                 })
-              end
-              })
             end,
             "find-then-grep"
         }
@@ -212,6 +213,13 @@ local mappings = {
         end,
         "Term exec last command",
     },
+    -- AI
+    a = {
+        p = { require("agentic").open, "ai-prompt" },
+        a = { require("agentic").permission_allow_once, "ai-allow" },
+        t = { require("agentic").permission_allow_always, "ai-allow-always" },
+        r = { require("agentic").permission_reject, "ai-reject" }
+    }
 }
 
 local visual_mappings = {
@@ -219,6 +227,14 @@ local visual_mappings = {
     l = {
         a = { lsp.code_action, "code-actions" },
     },
+
+    -- AI
+    a = {
+        p = { require("agentic").open, "ai-prompt" },
+        a = { require("agentic").permission_allow_once, "ai-allow" },
+        t = { require("agentic").permission_allow_always, "ai-allow-always" },
+        r = { require("agentic").permission_reject, "ai-reject" }
+    }
 }
 
 -- Manually register mappings without which-key

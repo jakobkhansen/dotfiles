@@ -36,12 +36,16 @@
     "keybindings": 
     [
         {
+            "id": "User.sendInput.8F63D3A9",
+            "keys": "shift+enter"
+        },
+        {
             "id": null,
             "keys": "ctrl+shift+left"
         },
         {
-            "id": "User.sendInput.8F63D3A9",
-            "keys": "shift+enter"
+            "id": null,
+            "keys": "ctrl+v"
         },
         {
             "id": null,
@@ -49,15 +53,7 @@
         },
         {
             "id": null,
-            "keys": "ctrl+v"
-        },
-        {
-            "id": "Terminal.PrevTab",
-            "keys": "ctrl+shift+tab"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+shift+k"
+            "keys": "ctrl+c"
         },
         {
             "id": null,
@@ -65,7 +61,11 @@
         },
         {
             "id": null,
-            "keys": "ctrl+c"
+            "keys": "ctrl+shift+k"
+        },
+        {
+            "id": "Terminal.PrevTab",
+            "keys": "ctrl+shift+tab"
         },
         {
             "id": null,
@@ -171,7 +171,7 @@
                 "elevate": true,
                 "font": 
                 {
-                    "size": 12
+                    "size": 11
                 },
                 "guid": "{7a4dc545-b89f-485c-91a5-61bbe535a813}",
                 "hidden": false,

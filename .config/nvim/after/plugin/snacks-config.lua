@@ -2,7 +2,7 @@ require("snacks").setup({
     rename = { enabled = true },
     picker = {
         enabled = true,
-        ui_select = false,
+        ui_select = true,
         win = {
             input = {
                 keys = {

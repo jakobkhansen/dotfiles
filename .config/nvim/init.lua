@@ -24,7 +24,24 @@ require("lazy").setup({
         lazy = false,
     },
 
-    -- "Buffers"
+    -- AI
+    {
+        "olimorris/codecompanion.nvim",
+        version = "^19.0.0",
+        opts = {},
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+    },
+    -- {
+    --     "carlos-algms/agentic.nvim",
+    -- },
+    {
+        dir = "C:/Users/jakobhansen/Documents/Dev/agentic.nvim",
+    },
+
+    -- Buffers
     {
         "akinsho/bufferline.nvim",
         dependencies = "kyazdani42/nvim-web-devicons",
