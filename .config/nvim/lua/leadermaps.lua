@@ -219,7 +219,8 @@ local mappings = {
         a = { require("agentic").permission_allow_once, "ai-allow" },
         t = { require("agentic").permission_allow_always, "ai-allow-always" },
         r = { require("agentic").permission_reject, "ai-reject" },
-        s = { require("agentic").restore_session, "ai-sessions" }
+        s = { require("agentic").restore_session, "ai-sessions" },
+        m = { require("agentic").switch_mode, "ai-mode" }
     }
 }
 
@@ -234,7 +235,8 @@ local visual_mappings = {
         p = { require("agentic").open, "ai-prompt" },
         a = { require("agentic").permission_allow_once, "ai-allow" },
         t = { require("agentic").permission_allow_always, "ai-allow-always" },
-        r = { require("agentic").permission_reject, "ai-reject" }
+        r = { require("agentic").permission_reject, "ai-reject" },
+        m = { require("agentic").switch_mode, "ai-mode" }
     }
 }
 

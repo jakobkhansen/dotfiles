@@ -73,7 +73,10 @@ require("lazy").setup({
 
     -- "LSP, languages and tools"
     "neovim/nvim-lspconfig",
-    "nvimtools/none-ls.nvim",
+    {
+        "nvimtools/none-ls.nvim",
+        dependencies = { "nvimtools/none-ls-extras.nvim" },
+    },
     "onsails/lspkind-nvim",
     {
         "j-hui/fidget.nvim",

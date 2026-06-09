@@ -18,6 +18,8 @@ require("null-ls").setup({
         require("null-ls").builtins.formatting.stylua,
         require("null-ls").builtins.formatting.gofmt,
         require("null-ls").builtins.formatting.goimports,
+        require("none-ls.diagnostics.eslint_d"),
+        require("none-ls.code_actions.eslint_d"),
     },
     -- on_attach = function(_, bufnr)
     --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })

@@ -2,6 +2,9 @@ require("agentic").setup({
     -- Any ACP-compatible provider works. Built-in: "claude-agent-acp" | "gemini-acp" | "codex-acp" | "opencode-acp" | "cursor-acp" | "copilot-acp" | "auggie-acp" | "mistral-vibe-acp" | "cline-acp" | "goose-acp" | "kiro-acp" | "pi-acp"
     provider = "copilot-acp", -- setting the name here is all you need to get started
     keymaps = {
+        widget = {
+            change_mode = "<C-m>",
+        },
         prompt = {
             submit = {
                 "<CR>",
@@ -9,9 +12,6 @@ require("agentic").setup({
                     "<CR>",
                     mode = { "i", "n", "v" },
                 },
-            },
-            accept_completion = {
-                "<S-CR>",
             },
         }
     },
@@ -22,6 +22,19 @@ require("agentic").setup({
     },
     settings = {
         cursor_on_submit = "editor",
+    },
+    hooks = {
+        on_request_permission = function(data)
+            local tc = data.request.toolCall
+            if tc.kind == "edit" then
+                return nil
+            end
+            local title = (tc.title or ""):lower()
+            if title:find("%f[%w]git%f[%W]") then
+                return nil
+            end
+            return "allow_once"
+        end,
     },
 })
 

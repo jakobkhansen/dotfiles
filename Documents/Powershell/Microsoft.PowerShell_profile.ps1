@@ -45,7 +45,10 @@ function Dfiles {
 }
 
 function FuzzDir {
-    cd $(fzf --walker=dir)
+    cd $(fzf `
+        --walker=dir `
+        --walker-skip=".git,node_modules,target,bin,obj,dist,build"
+    )
 }
 
 function pushdotfiles {
