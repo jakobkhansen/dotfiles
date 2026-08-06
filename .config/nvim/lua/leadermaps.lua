@@ -231,13 +231,13 @@ local visual_mappings = {
     },
 
     -- AI
-    a = {
-        p = { require("agentic").open, "ai-prompt" },
-        a = { require("agentic").permission_allow_once, "ai-allow" },
-        t = { require("agentic").permission_allow_always, "ai-allow-always" },
-        r = { require("agentic").permission_reject, "ai-reject" },
-        m = { require("agentic").switch_mode, "ai-mode" }
-    }
+    -- a = {
+    --     p = { require("agentic").open, "ai-prompt" },
+    --     a = { require("agentic").permission_allow_once, "ai-allow" },
+    --     t = { require("agentic").permission_allow_always, "ai-allow-always" },
+    --     r = { require("agentic").permission_reject, "ai-reject" },
+    --     m = { require("agentic").switch_mode, "ai-mode" }
+    -- }
 }
 
 -- Manually register mappings without which-key
