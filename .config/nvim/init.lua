@@ -37,9 +37,9 @@ require("lazy").setup({
     -- {
     --     "carlos-algms/agentic.nvim",
     -- },
-    {
-        dir = "C:/Users/jakobhansen/Documents/Dev/agentic.nvim",
-    },
+    -- {
+    --     dir = "C:/Users/jakobhansen/Documents/Dev/agentic.nvim",
+    -- },
 
     -- Buffers
     {
@@ -53,6 +53,7 @@ require("lazy").setup({
     -- "Files and git"
     "NeogitOrg/neogit",
     "lewis6991/gitsigns.nvim",
+    "sindrets/diffview.nvim",
 
     -- IDE, UI
     {
@@ -100,6 +101,9 @@ require("lazy").setup({
     {
         "seblj/roslyn.nvim",
         ft = "cs",
+        opts = {
+            filewatching = "roslyn",
+        }
     },
     "windwp/nvim-ts-autotag",
 

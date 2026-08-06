@@ -99,4 +99,27 @@ vim.lsp.config("roslyn", {
             dotnet_organize_imports_on_format = true,
         },
     },
+    on_attach = function(client, bufnr)
+        if client.server_capabilities.inlayHintProvider then
+            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+        end
+    end,
+})
+
+-- Kotlin
+vim.lsp.enable("kotlin")
+vim.lsp.config("kotlin", {
+    filetypes = { 'kotlin' },
+    cmd = {
+        home .. "\\Documents\\kotlin-server\\bin\\intellij-server.exe",
+        "--stdio"
+    },
+    root_markers = {
+        'settings.gradle',     -- Gradle (multi-project)
+        'settings.gradle.kts', -- Gradle (multi-project)
+        'pom.xml',             -- Maven
+        'build.gradle',        -- Gradle
+        'build.gradle.kts',    -- Gradle
+        'workspace.json',      -- Used to integrate your own build system
+    },
 })

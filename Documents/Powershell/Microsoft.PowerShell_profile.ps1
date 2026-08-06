@@ -47,7 +47,7 @@ function Dfiles {
 function FuzzDir {
     cd $(fzf `
         --walker=dir `
-        --walker-skip=".git,node_modules,target,bin,obj,dist,build"
+        --walker-skip=".git,node_modules,target,bin,obj,dist,build,AppData"
     )
 }
 
@@ -69,7 +69,7 @@ function r {
 
 function keeb {
     & "$HOME\Documents\Kanata\kanata_windows_gui_winIOv2_cmd_allowed_arm64.exe" `
-      -c "$HOME\Documents\colemak-jkl\kanata\kanata.kbd"
+      -c "$HOME\Documents\colemak-jkl\kanata\kanata.kbd" -n
 }
 
 $env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"

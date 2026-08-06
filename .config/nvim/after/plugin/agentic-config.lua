@@ -31,6 +31,27 @@ require("agentic").setup({
             end
             local title = (tc.title or ""):lower()
             if title:find("%f[%w]git%f[%W]") then
+                local read_only_git = {
+                    status = true, diff = true, log = true, show = true,
+                    blame = true, ["ls-files"] = true, ["ls-tree"] = true,
+                    ["rev-parse"] = true, ["rev-list"] = true,
+                    describe = true, shortlog = true, reflog = true,
+                    grep = true, whatchanged = true, ["cat-file"] = true,
+                }
+                local rest = title:match("%f[%w]git%s+(.+)$") or ""
+                while #rest > 0 do
+                    local word, tail = rest:match("^(%S+)%s*(.*)$")
+                    if not word then break end
+                    if word == "-c" or word == "-C"
+                        or word == "--git-dir" or word == "--work-tree"
+                        or word == "--namespace" then
+                        rest = tail:match("^%S+%s*(.*)$") or ""
+                    elseif word:sub(1, 1) == "-" then
+                        rest = tail
+                    else
+                        return read_only_git[word] and "allow_once" or nil
+                    end
+                end
                 return nil
             end
             return "allow_once"
