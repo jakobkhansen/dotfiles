@@ -41,7 +41,7 @@ function Ls {
 $OriginalSetLocation = Get-Command Set-Location
 
 function Dfiles {
-    git --git-dir=C:\Users\jakobhansen\.dotfiles --work-tree=C:\Users\jakobhansen $args
+    git --git-dir=$HOME\.dotfiles --work-tree=$HOME $args
 }
 
 function FuzzDir {
