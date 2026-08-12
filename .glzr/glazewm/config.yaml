@@ -206,21 +206,33 @@ keybindings:
   # Terminal and Git Bash respectively.
   - commands: ["shell-exec wt"]
     bindings: ["alt+enter"]
+  # Nordic characters via sendtext.exe (built by send-text.ps1 -Build).
+  # U+00E5 = å, U+00E6 = æ, U+00F8 = ø - escapes keep this file pure ASCII.
   - commands:
-      - 'shell-exec --hide-window powershell "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait(''å'')"'
+      - 'shell-exec --hide-window C:/Users/jakobhansen/AppData/Local/sendtext/sendtext.exe U+00E5'
     bindings: ["alt+a"]
   - commands:
-      - 'shell-exec --hide-window powershell "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait(''æ'')"'
+      - 'shell-exec --hide-window C:/Users/jakobhansen/AppData/Local/sendtext/sendtext.exe U+00E6'
     bindings: ["alt+e"]
   - commands:
-      - 'shell-exec --hide-window powershell "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.SendKeys]::SendWait(''ø'')"'
+      - 'shell-exec --hide-window C:/Users/jakobhansen/AppData/Local/sendtext/sendtext.exe U+00F8'
     bindings: ["alt+o"]
+  # U+00C5 = Å, U+00C6 = Æ, U+00D8 = Ø
+  - commands:
+      - 'shell-exec --hide-window C:/Users/jakobhansen/AppData/Local/sendtext/sendtext.exe U+00C5'
+    bindings: ["alt+shift+a"]
+  - commands:
+      - 'shell-exec --hide-window C:/Users/jakobhansen/AppData/Local/sendtext/sendtext.exe U+00C6'
+    bindings: ["alt+shift+e"]
+  - commands:
+      - 'shell-exec --hide-window C:/Users/jakobhansen/AppData/Local/sendtext/sendtext.exe U+00D8'
+    bindings: ["alt+shift+o"]
   - commands:
       - 'shell-exec --hide-window powershell "rasdial.exe MSFT-AzVPN-Manual"'
     bindings: ["alt+v"]
   - commands:
       [
-        'shell-exec --hide-window C:/Users/jakobhansen/AppData/Local/btaudio/btaudio.exe "AirPods" --toggle --fallback C:/Users/jakobhansen/.glzr/glazewm/Connect-BluetoothDevice.ps1',
+        'shell-exec --hide-window C:/Users/jakobhansen/AppData/Local/btaudio/btaudio.exe "AirPods" --toggle',
       ]
     bindings: ["alt+b"]
 
