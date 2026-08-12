@@ -67,6 +67,10 @@ function r {
     Remove-Item -Path $tmp
 }
 
+function ng {
+    nvim -c "Neogit"
+}
+
 function keeb {
     & "$HOME\Documents\Kanata\kanata_windows_gui_winIOv2_cmd_allowed_arm64.exe" `
       -c "$HOME\Documents\colemak-jkl\kanata\kanata.kbd" -n

@@ -4,8 +4,6 @@ local term = require("terminal")
 local lsp = vim.lsp.buf
 local diagnostic = vim.diagnostic
 local commands = require("commands")
-local dap = require("dap")
-local dapwidgets = require("dap.ui.widgets")
 
 vim.g.mapleader = " "
 
@@ -166,13 +164,13 @@ local mappings = {
     -- Debug / test
     d = {
         f = { "<CMD>Neotest run file<CR>", "test-file" },
-        t = { require("neotest").run.run, "test-nearest" },
+        t = { function() require("neotest").run.run() end, "test-nearest" },
         s = { "<CMD>Neotest summary<CR>", "test-summary" },
         o = { "<CMD>Neotest output<CR>", "test-output" },
-        b = { dap.toggle_breakpoint, "toggle-breakpoint" },
-        h = { dapwidgets.hover, "debug-hover" },
-        c = { dap.continue, "debug-continue" },
-        n = { dap.step_over, "debug-continue" },
+        b = { function() require("dap").toggle_breakpoint() end, "toggle-breakpoint" },
+        h = { function() require("dap.ui.widgets").hover() end, "debug-hover" },
+        c = { function() require("dap").continue() end, "debug-continue" },
+        n = { function() require("dap").step_over() end, "debug-continue" },
     },
     -- Path, cwd, session
     p = {

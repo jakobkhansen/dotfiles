@@ -28,7 +28,17 @@ require("lazy").setup({
     {
         "olimorris/codecompanion.nvim",
         version = "^19.0.0",
-        opts = {},
+        cmd = {
+            "CodeCompanion",
+            "CodeCompanionChat",
+            "CodeCompanionActions",
+            "CodeCompanionCmd",
+            "CodeCompanionCLI",
+            "CodeCompanionCodeReview",
+        },
+        config = function()
+            require("lazyload.codecompanion")
+        end,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
@@ -51,9 +61,26 @@ require("lazy").setup({
     "folke/tokyonight.nvim",
 
     -- "Files and git"
-    "NeogitOrg/neogit",
+    {
+        "NeogitOrg/neogit",
+        cmd = "Neogit",
+        config = function()
+            require("lazyload.neogit")
+        end,
+    },
     "lewis6991/gitsigns.nvim",
-    "sindrets/diffview.nvim",
+    {
+        "sindrets/diffview.nvim",
+        cmd = {
+            "DiffviewOpen",
+            "DiffviewClose",
+            "DiffviewToggleFiles",
+            "DiffviewFocusFiles",
+            "DiffviewRefresh",
+            "DiffviewFileHistory",
+            "DiffviewLog",
+        },
+    },
 
     -- IDE, UI
     {
@@ -78,7 +105,6 @@ require("lazy").setup({
         "nvimtools/none-ls.nvim",
         dependencies = { "nvimtools/none-ls-extras.nvim" },
     },
-    "onsails/lspkind-nvim",
     {
         "j-hui/fidget.nvim",
         config = function()
@@ -87,6 +113,10 @@ require("lazy").setup({
     },
     {
         "nvim-neotest/neotest",
+        cmd = "Neotest",
+        config = function()
+            require("lazyload.neotest")
+        end,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
@@ -95,7 +125,13 @@ require("lazy").setup({
             "nvim-neotest/nvim-nio",
         }
     },
-    "mfussenegger/nvim-dap",
+    {
+        "mfussenegger/nvim-dap",
+        lazy = true,
+        config = function()
+            require("lazyload.dap")
+        end,
+    },
     "yioneko/nvim-vtsls",
     "mrcjkb/rustaceanvim",
     {
@@ -108,13 +144,23 @@ require("lazy").setup({
     "windwp/nvim-ts-autotag",
 
     -- nvim-cmp auto-completion
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-nvim-lsp",
-    "saadparwaiz1/cmp_luasnip",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
+    {
+        "hrsh7th/nvim-cmp",
+        event = { "InsertEnter", "CmdlineEnter" },
+        config = function()
+            require("lazyload.cmp")
+        end,
+        dependencies = {
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-nvim-lsp",
+            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
+            "onsails/lspkind-nvim",
+            "L3MON4D3/LuaSnip",
+        },
+    },
 
     -- "Treesitter & Syntax highlighting",
     { "nvim-treesitter/nvim-treesitter",             branch = "main" },
@@ -123,9 +169,13 @@ require("lazy").setup({
     -- "Snippets"
     {
         "L3MON4D3/LuaSnip",
+        lazy = true,
         -- build = "make install_jsregexp"
+        dependencies = { "rafamadriz/friendly-snippets" },
+        config = function()
+            require("lazyload.luasnip")
+        end,
     },
-    "rafamadriz/friendly-snippets",
 
     -- "Notes and organization",
     "jakobkhansen/journal.nvim",
