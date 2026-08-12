@@ -218,6 +218,11 @@ keybindings:
   - commands:
       - 'shell-exec --hide-window powershell "rasdial.exe MSFT-AzVPN-Manual"'
     bindings: ["alt+v"]
+  - commands:
+      [
+        'shell-exec --hide-window C:/Users/jakobhansen/AppData/Local/btaudio/btaudio.exe "AirPods" --toggle --fallback C:/Users/jakobhansen/.glzr/glazewm/Connect-BluetoothDevice.ps1',
+      ]
+    bindings: ["alt+b"]
 
   # Change focus to a workspace defined in `workspaces` config.
   - commands: ["focus --workspace 1"]

@@ -25,11 +25,4 @@ require("codecompanion").setup({
             },
         },
     },
-    -- adapters = {
-    --     acp = {
-    --         copilot = function()
-    --             return require("codecompanion.adapters").extend("copilot_cli", {})
-    --         end
-    --     }
-    -- }
 })
