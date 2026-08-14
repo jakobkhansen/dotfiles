@@ -35,9 +35,28 @@ function P.ToggleTabLine()
     end
 end
 
-function P.Claude()
+function P.Copilot()
     vim.cmd("vsplit")
-    term.openFullTerminal("claude")
+    term.openFullTerminal("copilot")
+end
+
+-- Copies filepath(:selected linenumbers) to clipboard
+function P.CopySelection()
+    local selection = vim.fn.expand("%") .. ':' .. GetLineRange()
+    print(selection)
+    vim.fn.setreg("+", selection)
+end
+
+function GetLineRange()
+    local mode = vim.fn.mode()
+    if mode == "v" or mode == "V" or mode == "^V" then
+        local start = vim.fn.getpos("v")[2]
+        local finish = vim.fn.getcurpos()[2]
+
+        return start .. '-' .. finish
+    end
+
+    return vim.fn.line(".")
 end
 
 add_command("ToggleTabLine", P.ToggleTabLine, {})
@@ -49,6 +68,8 @@ add_command("SessionRestore", ":source  ~/.local/share/nvim/session.vim<CR>", {}
 add_command("LightMode", P.LightMode, {})
 add_command("DarkMode", P.DarkMode, {})
 
-add_command("Claude", P.Claude, {})
+add_command("Copilot", P.Copilot, {})
+
+add_command("CopySelection", P.CopySelection, {})
 
 return P

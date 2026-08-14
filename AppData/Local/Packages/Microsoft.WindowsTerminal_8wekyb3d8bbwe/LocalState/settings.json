@@ -18,16 +18,16 @@
             "id": "User.newTab.5DEADB41"
         },
         {
+            "command": "duplicateTab",
+            "id": "User.duplicateTab"
+        },
+        {
             "command": 
             {
                 "action": "sendInput",
                 "input": "\u001b\r"
             },
             "id": "User.sendInput.8F63D3A9"
-        },
-        {
-            "command": "duplicateTab",
-            "id": "User.duplicateTab"
         }
     ],
     "copyFormatting": "none",
@@ -36,12 +36,12 @@
     "keybindings": 
     [
         {
-            "id": "User.sendInput.8F63D3A9",
-            "keys": "shift+enter"
-        },
-        {
             "id": null,
             "keys": "ctrl+shift+left"
+        },
+        {
+            "id": "User.sendInput.8F63D3A9",
+            "keys": "shift+enter"
         },
         {
             "id": null,
@@ -257,6 +257,18 @@
                 "hidden": false,
                 "name": "QMK",
                 "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{07e9b9e8-71aa-5163-bb12-d67b4bfb5182}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{a92ec754-b035-565c-801d-d39c9b54d7de}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },

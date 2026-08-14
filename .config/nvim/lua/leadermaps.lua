@@ -181,6 +181,7 @@ local mappings = {
         n = { "<CMD>cd $HOME/.config/nvim<CR>", "path-neovim-config" },
         c = { "<CMD>cd %:p:h<CR><CMD>pwd<CR>", "path-current-file" },
         o = { "<CMD>cd $HOME/Documents/gtd<CR>", "path-gtd" },
+        y = { "<CMD>CopySelection<CR>", "path-yank" }
     },
     -- Organize, notes, etc
     j = {
@@ -211,19 +212,13 @@ local mappings = {
         end,
         "Term exec last command",
     },
-    -- AI
-    -- a = {
-    --     p = { require("agentic").open, "ai-prompt" },
-    --     a = { require("agentic").permission_allow_once, "ai-allow" },
-    --     t = { require("agentic").permission_allow_always, "ai-allow-always" },
-    --     r = { require("agentic").permission_reject, "ai-reject" },
-    --     s = { require("agentic").restore_session, "ai-sessions" },
-    --     m = { require("agentic").switch_mode, "ai-mode" }
-    -- }
 }
 
 local visual_mappings = {
-    p = { '"_dP', "Paste without register overwrite" },
+    p = {
+        p = { '"_dP', "Paste without register overwrite" },
+        y = { "<CMD>CopySelection<CR>", "path-yank" }
+    },
     l = {
         a = { lsp.code_action, "code-actions" },
     },
