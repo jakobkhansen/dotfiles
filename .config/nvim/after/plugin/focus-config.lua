@@ -5,7 +5,7 @@ require("focus").setup({
         enable = true,
         width = 0,
         height = 0,
-        minwidth = 50,
+        minwidth = 40,
         minheight = 0,
         focusedwindow_minwidth = 0,
         focusedwindow_minheight = 0,

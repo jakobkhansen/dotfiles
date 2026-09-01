@@ -13,7 +13,7 @@ require("neo-tree").setup({
     enable_diagnostics = false,
     sort_case_insensitive = false, -- used when sorting files and directories in the tree
     window = {
-        width = 75,
+        width = 50,
         mappings = {
             ["<space>"] = "none",
             ["l"] = "open_with_window_picker",
@@ -108,27 +108,27 @@ require("neo-tree").setup({
             folder_empty = "",
         },
         file_size = {
-          enabled = false,
-          width = 12, -- width of the column
-          required_width = 64, -- min width of window required to show this column
+            enabled = false,
+            width = 12,        -- width of the column
+            required_width = 64, -- min width of window required to show this column
         },
         type = {
-          enabled = false,
-          width = 10, -- width of the column
-          required_width = 122, -- min width of window required to show this column
+            enabled = false,
+            width = 10,         -- width of the column
+            required_width = 122, -- min width of window required to show this column
         },
         last_modified = {
-          enabled = false,
-          width = 20, -- width of the column
-          required_width = 88, -- min width of window required to show this column
+            enabled = false,
+            width = 20,        -- width of the column
+            required_width = 88, -- min width of window required to show this column
         },
         created = {
-          enabled = false,
-          width = 20, -- width of the column
-          required_width = 110, -- min width of window required to show this column
+            enabled = false,
+            width = 20,         -- width of the column
+            required_width = 110, -- min width of window required to show this column
         },
         symlink_target = {
-          enabled = false,
+            enabled = false,
         },
     },
     event_handlers = {
