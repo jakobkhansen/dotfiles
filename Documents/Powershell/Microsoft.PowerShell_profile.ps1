@@ -87,6 +87,9 @@ Set-Alias l Ls
 Set-Alias ff FuzzDir
 Set-Alias dotfiles Dfiles -Option AllScope
 
+function oc {
+    opencode --port
+}
 
 # MS stuff
 

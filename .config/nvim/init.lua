@@ -44,17 +44,14 @@ require("lazy").setup({
             "nvim-treesitter/nvim-treesitter",
         },
     },
-    -- {
-    --     "carlos-algms/agentic.nvim",
-    -- },
-    -- {
-    --     dir = "C:/Users/jakobhansen/Documents/Dev/agentic.nvim",
-    -- },
 
     -- Buffers
     {
         "akinsho/bufferline.nvim",
         dependencies = "kyazdani42/nvim-web-devicons",
+    },
+    {
+        "nvim-focus/focus.nvim",
     },
 
     -- Visuals,

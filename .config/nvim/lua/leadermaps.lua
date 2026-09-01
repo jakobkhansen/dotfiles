@@ -212,6 +212,12 @@ local mappings = {
         end,
         "Term exec last command",
     },
+    -- AI
+    a = {
+        p = { function() require("copilot_cli").ask("@this: ") end, "ai-prompt" },
+        n = { function() require("copilot_cli").ask_new("@this: ") end, "ai-prompt-new" },
+        s = { function() require("copilot_cli").switch() end, "ai-copilot-switch" },
+    }
 }
 
 local visual_mappings = {
@@ -224,13 +230,10 @@ local visual_mappings = {
     },
 
     -- AI
-    -- a = {
-    --     p = { require("agentic").open, "ai-prompt" },
-    --     a = { require("agentic").permission_allow_once, "ai-allow" },
-    --     t = { require("agentic").permission_allow_always, "ai-allow-always" },
-    --     r = { require("agentic").permission_reject, "ai-reject" },
-    --     m = { require("agentic").switch_mode, "ai-mode" }
-    -- }
+    a = {
+        p = { function() require("copilot_cli").ask("@this: ") end, "ai-prompt" },
+        n = { function() require("copilot_cli").ask_new("@this: ") end, "ai-prompt-new" },
+    }
 }
 
 -- Manually register mappings without which-key
