@@ -91,6 +91,14 @@ function oc {
     opencode --port
 }
 
+function ai {
+    copilot @args
+}
+
+function dev {
+    cd ~/Documents/Dev
+}
+
 # MS stuff
 
 function cr {

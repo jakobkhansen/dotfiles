@@ -61,6 +61,10 @@ local mappings = {
             end,
             "find-git",
         },
+        u = {
+            Snacks.picker.git_diff,
+            "find-git-unstaged"
+        },
         r = {
             function()
                 term.openFloatTerm("ranger")

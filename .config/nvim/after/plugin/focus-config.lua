@@ -29,12 +29,12 @@ require("focus").setup({
             enable = false,
             list = '+1',
         },
-        signcolumn = true,
+        signcolumn = false,
         winhighlight = false,
     }
 })
 
-local ignore_filetypes = { 'neo-tree' }
+local ignore_filetypes = { 'neo-tree', 'qf' }
 local ignore_buftypes = { 'nofile', 'prompt', 'popup' }
 
 local augroup =

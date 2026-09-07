@@ -95,3 +95,54 @@ if utils.isWindows() then
     vim.o.shellquote = ""
     vim.o.shellxquote = ""
 end
+
+-- Quickfix list
+autocmd('FileType', {
+    pattern = 'qf',
+    desc = 'Attach keymaps for quickfix list',
+    callback = function()
+        vim.keymap.set('n', 'dd', function()
+            local qf_list = vim.fn.getqflist()
+
+            local current_line_number = vim.fn.line('.')
+
+            table.remove(qf_list, current_line_number)
+
+            vim.fn.setqflist(qf_list, 'r')
+
+            vim.fn.cursor(current_line_number, 1)
+        end, {
+            buffer = true,
+            silent = true,
+            desc = 'Remove quickfix item under cursor',
+        })
+
+        vim.keymap.set('v', 'd', function()
+            local qf_list = vim.fn.getqflist()
+            local first_line = vim.fn.line('v')
+            local last_line = vim.fn.line('.')
+
+            -- Normalize order in case selection was made upward
+            if first_line > last_line then
+                first_line, last_line = last_line, first_line
+            end
+
+            -- Remove from bottom to top so indices don't shift
+            for i = last_line, first_line, -1 do
+                if qf_list[i] then
+                    table.remove(qf_list, i)
+                end
+            end
+
+            vim.fn.setqflist(qf_list, 'r')
+
+            -- Exit visual mode and reposition cursor
+            vim.api.nvim_input('<Esc>')
+            vim.fn.cursor(first_line, 1)
+        end, {
+            buffer = true,
+            silent = true,
+            desc = 'Remove selected quickfix items',
+        })
+    end
+})
