@@ -34,7 +34,7 @@ require("focus").setup({
     }
 })
 
-local ignore_filetypes = { 'neo-tree', 'qf', 'DiffviewFiles' }
+local ignore_filetypes = { 'neo-tree', 'qf', 'DiffviewFiles', 'atlas-ui.diff-files' }
 local ignore_buftypes = { 'prompt', 'popup' }
 
 local augroup =

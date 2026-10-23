@@ -131,7 +131,6 @@ local mappings = {
         s = { "<CMD>Neogit<CR>", "git-status" },
         c = { Snacks.picker.git_log, "git-commits" },
         b = { Snacks.picker.git_branches, "git-branches" },
-        d = { "<CMD>GitDiffHead<CR>", "git-diffview" },
         o = { "<CMD>silent !gitopen %<CR>", "git-open" },
         -- Hunks
         h = {

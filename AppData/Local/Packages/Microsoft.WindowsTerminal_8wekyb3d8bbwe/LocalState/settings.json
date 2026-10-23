@@ -36,16 +36,12 @@
     "keybindings": 
     [
         {
-            "id": null,
-            "keys": "ctrl+shift+left"
-        },
-        {
             "id": "User.sendInput.8F63D3A9",
             "keys": "shift+enter"
         },
         {
             "id": null,
-            "keys": "ctrl+v"
+            "keys": "ctrl+shift+left"
         },
         {
             "id": null,
@@ -53,7 +49,15 @@
         },
         {
             "id": null,
-            "keys": "ctrl+c"
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "Terminal.PrevTab",
+            "keys": "ctrl+shift+tab"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+k"
         },
         {
             "id": null,
@@ -61,11 +65,7 @@
         },
         {
             "id": null,
-            "keys": "ctrl+shift+k"
-        },
-        {
-            "id": "Terminal.PrevTab",
-            "keys": "ctrl+shift+tab"
+            "keys": "ctrl+c"
         },
         {
             "id": null,
@@ -125,6 +125,8 @@
             "colorScheme": "Tokyo Night Storm",
             "font": 
             {
+                "cellHeight": "1.2",
+                "cellWidth": "0.565",
                 "face": "FiraMono Nerd Font Mono",
                 "size": 11
             },
