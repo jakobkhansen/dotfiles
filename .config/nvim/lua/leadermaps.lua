@@ -62,8 +62,12 @@ local mappings = {
             "find-git",
         },
         u = {
-            Snacks.picker.git_diff,
+            function() Snacks.picker.git_diff({ group = true }) end,
             "find-git-unstaged"
+        },
+        q = {
+            Snacks.picker.qflist,
+            "find-fqlist"
         },
         r = {
             function()
@@ -77,36 +81,9 @@ local mappings = {
             Snacks.picker.grep,
             "find-code",
         },
-        p = {
-            Snacks.picker.projects,
-            "find-project"
-        },
         w = {
             utils.grepWordUnderCursor,
             "find-cword"
-        },
-        q = {
-            function()
-                Snacks.picker.files({
-                    title = "Select file glob",
-                    confirm = function(picker)
-                        local glob = picker.input.filter.pattern
-                        picker:close()
-
-                        if not glob or glob == "" then
-                            return
-                        end
-                        Snacks.picker.grep({
-                            title = "Grep in " .. glob,
-                            args = { "--glob", glob },
-                            confirm = function(picker)
-                                print(vim.inspect(picker))
-                            end
-                        })
-                    end
-                })
-            end,
-            "find-then-grep"
         }
     },
     -- Buffer
@@ -154,7 +131,7 @@ local mappings = {
         s = { "<CMD>Neogit<CR>", "git-status" },
         c = { Snacks.picker.git_log, "git-commits" },
         b = { Snacks.picker.git_branches, "git-branches" },
-        d = { "<CMD>DiffviewOpen main...HEAD<CR>", "git-diffview" },
+        d = { "<CMD>GitDiffHead<CR>", "git-diffview" },
         o = { "<CMD>silent !gitopen %<CR>", "git-open" },
         -- Hunks
         h = {

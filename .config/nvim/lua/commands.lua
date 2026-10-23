@@ -42,7 +42,7 @@ end
 
 -- Copies filepath(:selected linenumbers) to clipboard
 function P.CopySelection()
-    local selection = vim.fn.expand("%") .. ':' .. GetLineRange()
+    local selection = vim.fn.expand("%:.") .. ':' .. GetLineRange()
     print(selection)
     vim.fn.setreg("+", selection)
 end

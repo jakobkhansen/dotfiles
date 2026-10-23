@@ -78,6 +78,12 @@ require("lazy").setup({
             "DiffviewLog",
         },
     },
+    {
+        "CoreyKaylor/diffbandit.nvim",
+        config = function()
+            require("diffbandit").setup()
+        end,
+    },
 
     -- IDE, UI
     {
@@ -185,3 +191,4 @@ require("opts")
 require("lsp")
 require("language_configs")
 require("leadermaps")
+require("gitdiff")

@@ -15,7 +15,7 @@ vim.diagnostic.config({
         text = {
             [vim.diagnostic.severity.ERROR] = " ",
             [vim.diagnostic.severity.INFO] = " ",
-            [vim.diagnostic.severity.HINT] = "󰌶 ",
+            [vim.diagnostic.severity.HINT] = "",
             [vim.diagnostic.severity.WARN] = " "
         }
     }
@@ -71,28 +71,18 @@ vim.lsp.config("lua_ls", {
 })
 
 -- C# / Roslyn
-local roslyn_path = home
-    .. "/Documents/Roslyn/Microsoft.CodeAnalysis.LanguageServer.dll"
-
-if vim.loop.os_uname().sysname == "Linux" then
-    roslyn_path = home
-        .. "/Documents/Roslyn/content/LanguageServer/linux-arm64/Microsoft.CodeAnalysis.LanguageServer.dll"
-end
-
--- Windows uses backslashes and .exe-style paths, but dotnet itself is the same
-if vim.loop.os_uname().sysname == "Windows_NT" then
-    roslyn_path = home
-        .. "\\Documents\\Roslyn\\Microsoft.CodeAnalysis.LanguageServer.dll"
-end
-
+local executable = vim.fn.has("win32") == 1 and "roslyn-language-server.exe" or "roslyn-language-server"
+local roslyn_path = vim.fs.joinpath(home, "Documents", "Roslyn", executable)
 
 vim.lsp.config("roslyn", {
     cmd = {
-        "dotnet",
         roslyn_path,
         "--logLevel=Information",
         '--extensionLogDirectory', vim.fs.joinpath(vim.uv.os_tmpdir(), 'roslyn_ls/logs'),
-        "--stdio"
+        "--clientProcessId",
+        tostring(vim.uv.os_getpid()),
+        "--stdio",
+        "--daemon-mode"
     },
     settings = {
         ["csharp|formatting"] = {
