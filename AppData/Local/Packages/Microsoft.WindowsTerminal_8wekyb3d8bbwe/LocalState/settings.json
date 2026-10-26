@@ -36,12 +36,16 @@
     "keybindings": 
     [
         {
+            "id": null,
+            "keys": "ctrl+shift+left"
+        },
+        {
             "id": "User.sendInput.8F63D3A9",
             "keys": "shift+enter"
         },
         {
             "id": null,
-            "keys": "ctrl+shift+left"
+            "keys": "ctrl+v"
         },
         {
             "id": null,
@@ -49,15 +53,7 @@
         },
         {
             "id": null,
-            "keys": "ctrl+v"
-        },
-        {
-            "id": "Terminal.PrevTab",
-            "keys": "ctrl+shift+tab"
-        },
-        {
-            "id": null,
-            "keys": "ctrl+shift+k"
+            "keys": "ctrl+c"
         },
         {
             "id": null,
@@ -65,7 +61,11 @@
         },
         {
             "id": null,
-            "keys": "ctrl+c"
+            "keys": "ctrl+shift+k"
+        },
+        {
+            "id": "Terminal.PrevTab",
+            "keys": "ctrl+shift+tab"
         },
         {
             "id": null,
@@ -128,7 +128,7 @@
                 "cellHeight": "1.2",
                 "cellWidth": "0.565",
                 "face": "FiraMono Nerd Font Mono",
-                "size": 11
+                "size": 10.5
             },
             "padding": "0",
             "scrollbarState": "hidden"
