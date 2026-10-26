@@ -1,3 +1,13 @@
+local providers = require("atlas.providers")
+local resolve = providers.resolve
+
+providers.resolve = function(value, opts)
+    if type(value) == "string" then
+        value = value:gsub("^https?://o365exchange%.visualstudio%.com/", "https://dev.azure.com/O365Exchange/")
+    end
+    return resolve(value, opts)
+end
+
 require("atlas").setup({
     ui = {
         -- Set either to false to keep your existing statusline.
@@ -30,27 +40,27 @@ require("atlas").setup({
 
             -- AtlasDiff options; external viewers use their own configuration.
             layout = "inline", -- "inline" or "side-by-side".
-            compact = true,    -- Start with only changed hunks and surrounding context visible.
+            compact = false,   -- Start with only changed hunks and surrounding context visible.
             lsp = {
                 -- Back the new side of the diff with a detached worktree at the PR head so it is made of
                 -- real files and your language servers attach to it (AtlasDiff and CodeDiff). Off by default.
-                enabled = false,
+                enabled = true,
                 -- Defaults to `stdpath("cache")/atlas/worktrees/<repo>/pr-<id>` (or `<repo>/<sha>` without a PR).
                 -- May be an absolute path, or a function receiving
                 -- { repo_root, repo_full_name, pr_id, head_sha, default } that returns a path or nil.
                 dir = nil,
                 -- Directories symlinked from your checkout into the worktree so servers can resolve
                 -- dependencies. These are the same directories on disk, not copies.
-                link = {}, -- e.g. { "node_modules", ".venv" }
+                link = { "target" }, -- e.g. { "node_modules", ".venv" }
             },
             explorer = {
-                grouped = true,             -- Group changed files by directory.
+                grouped = true,          -- Group changed files by directory.
                 hidden = false,
-                show_commits = false,       -- Set true to show commits below changed files initially.
+                show_commits = false,    -- Set true to show commits below changed files initially.
                 width = 40,
-                initial_focus = "explorer", -- "explorer" or "diff".
-                preview = false,            -- Show a file as soon as the explorer cursor moves onto it.
-                focus_on_select = false,    -- Move into the diff after selecting a file.
+                initial_focus = "diff",  -- "explorer" or "diff".
+                preview = true,          -- Show a file as soon as the explorer cursor moves onto it.
+                focus_on_select = false, -- Move into the diff after selecting a file.
                 ignore = { ".git/**", ".jj/**" },
             },
         },

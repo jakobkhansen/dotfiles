@@ -177,6 +177,7 @@ function wt {
     }
 }
 
+
 function xcleanworktreesx {
     Set-Location "$HOME\Documents\Copilot-Dash"
 
@@ -195,9 +196,14 @@ function xcleanworktreesx {
     git gc
 }
 
-function wh {
-    cd \\wsl$\Ubuntu\home\jakob
+function review {
+    $env:AZURE_DEVOPS_TOKEN = (az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798 --query accessToken --output tsv).Trim()
+    if ($args.Count -eq 1) {
+        nvim -c "Atlas review $($args[0])"
+    }
+    else {
+        nvim -c "Atlas"
+    }
 }
-
 
 oh-my-posh init pwsh --config '~/.config/oh-my-posh/config.json' | Invoke-Expression
