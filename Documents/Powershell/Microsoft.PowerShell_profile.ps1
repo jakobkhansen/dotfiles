@@ -101,6 +101,11 @@ function dev {
 
 # MS stuff
 
+function copilot {
+    $exe = Get-Command copilot.exe -CommandType Application -ErrorAction Stop
+    & $exe.Source --model "claude-opus-5.5" --effort "high" --yolo @args
+}
+
 function cr {
     cd ~/Documents/Copilot-Dash/checkouts
 }

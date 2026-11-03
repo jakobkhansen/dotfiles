@@ -16,6 +16,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
+if vim.fn.has("win32") == 1 then
+    for _, name in ipairs({ "TEMP", "TMP" }) do
+        local path = vim.env[name]
+        if path and path ~= "" then
+            vim.env[name] = assert(vim.uv.fs_realpath(path))
+        end
+    end
+end
+
 require("lazy").setup({
     -- Mini provides pairs, surround, commenting and bufremoval functionality
     "echasnovski/mini.nvim",

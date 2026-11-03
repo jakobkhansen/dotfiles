@@ -171,10 +171,6 @@
                 "commandline": "pwsh.exe -NoLogo",
                 "cursorShape": "bar",
                 "elevate": true,
-                "font": 
-                {
-                    "size": 11
-                },
                 "guid": "{7a4dc545-b89f-485c-91a5-61bbe535a813}",
                 "hidden": false,
                 "historySize": 9001,

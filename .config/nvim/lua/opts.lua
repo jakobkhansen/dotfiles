@@ -44,7 +44,7 @@ autocmd("FileType", {
 opt.pumheight = 10
 
 -- Visuals
-opt.signcolumn = "no"
+opt.signcolumn = "yes:1"
 vim.opt.laststatus = 3
 vim.opt.statusline = " "
 vim.opt.ruler = false

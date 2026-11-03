@@ -121,10 +121,7 @@ local mappings = {
         t = { term.openPopupTerminal, "popup-terminal" },
         f = { term.openFullTerminal, "full-terminal" },
         h = { term.openFloatTerm, "float-terminal" },
-        n = { "<CMD>tabnew<CR>", "tab-new" },
-        x = { ":1tabnext<CR>", "tab-1" },
-        c = { ":2tabnext<CR>", "tab-2" },
-        d = { ":3tabnext<CR>", "tab-3" },
+        n = { "<CMD>tabnext<CR>", "tab-next" },
     },
     -- Git
     g = {

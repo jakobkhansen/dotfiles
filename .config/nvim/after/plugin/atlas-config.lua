@@ -8,6 +8,22 @@ providers.resolve = function(value, opts)
     return resolve(value, opts)
 end
 
+local worktree = require("atlas.pulls.diff.worktree")
+
+worktree.relative_path = function(root, path)
+    root = root and vim.uv.fs_realpath(root)
+    path = vim.uv.fs_realpath(path)
+    if not root or not path then
+        return
+    end
+
+    root = root:gsub("\\", "/")
+    path = path:gsub("\\", "/")
+    if path:sub(1, #root + 1) == root .. "/" then
+        return path:sub(#root + 2)
+    end
+end
+
 require("atlas").setup({
     ui = {
         -- Set either to false to keep your existing statusline.
@@ -51,13 +67,18 @@ require("atlas").setup({
                 dir = nil,
                 -- Directories symlinked from your checkout into the worktree so servers can resolve
                 -- dependencies. These are the same directories on disk, not copies.
-                link = { "target" }, -- e.g. { "node_modules", ".venv" }
+                link = {
+                    "target",
+                    "sources\\TenantsFeedback\\Settings\\dev\\obj",
+                    "sources\\DashPortal\\DashPortal\\node_modules"
+                },
+
             },
             explorer = {
                 grouped = true,          -- Group changed files by directory.
                 hidden = false,
                 show_commits = false,    -- Set true to show commits below changed files initially.
-                width = 40,
+                width = 60,
                 initial_focus = "diff",  -- "explorer" or "diff".
                 preview = true,          -- Show a file as soon as the explorer cursor moves onto it.
                 focus_on_select = false, -- Move into the diff after selecting a file.
@@ -82,12 +103,38 @@ require("atlas").setup({
                         ["searchCriteria.targetRefName"] = "refs/heads/master",
                     },
                 },
+                {
+                    name = "Copilot-Dash",
+                    key = "3",
+                    project = "O365 Core",
+                    repository = "Copilot-Dash",
+                    scope = "all",
+                    extra_params = {
+                        ["searchCriteria.targetRefName"] = "refs/heads/master",
+                    },
+                },
+                {
+                    name = "TenantsFeedback",
+                    key = "4",
+                    project = "O365 Core",
+                    repository = "TenantsFeedback",
+                    scope = "all",
+                    extra_params = {
+                        ["searchCriteria.targetRefName"] = "refs/heads/master",
+                    },
+                },
             },
         },
         repo_config = {
             -- Maps `namespace/repo` to local paths. Used for checkout, diffs, and custom actions.
+            -- Keys are exact, case-sensitive Azure `Project/Repo` names. Values must be working trees
+            -- (atlas runs `git rev-parse --show-toplevel`), so point bare repos at a worktree.
+            -- Unmapped repos use a cache clone without files, so `gf` reports "File not found".
             paths = {
-                ["O365 Core/TenantsFeedback/*"] = "~/Documents/TenantsFeedback.git",
+                ["O365 Core/TenantsFeedback"] = "~/Documents/TenantsFeedback.git/checkouts/master",
+                ["O365 Core/Copilot-Dash"] = "~/Documents/Copilot-Dash/checkouts/master",
+                ["O365 Core/3srust"] = "~/Documents/Dev/3srust.git/checkouts/master",
+                ["O365 Core/searchservices"] = "~/Documents/Dev/searchservices",
             },
         },
     },
@@ -202,7 +249,7 @@ require("atlas").setup({
                     next_file = { "]f", "<Tab>" },
                     prev_file = { "[f", "<S-Tab>" },
                     toggle_explorer = "<leader>b",
-                    focus_explorer = "<leader>e",
+                    focus_explorer = "",
                     open_file = "gf",
                     toggle_view_mode = "i",
                     next_hunk = "<leader>n",
